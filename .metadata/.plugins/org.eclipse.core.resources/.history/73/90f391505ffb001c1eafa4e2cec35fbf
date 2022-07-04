@@ -19,6 +19,7 @@ public class ViewMyPageServlet extends HttpServlet {
      * Default constructor. 
      */
     public ViewMyPageServlet() {
+        // TODO Auto-generated constructor stub
     }
 
 	/**
