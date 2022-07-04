@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Mon Jul 04 14:42:51 KST 2022
+org.eclipse.jst.jee.server\:front=C\:\\244\\SW\\apache-tomcat-9.0.63\\wtpwebapps\\front
+org.eclipse.jst.jee.server\:back=C\:\\244\\SW\\apache-tomcat-9.0.63\\wtpwebapps\\back
