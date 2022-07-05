@@ -13,6 +13,7 @@ public class MyConnection {
 		//2. JDBC 드라이버 클래스 로드
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver"); 
+			System.out.println("jdbc driver 로딩 성공");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -23,7 +24,8 @@ public class MyConnection {
 
 		//3. DB와 연결
 		Connection con = null ;
-		String url = "jdbc:oracle:thin:@localhost:1521:xe"; //1521포트에 접속하면서 xe에 접근?!
+//		String url = "jdbc:oracle:thin:@localhost:1124:xe"; 
+		String url = "jdbc:oracle:thin:@jongwoo_high?TNS_ADMIN=/D:/Project/전자지갑/Wallet_Jongwoo.zip";
 		String user = "admin";
 		String password = "Hazard11241124";
 
