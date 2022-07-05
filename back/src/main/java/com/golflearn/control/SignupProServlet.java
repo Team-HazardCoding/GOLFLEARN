@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 public class SignupProServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SignupProServlet() {
-        super();
-    }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("user_id");
 		String userName = request.getParameter("user_name");
@@ -23,7 +20,6 @@ public class SignupProServlet extends HttpServlet {
 		String userSsn = request.getParameter("user_ssn");
 		String userType = request.getParameter("1");
 		
-		System.out.println("가나다라마바사");
 	}
 
 }
