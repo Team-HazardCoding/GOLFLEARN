@@ -19,10 +19,13 @@ import com.golflearn.sql.MyConnection;
 public class FindIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("user_id");
-		String name = request.getParameter("user_name");
+		String userId = request.getParameter("user_id");
+		String userName = request.getParameter("user_name");
+		String userEmail = request.getParameter("user_email");
 		
+		//DB연결
 		Connection con = null;
+		//SQL 송신
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -31,7 +34,13 @@ public class FindIdServlet extends HttpServlet {
 		
 		try {
 			con = MyConnection.getConnection();
-			String select
+			String selectIdSQL = "SELECT user_id FROM user_info WHERE user_name=? AND user_email=?";
+			pstmt = con.prepareStatement(selectIdSQL);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, userEmail);
+			pstmt.executeQuery();
+			rs = pstmt.executeQuery();
+			if()
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
