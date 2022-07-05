@@ -16,7 +16,7 @@ public class ViewLessonServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("yeah im fxxking GitBoy"); 
-		
+		System.out.println();
 	}
 
 }
