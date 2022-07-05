@@ -18,7 +18,7 @@ public class LessonOracleRepository implements LessonRepository{
 	}
 
 	@Override
-	public Lesson selectByLsnNo(int lsnNo) throws FindException {
+	public Lesson selectByLsnNo(String userId, int lsnNo) throws FindException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -43,18 +43,27 @@ public class LessonOracleRepository implements LessonRepository{
 		try {
 			con = MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectLsnNoSQL);
-			pstmt.setInt(1, lsnNo);	// 1 맞아??
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, lsnNo);
+			
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				//lesson이 아닌 JOIN 해온 다른 테이블은 getString해 올 값의 명명 알아보기
+				// 1번이슈 : !!lesson이 아닌 JOIN 해온 다른 테이블은 getString해 올 값의 명명 알아보기
+				// 2번이슈 : !!lsnStarScore나 proStarScore처럼 getInt해 올 값이 서브쿼리문으로 가는게 맞는지??
 				String lsnName = rs.getString("lsn_name");
 				String lsnIntro = rs.getString("lsn_intro");
 				String lsnReviewCnt = rs.getString("lsn_star_ppl_cnt");
 				String lsnUserId = rs.getString("user_id");
 				int lsnLv = rs.getInt("lsn_lv");
-				int ProStarScore = rs.getInt("SELECT SUM(lsn_star_sum/lsn_star_ppl_cnt)/COUNT(lsn_no) \r\n"
+				int lsnPrice = rs.getInt("lsn_price");
+				int lsnPerTime = rs.getInt("lsn_per_time");
+				int lsnDays = rs.getInt("lsn_days");
+				int lsnStarScore = rs.getInt("lsn_star_sum / lsn_star_ppl_cnt");
+				int proStarScore = rs.getInt("SELECT SUM(lsn_star_sum/lsn_star_ppl_cnt)/COUNT(lsn_no) \r\n"
 										   + "FROM lesson\r\n"
-										   + "WHERE user_id= ?"); 
+										   + "WHERE user_id= ?");
+				String userName = rs.getString("user_name");
+				
 			}
 			
 		} catch (SQLException e) {
