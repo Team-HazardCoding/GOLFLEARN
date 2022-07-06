@@ -13,4 +13,10 @@ public class User {
 	private int userType;
 	private Pro pro;
 	
+	public String getUserID(){
+		return this.userID;
+	}
+	public void setUserID(String userID){
+		this.userID = userID;
+	}
 }

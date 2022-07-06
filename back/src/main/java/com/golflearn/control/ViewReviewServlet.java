@@ -21,19 +21,19 @@ public class ViewReviewServlet extends HttpServlet {
 	 * review 페이지 로딩하여 받아온 정보 보여주기 
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		//테스트용
 		PrintWriter out = response.getWriter();
 
-
+	
+	
 		//로그인된 세션 받아오기 
 		HttpSession session = request.getSession();
 
 		//jquery에서 lsn_line_no 파라미터 받아오기 
 		String lessonLineNo = request.getParameter("lsn_line_no");
 
-		//SQL 구문 받아오기 
-
+		//SQL 구문 받아오기 	
+		
 
 
 

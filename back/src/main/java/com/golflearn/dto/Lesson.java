@@ -16,7 +16,6 @@ public class Lesson {
 	private int lsnStarSum;
 	private int lsnStarPplCnt;
 	private int lsnStatus;
-	private int UploadDt;
 	private Date lsnUploadDt;
 	private ArrayList<LessonClsfc> lsnClfc;
 	private ArrayList<LessonLine> lsnLines;
