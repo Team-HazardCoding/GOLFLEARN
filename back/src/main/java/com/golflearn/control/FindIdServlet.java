@@ -40,7 +40,7 @@ public class FindIdServlet extends HttpServlet {
 			pstmt.setString(2, userEmail);
 			pstmt.executeQuery();
 			rs = pstmt.executeQuery();
-			if()
+//			if()
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
