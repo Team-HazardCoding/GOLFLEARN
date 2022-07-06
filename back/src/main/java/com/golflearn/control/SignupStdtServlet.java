@@ -20,7 +20,7 @@ import com.golflearn.sql.MyConnection;
 public class SignupStdtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("user_id"); // html의 name 지정시 참고
 		String userName = request.getParameter("user_name");
 		String userPwd = request.getParameter("user_pwd");
