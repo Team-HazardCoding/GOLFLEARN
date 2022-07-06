@@ -25,7 +25,7 @@ public class MyConnection {
 		//3. DB와 연결
 		Connection con = null ;
 //		String url = "jdbc:oracle:thin:@localhost:1124:xe"; 
-		String url = "jdbc:oracle:thin:@jongwoo_high?TNS_ADMIN=/Users/jasonmilian/Downloads/Wallet_Jongwoo (1).zip";
+		String url = "jdbc:oracle:thin:@jongwoo_high?TNS_ADMIN=/Users/jasonmilian/Desktop/244/SW/apache-tomcat-9.0.64/Wallet_Jongwoo";
 		String user = "admin";
 		String password = "Hazard11241124";
 
