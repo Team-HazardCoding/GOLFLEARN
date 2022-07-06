@@ -33,16 +33,17 @@ public class LessonLineRepository {
 		ResultSet rs = null;
 
 		//lesson_line 테이블에서 lesson_line가 ?인 모든 컬럼을 가져오기 
-		String selecLessonLineNo = 
+		String selectLessonLineNo = 
 				"SELECT *\r\n"
 				+ "FROM lesson_line \r\n"
 				+ "WHERE lsn_line_no = ?";
 		try {
 			con = MyConnection.getConnection();
-			pstmt = con.prepareStatement(selecLessonLineNo);
+			pstmt = con.prepareStatement(selectLessonLineNo);
 			pstmt.setString(1, lessonLineNo);
 			rs = pstmt.executeQuery();
-
+			
+			
 
 
 
