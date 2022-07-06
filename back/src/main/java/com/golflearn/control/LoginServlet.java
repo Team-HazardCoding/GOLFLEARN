@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 		
 		//세션 객체 얻기
 		HttpSession session = request.getSession();
-		session.removeAttribute("loginId");
+		session.removeAttribute("loginInfo");
 		
 		try {
 			con = MyConnection.getConnection();
@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 			
 			if(rs.next()) { // 로그인 성공
 				loginResult = "{\"status\":1 \" msg \":\"로그인 성공\"}";
-				session.setAttribute("loginId", userId); // loginId 저장
+				session.setAttribute("loginInfo", userId); // loginInfo 저장
 			}
 			
 		} catch (SQLException e) {
