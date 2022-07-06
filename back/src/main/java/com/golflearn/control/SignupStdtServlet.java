@@ -20,7 +20,7 @@ import com.golflearn.sql.MyConnection;
 public class SignupStdtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("user_id"); // html의 name 지정시 참고
 		String userName = request.getParameter("user_name");
 		String userPwd = request.getParameter("user_pwd");
@@ -40,10 +40,10 @@ public class SignupStdtServlet extends HttpServlet {
 		
 		try {
 			con = MyConnection.getConnection();
-			String insertStdtInfoSQL= "INSERT INTO user_info(user_id, user_name, user_pwd, user_email,"
+			String insertStdtSQL= "INSERT INTO user_info(user_id, user_name, user_pwd, user_email,"
 					+ "user_phone,user_ssn,user_join_dt, user_quit_dt,user_type)"
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ? , 0)";
-			pstmt = con.prepareStatement(insertStdtInfoSQL);
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ? , 1)";
+			pstmt = con.prepareStatement(insertStdtSQL);
 			pstmt.setString(1, "userId");
 			pstmt.setString(2, "userName");
 			pstmt.setString(3, "userPwd");
@@ -64,10 +64,10 @@ public class SignupStdtServlet extends HttpServlet {
 			MyConnection.close(pstmt,con); // DB연결 해제
 		}
 		
-		response.setContentType("application/jason:UTF-8");
+		response.setContentType("application/json:UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(signupResult);
-		System.out.println(signupResult);
+//		System.out.println(signupResult);
 		
 	}
 
