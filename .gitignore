@@ -63,6 +63,9 @@ nbactions.xml
 nb-configuration.xml
 .nb-gradle/
 
+# Sql
+back/src/main/java/com/golflearn/sql/MyConnection.java
+
 # Maven
 log/
 target/
