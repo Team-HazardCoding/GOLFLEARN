@@ -28,6 +28,7 @@ public class SignupProServlet extends HttpServlet {
 		String userPhone = request.getParameter("user_phone");
 		String userSsn = request.getParameter("user_ssn");
 		String sysDate = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		String proCareer = request.getParameter("pro_career");
 		
 		String signupResult = "{\"status\": 0 \"msg\": \"가입실패\"}";
 		
@@ -43,6 +44,19 @@ public class SignupProServlet extends HttpServlet {
 			String insertSignupProSQL = "INSERT INTO user_info(user_id, user_name, user_pwd, user_email,"
 					+ "user_phone,user_ssn,user_join_dt, user_quit_dt,user_type)"
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ? , 1)";
+			
+			String proInfoTrigSQL = "CREATE OR REPLACE TRIGGER proinfo_trig  AFTER INSERT ON user_info"
+					+ "FOR EACH ROW"
+					+ "BEGIN"
+					+ "    INSERT INTO pro_info(user_id, pro_career)"
+					+ "    VALUES (:NEW.user_id,?);"
+					+ "END";
+			
+			pstmt = con.prepareStatement(proInfoTrigSQL);
+			pstmt.setString(1, "proCareer");
+			rs = pstmt.executeUpdate();
+			if(rs == 1) {
+				
 			pstmt = con.prepareStatement(insertSignupProSQL);
 			pstmt.setString(1, "userId");
 			pstmt.setString(2, "userName");
@@ -57,9 +71,11 @@ public class SignupProServlet extends HttpServlet {
 			rs = pstmt.executeUpdate();
 			
 			if(rs == 1) {
+				rs = pstmt.executeUpdate();
+				
 				signupResult= "{\"status\": 1 \"msg\": \"가입성공\"}";
 			}
-		
+		}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

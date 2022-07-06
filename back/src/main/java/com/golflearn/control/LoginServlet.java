@@ -23,21 +23,21 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("user_id");
 		String userPwd = request.getParameter("user_pwd");
-		
+
 		//DB연결
 		Connection con = null;
-		
+
 		//SQL 연결
 		PreparedStatement pstmt = null;
 		//송신
 		ResultSet rs = null;
 
 		String loginResult = "{\"status\":0 \" msg \":\"로그인 실패\"}";
-		
+
 		//세션 객체 얻기
 		HttpSession session = request.getSession();
 		session.removeAttribute("loginInfo");
-		
+
 		try {
 			con = MyConnection.getConnection();
 			String selectUserIdNPwd = "SELECT * FROM user_info WHERE user_id = ? AND user_pwd = ? ;";
@@ -45,22 +45,20 @@ public class LoginServlet extends HttpServlet {
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
 			rs = pstmt.executeQuery();
-			
+
 			if(rs.next()) { // 로그인 성공
 				loginResult = "{\"status\":1 \" msg \":\"로그인 성공\"}";
-				session.setAttribute("loginInfo", userId); // loginInfo 저장
-			}
-			
-		} catch (SQLException e) {
+				session.setAttribute("loginInfo", userId); // 세션객체 속성으로 로그인 정보 추가
+			} 
+
+		}catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
+		}finally {
 			MyConnection.close(rs, pstmt, con);
 		}
 
 		response.setContentType("application/json:UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(loginResult);
-		
 	}
-
 }
