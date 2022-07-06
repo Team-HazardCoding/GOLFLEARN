@@ -1,6 +1,7 @@
 package com.golflearn.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -39,10 +40,10 @@ public class SignupStdtServlet extends HttpServlet {
 		
 		try {
 			con = MyConnection.getConnection();
-			String insertStdtInfoSQL= "INSERT INTO user_info(user_id, user_name, user_pwd, user_email,"
+			String insertStdtSQL= "INSERT INTO user_info(user_id, user_name, user_pwd, user_email,"
 					+ "user_phone,user_ssn,user_join_dt, user_quit_dt,user_type)"
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ? , 0)";
-			pstmt = con.prepareStatement(insertStdtInfoSQL);
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ? , 1)";
+			pstmt = con.prepareStatement(insertStdtSQL);
 			pstmt.setString(1, "userId");
 			pstmt.setString(2, "userName");
 			pstmt.setString(3, "userPwd");
@@ -63,7 +64,9 @@ public class SignupStdtServlet extends HttpServlet {
 			MyConnection.close(pstmt,con); // DB연결 해제
 		}
 		
-	
+		response.setContentType("application/json:UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(signupResult);
 		
 	}
 
