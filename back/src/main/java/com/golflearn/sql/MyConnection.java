@@ -30,6 +30,7 @@ public class MyConnection {
 		
 		con = DriverManager.getConnection(url, user, password);
 		return con; 
+		
 	}
 	public static void close(ResultSet rs, Statement stmt, Connection con) {
 		//7. DB 연결해제
