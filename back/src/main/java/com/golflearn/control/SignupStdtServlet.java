@@ -20,15 +20,16 @@ public class SignupStdtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("user_id");
+		String userId = request.getParameter("user_id"); // html의 name 지정시 참고
 		String userName = request.getParameter("user_name");
 		String userPwd = request.getParameter("user_pwd");
 		String userEmail = request.getParameter("user_email");
 		String userPhone = request.getParameter("user_phone");
 		String userSsn = request.getParameter("user_ssn");
 		String sysDate = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-	
-		
+
+		String signupResult = "{\"status\":0, \"msg\": \"가입실패\"}";
+				
 		// DB와 연결
 		Connection con = null;
 		
@@ -50,14 +51,19 @@ public class SignupStdtServlet extends HttpServlet {
 			pstmt.setString(6, "userSsn");
 			pstmt.setString(7, "sysDate");
 			pstmt.setString(8, null);
+			rs = pstmt.executeUpdate(); // DB에 결과값 보내줌
 			
+			if(rs == 1) { // rs = true이면
+				signupResult = "{\"status\":1, \"msg\": \"가입성공\"}";
+			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			MyConnection.close(pstmt,con); // DB연결 해제
 		}
 		
-		
+	
 		
 	}
 
