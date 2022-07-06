@@ -28,15 +28,16 @@ public class SignupStdtServlet extends HttpServlet {
 		String userPhone = request.getParameter("user_phone");
 		String userSsn = request.getParameter("user_ssn");
 		String sysDate = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-
-		String signupResult = "{\"status\":0, \"msg\": \"가입실패\"}";
-				
+		
 		// DB와 연결
 		Connection con = null;
 		
 		//SQL 송신
 		PreparedStatement pstmt = null;
 		int rs = 0;
+		
+		//결과
+		String signupResult = "{\"status\":0, \"msg\": \"가입실패\"}";
 		
 		try {
 			con = MyConnection.getConnection();

@@ -57,7 +57,7 @@ public class SignupProServlet extends HttpServlet {
 			rs = pstmt.executeUpdate();
 			
 			if(rs == 1) {
-				signupResult  = "{\"status\": 1 \"msg\": \"가입성공\"}";
+				signupResult= "{\"status\": 1 \"msg\": \"가입성공\"}";
 			}
 		
 		} catch (SQLException e) {
