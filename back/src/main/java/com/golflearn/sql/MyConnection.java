@@ -25,11 +25,12 @@ public class MyConnection {
 		//3. DB와 연결
 		Connection con = null ;
 //		String url = "jdbc:oracle:thin:@localhost:1124:xe"; 
-		String url = "jdbc:oracle:thin:@jongwoo_high?TNS_ADMIN=/C:/Golflearn_lib/전자지갑/Wallet_Jongwoo.zip";
+		String url = "jdbc:oracle:thin:@jongwoo_high?TNS_ADMIN=C://Golflearn_lib/전자지갑";
 		String user = "admin";
 		String password = "Hazard11241124";
-
+		
 		con = DriverManager.getConnection(url, user, password);
+		System.out.println("db 연결성공");
 		return con; 
 	}
 	public static void close(ResultSet rs, Statement stmt, Connection con) {
