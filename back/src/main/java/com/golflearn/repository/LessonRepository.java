@@ -16,7 +16,7 @@ public interface LessonRepository {
 	 * 레슨번호로 레슨검색한다
 	 * @param lsnNo 레슨번호
 	 * @return 레슨객체
-	 * @throws FindException 레슨번호에 해당하는 상품이 없으면 "상품이 없습니다" 상세메시지를 갖는 예외가 발생한다
+	 * @throws FindException 레슨번호에 해당하는 상품이 없으면 "레슨이 없습니다" 상세메시지를 갖는 예외가 발생한다
 	 */
 	public Lesson selectByLsnNo(String userId, int lsnNo) throws FindException;
 }

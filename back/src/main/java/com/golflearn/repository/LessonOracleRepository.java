@@ -50,28 +50,52 @@ public class LessonOracleRepository implements LessonRepository{
 			if(rs.next()) {
 				// 1번이슈 : !!lesson이 아닌 JOIN 해온 다른 테이블은 getString해 올 값의 명명 알아보기
 				// 2번이슈 : !!lsnStarScore나 proStarScore처럼 getInt해 올 값이 서브쿼리문으로 가는게 맞는지??
-				String lsnName = rs.getString("lsn_name");
+				// 3번이슈 : !!locSido나 locSigungu처럼 DB에서는 숫자로 넘어오는값을
+				//			 int형으로 get할지, 웹으로 뿌려지는 값은 String값이니 String으로 get할지
+				String lsnTitle = rs.getString("lsn_Title");
 				String lsnIntro = rs.getString("lsn_intro");
-				String lsnReviewCnt = rs.getString("lsn_star_ppl_cnt");
+				int lsnReviewCnt = rs.getInt("lsn_star_ppl_cnt");
 				String lsnUserId = rs.getString("user_id");
 				int lsnLv = rs.getInt("lsn_lv");
 				int lsnPrice = rs.getInt("lsn_price");
 				int lsnPerTime = rs.getInt("lsn_per_time");
 				int lsnDays = rs.getInt("lsn_days");
-				int lsnStarScore = rs.getInt("lsn_star_sum / lsn_star_ppl_cnt");
-				int proStarScore = rs.getInt("SELECT SUM(lsn_star_sum/lsn_star_ppl_cnt)/COUNT(lsn_no) \r\n"
+				int lsnStarScore = rs.getInt("lsn_star_sum / lsn_star_ppl_cnt"); //2
+				int proStarScore = rs.getInt("SELECT SUM(lsn_star_sum/lsn_star_ppl_cnt)/COUNT(lsn_no) \r\n" //2
 										   + "FROM lesson\r\n"
 										   + "WHERE user_id= ?");
-				String userName = rs.getString("user_name");
+				String proName = rs.getString("user_name");
+				String locSido = rs.getString("loc_sido");	//3
+				String locSigungu = rs.getString("locSigungu"); //3
+				String proIntro = rs.getString("pro_career");
+				String ReviewUserId = rs.getString("user_id");
+				String review = rs.getString("review");
+				java.sql.Date reviewDt = rs.getDate("reviewDt");
 				
+				Lesson l = new Lesson(lsnNo,
+									  lsnTitle,
+									  lsnReviewCnt,
+									  lsnUserId,
+									  lsnLv,
+									  lsnPrice,
+									  lsnPerTime,
+									  lsnDays,
+									  lsnStarScore,
+									  proStarScore,
+									  proName,
+									  locSido,
+									  locSigungu,
+									  proIntro,
+									  ReviewUserId,
+									  review,
+									  reviewDt);
+				return l;
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new FindException("레슨이 존재하지 않습니다");
+		} finally {
+			MyConnection.close(rs, pstmt, con);
 		}
-		
-		
-		return null;
 	}
-
 }
