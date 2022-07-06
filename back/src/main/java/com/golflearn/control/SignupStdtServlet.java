@@ -67,7 +67,6 @@ public class SignupStdtServlet extends HttpServlet {
 		response.setContentType("application/json:UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(signupResult);
-//		System.out.println(signupResult);
 		
 	}
 
