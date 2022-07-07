@@ -28,12 +28,12 @@ public class LoginStatusServlet extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		Map <String, Object> map = new HashMap<>();
 		if(loginedId == null) {
-			map.put("status", 0);
+			map.put("status", 0); // 로그인 안 되었을 때
 		}else {
-			map.put("status", 1);
+			map.put("status", 1); // 로그인 되었을 때
 		}
-		
-		response.setContentType("application/json:UTF-8");
+		// 결과 주석으로 달아두기
+		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(mapper.writeValueAsString(map));
 	}

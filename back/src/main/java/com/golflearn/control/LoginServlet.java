@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 
 		try {
 			con = MyConnection.getConnection();
-			String selectUserIdNPwd = "SELECT * FROM user_info WHERE user_id = ? AND user_pwd = ? ;";
+			String selectUserIdNPwd = "SELECT * FROM user_info WHERE user_id = ? AND user_pwd = ?";
 			pstmt = con.prepareStatement(selectUserIdNPwd);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 			MyConnection.close(rs, pstmt, con);
 		}
 
-		response.setContentType("application/json:UTF-8");
+		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(loginResult);
 	}

@@ -20,14 +20,22 @@ import com.golflearn.sql.MyConnection;
 public class SignupStdtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("user_id"); // html의 name 지정시 참고
 		String userName = request.getParameter("user_name");
 		String userPwd = request.getParameter("user_pwd");
 		String userEmail = request.getParameter("user_email");
 		String userPhone = request.getParameter("user_phone");
 		String userSsn = request.getParameter("user_ssn");
-		String sysDate = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+
+		//2. java.sql.Date를 이용하여 날짜 반환
+		java.sql.Date signupDt = new java.sql.Date(System.currentTimeMillis());
+		
+		
+//		1. java.util.Date 이용하여 날짜 반환
+//		Date date = new java.util.Date();
+//		System.out.println(date); // Thu Jul 07 09:51:56 KST 2022
+		
 		
 		// DB와 연결
 		Connection con = null;
@@ -43,7 +51,7 @@ public class SignupStdtServlet extends HttpServlet {
 			con = MyConnection.getConnection();
 			String insertStdtSQL= "INSERT INTO user_info(user_id, user_name, user_pwd, user_email,"
 					+ "user_phone,user_ssn,user_join_dt, user_quit_dt,user_type)"
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ? , 1)";
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, 0)";
 			pstmt = con.prepareStatement(insertStdtSQL);
 			pstmt.setString(1, "userId");
 			pstmt.setString(2, "userName");
@@ -51,8 +59,8 @@ public class SignupStdtServlet extends HttpServlet {
 			pstmt.setString(4, "userEmail");
 			pstmt.setString(5, "userPhone");
 			pstmt.setString(6, "userSsn");
-			pstmt.setString(7, "sysDate");
-			pstmt.setString(8, null);
+			pstmt.setDate(7, signupDt);
+			pstmt.setDate(8, null);
 			rs = pstmt.executeUpdate(); // DB에 결과값 보내줌
 			
 			if(rs == 1) { // rs = true이면
@@ -65,7 +73,7 @@ public class SignupStdtServlet extends HttpServlet {
 			MyConnection.close(pstmt,con); // DB연결 해제
 		}
 		
-		response.setContentType("application/json:UTF-8");
+		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(signupResult);
 		
