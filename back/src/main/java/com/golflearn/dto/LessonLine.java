@@ -15,13 +15,13 @@ public class LessonLine {
 	private User user;
 	private Lesson lsn;
 	private LessonReview lsnReview;
-	private ArrayList<LessonHistory> lsnHistory;
+	private LessonHistory lsnHistory;
 	
 	Lesson le = new Lesson();
 	LessonReview lr = new LessonReview();
 	
 	public String toString() {
-		return "일단비워놓음";
+		return "일단 간단히 3개만 " + lsnNo + " " + lsnExpDt + " " + stdtLsnStatus;
 	}
 	//ViewLessonReview용 toString
 	public String toString(Lesson lsn, String lsnReview) {
@@ -123,13 +123,13 @@ public class LessonLine {
 	}
 	
 	//레슨기록
-	public ArrayList<LessonHistory> getLsnHistory() {
+	public LessonHistory getLsnHistory() {
 		return this.lsnHistory;
 	}
 
 
 
-	public void setLsnHistory(ArrayList<LessonHistory> lsnHistory) {
+	public void setLsnHistory(LessonHistory lsnHistory) {
 		this.lsnHistory = lsnHistory;
 	}
 	
