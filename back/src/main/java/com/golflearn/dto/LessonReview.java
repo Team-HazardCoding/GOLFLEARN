@@ -10,6 +10,17 @@ public class LessonReview {
 	private Date reviewEditDt;
 	//세터 게터 메서드 
 	//레슨내역번호
+	
+	public String toString(int lsnLineNo, int myStarScore, String review) {
+		return "레슨내역번호 : " + this.lsnLineNo 
+				+ "레슨총횟수 : " + this.myStarScore
+				+ "레슨후기 : " + this.review
+				;
+	}
+	public String toString(int myStarScore) {
+		return "내가준별점 : " + this.myStarScore;
+	}
+	
 	public int getLsnLineNo() {
 		return this.lsnLineNo;
 	}

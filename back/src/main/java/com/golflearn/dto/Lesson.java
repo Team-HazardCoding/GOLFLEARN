@@ -21,6 +21,16 @@ public class Lesson {
 	private ArrayList<LessonLine> lsnLines;
 	private Location location;
 	
+	//ViewLessonReview용 toString
+	public String toString() {
+		return "레슨제목 : " + lsnTitle;
+	}
+	
+	//ViewMyPage용 toString
+	public String toString(String lsnTitle, int lsnCntSum) {
+		return "레슨제목 : " + this.lsnTitle +
+			   "레슨총횟수 : " + this.lsnCntSum ;
+	}
 	//게터 세터 메서드 
 	//1. 레슨번호
 	public int getLsnNo() {

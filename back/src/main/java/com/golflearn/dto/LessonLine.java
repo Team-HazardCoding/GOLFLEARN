@@ -9,16 +9,38 @@ public class LessonLine {
 	private int stdtLsnStatus;
 	private Date lsnExpDt;
 	private Date lsnAplyDt;
-	private User user;
-	private String userId;
-	private LessonReview lsnReview;
+//	private String userId;
 	private StdtManage stdtManage;
-	private ArrayList<Lesson> lsn;
+	//private ArrayList<Lesson> lsn;
+	private User user;
+	private Lesson lsn;
+	private LessonReview lsnReview;
 	private ArrayList<LessonHistory> lsnHistory;
 	
+	Lesson le = new Lesson();
+	LessonReview lr = new LessonReview();
 	
 	public String toString() {
-		return "레슨내역번호는 : " + lsnLineNo	+ "유저아이디는 : " + userId + "레슨번호는 : " + lsnNo + "레슨신청일은 : " + lsnAplyDt + "레슨만료일은 : " + lsnExpDt;
+		return "일단비워놓음";
+	}
+	//ViewLessonReview용 toString
+	public String toString(Lesson lsn, String lsnReview) {
+		return this.lsn + " " + this.lsnReview;
+	}
+	
+	//ViewMyPage용 toString
+	public String toString(String lsn, String lsnReview) {
+			return "레슨내역번호 : " + lsnLineNo	
+					+ "레슨번호 : " + lsnNo 
+//					+ "레슨제목 : " + le.getLsnTitle() 
+					+ this.lsn
+					+ "레슨만료일 : " + lsnExpDt
+					+ "레슨수강상태 : " + stdtLsnStatus
+//					+ "내가준별점 : " + lr.getMyStarScore()
+					+ this.lsnReview
+					+ "레슨진행횟수 : " + null
+//					+ "레슨총횟수 : " + le.getLsnCntSum()
+					;
 	}
 	
 	
@@ -68,13 +90,6 @@ public class LessonLine {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	//유저아이디? 
-	public String getUserId() {
-		return this.userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 
 	//레슨후기
 	public LessonReview getLsnReview() {
@@ -92,11 +107,18 @@ public class LessonLine {
 		this.stdtManage = stdtManage;
 	}
 	
-	//레슨
-	public ArrayList<Lesson> getLsn() {
-		return this.lsn;
+//	//레슨
+//	public ArrayList<Lesson> getLsn() {
+//		return this.lsn;
+//	}
+//	public void setLsn(ArrayList<Lesson> lsn) {
+//		this.lsn = lsn;
+//	}
+	
+	public Lesson getLsn() {
+		return lsn;
 	}
-	public void setLsn(ArrayList<Lesson> lsn) {
+	public void setLsn(Lesson lsn) {
 		this.lsn = lsn;
 	}
 	
@@ -104,6 +126,9 @@ public class LessonLine {
 	public ArrayList<LessonHistory> getLsnHistory() {
 		return this.lsnHistory;
 	}
+
+
+
 	public void setLsnHistory(ArrayList<LessonHistory> lsnHistory) {
 		this.lsnHistory = lsnHistory;
 	}
