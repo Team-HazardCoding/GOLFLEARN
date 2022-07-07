@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.golflearn.repository.LessonReviewRepository;
+
 /**
  * Servlet implementation class ViewReviewServlet
  */
@@ -23,18 +25,22 @@ public class ViewReviewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//테스트용
 		PrintWriter out = response.getWriter();
-
-	
-	
+		//한글설정
+		response.setContentType("text/plain;charset = utf-8");
 		//로그인된 세션 받아오기 
 		HttpSession session = request.getSession();
 
-		//jquery에서 lsn_line_no 파라미터 받아오기 
-		String lessonLineNo = request.getParameter("lsn_line_no");
+//		//jquery에서 lsn_line_no 파라미터 받아오기 
+//		String lessonLineNo = request.getParameter("lsn_line_no");
 
 		//SQL 구문 받아오기 	
+		LessonReviewRepository lrrepo = new LessonReviewRepository();
+//		lrrepo.selectLessonTitleByLessonLineNo(lessonLineNo)  //테스트말고진짜로할때
+		lrrepo.selectLsnTitleByLsnLineNo("5");
+		
 		
 
+			
 
 
 
