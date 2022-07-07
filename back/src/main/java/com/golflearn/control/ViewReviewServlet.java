@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.golflearn.exception.FindException;
 import com.golflearn.repository.LessonReviewRepository;
 
 /**
@@ -29,14 +30,31 @@ public class ViewReviewServlet extends HttpServlet {
 		response.setContentType("text/plain;charset = utf-8");
 		//로그인된 세션 받아오기 
 		HttpSession session = request.getSession();
+		//review라는 파라메터를 받아오기 -> 후기작성인지 수정인지 구별하기 위해 
+		int reviewExist = Integer.parseInt(request.getParameter("review"));
+		//lsn_line_no라는 파라메터를 받아오기 -> int로변환
+		int lsnLineNo = Integer.parseInt(request.getParameter("lsn_line_no"));
 
 //		//jquery에서 lsn_line_no 파라미터 받아오기 
 //		String lessonLineNo = request.getParameter("lsn_line_no");
 
 		//SQL 구문 받아오기 	
 		LessonReviewRepository lrrepo = new LessonReviewRepository();
-//		lrrepo.selectLessonTitleByLessonLineNo(lessonLineNo)  //테스트말고진짜로할때
-		lrrepo.selectLsnTitleByLsnLineNo("5");
+//		lrrepo.selectLessonTitleByLessonLineNo(lessonLineNo)  //테스트말고진짜로할때'
+		
+		if(reviewExist == 0) {
+			lrrepo.selectLsnTitleByLsnLineNo(lsnLineNo); //정상작동 코드 
+		}
+		else {
+			try {
+				lrrepo.selectReviewByLsnLineNo(lsnLineNo);
+			} catch (FindException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
 		
 		
 

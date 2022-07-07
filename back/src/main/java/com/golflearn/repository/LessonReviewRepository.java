@@ -4,24 +4,25 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.golflearn.dto.Lesson;
+import com.golflearn.dto.LessonLine;
 import com.golflearn.dto.LessonReview;
+import com.golflearn.dto.User;
+import com.golflearn.exception.FindException;
 import com.golflearn.sql.MyConnection;
 
 public class LessonReviewRepository {
 
 	
 	//수강후기 작성 페이지 로딩 시 -> 내가클릭한 레슨번호를 받아서 대조
-	public Lesson selectLsnTitleByLsnLineNo(String lessonLineNo){
+	public Lesson selectLsnTitleByLsnLineNo(int lessonLineNo){
 		
 		Lesson lesson = new Lesson(); 
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String test = lessonLineNo;
+		int test = lessonLineNo;
 		
 		//이벤트로 내가 클릭한 lsn_line_no를 가져오기 
 		//lsn_line_no가 같은 lesson테이블에서 lsn_title을 lesson_line테이블에서 lsn_line_no를 가져오기 
@@ -32,7 +33,7 @@ public class LessonReviewRepository {
 		try {
 			con = MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectLessonTitle);
-			pstmt.setString(1, test);
+			pstmt.setInt(1, test);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -52,13 +53,12 @@ public class LessonReviewRepository {
 //		return null;
 	}
 	
-	public List<LessonReview> selectReviewByLsnLineNo(String lessonLineNo){
+	public LessonLine selectReviewByLsnLineNo(int lessonLineNo) throws FindException{
 		
-		List<LessonReview> reviews = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String test = lessonLineNo;
+		int test = lessonLineNo;
 		
 		//이벤트로 내가 클릭한 lsn_line_no를 가져오기 
 		//lsn_line_no가 같은 테이블들에서 정보 가져오기, 별점 및 후기등등  
@@ -70,33 +70,46 @@ public class LessonReviewRepository {
 		try {
 			con = MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectLessonReview);
-			pstmt.setString(1, test);
+			pstmt.setInt(1, test);
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				int lsnLineNo = rs.getInt("lsn_line_no");
 				String lsnTitle = rs.getString("lsn_title");
 				int myStarScore = rs.getInt("my_star_score");
 				String review = rs.getString("review");
 				
-				System.out.println("레슨명은 : " + lsnTitle +
-								   "내가준별점은 : " + myStarScore +
-								   "작성중이던 리뷰는 : " + review);
-				LessonReview lr = new LessonReview();
+//				System.out.println("레슨명은 : " + lsnTitle);
+//				System.out.println("내가준별점은 : " + myStarScore);
+//				System.out.println("작성중이던 리뷰는 : " + review);
+								   
+				
 				Lesson l = new Lesson();
+				l.setLsnTitle(lsnTitle); // ?????  //lesson에 lsnTitle에는 입력됨 
+				
+				LessonReview lr = new LessonReview();
 				lr.setLsnLineNo(lsnLineNo);
-//				l.setLsnTitle(lsnTitle); // ????? 
 				lr.setMyStarScore(myStarScore);
 				lr.setReview(review);
-				reviews.add(lr);
-//				reviews.add(l); //lesson review에다가 lesson객체형식 변수선언 해보기 
+				
+				LessonLine line = new LessonLine();
+				line.setLsn(l);
+				line.setLsnReview(lr);
+				System.out.println(line.toString(l,lr.toString(lsnLineNo,myStarScore,review))); //테스트용 
+				return line;
+//				reviews.add(lr);
 			}
+			throw new FindException(lessonLineNo +"번 레슨내역이 없습니다");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new FindException(e.getMessage());
+		}finally {
+			MyConnection.close(rs, pstmt, con);
 		}
-		
-		return reviews;
-		
 	}
+	
+	//입력된 id에따라 type값 반환 
+
+	
 }
