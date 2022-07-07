@@ -21,7 +21,7 @@ public class MyConnection {
 	}
 	public static Connection getConnection() throws SQLException { //non-static 은 객체가 먼저 생성 되어야 사용할 수 있다.
 		// static으로 선언되는 method는 클래스 이름. 으로 사용하는게 best
-
+		
 		//3. DB와 연결
 		Connection con = null ;
 		String url = "jdbc:oracle:thin:@Jongwoo_high?TNS_ADMIN=C://Golflearn_lib//전자지갑//Wallet_Jongwoo";
@@ -30,7 +30,6 @@ public class MyConnection {
 		
 		con = DriverManager.getConnection(url, user, password);
 		return con; 
-		
 	}
 	public static void close(ResultSet rs, Statement stmt, Connection con) {
 		//7. DB 연결해제

@@ -1,44 +1,78 @@
 package com.golflearn.dto;
 
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Lesson {
-	private int lsnNo;
-	//private String lsnName;
-	private User user;
+	private String lsnNo;
 	private String lsnTitle;
 	private String lsnIntro;
-	private int lsnLv;
+	private int lsnLv;	
 	private int lsnDays;
 	private int lsnPrice;
 	private int lsnPerTime;
 	private int lsnCntSum;
 	private int lsnStarSum;
 	private int lsnStarPplCnt;
+	private float lsnStarScore;	//레슨별점
+	private float proStarScore;	//프로별점
 	private int lsnStatus;
 	private int UploadDt;
+	private User user;
 	private Date lsnUploadDt;
-	private ArrayList<LessonClsfc> lsnClfc;
-	private ArrayList<LessonLine> lsnLines;
+	private ArrayList<LessonClsfc> lsnClfc;	// 1.ArrayList로 지정할 필요가 있을까?
+	private LessonLine lsnLine;
 	private Location location;
+	private Pro pro;
+	private LessonReview lsnReview;
 	
-	User u = new User();
+	public Lesson(){};
 	
-	public Lesson(int lsnNo, String lsnName, int lsnReviewCnt, String lsnUserId, int lsnLv, int lsnPrice,
-			int lsnPerTime, int lsnDays, int lsnStarScore, int proStarScore, String proName, String locSido,
-			String locSigungu, String proIntro, String reviewUserId, String review, Date reviewDt) {
-		this.lsnNo = lsnNo;
-		//userName -> User의 get, set 완성되면 으로 User에서 가져오기
-		//
-	}
+	//생성자 호출로 가져온 파라미터를 데이터 input할 시
+//	public Lesson(int lsnNo, String lsnTitle, String lsnIntro, int lsnReviewCnt, int lsnLv, int lsnPrice,
+//		int lsnPerTime, int lsnDays, float lsnStarScore, float proStarScore, String proName, String locSido,
+//		String locSigungu, String proIntro, String reviewUserId, String review, Date reviewDt) {
+//		
+//		this.lsnNo = lsnNo;
+//		this.lsnTitle = lsnTitle;
+//		this.lsnIntro = lsnIntro;
+//		this.lsnStarPplCnt = lsnReviewCnt; // 리뷰의 갯수와 별점준 인원수는 같음 
+//		this.lsnLv = lsnLv;
+//		this.lsnPrice = lsnPrice;
+//		this.lsnPerTime = lsnPerTime;
+//		this.lsnDays = lsnDays;
+//		this.lsnStarScore = lsnStarScore;
+//		this.proStarScore = proStarScore;
+//		
+//		//2.한번 타는 경우
+//		this.프로명 = proName; 			// User의 userName(ui.user_name)
+//		this.시도 = locSido; 	 			// Location의 locSido(lc.loc_sido)		
+//		this.시군구 = locSigungu;			// Location의 locSigungu(lc.loc_sigungu)
+//		this.프로소개 = proIntro;			// Pro의 proCareer(pi.pro_career)
+//		this.후기작성자아이디 = reviewUserId;// LessonLine의 userId(ll.user_id)	// 두번 타는경우
+//		this.후기내용 = review;			// LessonReview의 review(lr.review)
+//		this.후기작성일자 = reviewDt;		// LessonReview의 reviewDt(lr.review_dt)
+//		
+//		this.user.setUserName(proName);
+//		this.location.setLocSido(locSido);
+//		this.location.setLocSigungu(locSigungu);
+//		this.pro.setProCareer(proIntro);
+//		this.lsnReview.setReview(review);
+//		this.lsnReview.setReviewDt(reviewDt);
+//		//3. 타고 타는경우
+//		this.lsnLines.
+//	}
+
 	
+//	public String toString(uitostring의 반환, lc, pr, ll, lr + 나머진 변수들 ) {
+//		return this.lsnNo + this.lsnTitle  + " dk";
+//	}
 	//게터 세터 메서드 
 	//1. 레슨번호
-	public int getLsnNo() {
+	public String getLsnNo() {
 		return this.lsnNo;
 	}
-	public void setLsnNo(int lsnNo) {
+	public void setLsnNo(String lsnNo) {
 		this.lsnNo = lsnNo;
 	}
 	//2. 유저
@@ -133,11 +167,11 @@ public class Lesson {
 		this.lsnClfc = lsnClfc;
 	}
 	//15. 레슨내역 필요?
-	public ArrayList<LessonLine> getLsnLines() {
-		return this.lsnLines;
+	public LessonLine getLsnLine() {
+		return this.lsnLine;
 	}
-	public void setLsnLines(ArrayList<LessonLine> lsnLines) {
-		this.lsnLines = lsnLines;
+	public void setLsnLine(LessonLine lsnLine) {
+		this.lsnLine = lsnLine;
 	}
 	//16. 지역
 	public Location getLocation() {
@@ -145,5 +179,60 @@ public class Lesson {
 	}
 	public void setLsnLocation(Location lsnLocation) {
 		this.location = lsnLocation;
+	}
+	
+	public float getLsnStarScore() {
+		return lsnStarScore;
+	}
+
+	public void setLsnStarScore(float lsnStarScore) {
+		this.lsnStarScore = lsnStarScore;
+	}
+
+	public float getProStarScore() {
+		return proStarScore;
+	}
+
+	public void setProStarScore(float proStarScore) {
+		this.proStarScore = proStarScore;
+	}
+
+	public int getUploadDt() {
+		return UploadDt;
+	}
+
+	public void setUploadDt(int uploadDt) {
+		UploadDt = uploadDt;
+	}
+
+	public Pro getPro() {
+		return pro;
+	}
+
+	public void setPro(Pro pro) {
+		this.pro = pro;
+	}
+
+	public LessonReview getLsnReview() {
+		return lsnReview;
+	}
+
+	public void setLsnReview(LessonReview lsnReview) {
+		this.lsnReview = lsnReview;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	// 수정필요
+	@Override
+	public String toString() {
+		return "Lesson [lsnNo=" + lsnNo + ", lsnTitle=" + lsnTitle + ", lsnIntro=" + lsnIntro + ", lsnLv=" + lsnLv
+				+ ", lsnDays=" + lsnDays + ", lsnPrice=" + lsnPrice + ", lsnPerTime=" + lsnPerTime + ", lsnCntSum="
+				+ lsnCntSum + ", lsnStarSum=" + lsnStarSum + ", lsnStarPplCnt=" + lsnStarPplCnt + ", lsnStarScore="
+				+ lsnStarScore + ", proStarScore=" + proStarScore + ", lsnStatus=" + lsnStatus + ", UploadDt="
+				+ UploadDt + ", user=" + user + ", lsnUploadDt=" + lsnUploadDt + ", lsnClfc=" + lsnClfc + ", lsnLines="
+				+ lsnLine + ", location=" + location + ", pro=" + pro + ", lsnReview=" + lsnReview + "]";
 	}
 }
