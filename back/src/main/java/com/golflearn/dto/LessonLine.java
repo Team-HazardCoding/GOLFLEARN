@@ -15,6 +15,13 @@ public class LessonLine {
 	private StdtManage stdtManage;
 	private ArrayList<Lesson> lsn;
 	private ArrayList<LessonHistory> lsnHistory;
+	
+	
+	public String toString() {
+		return "레슨내역번호는 : " + lsnLineNo	+ "유저아이디는 : " + userId + "레슨번호는 : " + lsnNo + "레슨신청일은 : " + lsnAplyDt + "레슨만료일은 : " + lsnExpDt;
+	}
+	
+	
 	//레슨내역번호
 	public int getLsnLineNo() {
 		return this.lsnLineNo;
@@ -101,8 +108,8 @@ public class LessonLine {
 		this.lsnHistory = lsnHistory;
 	}
 	
-	
-	
+
+
 	
 	
 }
