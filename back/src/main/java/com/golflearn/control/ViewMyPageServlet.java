@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.golflearn.dto.LessonLine;
 import com.golflearn.repository.LessonLineRepository;
@@ -22,13 +23,14 @@ public class ViewMyPageServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		response.setContentType("text/plain;charset = utf-8");
+		
 		LessonLineRepository llrepo = new LessonLineRepository();
 		PrintWriter out = response.getWriter();
-		List<LessonLine> l = llrepo.selectByLessonLineNo("5");
+		List<LessonLine> l = llrepo.selectByLsnLineNo("5");
 		out.print(l.get(0));
-		out.print(llrepo.selectByLessonLineNo("5"));
-		
-		
+		out.print(llrepo.selectByLsnLineNo("5"));
 	}
 
 }
