@@ -173,9 +173,6 @@ public class LessonLineRepository {
 			rs = pstmt.executeQuery();		
 			if(rs.next()) {
 				int userType = rs.getInt("user_type"); 
-//				User u = new User();
-//				u.setUserType(userType);
-//				System.out.println(u);
 				System.out.println(userType);
 				return userType;
 			}
