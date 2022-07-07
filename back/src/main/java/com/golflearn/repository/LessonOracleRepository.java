@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import com.golflearn.dto.Lesson;
 import com.golflearn.exception.AddException;
@@ -45,7 +48,6 @@ public class LessonOracleRepository implements LessonRepository{
 			pstmt = con.prepareStatement(selectLsnNoSQL);
 			pstmt.setString(1, userId);
 			pstmt.setInt(2, lsnNo);
-			
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				// 1번이슈 : !!lesson이 아닌 JOIN 해온 다른 테이블은 getString해 올 값의 명명 알아보기
@@ -97,5 +99,37 @@ public class LessonOracleRepository implements LessonRepository{
 		} finally {
 			MyConnection.close(rs, pstmt, con);
 		}
+	}
+	
+	@Override
+	public List<Lesson> selectAll() {
+		// DB와의 연결준비를 한다.
+		Connection con = null;
+		try {
+			con = MyConnection.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			// 각 레슨의 별점은 자바단에서 계산하는것이 더 낫다고 하셔서 계산에 필요한 두 칼럼을 가져온후 계산함. 
+			String selectAllLsnSQL = "SELECT lsn_title 레슨명, lsn_upload_dt 레슨등록날짜, lsn_star_sum 레슨총별점, lsn_star_ppl_cnt 별점총인원수, ui.user_name 프로명, \n"
+					+ "loc.loc_sido 시도, loc.loc_sigungu 시군구\n"
+					+ "FROM lesson l JOIN user_info ui ON(l.user_id = ui.user_id)\n"
+					+ "              JOIN location loc ON(l.loc_no = loc.loc_no)\n"
+					+ "ORDER BY 2 DESC";
+			rs = pstmt.executeQuery();
+			List<Lesson> lsnList = new ArrayList<>();
+			
+			while(rs.next()) {
+				String lsnTitle = rs.getString("lsn_title");
+				Date lsnUploadDt = rs.getDate("lsn_upload_dt");
+				int lsnStarSum = rs.getInt("lsn_star_sum");
+				int lsnStarPplCnt = rs.getInt("lsn_star_ppl_cnt");
+				int lsnStarPoint = Math.round(lsnStarSum/lsnStarPplCnt) ;
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;//list를 반환 
 	}
 }
