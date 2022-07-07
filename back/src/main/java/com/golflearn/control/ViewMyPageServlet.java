@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.golflearn.dto.LessonLine;
+import com.golflearn.dto.User;
+import com.golflearn.exception.FindException;
 import com.golflearn.repository.LessonLineRepository;
+import com.golflearn.repository.LessonReviewRepository;
 
 /**
  * Servlet implementation class ViewMyPageServlet
@@ -24,13 +27,31 @@ public class ViewMyPageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("loginInfo");
 		response.setContentType("text/plain;charset = utf-8");
+		PrintWriter out = response.getWriter();
+		
 		
 		LessonLineRepository llrepo = new LessonLineRepository();
-		PrintWriter out = response.getWriter();
-		List<LessonLine> l = llrepo.selectByLsnLineNo("5");
-		out.print(l.get(0));
-		out.print(llrepo.selectByLsnLineNo("5"));
+		//userstatus가 1인거랑 0인거를 담을 객체를 만들고 그거에서 for문돌리기? 
+		
+		//테스트용
+//		try {
+//			llrepo.selectTypeById("93saewoo");
+//		} catch (FindException e1) {
+//			e1.printStackTrace();
+//		}
+		
+		
+		try {
+			if(llrepo.selectTypeById(userId) == 0) {
+				llrepo.selectById(userId);
+			}else {
+				llrepo.selectByProId(userId);
+			}
+		} catch (FindException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
