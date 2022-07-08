@@ -5,8 +5,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.golflearn.sql.MyConnection;
 
-	
+@WebServlet("/signupstdt")
 public class SignupStdtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +32,6 @@ public class SignupStdtServlet extends HttpServlet {
 //		Date date = new java.util.Date();
 //		System.out.println(date); // Thu Jul 07 09:51:56 KST 2022
 		
-		
 		// DB와 연결
 		Connection con = null;
 		
@@ -45,36 +42,38 @@ public class SignupStdtServlet extends HttpServlet {
 		//결과
 		String signupResult = "{\"status\":0, \"msg\": \"가입실패\"}";
 		
-		try {
-			con = MyConnection.getConnection();
-			String insertStdtSQL= "INSERT INTO user_info(user_id, user_name, user_pwd, user_email,"
-					+ "user_phone,user_ssn,user_join_dt, user_quit_dt,user_type)"
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, 0)";
-			pstmt = con.prepareStatement(insertStdtSQL);
-			pstmt.setString(1, "userId");
-			pstmt.setString(2, "userName");
-			pstmt.setString(3, "userPwd");
-			pstmt.setString(4, "userEmail");
-			pstmt.setString(5, "userPhone");
-			pstmt.setString(6, "userSsn");
-			pstmt.setDate(7, signupDt);
-			pstmt.setDate(8, null);
-			rs = pstmt.executeUpdate(); // DB에 결과값 보내줌
-			
-			if(rs == 1) { // rs = true이면
-				signupResult = "{\"status\":1, \"msg\": \"가입성공\"}";
+			try {
+				con = MyConnection.getConnection();
+				String insertStdtSQL= "INSERT INTO user_info(user_id, user_name, user_pwd, user_email,"
+						+ "user_phone,user_ssn,user_join_dt, user_quit_dt,user_type)"
+						+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, 0)";
+				pstmt = con.prepareStatement(insertStdtSQL);
+				pstmt.setString(1, userId);
+				pstmt.setString(2, userName);
+				pstmt.setString(3, userPwd);
+				pstmt.setString(4, userEmail);
+				pstmt.setString(5, userPhone);
+				pstmt.setString(6, userSsn);
+				pstmt.setDate(7, signupDt);
+				pstmt.setDate(8, null);
+				rs = pstmt.executeUpdate();
+				
+				System.out.println("통과");
+				if(rs == 1) { // rs = true이면
+					signupResult = "{\"status\":1, \"msg\": \"가입성공 환영합니다 :)\"}";
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				MyConnection.close(pstmt,con); // DB연결 해제
 			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			MyConnection.close(pstmt,con); // DB연결 해제
-		}
-		
+	
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(signupResult);
 		
 	}
+
+
 
 }

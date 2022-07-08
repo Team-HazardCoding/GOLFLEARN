@@ -43,25 +43,25 @@ public class SignupProServlet extends HttpServlet {
 										+ "user_phone,user_ssn,user_join_dt, user_quit_dt,user_type)"
 										+ "VALUES(?, ?, ?, ?, ?, ?, ?, ? , 1)";
 			pstmt = con.prepareStatement(insertSignupProSQL);
-			pstmt.setString(1, "userId");
-			pstmt.setString(2, "userName");
-			pstmt.setString(3, "userPwd");
-			pstmt.setString(4, "userEmail");
-			pstmt.setString(5, "userPhone");
-			pstmt.setString(6, "userSSN");
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userName);
+			pstmt.setString(3, userPwd);
+			pstmt.setString(4, userEmail);
+			pstmt.setString(5, userPhone);
+			pstmt.setString(6, userSsn);
 			pstmt.setDate(7, signupDt);
 			pstmt.setDate(8, null);
 			// 결과값 DB로 전송
 			rs = pstmt.executeUpdate();
-//			
-//			String insertProInfoSQL = "INSERT INTO pro_info(user_id, pro_career) VALUES(?,?)";
-//			pstmt = con.prepareStatement(insertProInfoSQL);
-//			pstmt.setString(1, "userId");
-//			pstmt.setString(2, "proCareer");
-//			rs = pstmt.executeUpdate();
-//			
+			
+			String insertProInfoSQL = "INSERT INTO pro_info(user_id, pro_career) VALUES(?,?)";
+			pstmt = con.prepareStatement(insertProInfoSQL);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, proCareer);
+			rs = pstmt.executeUpdate();
+			
 			if(rs == 1) {
-				signupResult= "{\"status\": 1 \"msg\": \"가입성공! 축하합니다\"}";
+				signupResult= "{\"status\": 1 \"msg\": \"프로 가입성공! 축하합니다\"}";
 			}
 			
 		} catch (SQLException e) {
