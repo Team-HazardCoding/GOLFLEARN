@@ -25,8 +25,8 @@ public class SignupProServlet extends HttpServlet {
 		String userEmail = request.getParameter("user_email");
 		String userPhone = request.getParameter("user_phone");
 		String userSsn = request.getParameter("user_ssn");
-		String proCareer = request.getParameter("pro_career");
 		java.sql.Date signupDt = new java.sql.Date(System.currentTimeMillis()); // 현재 날짜를 받아오는 것
+		String proCareer = request.getParameter("pro_career");
 		
 		String signupResult = "{\"status\": 0 \"msg\": \"가입실패\"}";
 		
@@ -38,22 +38,10 @@ public class SignupProServlet extends HttpServlet {
 		int rs = 0;
 		
 		try {
-			con =  MyConnection.getConnection();
-			String proInfoTrigSQL = "CREATE OR REPLACE TRIGGER proinfo_trig  AFTER INSERT ON user_info"
-					+ "FOR EACH ROW"
-					+ "BEGIN"
-					+ "    INSERT INTO pro_info(user_id, pro_career)"
-					+ "    VALUES (:NEW.user_id,?);"
-					+ "END";
-			pstmt = con.prepareStatement(proInfoTrigSQL);
-			pstmt.setString(1, "user_id");
-			pstmt.setString(2, "proCareer");
-			rs = pstmt.executeQuery();
-			
+			con = MyConnection.getConnection();
 			String insertSignupProSQL = "INSERT INTO user_info(user_id, user_name, user_pwd, user_email,"
 										+ "user_phone,user_ssn,user_join_dt, user_quit_dt,user_type)"
 										+ "VALUES(?, ?, ?, ?, ?, ?, ?, ? , 1)";
-			
 			pstmt = con.prepareStatement(insertSignupProSQL);
 			pstmt.setString(1, "userId");
 			pstmt.setString(2, "userName");
@@ -63,14 +51,19 @@ public class SignupProServlet extends HttpServlet {
 			pstmt.setString(6, "userSSN");
 			pstmt.setDate(7, signupDt);
 			pstmt.setDate(8, null);
-			
 			// 결과값 DB로 전송
 			rs = pstmt.executeUpdate();
-			
+//			
+//			String insertProInfoSQL = "INSERT INTO pro_info(user_id, pro_career) VALUES(?,?)";
+//			pstmt = con.prepareStatement(insertProInfoSQL);
+//			pstmt.setString(1, "userId");
+//			pstmt.setString(2, "proCareer");
+//			rs = pstmt.executeUpdate();
+//			
 			if(rs == 1) {
 				signupResult= "{\"status\": 1 \"msg\": \"가입성공! 축하합니다\"}";
 			}
-
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

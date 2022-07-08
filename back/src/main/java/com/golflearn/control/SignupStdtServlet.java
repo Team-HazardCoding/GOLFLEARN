@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.golflearn.sql.MyConnection;
 
-@WebServlet("/signupstdt")
+	
 public class SignupStdtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,10 +27,8 @@ public class SignupStdtServlet extends HttpServlet {
 		String userEmail = request.getParameter("user_email");
 		String userPhone = request.getParameter("user_phone");
 		String userSsn = request.getParameter("user_ssn");
-
 		//2. java.sql.Date를 이용하여 날짜 반환
 		java.sql.Date signupDt = new java.sql.Date(System.currentTimeMillis());
-		
 		
 //		1. java.util.Date 이용하여 날짜 반환
 //		Date date = new java.util.Date();
