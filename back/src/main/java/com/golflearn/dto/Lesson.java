@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class Lesson {
 	private String lsnNo;
+	private String userId; //pjw
 	private String lsnTitle;
 	private String lsnIntro;
 	private int lsnLv;	
@@ -27,43 +28,7 @@ public class Lesson {
 	private LessonReview lsnReview;
 	
 	public Lesson(){};
-	
-	//생성자 호출로 가져온 파라미터를 데이터 input할 시
-//	public Lesson(int lsnNo, String lsnTitle, String lsnIntro, int lsnReviewCnt, int lsnLv, int lsnPrice,
-//		int lsnPerTime, int lsnDays, float lsnStarScore, float proStarScore, String proName, String locSido,
-//		String locSigungu, String proIntro, String reviewUserId, String review, Date reviewDt) {
-//		
-//		this.lsnNo = lsnNo;
-//		this.lsnTitle = lsnTitle;
-//		this.lsnIntro = lsnIntro;
-//		this.lsnStarPplCnt = lsnReviewCnt; // 리뷰의 갯수와 별점준 인원수는 같음 
-//		this.lsnLv = lsnLv;
-//		this.lsnPrice = lsnPrice;
-//		this.lsnPerTime = lsnPerTime;
-//		this.lsnDays = lsnDays;
-//		this.lsnStarScore = lsnStarScore;
-//		this.proStarScore = proStarScore;
-//		
-//		//2.한번 타는 경우
-//		this.프로명 = proName; 			// User의 userName(ui.user_name)
-//		this.시도 = locSido; 	 			// Location의 locSido(lc.loc_sido)		
-//		this.시군구 = locSigungu;			// Location의 locSigungu(lc.loc_sigungu)
-//		this.프로소개 = proIntro;			// Pro의 proCareer(pi.pro_career)
-//		this.후기작성자아이디 = reviewUserId;// LessonLine의 userId(ll.user_id)	// 두번 타는경우
-//		this.후기내용 = review;			// LessonReview의 review(lr.review)
-//		this.후기작성일자 = reviewDt;		// LessonReview의 reviewDt(lr.review_dt)
-//		
-//		this.user.setUserName(proName);
-//		this.location.setLocSido(locSido);
-//		this.location.setLocSigungu(locSigungu);
-//		this.pro.setProCareer(proIntro);
-//		this.lsnReview.setReview(review);
-//		this.lsnReview.setReviewDt(reviewDt);
-//		//3. 타고 타는경우
-//		this.lsnLines.
-//	}
 
-	
 //	public String toString(uitostring의 반환, lc, pr, ll, lr + 나머진 변수들 ) {
 //		return this.lsnNo + this.lsnTitle  + " dk";
 //	}
@@ -75,6 +40,15 @@ public class Lesson {
 	public void setLsnNo(String lsnNo) {
 		this.lsnNo = lsnNo;
 	}
+	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	//2. 유저
 	public User getUser() {
 		return this.user;

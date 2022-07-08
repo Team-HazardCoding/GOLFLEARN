@@ -2,18 +2,25 @@ package com.golflearn.dto;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class LessonLine {
+	private String userId;	//pjw
 	private int lsnLineNo;
 	private int stdtLsnStatus;
 	private Date lsnExpDt;
 	private Date lsnAplyDt;
 	private User user;
-	private LessonReview lsnReview;
+	private List<LessonReview> lsnReview;
 	private StdtManage stdtManage;
 	private Lesson lsn;
-	private ArrayList<LessonHistory> lsnHistory;
-	
+	private List<LessonHistory> lsnHistory;
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public int getLsnLineNo() {
 		return lsnLineNo;
 	}
@@ -44,10 +51,10 @@ public class LessonLine {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public LessonReview getLsnReview() {
+	public List<LessonReview> getLsnReview() {
 		return lsnReview;
 	}
-	public void setLsnReview(LessonReview lsnReview) {
+	public void setLsnReview(List<LessonReview> lsnReview) {
 		this.lsnReview = lsnReview;
 	}
 	public StdtManage getStdtManage() {
@@ -62,10 +69,11 @@ public class LessonLine {
 	public void setLsn(Lesson lsn) {
 		this.lsn = lsn;
 	}
-	public ArrayList<LessonHistory> getLsnHistory() {
+	public List<LessonHistory> getLsnHistory() {
 		return lsnHistory;
 	}
-	public void setLsnHistory(ArrayList<LessonHistory> lsnHistory) {
+	public void setLsnHistory(List<LessonHistory> lsnHistory) {
 		this.lsnHistory = lsnHistory;
 	}
+	
 }

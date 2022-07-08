@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.golflearn.dto.Lesson;
 import com.golflearn.dto.LessonClsfc;
@@ -21,9 +22,11 @@ public class LessonOracleRepository implements LessonRepository {
 	//레슨등록 : 레슨의 기타 정보들과 레슨분류를 한꺼번에 insert
 	@Override
 	public void insert(Lesson l) throws AddException {
+		//Lesson을 List형태로저장
 		Connection con = null;
 		try {
 			con = MyConnection.getConnection();
+			//for list.size; - for문을 이용하여 list.add()
 			insertLsnInfo(con, l);
 			insertLsnClassification(con, l.getLsnClfc());
 		} catch (SQLException e) {
@@ -46,7 +49,7 @@ public class LessonOracleRepository implements LessonRepository {
 		pstmt.setString(6, l.getLsnIntro());
 		pstmt.setInt(7, l.getLsnDays());
 	}
-	//레슨등록 : 레슨의 레슨분류 정보(PL/SQL 사용해보기)
+	//레슨등록 : 레슨의 레슨분류 정보(PL/SQL 사용해보기), 트랜잭션
 	private void insertLsnClassification(Connection con, ArrayList<LessonClsfc> lsnClsfc) throws SQLException {
 		PreparedStatement pstmt = null;
 		String insertLsnClassificationSQL = 
@@ -54,7 +57,7 @@ public class LessonOracleRepository implements LessonRepository {
 		
 	}
 	
-	//레슨상세보기 : 해당 레슨번호에 해당하는 레슨조회
+	//레슨상세보기 : 해당 레슨번호에 해당하는 레슨조회 (후기조회때문에 select를 따로받아야됨)
 	@Override
 	public Lesson selectByLsnNo(String lsnNo) throws FindException {
 		Connection con = null;
@@ -62,7 +65,7 @@ public class LessonOracleRepository implements LessonRepository {
 		ResultSet rs = null;
 		
 		String selectLsnNoSQL = "SELECT l.lsn_no, l.lsn_title, l.lsn_intro, l.lsn_star_ppl_cnt, "
-							  		 + "l.lsn_lv, l.lsn_price, "
+							  		 + "l.lsn_lv, l.lsn_price, l.user_id 프로아이디, "
 							  		 + "l.lsn_per_time, l.lsn_days, l.lsn_star_sum / l.lsn_star_ppl_cnt 레슨별점, "
 							  		 + "(SELECT SUM(lsn_star_sum/lsn_star_ppl_cnt)/COUNT(lsn_no) "
 							  		  + "FROM lesson "
@@ -70,7 +73,7 @@ public class LessonOracleRepository implements LessonRepository {
 							  		 + "ui.user_name, "
 							  		 + "lc.loc_sido, lc.loc_sigungu, "
 							  		 + "pi.pro_career, "
-							  		 + "ll.user_id, "
+							  		 + "ll.user_id 후기작성자아이디, "
 							  		 + "lr.review, "
 							  		 + "lr.review_dt "
 							  + "FROM lesson l JOIN user_info ui ON (l.user_id = ui.user_id) "
@@ -83,10 +86,13 @@ public class LessonOracleRepository implements LessonRepository {
 		try {
 			con = MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectLsnNoSQL);
-			pstmt.setString(1, lsnNo);	//parseString
+			pstmt.setString(1, lsnNo);	//이슈1.요청 전달데이터는 무조건 string형태??
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			if(rs.next()) {	
+				//이슈2.레슨하나를 조회하니까 if를 쓸게아니라 레슨하나에 해당하는 후기가 여러개 나와야하므로
+				//     while쓰는게 맞는것 같음
+				String proId = rs.getString("프로아이디");
 				String lsnTitle = rs.getString("lsn_title");
 				String lsnIntro = rs.getString("lsn_intro");
 				int lsnReviewCnt = rs.getInt("lsn_star_ppl_cnt");
@@ -96,16 +102,11 @@ public class LessonOracleRepository implements LessonRepository {
 				int lsnDays = rs.getInt("lsn_days");
 				float lsnStarScore = rs.getFloat("레슨별점");
 				float proStarScore = rs.getFloat("프로별점");
-				// 서브쿼리 대안 : 서브쿼리 내 lsn_star_sum과 lsn_star_ppl_cnt를 따로 받는다
-				// + int lsnStarSum = rs.getInt("lsn_star_sum");
-				// + int lsnStarPplCnt = rs.getInt("lsn_star_ppl_cnt");
-				// 받은 후 lsnStarScore에 대한 계산은 자바단에서 따로한다.
-				// ex) int lsnStarScore = rs.getInt(lsnStarSum / lsnStarPplCnt) -- dto를 따로 만드는 방법
 				String proName = rs.getString("user_name");
 				String locSido = rs.getString("loc_sido"); //2
 				String locSigungu = rs.getString("loc_sigungu"); //2
 				String proIntro = rs.getString("pro_career");
-				String reviewUserId = rs.getString("user_id");
+				String reviewUserId = rs.getString("후기작성자아이디");
 				String review = rs.getString("review");
 				java.sql.Date reviewDt = rs.getDate("review_dt");
 				
@@ -116,19 +117,24 @@ public class LessonOracleRepository implements LessonRepository {
 				
 				//2. 생성자 호출필요없이 레포지토리에 직접 선언
 				User ui = new User();
-				ui.setUserName(proName);
+//				ui.setUserID(reviewUserId);
+				ui.setUserName(proName);	//user_name
 				Location lc = new Location();
-				lc.setLocSido(locSido);
-				lc.setLocSigungu(locSigungu);
+				lc.setLocSido(locSido);		//loc_sido
+				lc.setLocSigungu(locSigungu);	//loc_sigungu
 				Pro pr = new Pro();
-				pr.setProCareer(proIntro);
+				pr.setProCareer(proIntro);	//pro_career
 				LessonLine ll = new LessonLine();
-				ll.setUser(ui); // 타고 타는 경우 
+//				ll.setUser(ui); //이슈3.ll.user_id : 후기작성자아이디 : 타고 타는경우
+				ll.setUserId(reviewUserId);	// 이슈3.타고 타는경우를 모르겠어서 ll에 userId멤버변수 생성
+				List<LessonReview> lir = new ArrayList<>();
 				LessonReview lr = new LessonReview();
-				lr.setReview(review);
-				lr.setReviewDt(reviewDt);
+				lr.setReview(review);	//review
+				lr.setReviewDt(reviewDt);	//review_dt
+				lir.add(lr);
 				Lesson l = new Lesson();
-				l.setLsnNo(lsnNo);	// ??
+				//l.setUserId(proId);	// 이슈4.타고 타는경우를 모르겠어서 l에 userId멤버변수 생성
+				l.setLsnNo(lsnNo);
 				l.setLsnTitle(lsnTitle);
 				l.setLsnIntro(lsnIntro);
 				l.setLsnStarPplCnt(lsnReviewCnt);
@@ -138,15 +144,13 @@ public class LessonOracleRepository implements LessonRepository {
 				l.setLsnDays(lsnDays);
 				l.setLsnStarScore(lsnStarScore);
 				l.setProStarScore(proStarScore);
-				l.setUser(ui);
+				l.setUser(ui); //이슈4. l.user_id : 프로아이디 : 타고타는경우
 				l.setLocation(lc);
 				l.setPro(pr);
 				l.setLsnLine(ll);
 				l.setLsnReview(lr);
-//				l.toString(
-//						//레슨클래스에 tostring오버라이딩
-//						//매개변수는 레슨제외한 객체들의 반환값이야 
 				
+//				l.add()
 				return l;
 			} else {
 				throw new FindException(lsnNo + "레슨번호가 존재하지 않습니다");
@@ -155,6 +159,34 @@ public class LessonOracleRepository implements LessonRepository {
 			e.printStackTrace();
 			throw new FindException(e.getMessage());
 		} finally {
+			MyConnection.close(rs, pstmt, con);
+		}
+	}
+	
+	// 기능메소드 : userId에 해당하는 user_type을 반환한다 (0, 1)
+	public int selectTypeById(String userId) throws FindException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectLessonReview = 
+				"SELECT user_type\r\n"
+				+ "FROM user_info\r\n"
+				+ "WHERE user_id = ?";
+		try {
+			con = MyConnection.getConnection();
+			pstmt = con.prepareStatement(selectLessonReview);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();		
+			if(rs.next()) {
+				int userType = rs.getInt("user_type"); 
+				System.out.println(userType);
+				return userType;
+			}
+			throw new FindException(userId + "를 찾을 수 없습니다");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new FindException(e.getMessage());
+		}finally {
 			MyConnection.close(rs, pstmt, con);
 		}
 	}
