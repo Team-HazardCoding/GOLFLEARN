@@ -15,25 +15,19 @@ import com.golflearn.repository.LessonHistoryRepository;
 @WebServlet("/viewstudentmanage")
 public class ViewStudentManageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+		
+	//프로레슨내역에서 수강생관리 버튼을 클릭해 수강생관리 페이지 로딩되었을 때 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		response.setContentType("text/plain;charset = utf-8");
-//		int selectedLsnNo = Integer.parseInt(request.getParameter("lsn_no"));
-		
+		//클릭한 레슨 번호 받아오기 
+		int selectedLsnNo = Integer.parseInt(request.getParameter("lsn_no"));
 		LessonHistoryRepository lhrepo = new LessonHistoryRepository();
-		
 		try {
-			System.out.println(lhrepo.selectByLsnNo(1));
+			lhrepo.selectByLsnNo(selectedLsnNo);
 		} catch (FindException e) {
 			e.printStackTrace();
 		}
-		
-//		try {
-//			lhrepo.selectByLsnNo(selectedLsnNo);
-//		} catch (FindException e) {
-//			e.printStackTrace();
-//		}
 	}
 
 }

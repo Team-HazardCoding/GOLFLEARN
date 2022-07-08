@@ -82,8 +82,6 @@ public class LessonHistoryRepository{
 				lines.add(ll);
 				System.out.println(lines);
 				return lines;
-				
-				
 			}
 			throw new FindException(lessonNo +"가 없습니다");
 		} catch (SQLException e) {

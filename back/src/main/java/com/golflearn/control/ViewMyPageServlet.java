@@ -27,26 +27,22 @@ public class ViewMyPageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String userId = (String)session.getAttribute("loginInfo");
 		response.setContentType("text/plain;charset = utf-8");
-		PrintWriter out = response.getWriter();
 		
+		String userId = (String)session.getAttribute("loginInfo");
+		//★★★★★★구현해야됨. selectreviewbylsnlineno? jquery에서 화면에 나타날 레슨라인넘버들 보내주고 그것들을 list나 map으로 받나? 
+		//JSON으로 오는지 어떻게 오는지 판단하고 작성
+		int addOrModify = Integer.parseInt(request.getParameter("??"));
 		
 		LessonLineRepository llrepo = new LessonLineRepository();
-		//userstatus가 1인거랑 0인거를 담을 객체를 만들고 그거에서 for문돌리기? 
-		
-		//테스트용
-//		try {
-//			llrepo.selectTypeById("93saewoo");
-//		} catch (FindException e1) {
-//			e1.printStackTrace();
-//		}
-		
 		
 		try {
+			//userid가 0(수강생)인지 1(프로)인지 확인
 			if(llrepo.selectTypeById(userId) == 0) {
+				//수강생이면 수강생ID로찾고
 				llrepo.selectById(userId);
 			}else {
+				//프로면 프로 ID로 찾고
 				llrepo.selectByProId(userId);
 			}
 		} catch (FindException e) {

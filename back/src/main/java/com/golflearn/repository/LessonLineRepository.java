@@ -67,18 +67,8 @@ public class LessonLineRepository {
 				Date lsnExpDt = rs.getDate("종료일자");
 				int stdtLsnStatus = rs.getInt("레슨진행상태");
 				int myStarScore = rs.getInt("내가준별점");
-				int crntLsnCnt = rs.getInt("레슨진행횟수");  //나중에 꼭 구현해야함 
+				int crntLsnCnt = rs.getInt("레슨진행횟수");  
 				int lsnCntSum = rs.getInt("총레슨횟수");
-				
-//				System.out.println(lsnLineNo);
-//				System.out.println(lsnNo);
-//				System.out.println(lsnTitle);
-//				System.out.println(lsnExpDt);
-//				System.out.println(stdtLsnStatus);
-//				System.out.println(myStarScore);
-//				System.out.println(crntLsnCnt);
-//				System.out.println(lsnCntSum);
-//				System.out.println("--------------");
 				
 				//여기에 crntLsnCnt없음 
 				Lesson le = new Lesson();
@@ -94,8 +84,10 @@ public class LessonLineRepository {
 				ll.setLsnLineNo(lsnLineNo);
 				ll.setLsnExpDt(lsnExpDt);
 				ll.setStdtLsnStatus(stdtLsnStatus);
+				ll.setCrntLsnCnt(crntLsnCnt);
 				ll.setLsn(le);
 				ll.setLsnReview(lr);
+				
 				
 				System.out.println(lr.toString(myStarScore));
 				System.out.println(ll.toString(le.toString(lsnTitle,lsnCntSum), lr.toString(myStarScore)));

@@ -16,6 +16,7 @@ public class LessonLine {
 	private Lesson lsn;
 	private LessonReview lsnReview;
 	private LessonHistory lsnHistory;
+	private int crntLsnCnt;
 	
 	Lesson le = new Lesson();
 	LessonReview lr = new LessonReview();
@@ -131,6 +132,13 @@ public class LessonLine {
 
 	public void setLsnHistory(LessonHistory lsnHistory) {
 		this.lsnHistory = lsnHistory;
+	}
+	
+	public int getCrntLsnCnt() {
+		return crntLsnCnt;
+	}
+	public void setCrntLsnCnt(int crntLsnCnt) {
+		this.crntLsnCnt = crntLsnCnt;
 	}
 	
 
