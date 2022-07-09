@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import com.golflearn.dto.Lesson;
 import com.golflearn.exception.AddException;
@@ -72,24 +75,24 @@ public class LessonOracleRepository implements LessonRepository{
 				String review = rs.getString("review");
 				java.sql.Date reviewDt = rs.getDate("reviewDt");
 				
-				Lesson l = new Lesson(lsnNo,
-									  lsnTitle,
-									  lsnReviewCnt,
-									  lsnUserId,
-									  lsnLv,
-									  lsnPrice,
-									  lsnPerTime,
-									  lsnDays,
-									  lsnStarScore,
-									  proStarScore,
-									  proName,
-									  locSido,
-									  locSigungu,
-									  proIntro,
-									  ReviewUserId,
-									  review,
-									  reviewDt);
-				return l;
+//				Lesson l = new Lesson(lsnNo,
+//									  lsnTitle,
+//									  lsnReviewCnt,
+//									  lsnUserId,
+//									  lsnLv,
+//									  lsnPrice,
+//									  lsnPerTime,
+//									  lsnDays,
+//									  lsnStarScore,
+//									  proStarScore,
+//									  proName,
+//									  locSido,
+//									  locSigungu,
+//									  proIntro,
+//									  ReviewUserId,
+//									  review,
+//									  reviewDt);
+//				return l;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -97,5 +100,52 @@ public class LessonOracleRepository implements LessonRepository{
 		} finally {
 			MyConnection.close(rs, pstmt, con);
 		}
+		return null;
+	}
+	
+	@Override
+	public List<Lesson> selectAll() {
+		// DB와의 연결준비를 한다.
+		Connection con = null;
+		List<Lesson> lsnList = new ArrayList<>();
+		try {
+			con = MyConnection.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			// 각 레슨의 별점은 자바단에서 계산하는것이 더 낫다고 하셔서 계산에 필요한 두 칼럼을 가져온후 계산함. 
+			String selectAllLsnSQL = "SELECT lsn_title, lsn_upload_dt, lsn_star_sum, lsn_star_ppl_cnt, ui.user_name, \n"
+					+ "loc.loc_sido, loc.loc_sigungu\n"
+					+ "FROM lesson l JOIN user_info ui ON(l.user_id = ui.user_id)\n"
+					+ "              JOIN location loc ON(l.loc_no = loc.loc_no)\n"
+					+ "ORDER BY 2 DESC";
+			pstmt = con.prepareStatement(selectAllLsnSQL);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				// 메인의 레슨목록에 필요한 항목들
+				String lsnTitle = rs.getString("lsn_title");
+				Date lsnUploadDt = rs.getDate("lsn_upload_dt");
+				int lsnStarSum = rs.getInt("lsn_star_sum");
+				int lsnStarPplCnt = rs.getInt("lsn_star_ppl_cnt");
+				int lsnStarPoint = Math.round(lsnStarSum/lsnStarPplCnt);
+				// 게산하는거 맵형식으로 해보기
+				
+				//레슨 한줄한줄을 읽어서 레슨객체에 저장함.
+				Lesson lsn = new Lesson(); // 생성자로 고칠수 있는 부분
+				lsn.setLsnTitle(lsnTitle);
+				lsn.setLsnUploadDt(lsnUploadDt);
+				lsn.setLsnCntSum(lsnStarSum);
+				lsn.setLsnStarPplCnt(lsnStarPplCnt);
+				// 레슨객체를 레슨리스트객체에 추가시킴
+				lsnList.add(lsn);
+				System.out.println("lsn객체 만들어짐");
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+	         MyConnection.close(null, con);
+		}
+		return lsnList;//list를 반환 
 	}
 }

@@ -29,8 +29,8 @@ public class MyConnection {
 		String password = "Hazard11241124";
 		
 		con = DriverManager.getConnection(url, user, password);
+		System.out.println("연결성공");
 		return con; 
-
 	}
 	public static void close(ResultSet rs, Statement stmt, Connection con) {
 		//7. DB 연결해제
@@ -61,5 +61,3 @@ public class MyConnection {
 		// 이 한 줄 코드로 Statement와 Connection 다 해결 할 수 있음
 	}
 }
-
-

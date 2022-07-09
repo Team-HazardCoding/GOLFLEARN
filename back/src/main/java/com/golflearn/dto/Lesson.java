@@ -25,13 +25,13 @@ public class Lesson {
 	
 	User u = new User();
 	
-	public Lesson(int lsnNo, String lsnName, int lsnReviewCnt, String lsnUserId, int lsnLv, int lsnPrice,
-			int lsnPerTime, int lsnDays, int lsnStarScore, int proStarScore, String proName, String locSido,
-			String locSigungu, String proIntro, String reviewUserId, String review, Date reviewDt) {
-		this.lsnNo = lsnNo;
-		//userName -> User의 get, set 완성되면 으로 User에서 가져오기
-		//
-	}
+//	public Lesson(int lsnNo, String lsnName, int lsnReviewCnt, String lsnUserId, int lsnLv, int lsnPrice,
+//			int lsnPerTime, int lsnDays, int lsnStarScore, int proStarScore, String proName, String locSido,
+//			String locSigungu, String proIntro, String reviewUserId, String review, Date reviewDt) {
+//		this.lsnNo = lsnNo;
+//		//userName -> User의 get, set 완성되면 으로 User에서 가져오기
+//		//
+//	}
 	
 	//게터 세터 메서드 
 	//1. 레슨번호
