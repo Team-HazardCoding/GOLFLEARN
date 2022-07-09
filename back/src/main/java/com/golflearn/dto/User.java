@@ -13,4 +13,11 @@ public class User {
 	private int userType;
 	private Pro pro;
 	
+	public User(String userName) {
+		this.userName = userName;
+	}
+	
+//	public void setUserName(String userName) {
+//		this.userName = userName;
+//	}
 }

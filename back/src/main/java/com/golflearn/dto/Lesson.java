@@ -22,16 +22,32 @@ public class Lesson {
 	private ArrayList<LessonClsfc> lsnClfc;
 	private ArrayList<LessonLine> lsnLines;
 	private Location location;
+	private int lsnStarPoint;
 	
-	User u = new User();
+//	User u = new User();
 	
-	public Lesson(int lsnNo, String lsnName, int lsnReviewCnt, String lsnUserId, int lsnLv, int lsnPrice,
-			int lsnPerTime, int lsnDays, int lsnStarScore, int proStarScore, String proName, String locSido,
-			String locSigungu, String proIntro, String reviewUserId, String review, Date reviewDt) {
+	// 메인페이지의 레슨목록 보여줄때 필요한 생성자
+	public Lesson(int lsnNo, String lsnTitle, Date lsnUploadDt, int lsnStarPoint, User user, Location location) {
 		this.lsnNo = lsnNo;
-		//userName -> User의 get, set 완성되면 으로 User에서 가져오기
-		//
+		this.lsnTitle = lsnTitle;
+		this.lsnUploadDt = lsnUploadDt;
+		this.lsnStarPoint = lsnStarPoint;
+		this.user = user;
+		this.location = location;
+				
 	}
+	
+	public void toString(int lsnNo, String lsnTitle, Date lsnUploadDt, int lsnStarPoint, User user, Location location) {
+		System.out.println(lsnTitle + ", " + lsnUploadDt + ", " + lsnStarPoint + ", " + user.toString() + ", " + location.toString());
+	}
+	
+//	public Lesson(int lsnNo, String lsnName, int lsnReviewCnt, String lsnUserId, int lsnLv, int lsnPrice,
+//			int lsnPerTime, int lsnDays, int lsnStarScore, int proStarScore, String proName, String locSido,
+//			String locSigungu, String proIntro, String reviewUserId, String review, Date reviewDt) {
+//		this.lsnNo = lsnNo;
+//		//userName -> User의 get, set 완성되면 으로 User에서 가져오기
+//		//
+//	}
 	
 	//게터 세터 메서드 
 	//1. 레슨번호
