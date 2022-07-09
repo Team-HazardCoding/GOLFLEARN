@@ -6,7 +6,7 @@ header {
     font-weight: bold;
     box-sizing: border-box;
     ;
-
+    z-index: 999;
     position: fixed;
     top: 0;
     left: 0;
@@ -54,7 +54,7 @@ header > #navbar > #content > #content-right {
     width: 15%;
 }
 
-header > #navbar > #content > #content-right > a {
+header > #navbar > #content > #content-right > #logined > a {
     text-decoration: none;
     color: #A1D36A;
     font-weight: bold;
