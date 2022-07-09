@@ -1,0 +1,61 @@
+@import url(base.css);
+header {
+    height: 95px;
+    color: white;
+    background: #F6F3EB;
+    font-weight: bold;
+    box-sizing: border-box;
+    ;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+header > #navbar {
+    width: 100%;
+    height: 100%;
+}
+
+header > #navbar > #content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header > #navbar > #content > #content-left {
+    width: 15%;
+    height: 100%;
+}
+
+header > #navbar > #content > #content-center {
+    width: 70%;
+    height: 100%;
+}
+
+header > #navbar > #content > #content-center > #logo {
+    width: 160px;
+    height: 100%;
+    margin: auto;
+}
+
+header > #navbar > #content > #content-center > #logo > a > img {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+header > #navbar > #content > #content-right {
+    width: 15%;
+}
+
+header > #navbar > #content > #content-right > a {
+    text-decoration: none;
+    color: #A1D36A;
+    font-weight: bold;
+}
