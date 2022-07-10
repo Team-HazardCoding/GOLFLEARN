@@ -10,7 +10,7 @@ $(function() {
     let $btIddupchk = $('button[name=iddupchk]');
 	
 	console.log($btIddupchk);
-
+	
     $btIddupchk.click(function () {
 		$.ajax({
 			url:'http://localhost:1124/back/iddupchk',
@@ -18,17 +18,16 @@ $(function() {
             data:{user_id : $inputId.val()},
             success: function(jsonObj){
 				if(jsonObj.status == 1){
-					alert(jsonObj.message);
-					alert("사용 가능한 아이디입니다.");
+					alert(jsonObj.msg);
                 }else{
-					alert(jsonObj.message);
-                    alert("이미 사용중인 아이디입니다.");
+					alert(jsonObj.msg);
                 }
             },
             error: function(jqXHR){
 				alert(jqXHR.status + ":" + jqXHR.statusText);
             }
         });
+		console.log({user_id : $inputId.val()});
     })
     // ----- 아이디 중복확인 버튼 클릭 END -----
     
@@ -50,13 +49,13 @@ $(function() {
 	
 	$.ajax({
 		url :'http://localhost:1124/back/signupstdt',
-		method :'Post',
+		method :'POST',
 			data:data,
 			success: function(jsonObj){
 				if(jsonObj.status ==1){
-					alert("회원가입 성공");
+					alert(jsonObj.msg);
 				}else{
-					alert('회원가입 실패');
+					alert(jsonObj.msg);
 				}
 			},
 				error:function(jqXHR){

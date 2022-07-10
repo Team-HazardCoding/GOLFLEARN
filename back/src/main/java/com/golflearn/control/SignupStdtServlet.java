@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.sql.MyConnection;
 
 @WebServlet("/signupstdt")
@@ -40,7 +43,12 @@ public class SignupStdtServlet extends HttpServlet {
 		int rs = 0;
 		
 		//결과
-		String signupResult = "{\"status\":0, \"msg\": \"가입실패\"}";
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> map = new HashMap<>();
+		map.put("status", 0);
+		map.put("msg", "가입 실패");
+		String signupResult = mapper.writeValueAsString(map);
+//		String signupResult = "{\"status\":0, \"msg\": \"가입실패\"}";
 		
 			try {
 				con = MyConnection.getConnection();
@@ -58,9 +66,11 @@ public class SignupStdtServlet extends HttpServlet {
 				pstmt.setDate(8, null);
 				rs = pstmt.executeUpdate();
 				
-				System.out.println("통과");
 				if(rs == 1) { // rs = true이면
-					signupResult = "{\"status\":1, \"msg\": \"가입성공 환영합니다 :)\"}";
+					map.put("status", 1);
+					map.put("msg", "가입성공! 환영합니다");
+					signupResult = mapper.writeValueAsString(map);
+//					signupResult = "{\"status\":1, \"msg\": \"가입성공 환영합니다 :)\"}";
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
