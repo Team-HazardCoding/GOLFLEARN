@@ -36,8 +36,8 @@ public class ChangePwdServlet extends HttpServlet {
 		//AuthenticationUser값을 받아온다
 		String authenticationUser = request.getParameter("authenticationUser");
 		//user_pwd값을 받아온다
-		String newPwd = request.getParameter("user_pwd1");
-		String chkNewPwd = request.getParameter("user_pwd2");
+		String newPwd = request.getParameter("user_newpwd");
+		String chkNewPwd = request.getParameter("user_chknewpwd");
 		
 		String updatePwdResult = "{\"status\":0, \"msg\": \"비밀번호 변경 실패\"}";
 
@@ -46,7 +46,7 @@ public class ChangePwdServlet extends HttpServlet {
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		if(! authenticationKey.equals(authenticationUser)){
+		if(!authenticationKey.equals(authenticationUser)){
 			System.out.println("인증번호 일치하지 않음");
 			out.println("인증번호 일치하지 않음");
 			request.setAttribute("msg", "인증번호가 일치하지 않습니다");
@@ -66,6 +66,9 @@ public class ChangePwdServlet extends HttpServlet {
 					rs = pstmt.executeUpdate();
 					if(rs == 1) {
 						updatePwdResult = "{\"status\":1, \"msg\": \"비밀번호 변경 성공\"}";
+						request.setAttribute("msg", "비밀번호 변경에 성공했습니다");
+						request.setAttribute("loc", "");
+						response.sendRedirect("login");
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="../jq/login.js"></script>
+	<title>로그인</title>
+</head>
+
+<body>
+	<div>
+		<h1> Login </h1>
+	</div>
+	<form action="http://localhost1124/back/login" method="post">
+		<div id="id">
+			id <br>
+			<input id="user_id" name="user_id" type="text" placeholder="아이디">
+		</div>
+		<div id="pwd">
+			pwd <br>
+			<input id="user_pwd" name="user_pwd" type="password" placeholder="비밀번호">
+		</div>
+		<br>
+		<button id="login" type="submit"> 로그인 </button>
+		<div>
+			<a href="http://localhost:1124/front/html/signuptype">회원가입</a><br>
+			<a href="http://localhost:1124/front/html/findid">아이디찾기</a> /
+			<a href="http://localhost:1124/front/html/findpwd">비밀번호찾기</a>
+		</div>
+	</form>
+</body>
+
+</html>

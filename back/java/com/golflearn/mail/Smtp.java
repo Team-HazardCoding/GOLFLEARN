@@ -88,14 +88,12 @@ public class Smtp {
 		HttpSession saveKey = request.getSession();
 		saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
 		request.setAttribute("id", userId);
-        try {
-			request.getRequestDispatcher("/changepwd").forward(request, response);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+//        try {
+//        	request.getRequestDispatcher("/changepwd").forward(request, response);
+//		} catch (ServletException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
     }
-
 }
