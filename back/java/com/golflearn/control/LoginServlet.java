@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.sql.MyConnection;
 
 @WebServlet("/login")
@@ -21,6 +24,9 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
 		String userId = request.getParameter("user_id");
 		String userPwd = request.getParameter("user_pwd");
 
@@ -32,7 +38,12 @@ public class LoginServlet extends HttpServlet {
 		//송신
 		ResultSet rs = null;
 
-		String loginResult = "{\"status\":0 \" msg \":\"로그인 실패\"}";
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> map =  new HashMap<>();
+		map.put("status", 0);
+		map.put("msg", "로그인 실패");
+		String loginResult = mapper.writeValueAsString(map);
+//		String loginResult = "{\"status\":0 \"msg\":\"로그인 실패\"}";
 
 		//세션 객체 얻기
 		HttpSession session = request.getSession();
@@ -46,8 +57,15 @@ public class LoginServlet extends HttpServlet {
 			pstmt.setString(2, userPwd);
 			rs = pstmt.executeQuery();
 
-			if(rs.next()) { // 로그인 성공
-				loginResult = "{\"status\":1 \" msg \":\"로그인 성공\"}";
+			System.out.println(userId);
+			System.out.println(userPwd);
+			if(rs.next()) {// 로그인 성공
+				map.put("status",1);
+				map.put("msg", "로그인 성공");
+				loginResult = mapper.writeValueAsString(map);
+				
+//				loginResult = "{\"status\":1 \"msg\":\"로그인 성공\"}";
+//				loginResult = "{\"status\":1}";
 				session.setAttribute("loginInfo", userId); // 세션객체 속성으로 로그인 정보 추가
 			} 
 
@@ -56,9 +74,6 @@ public class LoginServlet extends HttpServlet {
 		}finally {
 			MyConnection.close(rs, pstmt, con);
 		}
-
-		response.setContentType("application/json;charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		out.print(loginResult);
 	}
 }
