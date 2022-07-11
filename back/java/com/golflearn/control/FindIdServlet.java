@@ -32,8 +32,10 @@ public class FindIdServlet extends HttpServlet {
 		ResultSet rs = null;
 		//기본 result값 = status 0 (id조회 실패)
 		ObjectMapper mapper = new ObjectMapper();
-		String result = "{\"status\": 0, \"msg\": \"id조회실패\"}";
-
+		Map <String, Object> map= new LinkedHashMap<>();
+		map.put("status", 0);
+		map.put("msg", "인증코드 발송 실패");
+		String result = mapper.writeValueAsString(map);
 		
 		try {
 			con = MyConnection.getConnection();
@@ -45,16 +47,12 @@ public class FindIdServlet extends HttpServlet {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				Map map = new LinkedHashMap<>();
+				map = new LinkedHashMap<>();
 				String userId = rs.getString("user_id");
 				map.put("status",1);
 				map.put("id",userId);
-				//조건문 true일 경우 status=1, id조회성공
-//				result = "{\"status\": 1, \"msg\":" + userId +"}";
+				map.put("msg", "고객님의 Id는" + userId + "입니다" );
 				result = mapper.writeValueAsString(map);
-				request.setAttribute("msg", "아이디 조회에 성공했습니다");
-				request.setAttribute("loc", "");
-				request.getRequestDispatcher("/login").forward(request, response);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

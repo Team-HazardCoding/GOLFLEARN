@@ -5,6 +5,7 @@ $(function() {
 	let $inputEmail = $('input[name=user_email]');
 	//form 전송 START
 	let $form = $('form');
+	
 	$form.submit(function () {
 		let url = "http://localhost:1124/back/findid";
 		let inputNameValue, inputEmailValue;
@@ -21,9 +22,10 @@ $(function() {
 			method: "POST",
 			data: data,
 			success: function(jsonObj) {
-				//let jsonObj = JSON.parse(jsonObj);
 				if(jsonObj.status == 1){
-					alert("아이디 조회 성공");
+					alert(jsonObj.id);
+					alert(jsonObj.msg);
+					location.href = "http://localhost:1124/front/html/login.html";
 				} else {
 					alert("아이디 조회 실패");
 				}

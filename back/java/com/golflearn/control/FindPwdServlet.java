@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.mail.Smtp;
@@ -27,8 +28,8 @@ public class FindPwdServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("user_id");
 		String userEmail = request.getParameter("user_email");
+		String authenticationKey = null;
 		
-
 		//SQL 송신
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -36,8 +37,6 @@ public class FindPwdServlet extends HttpServlet {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		Map <String, Object> map= new LinkedHashMap<>();
-		map.put("status", 0);
-		map.put("msg", "인증코드 발송 실패");
 		String result = mapper.writeValueAsString(map);
 
 		try {
@@ -53,18 +52,28 @@ public class FindPwdServlet extends HttpServlet {
 				map.put("status", 1);				
 				map.put("msg","인증코드 발송");
 				Smtp smtp = new Smtp();
-				smtp.gmailSend(request, response, userId, userEmail);	
+				authenticationKey = smtp.gmailSend(request, response, userId, userEmail, authenticationKey);	
 				result = mapper.writeValueAsString(map);
+				System.out.println(authenticationKey);
 			}else {
+				map.put("status", 0);
+				map.put("msg", "인증코드 발송 실패");
 				request.setAttribute("msg", "아이디나 이메일이 일치하지 않습니다");
-				request.setAttribute("loc", "/findpwd");
-				response.sendRedirect("/findpwd");
+				result = mapper.writeValueAsString(map);
 			}
 			response.setContentType("application/json;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			System.out.println(result);
 			out.print(result);
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		HttpSession saveKey = request.getSession();
+		saveKey.setAttribute("authenticationKey", authenticationKey);
+		saveKey.setAttribute("id", userId);
+	}
+}
 //			//사용자가 입력하지 않은 경우
 //			//front에서 required 처리해줘도 상관없음
 //			if(userId == null || userEmail == null){
@@ -84,8 +93,3 @@ public class FindPwdServlet extends HttpServlet {
 //				request.setAttribute("loc", "/findpwd");
 //				response.sendRedirect("/findpwd");
 //			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-}

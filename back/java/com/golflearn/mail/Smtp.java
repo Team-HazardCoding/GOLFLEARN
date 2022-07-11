@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 public class Smtp {
 	
-	public static void gmailSend(HttpServletRequest request, HttpServletResponse response, String userId, String userEmail) {
+	public static String gmailSend(HttpServletRequest request, HttpServletResponse response, String userId, String userEmail, String AuthenticationKey) {
         String user = "golflearn1124@gmail.com"; // gmail 계정
         String password = "jnwchtzqlhsxnzdb";   // gmail 패스워드
         
@@ -33,6 +33,7 @@ public class Smtp {
         props.put("mail.smtp.ssl.enable", "true"); 
         props.put("mail.smtp.ssl.protocols", "TLSv1.2");
         props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        props.put("mail.debug", "true");
         
 		//난수 발생
 		//문자열추가
@@ -54,8 +55,8 @@ public class Smtp {
 			}
 		}
 			//문자열 리턴
-			String AuthenticationKey = bs.toString();
-			System.out.println(AuthenticationKey);
+			AuthenticationKey = bs.toString();
+//			System.out.println(AuthenticationKey);
         
 		//Session 클래스의 getDefaultInstance() 메소드는 파라미터로 전달받은 Properties에 저장되어 있는 속성값을 사용하여 세션을 생성
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
@@ -80,20 +81,16 @@ public class Smtp {
             //메일 전송
             Transport.send(message);
             System.out.println("메일이 성공적으로 발송되었습니다");
+            System.out.println(AuthenticationKey);
+            
         } catch (AddressException e) {
             e.printStackTrace();
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-		HttpSession saveKey = request.getSession();
-		saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
-		request.setAttribute("id", userId);
-//        try {
-//        	request.getRequestDispatcher("/changepwd").forward(request, response);
-//		} catch (ServletException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		return AuthenticationKey;
     }
 }
+//		HttpSession saveKey = request.getSession();
+//		saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
+//		request.setAttribute("id", userId);
