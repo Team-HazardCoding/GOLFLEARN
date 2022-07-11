@@ -5,20 +5,28 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.sql.MyConnection;
 
 @WebServlet("/signuppro")
+@MultipartConfig
 public class SignupProServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json;charset=UTF-8");
+		
 		String userId = request.getParameter("user_id");
 		String userName = request.getParameter("user_name");
 		String userPwd = request.getParameter("user_pwd");
@@ -28,7 +36,11 @@ public class SignupProServlet extends HttpServlet {
 		java.sql.Date signupDt = new java.sql.Date(System.currentTimeMillis()); // 현재 날짜를 받아오는 것
 		String proCareer = request.getParameter("pro_career");
 		
-		String signupResult = "{\"status\": 0 \"msg\": \"가입실패\"}";
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> map = new HashMap<>();
+		map.put("status", 0);
+		map.put("msg", "가입실패");
+		String signupResult = mapper.writeValueAsString(map);
 		
 		//DB연결
 		Connection con = null;
@@ -36,6 +48,7 @@ public class SignupProServlet extends HttpServlet {
 		//SQL 송신
 		PreparedStatement pstmt = null;
 		int rs = 0;
+		System.out.println(userId);
 		
 		try {
 			con = MyConnection.getConnection();
@@ -60,20 +73,24 @@ public class SignupProServlet extends HttpServlet {
 			pstmt.setString(2, proCareer);
 			rs = pstmt.executeUpdate();
 			
-			if(rs == 1) {
-				signupResult= "{\"status\": 1 \"msg\": \"프로 가입성공! 축하합니다\"}";
-			}
+			System.out.println(userId);
+			Upload upload = new Upload();
+			upload.uploadFiles(request, userId);
 			
+			if(rs == 1) {
+				map.put("status", 1);
+				map.put("msg", "프로 가입성공! 축하합니다");
+				signupResult = mapper.writeValueAsString(map);
+//				signupResult= "{\"status\": 1 \"msg\": \"프로 가입성공! 축하합니다\"}";
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			MyConnection.close(pstmt, con);
 		}
 		
-		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(signupResult);
-		
 	}
 
 }

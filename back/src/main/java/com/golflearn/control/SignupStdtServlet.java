@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,10 +19,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.sql.MyConnection;
 
 @WebServlet("/signupstdt")
+@MultipartConfig
 public class SignupStdtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json;charset=UTF-8");
+		
 		String userId = request.getParameter("user_id"); // html의 name 지정시 참고
 		String userName = request.getParameter("user_name");
 		String userPwd = request.getParameter("user_pwd");
@@ -66,6 +71,10 @@ public class SignupStdtServlet extends HttpServlet {
 				pstmt.setDate(8, null);
 				rs = pstmt.executeUpdate();
 				
+				System.out.println(userId);
+				Upload upload = new Upload();
+				upload.uploadFiles(request, userId);
+				
 				if(rs == 1) { // rs = true이면
 					map.put("status", 1);
 					map.put("msg", "가입성공! 환영합니다");
@@ -78,7 +87,6 @@ public class SignupStdtServlet extends HttpServlet {
 				MyConnection.close(pstmt,con); // DB연결 해제
 			}
 	
-		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(signupResult);
 		
