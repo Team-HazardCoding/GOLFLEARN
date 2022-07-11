@@ -115,11 +115,9 @@ public class LessonOracleRepository implements LessonRepository{
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			// 각 레슨의 별점은 자바단에서 계산하는것이 더 낫다고 하셔서 계산에 필요한 두 칼럼을 가져온후 계산함. 
-			String selectAllLsnSQL = "SELECT lsn_no, lsn_title, lsn_upload_dt, lsn_star_sum, lsn_star_ppl_cnt, ui.user_name 프로명,"
-					+ "loc.loc_sido 시도, loc.loc_sigungu 시군구 \n"
-					+ "FROM lesson l JOIN user_info ui ON(l.user_id = ui.user_id)"
-					+ "JOIN location loc ON(l.loc_no = loc.loc_no)"
-					+ "ORDER BY 2 DESC";
+			String selectAllLsnSQL = "SELECT lsn_no, loc_no, lsn_title, lsn_upload_dt, lsn_star_sum, lsn_star_ppl_cnt, ui.user_name 프로명\n"
+					+ "FROM lesson l JOIN user_info ui ON(l.user_id = ui.user_id)\n"
+					+ "ORDER BY 1 DESC";
 			pstmt = con.prepareStatement(selectAllLsnSQL);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -131,18 +129,19 @@ public class LessonOracleRepository implements LessonRepository{
 				int lsnStarPplCnt = rs.getInt("lsn_star_ppl_cnt");
 				int lsnStarPoint = Math.round(lsnStarSum/lsnStarPplCnt);
 				String userName = rs.getString("프로명");
-				String locSido = rs.getString("시도");
-				String locSigungu = rs.getString("시군구");
+				String locNo = rs.getString("loc_no");
+//				String locSido = rs.getString("시도");
+//				String locSigungu = rs.getString("시군구");
 				// 게산하는거 맵형식으로 해보기
 				
 				//레슨 한줄한줄을 읽어서 레슨객체에 저장함.
 				User user = new User(userName);				
 				
-				Location location = new Location();
-				location.setSido(locSido);
-				location.setSigungu(locSigungu);
+//				Location location = new Location();
+//				location.setSido(locSido);
+//				location.setSigungu(locSigungu);
 				
-				Lesson lsn = new Lesson(lsnNo, lsnTitle, lsnUploadDt, lsnStarPoint, user, location); // 생성자로 고칠수 있는 부분
+				Lesson lsn = new Lesson(lsnNo, lsnTitle, lsnUploadDt, lsnStarPoint, user, locNo); // 생성자로 고칠수 있는 부분
 				// 레슨객체를 레슨리스트객체에 추가시킴
 				lsn.toString(); 
 				lsnList.add(lsn);

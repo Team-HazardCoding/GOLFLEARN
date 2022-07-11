@@ -21,24 +21,25 @@ public class Lesson {
 	private Date lsnUploadDt;
 	private ArrayList<LessonClsfc> lsnClfc;
 	private ArrayList<LessonLine> lsnLines;
-	private Location location;
+//	private Location location;
+	private String locNo;
 	private int lsnStarPoint;
 	
 //	User u = new User();
 	
 	// 메인페이지의 레슨목록 보여줄때 필요한 생성자
-	public Lesson(int lsnNo, String lsnTitle, Date lsnUploadDt, int lsnStarPoint, User user, Location location) {
+	public Lesson(int lsnNo, String lsnTitle, Date lsnUploadDt, int lsnStarPoint, User user, String locNo) {
 		this.lsnNo = lsnNo;
 		this.lsnTitle = lsnTitle;
 		this.lsnUploadDt = lsnUploadDt;
 		this.lsnStarPoint = lsnStarPoint;
 		this.user = user;
-		this.location = location;
+		this.locNo = locNo;
 				
 	}
 	
-	public void toString(int lsnNo, String lsnTitle, Date lsnUploadDt, int lsnStarPoint, User user, Location location) {
-		System.out.println(lsnTitle + ", " + lsnUploadDt + ", " + lsnStarPoint + ", " + user.toString() + ", " + location.toString());
+	public void toString(int lsnNo, String lsnTitle, Date lsnUploadDt, int lsnStarPoint, User user, String locNo) {
+		System.out.println(lsnTitle + ", " + lsnUploadDt + ", " + lsnStarPoint + ", " + user.toString() + ", " + locNo);
 	}
 	
 //	public Lesson(int lsnNo, String lsnName, int lsnReviewCnt, String lsnUserId, int lsnLv, int lsnPrice,
@@ -156,10 +157,10 @@ public class Lesson {
 		this.lsnLines = lsnLines;
 	}
 	//16. 지역
-	public Location getLocation() {
-		return this.location;
+	public String getLocation() {
+		return this.locNo;
 	}
-	public void setLsnLocation(Location lsnLocation) {
-		this.location = lsnLocation;
+	public void setLsnLocation(String locNo) {
+		this.locNo = locNo;
 	}
 }
