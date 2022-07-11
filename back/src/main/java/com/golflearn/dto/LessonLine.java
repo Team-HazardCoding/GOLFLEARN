@@ -12,7 +12,7 @@ public class LessonLine {
 	private User user;
 	private LessonReview lsnReview;
 	private StdtManage stdtManage;
-	private Lesson lsn;
+	private Lesson lesson;
 	private List<LessonHistory> lsnHistory;
 	public int getLsnLineNo() {
 		return lsnLineNo;
@@ -57,10 +57,10 @@ public class LessonLine {
 		this.stdtManage = stdtManage;
 	}
 	public Lesson getLsn() {
-		return lsn;
+		return lesson;
 	}
-	public void setLsn(Lesson lsn) {
-		this.lsn = lsn;
+	public void setLsn(Lesson lesson) {
+		this.lesson = lesson;
 	}
 	public List<LessonHistory> getLsnHistory() {
 		return lsnHistory;
@@ -73,6 +73,6 @@ public class LessonLine {
 	public String toString() {
 		return "LessonLine [lsnLineNo=" + lsnLineNo + ", stdtLsnStatus=" + stdtLsnStatus + ", lsnExpDt=" + lsnExpDt
 				+ ", lsnAplyDt=" + lsnAplyDt + ", user=" + user + ", lsnReview=" + lsnReview + ", stdtManage="
-				+ stdtManage + ", lsn=" + lsn + ", lsnHistory=" + lsnHistory + "]";
+				+ stdtManage + ", lesson=" + lesson + ", lsnHistory=" + lsnHistory + "]";
 	}
 }

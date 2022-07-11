@@ -27,6 +27,8 @@ public class Lesson {
 	private LessonReview lsnReview;
 	
 	public Lesson(){}
+	
+	
 
 	public int getLsnNo() {
 		return lsnNo;
@@ -156,6 +158,7 @@ public class Lesson {
 		this.lsnUploadDt = lsnUploadDt;
 	}
 
+
 	public List<LessonClsfc> getLsnClsfcs() {
 		return lsnClsfcs;
 	}
@@ -190,11 +193,12 @@ public class Lesson {
 
 	@Override
 	public String toString() {
-		return "Lesson [lsnNo=" + lsnNo + ", lsnTitle=" + lsnTitle + ", lsnIntro=" + lsnIntro + ", lsnLv=" + lsnLv
-				+ ", lsnDays=" + lsnDays + ", lsnPrice=" + lsnPrice + ", lsnPerTime=" + lsnPerTime + ", lsnCntSum="
-				+ lsnCntSum + ", lsnStarSum=" + lsnStarSum + ", lsnStarPplCnt=" + lsnStarPplCnt + ", lsnStarScore="
-				+ lsnStarScore + ", proStarScore=" + proStarScore + ", lsnStatus=" + lsnStatus + ", locationNo="
-				+ locationNo + ", user=" + user + ", lsnUploadDt=" + lsnUploadDt + ", lsnClsfcs=" + lsnClsfcs
-				+ ", lines=" + lines + ", pro=" + pro + ", lsnReview=" + lsnReview + "]";
+//		return "Lesson [lsnNo=" + lsnNo + ", lsnTitle=" + lsnTitle + ", lsnIntro=" + lsnIntro + ", lsnLv=" + lsnLv
+//				+ ", lsnDays=" + lsnDays + ", lsnPrice=" + lsnPrice + ", lsnPerTime=" + lsnPerTime + ", lsnCntSum="
+//				+ lsnCntSum + ", lsnStarSum=" + lsnStarSum + ", lsnStarPplCnt=" + lsnStarPplCnt + ", lsnStarScore="
+//				+ lsnStarScore + ", proStarScore=" + proStarScore + ", lsnStatus=" + lsnStatus + ", locationNo="
+//				+ locationNo + ", user=" + user + ", lsnUploadDt=" + lsnUploadDt + ", lsnClsfcs=" + lsnClsfcs
+//				+ ", lines=" + lines + ", pro=" + pro + ", lsnReview=" + lsnReview + "]";
+		return lsnClsfcs + "입니다";
 	}
 }

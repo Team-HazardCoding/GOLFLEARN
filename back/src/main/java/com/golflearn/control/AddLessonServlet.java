@@ -2,7 +2,9 @@ package com.golflearn.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -30,19 +32,29 @@ public class AddLessonServlet extends HttpServlet {
 //		HttpSession session = request.getSession();
 		
 		//입력받은 레슨정보를 레슨객체에 저장
-		Lesson l = new Lesson();
-		l.setLocationNo(Integer.parseInt(request.getParameter("loc_no")));
-		l.setLsnTitle(request.getParameter("lsn_title"));
-		l.setLsnPrice(Integer.parseInt(request.getParameter("lsn_price")));
-		l.setLsnLv(Integer.parseInt(request.getParameter("lsn_lv")));
-		l.setLsnCntSum(Integer.parseInt(request.getParameter("lsn_cnt_sum")));
-		l.setLsnPerTime(Integer.parseInt(request.getParameter("lsn_per_time")));
-		l.setLsnIntro(request.getParameter("lsn_intro"));
-		l.setLsnDays(Integer.parseInt(request.getParameter("lsn_Days")));
-		l.setLsnUploadDt(new java.sql.Date(System.currentTimeMillis()));
-		//입력받은 레슨분류 정보를 레슨분류객체에 저장
-		LessonClsfc lc = new LessonClsfc();
-		lc.setClubNo(Integer.parseInt(request.getParameter("club_no")));
+		Lesson lesson = new Lesson();
+		lesson.setLocationNo(Integer.parseInt(request.getParameter("loc_no")));
+		lesson.setLsnTitle(request.getParameter("lsn_title"));
+		lesson.setLsnPrice(Integer.parseInt(request.getParameter("lsn_price")));
+		lesson.setLsnLv(Integer.parseInt(request.getParameter("lsn_lv")));
+		lesson.setLsnCntSum(Integer.parseInt(request.getParameter("lsn_cnt_sum")));
+		lesson.setLsnPerTime(Integer.parseInt(request.getParameter("lsn_per_time")));
+		lesson.setLsnIntro(request.getParameter("lsn_intro"));
+		lesson.setLsnDays(Integer.parseInt(request.getParameter("lsn_Days")));
+		lesson.setLsnUploadDt(new java.sql.Date(System.currentTimeMillis()));
+		
+		String[] clubNos = request.getParameterValues("club_no");
+		LessonClsfc lsnClsfc = new LessonClsfc();
+		List<LessonClsfc> lsnClsfcs = new ArrayList<LessonClsfc>();
+		
+		for(int i=0; i<clubNos.length; i++) {
+			lsnClsfc.setClubNo(Integer.parseInt(clubNos[i]));
+			lesson.setLsnClsfcs(lsnClsfcs);
+			
+			lsnClsfcs.add(lsnClsfc);
+		}
+		
+		
 		
 		try {
 			// 로그인된 사용자인지 검사
@@ -56,11 +68,10 @@ public class AddLessonServlet extends HttpServlet {
 				//로그인 되면
 //				if(repository.selectTypeById(loginedId) == 1) {	// user_type이 1인지 검사
 					AddLessonRepository repository = new AddLessonOracleRepository();
-					repository.insert(l);	//레슨등록
-//				repository.insertLsnInfo2(l);
+					repository.insert(lesson);	//레슨정보 등록
 					Map<String, Object> map = new HashMap<>();
 					map.put("status", 1);
-					map.put("user_type", 1); // 이것도 추가하면 좋을까?
+					map.put("user_type", 1);
 					map.put("msg", "등록성공");
 					result = mapper.writeValueAsString(map);
 //				}

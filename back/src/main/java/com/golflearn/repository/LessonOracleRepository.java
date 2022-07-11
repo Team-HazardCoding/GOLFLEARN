@@ -55,7 +55,8 @@ public class LessonOracleRepository implements LessonRepository {
 				if(lesson == null) {
 					lesson = new Lesson();
 					
-					lesson.setLines(lines); //레슨에 레슨라인들 설정
+					//레슨에 레슨라인들 설정
+					lesson.setLines(lines); 
 					
 					lesson.setLsnNo(lsnNo);
 					lesson.setLsnTitle(rs.getString("lsn_title"));
@@ -71,8 +72,8 @@ public class LessonOracleRepository implements LessonRepository {
 					lesson.setLsnDays(rs.getInt("lsn_days"));
 					lesson.setLsnStarScore(rs.getFloat("레슨별점"));
 					lesson.setProStarScore(rs.getFloat("프로별점"));
-					
 				}
+				
 				//레슨라인1개
 				LessonLine line = new LessonLine();
 				line.setLsnLineNo(rs.getInt("lsn_line_no"));
