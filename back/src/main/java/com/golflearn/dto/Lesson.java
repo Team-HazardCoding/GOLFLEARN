@@ -1,11 +1,10 @@
 package com.golflearn.dto;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 public class Lesson {
-	private String lsnNo;
-	private String userId; //pjw
+	private int lsnNo;
 	private String lsnTitle;
 	private String lsnIntro;
 	private int lsnLv;	
@@ -15,146 +14,100 @@ public class Lesson {
 	private int lsnCntSum;
 	private int lsnStarSum;
 	private int lsnStarPplCnt;
-	private float lsnStarScore;	//레슨별점
-	private float proStarScore;	//프로별점
+	private float lsnStarScore;	//레슨별점 : pjw
+	private float proStarScore;	//프로별점 : pjw
 	private int lsnStatus;
-	private int UploadDt;
+	private int locationNo;	//지역테이블없애기로해서 생성 : 여기에 지역정보넣으라고하심 : pjw
 	private User user;
-	private Date lsnUploadDt;
-	private ArrayList<LessonClsfc> lsnClfc;	// 1.ArrayList로 지정할 필요가 있을까?
-	private LessonLine lsnLine;
-	private Location location;
+	private java.sql.Date lsnUploadDt;
+	private List<LessonClsfc> lsnClsfcs;
+	private List<LessonLine> lines;
+//	private Location location;	//지역테이블없애기로함
 	private Pro pro;
 	private LessonReview lsnReview;
 	
-	public Lesson(){};
+	public Lesson(){}
 
-//	public String toString(uitostring의 반환, lc, pr, ll, lr + 나머진 변수들 ) {
-//		return this.lsnNo + this.lsnTitle  + " dk";
-//	}
-	//게터 세터 메서드 
-	//1. 레슨번호
-	public String getLsnNo() {
-		return this.lsnNo;
+	public int getLsnNo() {
+		return lsnNo;
 	}
-	public void setLsnNo(String lsnNo) {
+
+	public void setLsnNo(int lsnNo) {
 		this.lsnNo = lsnNo;
 	}
-	
-	public String getUserId() {
-		return userId;
-	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	//2. 유저
-	public User getUser() {
-		return this.user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	//3. 레슨명
 	public String getLsnTitle() {
-		return this.lsnTitle;
+		return lsnTitle;
 	}
+
 	public void setLsnTitle(String lsnTitle) {
 		this.lsnTitle = lsnTitle;
 	}
-	//4. 레슨소개 
+
 	public String getLsnIntro() {
-		return this.lsnIntro;
+		return lsnIntro;
 	}
+
 	public void setLsnIntro(String lsnIntro) {
 		this.lsnIntro = lsnIntro;
 	}
-	//5. 레슨레벨
+
 	public int getLsnLv() {
-		return this.lsnLv;
+		return lsnLv;
 	}
+
 	public void setLsnLv(int lsnLv) {
 		this.lsnLv = lsnLv;
 	}
-	//6. 레슨유효기간
+
 	public int getLsnDays() {
-		return this.lsnDays;
+		return lsnDays;
 	}
+
 	public void setLsnDays(int lsnDays) {
 		this.lsnDays = lsnDays;
 	}
-	//7. 레슨가격
+
 	public int getLsnPrice() {
-		return this.lsnPrice;
+		return lsnPrice;
 	}
+
 	public void setLsnPrice(int lsnPrice) {
 		this.lsnPrice = lsnPrice;
 	}
-	//8. 레슨회당시간
+
 	public int getLsnPerTime() {
-		return this.lsnPerTime;
+		return lsnPerTime;
 	}
+
 	public void setLsnPerTime(int lsnPerTime) {
 		this.lsnPerTime = lsnPerTime;
 	}
-	//9. 레슨총횟수
+
 	public int getLsnCntSum() {
-		return this.lsnCntSum;
+		return lsnCntSum;
 	}
+
 	public void setLsnCntSum(int lsnCntSum) {
 		this.lsnCntSum = lsnCntSum;
 	}
-	//10. 레슨총별점
+
 	public int getLsnStarSum() {
-		return this.lsnStarSum;
+		return lsnStarSum;
 	}
+
 	public void setLsnStarSum(int lsnStarSum) {
 		this.lsnStarSum = lsnStarSum;
 	}
-	//11. 레슨별점총인원
+
 	public int getLsnStarPplCnt() {
-		return this.lsnStarPplCnt;
+		return lsnStarPplCnt;
 	}
+
 	public void setLsnStarPplCnt(int lsnStarPplCnt) {
 		this.lsnStarPplCnt = lsnStarPplCnt;
 	}
-	//12. 레슨상태
-	public int getLsnStatus() {
-		return this.lsnStatus;
-	}
-	public void setLsnStatus(int lsnStatus) {
-		this.lsnStatus = lsnStatus;
-	}
-	//13. 레슨업로드일자
-	public Date getLsnUploadDt() {
-		return this.lsnUploadDt;
-	}
-	public void setLsnUploadDt(Date lsnUploadDt) {
-		this.lsnUploadDt = lsnUploadDt;
-	}
-	//14. 레슨분류 필요?
-	public ArrayList<LessonClsfc> getLsnClfc() {
-		return this.lsnClfc;
-	}
-	public void setLsnClfc(ArrayList<LessonClsfc> lsnClfc) {
-		this.lsnClfc = lsnClfc;
-	}
-	//15. 레슨내역 필요?
-	public LessonLine getLsnLine() {
-		return this.lsnLine;
-	}
-	public void setLsnLine(LessonLine lsnLine) {
-		this.lsnLine = lsnLine;
-	}
-	//16. 지역
-	public Location getLocation() {
-		return this.location;
-	}
-	public void setLsnLocation(Location lsnLocation) {
-		this.location = lsnLocation;
-	}
-	
+
 	public float getLsnStarScore() {
 		return lsnStarScore;
 	}
@@ -171,12 +124,52 @@ public class Lesson {
 		this.proStarScore = proStarScore;
 	}
 
-	public int getUploadDt() {
-		return UploadDt;
+	public int getLsnStatus() {
+		return lsnStatus;
 	}
 
-	public void setUploadDt(int uploadDt) {
-		UploadDt = uploadDt;
+	public void setLsnStatus(int lsnStatus) {
+		this.lsnStatus = lsnStatus;
+	}
+
+	public int getLocationNo() {
+		return locationNo;
+	}
+
+	public void setLocationNo(int locationNo) {
+		this.locationNo = locationNo;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public java.sql.Date getLsnUploadDt() {
+		return lsnUploadDt;
+	}
+
+	public void setLsnUploadDt(java.sql.Date lsnUploadDt) {
+		this.lsnUploadDt = lsnUploadDt;
+	}
+
+	public List<LessonClsfc> getLsnClsfcs() {
+		return lsnClsfcs;
+	}
+
+	public void setLsnClsfcs(List<LessonClsfc> lsnClsfcs) {
+		this.lsnClsfcs = lsnClsfcs;
+	}
+
+	public List<LessonLine> getLines() {
+		return lines;
+	}
+
+	public void setLines(List<LessonLine> lines) {
+		this.lines = lines;
 	}
 
 	public Pro getPro() {
@@ -195,18 +188,13 @@ public class Lesson {
 		this.lsnReview = lsnReview;
 	}
 
-	public void setLocation(Location location) {
-		this.location = location;
-	}
-
-	// 수정필요
 	@Override
 	public String toString() {
 		return "Lesson [lsnNo=" + lsnNo + ", lsnTitle=" + lsnTitle + ", lsnIntro=" + lsnIntro + ", lsnLv=" + lsnLv
 				+ ", lsnDays=" + lsnDays + ", lsnPrice=" + lsnPrice + ", lsnPerTime=" + lsnPerTime + ", lsnCntSum="
 				+ lsnCntSum + ", lsnStarSum=" + lsnStarSum + ", lsnStarPplCnt=" + lsnStarPplCnt + ", lsnStarScore="
-				+ lsnStarScore + ", proStarScore=" + proStarScore + ", lsnStatus=" + lsnStatus + ", UploadDt="
-				+ UploadDt + ", user=" + user + ", lsnUploadDt=" + lsnUploadDt + ", lsnClfc=" + lsnClfc + ", lsnLines="
-				+ lsnLine + ", location=" + location + ", pro=" + pro + ", lsnReview=" + lsnReview + "]";
+				+ lsnStarScore + ", proStarScore=" + proStarScore + ", lsnStatus=" + lsnStatus + ", locationNo="
+				+ locationNo + ", user=" + user + ", lsnUploadDt=" + lsnUploadDt + ", lsnClsfcs=" + lsnClsfcs
+				+ ", lines=" + lines + ", pro=" + pro + ", lsnReview=" + lsnReview + "]";
 	}
 }

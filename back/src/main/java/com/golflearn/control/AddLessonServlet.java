@@ -10,53 +10,64 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.dto.Lesson;
+import com.golflearn.dto.LessonClsfc;
 import com.golflearn.exception.AddException;
-import com.golflearn.exception.FindException;
-import com.golflearn.repository.LessonOracleRepository;
-import com.golflearn.repository.LessonRepository;
+import com.golflearn.repository.AddLessonOracleRepository;
+import com.golflearn.repository.AddLessonRepository;
 
 @WebServlet("/addlesson")
 public class AddLessonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	// 겟으로 할지 포스트로 할지 고민
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		ObjectMapper mapper = new ObjectMapper();
 		String result = "";
-		HttpSession session = request.getSession();
-
-		//로그인된 사용자인지 확인 (레슨등록 버튼은 모든 사용자가 보이도록 할것임. 그래서 사용자인지 확인)
-		String loginedId = (String)session.getAttribute("loginInfo");
-		if(loginedId == null) {	//로그인이 되있지 않다면
-			Map<String, Object> map = new HashMap<>();
-			map.put("status", 0);
-			map.put("msg", "로그인하세요");
-			result = mapper.writeValueAsString(map);
-		} else {	// 로그인이 되있다면
-			try {
-				LessonRepository repository = new LessonOracleRepository();
-				Lesson l = new Lesson();
-				
-				if(repository.selectTypeById(loginedId) == 1) {
-					//loginedId = 프로의 아이디(레슨의 userId).
-					l.setUserId(loginedId);
-					repository.insert(l); // 레슨추가
-					
+//		HttpSession session = request.getSession();
+		
+		//입력받은 레슨정보를 레슨객체에 저장
+		Lesson l = new Lesson();
+		l.setLocationNo(Integer.parseInt(request.getParameter("loc_no")));
+		l.setLsnTitle(request.getParameter("lsn_title"));
+		l.setLsnPrice(Integer.parseInt(request.getParameter("lsn_price")));
+		l.setLsnLv(Integer.parseInt(request.getParameter("lsn_lv")));
+		l.setLsnCntSum(Integer.parseInt(request.getParameter("lsn_cnt_sum")));
+		l.setLsnPerTime(Integer.parseInt(request.getParameter("lsn_per_time")));
+		l.setLsnIntro(request.getParameter("lsn_intro"));
+		l.setLsnDays(Integer.parseInt(request.getParameter("lsn_Days")));
+		l.setLsnUploadDt(new java.sql.Date(System.currentTimeMillis()));
+		//입력받은 레슨분류 정보를 레슨분류객체에 저장
+		LessonClsfc lc = new LessonClsfc();
+		lc.setClubNo(Integer.parseInt(request.getParameter("club_no")));
+		
+		try {
+			// 로그인된 사용자인지 검사
+//			String loginedId = (String)session.getAttribute("loginInfo");
+//			if(loginedId == null) {
+//				Map<String, Object> map = new HashMap<>();
+//				map.put("status", 0);
+//				map.put("msg", "로그인하세요");
+//				result = mapper.writeValueAsString(map);
+//			}else {
+				//로그인 되면
+//				if(repository.selectTypeById(loginedId) == 1) {	// user_type이 1인지 검사
+					AddLessonRepository repository = new AddLessonOracleRepository();
+					repository.insert(l);	//레슨등록
+//				repository.insertLsnInfo2(l);
 					Map<String, Object> map = new HashMap<>();
 					map.put("status", 1);
+					map.put("user_type", 1); // 이것도 추가하면 좋을까?
 					map.put("msg", "등록성공");
 					result = mapper.writeValueAsString(map);
-				}
-			} catch (AddException e) {
-				e.printStackTrace();
-			} catch (FindException e) {
-				e.printStackTrace();
-			}
+//				}
+//			}
+		} catch (AddException e) {
+			e.printStackTrace();
 		}
+		out.print(result);
 	}
 }

@@ -3,18 +3,25 @@ package com.golflearn.dto;
 import java.util.Date;
 
 public class LessonReview {
-	private int lsnLineNo;
+	private LessonLine line;
+//	private int lsnLineNo;
 	private int myStarScore;
 	private String review;
 	private Date reviewDt;
 	private Date reviewEditDt;
 	
-	public int getLsnLineNo() {
-		return lsnLineNo;
+	public LessonLine getLine() {
+		return line;
 	}
-	public void setLsnLineNo(int lsnLineNo) {
-		this.lsnLineNo = lsnLineNo;
+	public void setLine(LessonLine line) {
+		this.line = line;
 	}
+	//	public int getLsnLineNo() {
+//		return lsnLineNo;
+//	}
+//	public void setLsnLineNo(int lsnLineNo) {
+//		this.lsnLineNo = lsnLineNo;
+//	}
 	public int getMyStarScore() {
 		return myStarScore;
 	}

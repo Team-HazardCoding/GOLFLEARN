@@ -5,22 +5,15 @@ import java.util.Date;
 import java.util.List;
 
 public class LessonLine {
-	private String userId;	//pjw
 	private int lsnLineNo;
 	private int stdtLsnStatus;
 	private Date lsnExpDt;
 	private Date lsnAplyDt;
 	private User user;
-	private List<LessonReview> lsnReview;
+	private LessonReview lsnReview;
 	private StdtManage stdtManage;
 	private Lesson lsn;
 	private List<LessonHistory> lsnHistory;
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 	public int getLsnLineNo() {
 		return lsnLineNo;
 	}
@@ -51,10 +44,10 @@ public class LessonLine {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public List<LessonReview> getLsnReview() {
+	public LessonReview getLsnReview() {
 		return lsnReview;
 	}
-	public void setLsnReview(List<LessonReview> lsnReview) {
+	public void setLsnReview(LessonReview lsnReview) {
 		this.lsnReview = lsnReview;
 	}
 	public StdtManage getStdtManage() {
@@ -76,4 +69,10 @@ public class LessonLine {
 		this.lsnHistory = lsnHistory;
 	}
 	
+	@Override
+	public String toString() {
+		return "LessonLine [lsnLineNo=" + lsnLineNo + ", stdtLsnStatus=" + stdtLsnStatus + ", lsnExpDt=" + lsnExpDt
+				+ ", lsnAplyDt=" + lsnAplyDt + ", user=" + user + ", lsnReview=" + lsnReview + ", stdtManage="
+				+ stdtManage + ", lsn=" + lsn + ", lsnHistory=" + lsnHistory + "]";
+	}
 }
