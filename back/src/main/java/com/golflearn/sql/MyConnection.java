@@ -1,5 +1,6 @@
 package com.golflearn.sql;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,9 +12,11 @@ public class MyConnection {
 		// 한번만 호출될 때 static {} 사용 가능
 		//public MyConnection(){ //생성자. 객체가 생성될 때 생성자 자동 호출됨
 		//2. JDBC 드라이버 클래스 로드
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver"); 
 			System.out.println("jdbc driver 로딩 성공");
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -21,15 +24,18 @@ public class MyConnection {
 	}
 	public static Connection getConnection() throws SQLException { //non-static 은 객체가 먼저 생성 되어야 사용할 수 있다.
 		// static으로 선언되는 method는 클래스 이름. 으로 사용하는게 best
-		
+
 		//3. DB와 연결
 		Connection con = null ;
-		String url = "jdbc:oracle:thin:@Jongwoo_high?TNS_ADMIN=C://Golflearn_lib//전자지갑//Wallet_Jongwoo";
+//		String url = "jdbc:oracle:thin:@localhost:1124:xe"; 
+		
+		String url = "jdbc:oracle:thin:@jongwoo_medium?TNS_ADMIN=/Users/jasonmilian/Desktop/Wallet_Jongwoo";
 		String user = "admin";
 		String password = "Hazard11241124";
-		
+
 		con = DriverManager.getConnection(url, user, password);
 		return con; 
+		
 	}
 	public static void close(ResultSet rs, Statement stmt, Connection con) {
 		//7. DB 연결해제
