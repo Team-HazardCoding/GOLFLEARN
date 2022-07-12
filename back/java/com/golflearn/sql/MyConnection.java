@@ -62,5 +62,3 @@ public class MyConnection {
 		// 이 한 줄 코드로 Statement와 Connection 다 해결 할 수 있음
 	}
 }
-
-
