@@ -15,13 +15,13 @@ $(function(){
 			let lsn_title = jsonObj.lesson.lsnTitle;
 			let lsn_star_score = jsonObj.lesson.lsnStarScore;
 			let lsn_review_cnt = jsonObj.lesson.lsnStarPplCnt;	//리뷰갯수
-			let user_name = jsonObj.lesson.userName;	//수정해야됨
+			let user_name = jsonObj.lesson.user.userName;	//수정해야됨
 			let pro_star_score = jsonObj.lesson.proStarScore;
 			let lsn_no = jsonObj.lesson.lsnNo;
 			//레슨상세정보 가져오기
-			// let lsn_intro = jsonObj.lesson.lsnIntro;
-			// let pro_intro = jsonObj.pro.proCareer;
-			// let review = jsonObj.lessonReview.review;
+			let lsn_intro = jsonObj.lesson.lsnIntro;
+			let pro_intro = jsonObj.lesson.pro.proCareer;
+			let review = jsonObj.lesson.lines[0].lsnReview.review;
 
 			//레슨간략정보 붙이기
 			// $('div.viewlesson>img').attr('src', 'C:\\Golflearn_lib\\user_images\\' + lsn_no + '.png')
@@ -35,9 +35,9 @@ $(function(){
 			$('div.viewlesson ul>li>span.user_name').html(user_name);	//프로명 못받아옴
 			$('div.viewlesson ul>li>span.pro_star_score').html(pro_star_score);
 			//레슨상세정보 붙이기
-			// $('div.detail>div.lsn_intro').html(lsn_intro);
-			// $('div.detail>div.pro_intro').html(pro_intro);
-			// $('div.detail>div.review').html(review);
+			$('div.detail>div.lsn_intro').html(lsn_intro);
+			$('div.detail>div.pro_intro').html(pro_intro);
+			$('div.detail>div.review').html(review);
 		},
 		error: function () {
 			alert('오류:' + jqXHR.status);

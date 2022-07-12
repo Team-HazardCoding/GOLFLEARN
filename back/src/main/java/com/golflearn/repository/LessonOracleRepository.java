@@ -63,15 +63,22 @@ public class LessonOracleRepository implements LessonRepository {
 					lesson.setLsnIntro(rs.getString("lsn_intro"));
 					lesson.setLsnStarPplCnt(rs.getInt("lsn_star_ppl_cnt"));
 					lesson.setLsnLv(rs.getInt("lsn_lv"));
-					User user = new User();
-					user.setUserID(rs.getString("프로아이디"));
-					lesson.setUser(user);
 					lesson.setLsnPrice(rs.getInt("lsn_price"));
 					lesson.setLocNo(rs.getInt("loc_no"));
 					lesson.setLsnPerTime(rs.getInt("lsn_per_time"));
 					lesson.setLsnDays(rs.getInt("lsn_days"));
 					lesson.setLsnStarScore(rs.getFloat("레슨별점"));
 					lesson.setProStarScore(rs.getFloat("프로별점"));
+					
+					User user = new User();
+					user.setUserID(rs.getString("프로아이디"));
+					user.setUserName(rs.getString("프로명"));
+					lesson.setUser(user);
+					
+					Pro pro = new Pro();
+					pro.setProCareer(rs.getString("pro_career"));
+					lesson.setPro(pro);
+					
 				}
 				
 				//레슨라인1개
