@@ -139,4 +139,55 @@ public class LessonOracleRepository implements LessonRepository {
 			MyConnection.close(rs, pstmt, con);
 		}
 	}
+
+	@Override
+	public List<Lesson> selectAll() {
+		// DB와의 연결준비를 한다.
+		Connection con = null;
+		List<Lesson> lsnList = new ArrayList<>();
+		try {
+			con = MyConnection.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			// 각 레슨의 별점은 자바단에서 계산하는것이 더 낫다고 하셔서 계산에 필요한 두 칼럼을 가져온후 계산함. 
+			String selectAllLsnSQL = "SELECT lsn_no, loc_no, lsn_title, lsn_upload_dt, lsn_star_sum, lsn_star_ppl_cnt, ui.user_name 프로명\n"
+					+ "FROM lesson l JOIN user_info ui ON(l.user_id = ui.user_id)\n"
+					+ "ORDER BY 1 DESC";
+			pstmt = con.prepareStatement(selectAllLsnSQL);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				// 메인의 레슨목록에 필요한 항목들
+				int lsnNo = rs.getInt("lsn_no");
+				String lsnTitle = rs.getString("lsn_title");
+				Date lsnUploadDt =  rs.getDate("lsn_upload_dt");
+				int lsnStarSum = rs.getInt("lsn_star_sum");
+				int lsnStarPplCnt = rs.getInt("lsn_star_ppl_cnt");
+				int lsnStarPoint = Math.round(lsnStarSum/lsnStarPplCnt);
+				String userName = rs.getString("프로명");
+				String locNo = rs.getString("loc_no");
+//				String locSido = rs.getString("시도");
+//				String locSigungu = rs.getString("시군구");
+				// 게산하는거 맵형식으로 해보기
+				
+				//레슨 한줄한줄을 읽어서 레슨객체에 저장함.
+				User user = new User(userName);				
+				
+//				Location location = new Location();
+//				location.setSido(locSido);
+//				location.setSigungu(locSigungu);
+				
+				Lesson lsn = new Lesson(lsnNo, lsnTitle, lsnUploadDt, lsnStarPoint, user, locNo); // 생성자로 고칠수 있는 부분
+				// 레슨객체를 레슨리스트객체에 추가시킴
+				lsn.toString(); 
+				lsnList.add(lsn);
+				System.out.println("lsn객체 만들어짐");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+	    	MyConnection.close(null, con);
+		}
+		return lsnList;//list를 반환 
+	}
 }

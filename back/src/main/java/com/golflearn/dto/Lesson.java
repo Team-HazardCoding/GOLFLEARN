@@ -1,6 +1,7 @@
 package com.golflearn.dto;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Lesson {
@@ -17,17 +18,45 @@ public class Lesson {
 	private float lsnStarScore;	//레슨별점 : pjw
 	private float proStarScore;	//프로별점 : pjw
 	private int lsnStatus;
-	private int locNo;	//지역테이블없애기로해서 생성 : 여기에 지역정보넣으라고하심 : pjw
-	private User user;
-	private java.sql.Date lsnUploadDt;
+	private int UploadDt;
+	private Date lsnUploadDt;
 	private List<LessonClsfc> lsnClsfcs;
-	private List<LessonLine> lines;
-//	private Location location;	//지역테이블없애기로함
+	private List<LessonLine> lsnLines;
+//	private Location location;
+	private String locNo;
+	private int lsnStarPoint;
+	private User user;
 	private Pro pro;
 	private LessonReview lsnReview;
+//	User u = new User();
 	
 	public Lesson(){}
+	// 메인페이지의 레슨목록 보여줄때 필요한 생성자
+	public Lesson(int lsnNo, String lsnTitle, Date lsnUploadDt, int lsnStarPoint, User user, String locNo) {
+		this.lsnNo = lsnNo;
+		this.lsnTitle = lsnTitle;
+		this.lsnUploadDt = lsnUploadDt;
+		this.lsnStarPoint = lsnStarPoint;
+		this.user = user;
+		this.locNo = locNo;
+				
+	}
 	
+	public void toString(int lsnNo, String lsnTitle, Date lsnUploadDt, int lsnStarPoint, User user, String locNo) {
+		System.out.println(lsnTitle + ", " + lsnUploadDt + ", " + lsnStarPoint + ", " + user.toString() + ", " + locNo);
+	}
+	
+//	public Lesson(int lsnNo, String lsnName, int lsnReviewCnt, String lsnUserId, int lsnLv, int lsnPrice,
+//			int lsnPerTime, int lsnDays, int lsnStarScore, int proStarScore, String proName, String locSido,
+//			String locSigungu, String proIntro, String reviewUserId, String review, Date reviewDt) {
+//		this.lsnNo = lsnNo;
+//		//userName -> User의 get, set 완성되면 으로 User에서 가져오기
+//		//
+//	}
+	
+	//게터 세터 메서드 
+	//1. 레슨번호
+
 	public int getLsnNo() {
 		return lsnNo;
 	}
@@ -132,11 +161,11 @@ public class Lesson {
 		this.lsnStatus = lsnStatus;
 	}
 
-	public int getLocNo() {
+	public String getLocNo() {
 		return locNo;
 	}
 
-	public void setLocNo(int locNo) {
+	public void setLocNo(String locNo) {
 		this.locNo = locNo;
 	}
 
@@ -148,7 +177,7 @@ public class Lesson {
 		this.user = user;
 	}
 
-	public java.sql.Date getLsnUploadDt() {
+	public Date getLsnUploadDt() {
 		return lsnUploadDt;
 	}
 
@@ -166,11 +195,11 @@ public class Lesson {
 	}
 
 	public List<LessonLine> getLines() {
-		return lines;
+		return lsnLines;
 	}
 
 	public void setLines(List<LessonLine> lines) {
-		this.lines = lines;
+		this.lsnLines = lines;
 	}
 
 	public Pro getPro() {
@@ -195,7 +224,7 @@ public class Lesson {
 				+ ", lsnDays=" + lsnDays + ", lsnPrice=" + lsnPrice + ", lsnPerTime=" + lsnPerTime + ", lsnCntSum="
 				+ lsnCntSum + ", lsnStarSum=" + lsnStarSum + ", lsnStarPplCnt=" + lsnStarPplCnt + ", lsnStarScore="
 				+ lsnStarScore + ", proStarScore=" + proStarScore + ", lsnStatus=" + lsnStatus + ", locNo=" + locNo
-				+ ", user=" + user + ", lsnUploadDt=" + lsnUploadDt + ", lsnClsfcs=" + lsnClsfcs + ", lines=" + lines
+				+ ", user=" + user + ", lsnUploadDt=" + lsnUploadDt + ", lsnClsfcs=" + lsnClsfcs + ", lines=" + lsnLines
 				+ ", pro=" + pro + ", lsnReview=" + lsnReview + "]";
 	}
 }
