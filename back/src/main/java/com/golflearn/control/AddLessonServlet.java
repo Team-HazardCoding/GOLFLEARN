@@ -33,7 +33,7 @@ public class AddLessonServlet extends HttpServlet {
 		
 		//입력받은 레슨정보를 레슨객체에 저장
 		Lesson lesson = new Lesson();
-		lesson.setLocNo(Integer.parseInt(request.getParameter("loc_no")));
+		lesson.setLocNo(request.getParameter("loc_no"));
 		lesson.setLsnTitle(request.getParameter("lsn_title"));
 		lesson.setLsnPrice(Integer.parseInt(request.getParameter("lsn_price")));
 		lesson.setLsnLv(Integer.parseInt(request.getParameter("lsn_lv")));

@@ -13,6 +13,12 @@ public class User {
 	private Date userQuitDt;
 	private Pro pro;
 	
+	public User() {
+	}
+	
+	public User(String userName) {
+	}
+
 	public String getUserID() {
 		return userID;
 	}

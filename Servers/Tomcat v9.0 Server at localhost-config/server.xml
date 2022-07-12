@@ -91,14 +91,10 @@
          configuration is used below.
     -->
     
-    <Connector port="1124" protocol="org.apache.coyote.http11.Http11AprProtocol"
-               maxThreads="150" SSLEnabled="true" >
-        <UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol" />
+    <Connector SSLEnabled="true" maxThreads="150" port="1124" protocol="org.apache.coyote.http11.Http11AprProtocol">
+        <UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol"/>
         <SSLHostConfig>
-            <Certificate certificateKeyFile="conf/localhost-rsa-key.pem"
-                         certificateFile="conf/localhost-rsa-cert.pem"
-                         certificateChainFile="conf/localhost-rsa-chain.pem"
-                         type="RSA" />
+            <Certificate certificateChainFile="conf/localhost-rsa-chain.pem" certificateFile="conf/localhost-rsa-cert.pem" certificateKeyFile="conf/localhost-rsa-key.pem" type="RSA"/>
         </SSLHostConfig>
     </Connector>
     

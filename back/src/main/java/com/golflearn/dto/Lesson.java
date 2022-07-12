@@ -1,7 +1,7 @@
 package com.golflearn.dto;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class Lesson {
@@ -22,13 +22,11 @@ public class Lesson {
 	private Date lsnUploadDt;
 	private List<LessonClsfc> lsnClsfcs;
 	private List<LessonLine> lsnLines;
-//	private Location location;
 	private String locNo;
 	private int lsnStarPoint;
 	private User user;
 	private Pro pro;
 	private LessonReview lsnReview;
-//	User u = new User();
 	
 	public Lesson(){}
 	// 메인페이지의 레슨목록 보여줄때 필요한 생성자
@@ -45,14 +43,6 @@ public class Lesson {
 	public void toString(int lsnNo, String lsnTitle, Date lsnUploadDt, int lsnStarPoint, User user, String locNo) {
 		System.out.println(lsnTitle + ", " + lsnUploadDt + ", " + lsnStarPoint + ", " + user.toString() + ", " + locNo);
 	}
-	
-//	public Lesson(int lsnNo, String lsnName, int lsnReviewCnt, String lsnUserId, int lsnLv, int lsnPrice,
-//			int lsnPerTime, int lsnDays, int lsnStarScore, int proStarScore, String proName, String locSido,
-//			String locSigungu, String proIntro, String reviewUserId, String review, Date reviewDt) {
-//		this.lsnNo = lsnNo;
-//		//userName -> User의 get, set 완성되면 으로 User에서 가져오기
-//		//
-//	}
 	
 	//게터 세터 메서드 
 	//1. 레슨번호

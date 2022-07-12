@@ -11,13 +11,6 @@ import com.golflearn.sql.MyConnection;
 
 public interface LessonRepository {
 	/**
-	 * 레슨을 등록한다
-	 * @param lesson 레슨
-	 * @throws AddException 레슨번호가 중복될 경우 "이미 존재하는 레슨입니다" 상세메시지를 갖는 예외가 발생한다
-	 */
-	public void insert(int lsn_no) throws AddException;
-	
-	/**
 	 * 레슨번호로 레슨검색한다
 	 * @param lsnNo 레슨번호
 	 * @return 레슨객체
