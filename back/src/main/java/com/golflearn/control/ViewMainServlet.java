@@ -45,7 +45,7 @@ public class ViewMainServlet extends HttpServlet {
 			String jsonValue = mapper.writeValueAsString(map);
 			System.out.println("jsonValue :"+ jsonValue);
 			
-			result = mapper.writeValueAsString(map);
+ 			result = mapper.writeValueAsString(map);
 			System.out.println("result :" + result);
 			
 			out.print(result);

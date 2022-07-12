@@ -1,13 +1,10 @@
 * {
     margin:0 0;
 }
-/* article, aside, figure, footer, header, hgroup, section {
-    display: block;
-} */
 
-/* .w3 {
-    
-} */
+article, aside, figure, footer, header, hgroup, section {
+    display: block;
+}
 
 body {
     width: 100%;

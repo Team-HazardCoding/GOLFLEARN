@@ -7,7 +7,7 @@
 }
 
 #wrapper {
-    width: 70%;
+    width: 80%;
     height: 100%;
     margin: 0 auto;
     background-color: #fff;
@@ -53,21 +53,29 @@
 } */
 
 #main > #wrapper > #container > #content-right > #card-container {
-    display:flex;
+    display: flex;
     margin-top: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#main > #wrapper > #container > #content-right > #card-container > .col {
+
 }
 
 #main > #wrapper > #container > #content-right .col {
     margin-right: 15px;
-    width: 250px;
+    width: 300px;
+    max-width: 30%;
     height: 250px;
-    display: flex;
+    min-width: 30%;
 }
 
 #main > #wrapper > #container > #content-right .col:nth-child(1) {
     margin-left: 10px;
 }
 
-#main > #wrapper > #container .col > .card {
+#main > #wrapper > #container .col > .lsn {
     border: none;
 }
