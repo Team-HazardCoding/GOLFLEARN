@@ -33,7 +33,7 @@ public class AddLessonServlet extends HttpServlet {
 		
 		//입력받은 레슨정보를 레슨객체에 저장
 		Lesson lesson = new Lesson();
-		lesson.setLocationNo(Integer.parseInt(request.getParameter("loc_no")));
+		lesson.setLocNo(Integer.parseInt(request.getParameter("loc_no")));
 		lesson.setLsnTitle(request.getParameter("lsn_title"));
 		lesson.setLsnPrice(Integer.parseInt(request.getParameter("lsn_price")));
 		lesson.setLsnLv(Integer.parseInt(request.getParameter("lsn_lv")));
@@ -44,17 +44,15 @@ public class AddLessonServlet extends HttpServlet {
 		lesson.setLsnUploadDt(new java.sql.Date(System.currentTimeMillis()));
 		
 		String[] clubNos = request.getParameterValues("club_no");
-		LessonClsfc lsnClsfc = new LessonClsfc();
 		List<LessonClsfc> lsnClsfcs = new ArrayList<LessonClsfc>();
 		
 		for(int i=0; i<clubNos.length; i++) {
+			LessonClsfc lsnClsfc = new LessonClsfc();
 			lsnClsfc.setClubNo(Integer.parseInt(clubNos[i]));
 			lesson.setLsnClsfcs(lsnClsfcs);
 			
 			lsnClsfcs.add(lsnClsfc);
 		}
-		
-		
 		
 		try {
 			// 로그인된 사용자인지 검사

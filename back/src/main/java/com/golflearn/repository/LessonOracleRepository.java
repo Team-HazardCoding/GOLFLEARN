@@ -25,10 +25,10 @@ public class LessonOracleRepository implements LessonRepository {
 
 		String selectLsnNoSQL = "SELECT l.lsn_no, l.lsn_title, l.lsn_intro, l.lsn_star_ppl_cnt, "
 							  + "l.lsn_lv, l.lsn_price, l.user_id 프로아이디, l.loc_no, "
-							  + "l.lsn_per_time, l.lsn_days, l.lsn_star_sum / l.lsn_star_ppl_cnt 레슨별점, "
-							  + "(SELECT SUM(lsn_star_sum/lsn_star_ppl_cnt)/COUNT(lsn_no) "
-							  + "FROM lesson "
-							  + "WHERE user_id= l.user_id) 프로별점, "
+							  + "l.lsn_per_time, l.lsn_days, TRUNC((l.lsn_star_sum / l.lsn_star_ppl_cnt), 2) 레슨별점, "
+							  + "TRUNC((SELECT SUM(lsn_star_sum/lsn_star_ppl_cnt)/COUNT(lsn_no) "
+							  		 + "FROM lesson "
+							  		 + "WHERE user_id= l.user_id), 2) 프로별점, "
 							  + "ui.user_name 프로명,"
 							  + "pi.pro_career, "
 							  + "ll.user_id 후기작성자아이디, ll.lsn_line_no, "
@@ -67,7 +67,7 @@ public class LessonOracleRepository implements LessonRepository {
 					user.setUserID(rs.getString("프로아이디"));
 					lesson.setUser(user);
 					lesson.setLsnPrice(rs.getInt("lsn_price"));
-					lesson.setLocationNo(rs.getInt("loc_no"));
+					lesson.setLocNo(rs.getInt("loc_no"));
 					lesson.setLsnPerTime(rs.getInt("lsn_per_time"));
 					lesson.setLsnDays(rs.getInt("lsn_days"));
 					lesson.setLsnStarScore(rs.getFloat("레슨별점"));

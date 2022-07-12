@@ -17,7 +17,7 @@ public class Lesson {
 	private float lsnStarScore;	//레슨별점 : pjw
 	private float proStarScore;	//프로별점 : pjw
 	private int lsnStatus;
-	private int locationNo;	//지역테이블없애기로해서 생성 : 여기에 지역정보넣으라고하심 : pjw
+	private int locNo;	//지역테이블없애기로해서 생성 : 여기에 지역정보넣으라고하심 : pjw
 	private User user;
 	private java.sql.Date lsnUploadDt;
 	private List<LessonClsfc> lsnClsfcs;
@@ -28,8 +28,6 @@ public class Lesson {
 	
 	public Lesson(){}
 	
-	
-
 	public int getLsnNo() {
 		return lsnNo;
 	}
@@ -134,12 +132,12 @@ public class Lesson {
 		this.lsnStatus = lsnStatus;
 	}
 
-	public int getLocationNo() {
-		return locationNo;
+	public int getLocNo() {
+		return locNo;
 	}
 
-	public void setLocationNo(int locationNo) {
-		this.locationNo = locationNo;
+	public void setLocNo(int locNo) {
+		this.locNo = locNo;
 	}
 
 	public User getUser() {
@@ -193,12 +191,11 @@ public class Lesson {
 
 	@Override
 	public String toString() {
-//		return "Lesson [lsnNo=" + lsnNo + ", lsnTitle=" + lsnTitle + ", lsnIntro=" + lsnIntro + ", lsnLv=" + lsnLv
-//				+ ", lsnDays=" + lsnDays + ", lsnPrice=" + lsnPrice + ", lsnPerTime=" + lsnPerTime + ", lsnCntSum="
-//				+ lsnCntSum + ", lsnStarSum=" + lsnStarSum + ", lsnStarPplCnt=" + lsnStarPplCnt + ", lsnStarScore="
-//				+ lsnStarScore + ", proStarScore=" + proStarScore + ", lsnStatus=" + lsnStatus + ", locationNo="
-//				+ locationNo + ", user=" + user + ", lsnUploadDt=" + lsnUploadDt + ", lsnClsfcs=" + lsnClsfcs
-//				+ ", lines=" + lines + ", pro=" + pro + ", lsnReview=" + lsnReview + "]";
-		return lsnClsfcs + "입니다";
+		return "Lesson [lsnNo=" + lsnNo + ", lsnTitle=" + lsnTitle + ", lsnIntro=" + lsnIntro + ", lsnLv=" + lsnLv
+				+ ", lsnDays=" + lsnDays + ", lsnPrice=" + lsnPrice + ", lsnPerTime=" + lsnPerTime + ", lsnCntSum="
+				+ lsnCntSum + ", lsnStarSum=" + lsnStarSum + ", lsnStarPplCnt=" + lsnStarPplCnt + ", lsnStarScore="
+				+ lsnStarScore + ", proStarScore=" + proStarScore + ", lsnStatus=" + lsnStatus + ", locNo=" + locNo
+				+ ", user=" + user + ", lsnUploadDt=" + lsnUploadDt + ", lsnClsfcs=" + lsnClsfcs + ", lines=" + lines
+				+ ", pro=" + pro + ", lsnReview=" + lsnReview + "]";
 	}
 }
