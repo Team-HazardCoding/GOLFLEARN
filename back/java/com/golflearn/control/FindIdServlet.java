@@ -34,7 +34,7 @@ public class FindIdServlet extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		Map <String, Object> map= new LinkedHashMap<>();
 		map.put("status", 0);
-		map.put("msg", "인증코드 발송 실패");
+		map.put("msg", "id조회 실패");
 		String result = mapper.writeValueAsString(map);
 		
 		try {

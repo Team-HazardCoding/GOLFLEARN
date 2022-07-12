@@ -4,8 +4,15 @@ $(function() {
 	let $inputChkNewPwd = $("input[name=user_chknewpwd]");
 
 	let $form = $('form');
-	console.log($form);
-	$form.submit(function () {
+	$form.submit(function (event) {
+		if ($inputNewPwd.val() != $inputChkNewPwd.val()) {
+			$('#content.modal-body').html("비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요.");
+			$("button.btn-secondary").click(function () {
+				location.href = "http://localhost:1124/front/html/changepwd.html";
+				});
+			$inputNewPwd.focus();
+			return false;
+		}
 		let url = "http://localhost:1124/back/changepwd";
 		let  inputAuthUser, inputNewPwd, inputChkNewPwd;
 		
@@ -23,17 +30,25 @@ $(function() {
 			data: data,
 			success: function(jsonObj) {
 				if(jsonObj.status == 1){
-					location.href='http://localhost:1124/front/html/login.html';
-					alert("비밀번호가 변경되었습니다");
-					console.log(data);
+					$('#content.modal-body').html("고객님의 계정 비밀번호가 변경되었습니다.");
+					$("button.btn-secondary").click(function () {
+						location.href = "http://localhost:1124/front/html/login.html";
+						});
 				} else {
-					alert("비밀번호 변경 실패");
+					$('#content.modal-body').html("인증코드가 일치하지 않습니다. 인증코드를 정확하게 입력해주세요.");
+					$("button.btn-secondary").click(function () {
+						location.href = "http://localhost:1124/front/html/changepwd.html";
+					});
 				}
-			},
+			},	
 			error: function (jqXHR,textStatus,errorThrown) {
-				alert(jqXHR.status + ": " + jqXHR.statusText);
-			}
+				$('#content.modal-body').html("입력한 값이 올바르지 않습니다. 정확하게 입력해주세요.");
+				$("button.btn-secondary").click(function () {
+					location.href = "http://localhost:1124/front/html/changepwd.html";
+					});
+			},
 		});
+		event.preventDefault();
 		return false;
 	});
 });

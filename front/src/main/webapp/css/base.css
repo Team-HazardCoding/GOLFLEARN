@@ -1,0 +1,20 @@
+* {
+    margin:0 0;
+}
+
+article, aside, figure, footer, header, hgroup, section {
+    display: block;
+}
+
+/* .w3 {
+    
+} */
+
+body {
+    width: 100%;
+    height: 2000px;
+    min-height:100%;
+    position:relative;
+    padding-bottom:100px;
+
+}
