@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> map =  new HashMap<>();
 		map.put("status", 0);
-		map.put("msg", "로그인 실패");
+		map.put("msg", "아이디와 비밀번호가 일치하지 않습니다.");
 		String loginResult = mapper.writeValueAsString(map);
 //		String loginResult = "{\"status\":0 \"msg\":\"로그인 실패\"}";
 
@@ -56,18 +56,18 @@ public class LoginServlet extends HttpServlet {
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
 			rs = pstmt.executeQuery();
-
-			System.out.println(userId);
-			System.out.println(userPwd);
+			
+//			System.out.println(userId);
+//			System.out.println(userPwd);
 			if(rs.next()) {// 로그인 성공
 				map.put("status",1);
-				map.put("msg", "로그인 성공");
+				map.put("msg", "로그인 되었습니다.");
 				loginResult = mapper.writeValueAsString(map);
 				
 //				loginResult = "{\"status\":1 \"msg\":\"로그인 성공\"}";
 //				loginResult = "{\"status\":1}";
 				session.setAttribute("loginInfo", userId); // 세션객체 속성으로 로그인 정보 추가
-			} 
+			}
 
 		}catch (SQLException e) {
 			e.printStackTrace();

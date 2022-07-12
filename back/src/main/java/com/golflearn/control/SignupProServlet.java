@@ -24,7 +24,7 @@ public class SignupProServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+//		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json;charset=UTF-8");
 		
 		String userId = request.getParameter("user_id");
@@ -36,11 +36,6 @@ public class SignupProServlet extends HttpServlet {
 		java.sql.Date signupDt = new java.sql.Date(System.currentTimeMillis()); // 현재 날짜를 받아오는 것
 		String proCareer = request.getParameter("pro_career");
 		
-		ObjectMapper mapper = new ObjectMapper();
-		Map<String, Object> map = new HashMap<>();
-		map.put("status", 0);
-		map.put("msg", "가입실패");
-		String signupResult = mapper.writeValueAsString(map);
 		
 		//DB연결
 		Connection con = null;
@@ -48,6 +43,14 @@ public class SignupProServlet extends HttpServlet {
 		//SQL 송신
 		PreparedStatement pstmt = null;
 		int rs = 0;
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> map = new HashMap<>();
+		map.put("status", 0);
+		map.put("msg", "가입실패");
+		String signupResult = mapper.writeValueAsString(map);
+//		String signupResult= "{\"status\": 0 \"msg\": \" 가입실패 \"}";
+		
 		System.out.println(userId);
 		
 		try {
@@ -67,12 +70,13 @@ public class SignupProServlet extends HttpServlet {
 			// 결과값 DB로 전송
 			rs = pstmt.executeUpdate();
 			
+			
 			String insertProInfoSQL = "INSERT INTO pro_info(user_id, pro_career) VALUES(?,?)";
 			pstmt = con.prepareStatement(insertProInfoSQL);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, proCareer);
 			rs = pstmt.executeUpdate();
-			
+					
 			System.out.println(userId);
 			Upload upload = new Upload();
 			upload.uploadFiles(request, userId);

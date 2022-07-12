@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,9 @@
 
 <body>
     <h1> 레슨프로 회원가입 </h1>
-    <form class="singuppro" action="http://localhost1124/back/signuppro" method="post" enctype="multipart/form-data">
+    
+    <form class="signuppro" action="http://localhost:1124/back/signuppro" method="post" enctype="multipart/form-data">
+        
         <div id="id">
             아이디
             <input id="user_id" name="user_id" type="text" required>
@@ -49,8 +51,8 @@
             <input id="pro_career" name="pro_career" type="text">
         </div>
         <br>
-        <button name="signup" type="submit"> 가입하기 </button>
     </form>
+    <button name="signup" type="submit"> 가입하기 </button>
 </body>
 
 </html>
