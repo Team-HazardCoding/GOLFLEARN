@@ -15,7 +15,7 @@ public interface LessonRepository {
 	 * @param lesson 레슨
 	 * @throws AddException 레슨번호가 중복될 경우 "이미 존재하는 레슨입니다" 상세메시지를 갖는 예외가 발생한다
 	 */
-	public void insert(Lesson lesson) throws AddException;
+	public void insert(int lsn_no) throws AddException;
 	
 	/**
 	 * 레슨번호로 레슨검색한다
@@ -23,7 +23,7 @@ public interface LessonRepository {
 	 * @return 레슨객체
 	 * @throws FindException 레슨번호에 해당하는 상품이 없으면 "레슨이 없습니다" 상세메시지를 갖는 예외가 발생한다
 	 */
-	public Lesson selectByLsnNo(String userId, int lsnNo) throws FindException;
+	public Lesson selectByLsnNo(int lsnNo) throws FindException;
 	
 	/**
 	 * 모든 레슨을 조회한다.
