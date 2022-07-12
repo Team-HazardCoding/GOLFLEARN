@@ -22,7 +22,7 @@ public class LessonLine {
 	LessonReview lr = new LessonReview();
 	
 	public String toString() {
-		return "일단 간단히 3개만 " + lsnNo + " " + lsnExpDt + " " + stdtLsnStatus;
+		return "일단 간단히 3개만 " + lsnNo + " " + lsnExpDt + " " + stdtLsnStatus + " " + this.lsnReview;
 	}
 	//ViewLessonReview용 toString
 	public String toString(Lesson lsn, String lsnReview) {

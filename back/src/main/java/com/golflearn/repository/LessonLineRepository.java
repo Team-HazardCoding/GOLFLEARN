@@ -92,17 +92,18 @@ public class LessonLineRepository {
 				System.out.println(lr.toString(myStarScore));
 				System.out.println(ll.toString(le.toString(lsnTitle,lsnCntSum), lr.toString(myStarScore)));
 //				System.out.println(lines.get(0));
-				lines.add(ll);
+				lines.add(ll); 
+				
 				//쌤예시 
 //				Map<String,Object> map1 = new HashMap<>();
 //				map1.put("prod_no", prod_no);
 //				map1.put("prod_name", prod_name);
 //				map1.put("prod_price", prod_price);
 //				sample.add(map1); //List타입의 sample변수에 map을 저장해보았음 
-				return lines;
 				
 			}
-			throw new FindException(userId +"가 없습니다");
+			return lines;
+//			throw new FindException(userId +"가 없습니다");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new FindException(e.getMessage());
