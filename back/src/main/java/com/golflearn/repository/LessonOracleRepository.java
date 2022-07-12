@@ -24,7 +24,7 @@ public class LessonOracleRepository implements LessonRepository {
 		ResultSet rs = null;
 
 		String selectLsnNoSQL = "SELECT l.lsn_no, l.lsn_title, l.lsn_intro, l.lsn_star_ppl_cnt, "
-							  + "l.lsn_lv, l.lsn_price, l.user_id 프로아이디, l.loc_no, "
+							  + "l.lsn_lv, l.lsn_price, l.user_id 프로아이디, l.loc_no, l.lsn_cnt_sum, "
 							  + "l.lsn_per_time, l.lsn_days, TRUNC((l.lsn_star_sum / l.lsn_star_ppl_cnt), 2) 레슨별점, "
 							  + "TRUNC((SELECT SUM(lsn_star_sum/lsn_star_ppl_cnt)/COUNT(lsn_no) "
 							  		 + "FROM lesson "
@@ -69,6 +69,7 @@ public class LessonOracleRepository implements LessonRepository {
 					lesson.setLsnDays(rs.getInt("lsn_days"));
 					lesson.setLsnStarScore(rs.getFloat("레슨별점"));
 					lesson.setProStarScore(rs.getFloat("프로별점"));
+					lesson.setLsnCntSum(rs.getInt("lsn_cnt_sum"));
 					
 					User user = new User();
 					user.setUserID(rs.getString("프로아이디"));
