@@ -27,15 +27,11 @@ $(function(){
     // });
 
     //$(this).val 해서 val값 설정해줄 수 있음 
-    //레슨내역 주르르르르륵나오게 
+    //3)레슨내역 주르르르르륵나오게 
     
-
-
-    
-
     $.ajax({
         url : "/back/viewmypage",
-        // method : 'get',
+        method : 'get',
         success : function(jsonObj){
             // let lsn_line_no = jsonObj.ll.lsnLineNo;
             // let lsn_no = jsonObj.ll.lsnNo;
@@ -53,46 +49,35 @@ $(function(){
             // $('div.lsnlist2 span.crnt_lsn_cnt').html(crnt_lsn_cnt);
             // $('div.lsnlist2 span.lsn_cnt_sum').html(lsn_cnt_sum);
             // $('div.lsnlist2 span.lsn_status').html(stdt_lsn_status);
+            let jsonarr = jsonObj.ll;
             let $lsnObj = $('div.lsnlist');
-            $(jsonObj).each(function(i,element){
+            $(jsonarr).each(function(i,element){
                 $copyObj = $lsnObj.clone();
 
-                //*****여기서 ll [ JSON ] 으로 오는 정보를 어떻게 일일이 빼올지 고민 
-                let jsonarr = jsonObj.ll[i];
-                $(jsonarr).each(function(i){
-
-                
-                let lsn_line_no = jsonarr.lsnLineNo;
-                let lsn_no = jsonarr.lsnNo;
-                let lsn_title = jsonarr.lsn.lsnTitle;
-                let lsn_exp_dt = jsonarr.lsnExpDt;
-                let stdt_lsn_status = jsonarr.stdtLsnStatus;
-                let my_star_score = jsonarr.lsnReview.myStarScore;
-                let crnt_lsn_cnt = jsonarr.crntLsnCnt;
-                let lsn_cnt_sum = jsonarr.lsnCntSum;
-
-                console.log(Object.keys(jsonObj).length);
+                let lsn_line_no = element.lsnLineNo;
+                let lsn_no = element.lsnNo;
+                let lsn_title = element.lsn.lsnTitle;
+                let lsn_exp_dt = element.lsnExpDt;
+                let stdt_lsn_status = element.stdtLsnStatus;
+                let my_star_score = element.lsnReview.myStarScore;
+                let crnt_lsn_cnt = element.crntLsnCnt;
+                let lsn_cnt_sum = element.lsnCntSum;
                 console.log(lsn_line_no);
-                // let lsn_line_no = jsonObj.ll[0].lsnLineNo;
-                // let lsn_no = jsonObj.ll[0].lsnNo;
-                // let lsn_title = jsonObj.ll[0].lsn.lsnTitle;
-                // let lsn_exp_dt = jsonObj.ll[0].lsnExpDt;
-                // let stdt_lsn_status = jsonObj.ll[0].stdtLsnStatus;
-                // let my_star_score = jsonObj.ll[0].lsnReview.myStarScore;
-                // let crnt_lsn_cnt = jsonObj.ll[0].crntLsnCnt;
-                // let lsn_cnt_sum = jsonObj.ll[0].lsnCntSum;
-                
+
                 let lessonLine = '<ul>';
                 lessonLine += '<li><img src = "../lsn_images/' + lsn_line_no +'.jpg" alt="' + lsn_line_no + '번째레슨" width = "200" height = "200"></li>';
-                lessonLine += '<li><div>레슨번호: ' + lsn_line_no + '<span class = "this_lsn_no"></span></div></li>'
-                lessonLine += '<li><div>가져온레슨명: ' + lsn_title + '<span class = "title"></span></div></li>'
-                lessonLine += '<li><div>종료일자: ' + lsn_exp_dt + '<span class = "exp_date"></span></div></li>'
-                lessonLine += '<li><div>현재진행횟수: ' + crnt_lsn_cnt + '<span class = "crnt_lsn_cnt"></span></div></li>'
-                lessonLine += '<li><div>현재진행횟수: ' + lsn_cnt_sum + '<span class = "lsn_cnt_sum"></span></div></li>'
-                lessonLine += '<li><div>현재수강상태: ' + stdt_lsn_status + '<span class = "lsn_status"></span></div></li>'
+                lessonLine += '<li><div>레슨번호: <span class = "this_lsn_no">' + lsn_line_no + '</span></div></li>'
+                lessonLine += '<li><div>가져온레슨명: <span class = "title">' + lsn_title + '</span></div></li>'
+                lessonLine += '<li><div>종료일자: <span class = "exp_date">' + lsn_exp_dt + '</span></div></li>'
+                lessonLine += '<li><div>현재진행횟수: <span class = "crnt_lsn_cnt">' + crnt_lsn_cnt + '</span></div></li>'
+                lessonLine += '<li><div>현재진행횟수: <span class = "lsn_cnt_sum">' + lsn_cnt_sum + '</span></div></li>'
+                lessonLine += '<li><div>현재수강상태: <span class = "lsn_status">' + stdt_lsn_status + '</span></div></li>'
                 lessonLine += '</ul>'
+                lessonLine += '<input type="button" class = "add_review" value="레슨후기작성">'
+                lessonLine += '<input type="button" class = "modify_review" value="레슨후기수정">'
+                lessonLine += '<input type="button" class = "cancel_lsn" value="수강취소버튼">'
                 
-                $copyObj.find('div.lsndetail1').html(lessonLine);
+                $copyObj.find('div.lsndetail').html(lessonLine);
                 
                 $('div.lsn').append($copyObj);
                 
@@ -112,29 +97,35 @@ $(function(){
                 // $copyObj.find("li.lsn_status").html(stdt_lsn_status);
                 // $('div.lsn').append($copyObj);
             });
-
-
-
-                // $('div.lsnlist1>img').attr('src', '../images/' + prod_no + '.jpg').attr('alt', prod_no );
-                // $('div.lsnlist2 span.my_lsn_no').html(lsn_no);
-                // $('div.lsnlist2 span.title').html(lsn_title);
-                // $('div.lsnlist2 span.exp_date').html(lsn_exp_dt);
-                // $('div.lsnlist2 span.crnt_lsn_cnt').html(crnt_lsn_cnt);
-                // $('div.lsnlist2 span.lsn_cnt_sum').html(lsn_cnt_sum);
-                // $('div.lsnlist2 span.lsn_status').html(stdt_lsn_status);
         },
         error : function(jqXHR){
-            alert('오류 : ' + jqXHR.status + lsn_no);
+            alert('오류 : ' + jqXHR.status);
         }
-
     });
 
+    //4) 리뷰작성 눌렀을 때 누른 lsn_line_no, status 0 보내주기 
+    // let $addReviewObj = $('input.add_review');
+    
+    let $lsnListObj = $('div.lsn');
+    $lsnListObj.on('click', 'input[value=레슨후기작성]', function(){
+        let $lsnLineNoObj = $(this).parent().find('span.this_lsn_no');
+        let lsn_line_no = $lsnLineNoObj.html();
+        location.href = "/front/html/review.html?reviewCnt=0&lsn_line_no=" + lsn_line_no;
+    });
+    
+    // <input type="button" class = "add_review" value="레슨후기작성">
+    // <input type="button" class = "modify_review" value="레슨후기수정">
+    // <input type="button" class = "cancel_lsn" value="수강취소버튼"></input>
 
-
-
-
-
-
+    //5) 수정 눌렀을 때 누른 lsn_line_no, status 1 보내주기 
+        // location.href = "/front/html/viewproduct.html?prod_no=" + prod_no;
+    // let $modifyReviewObj = $('input.modify_review');
+    let $lsnListModiObj = $('div.lsn');
+    $lsnListModiObj.on('click', 'input[value=레슨후기수정]', function(){
+        let $lsnLineNoObj = $(this).parent().find('span.this_lsn_no');
+        let lsn_line_no = $lsnLineNoObj.html();
+        location.href = "/front/html/review.html?reviewCnt=1&lsn_line_no=" + lsn_line_no;
+    });
 
 
 

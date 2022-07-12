@@ -1,0 +1,27 @@
+form.submit .starform fieldset{
+    display: inline-block;
+    direction: rtl;
+    border: 0;
+}
+form.submit .starform fieldset legend{
+    text-align: left;
+}
+form.submit .starform input[type=radio]{
+    display: none;
+}
+form.submit .starform input[type=radio]:checked ~ label {
+    text-shadow: 0 0 0 #FFA500;
+}
+.starform label{
+    font-size : 3em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+form.submit .starform label:hover{
+    text-shadow: 0 0 0 #FFE5B4;
+}
+form.submit .starform label:hover ~ label {
+    text-shadow: 0 0 0 #FFE5B4;
+}
+
+

@@ -1,0 +1,17 @@
+div.stdtinfo>div.table{
+    display: table;
+    width : 70%;
+    min-width:600px;
+}
+div.stdtinfo>div.table>div.tr{
+    display: table-row;
+}
+div.stdtinfo>div.table>div.tr>div.td{
+    display: table-cell;
+}
+div.stdtinfo>div.table>div.tr>div.td{
+    vertical-align: middle;
+}
+span{
+    width:10%;
+}
