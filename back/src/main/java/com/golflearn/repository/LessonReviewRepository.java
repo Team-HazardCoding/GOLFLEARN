@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.golflearn.dto.Lesson;
 import com.golflearn.dto.LessonLine;
@@ -36,8 +38,13 @@ public class LessonReviewRepository {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				int lsnLineNo = rs.getInt("lsn_line_no");
 				String lsnTitle = rs.getString("lsn_title");
+				LessonLine ll = new LessonLine();
+				ll.setLsnLineNo(lsnLineNo);
+				
 				lesson.setLsnTitle(lsnTitle);
+				lesson.setLsnLine(ll);
 				return lesson;
 			}
 			throw new FindException(lessonLineNo +"번 레슨내역이 없습니다");

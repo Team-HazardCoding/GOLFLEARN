@@ -20,6 +20,7 @@ public class Lesson {
 	private ArrayList<LessonClsfc> lsnClfc;
 	private ArrayList<LessonLine> lsnLines;
 	private Location location;
+	private LessonLine lsnLine;
 	
 	//ViewLessonReview용 toString
 	public String toString() {
@@ -143,6 +144,14 @@ public class Lesson {
 	}
 	public void setLsnLocation(Location lsnLocation) {
 		this.location = lsnLocation;
+	}
+
+	public LessonLine getLsnLine() {
+		return lsnLine;
+	}
+
+	public void setLsnLine(LessonLine lsnLine) {
+		this.lsnLine = lsnLine;
 	}
 
 }

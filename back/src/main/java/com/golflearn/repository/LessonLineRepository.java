@@ -111,38 +111,43 @@ public class LessonLineRepository {
 			MyConnection.close(rs, pstmt, con);
 		}
 	}
-	public List<LessonLine> selectByProId(String userProId) throws FindException{
+	
+	
+	public List<Lesson> selectByProId(String userProId) throws FindException{
 		
 		//user_id 받아오기 
-		List<LessonLine> lines = new ArrayList<>();
-		
+//		List<LessonLine> lines = new ArrayList<>();
+		List<Lesson> lines = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		String selectLessonLineNo = 
-				"SELECT lsn_title, lsn_status\r\n"
+				"SELECT lsn_no, lsn_title, lsn_status\r\n"
 				+ "FROM lesson\r\n"
-				+ "WHERE user_id = ? ";
+				+ "WHERE user_id = ?";
 		try {
 			con = MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectLessonLineNo);
 			pstmt.setString(1, userProId);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
+				int lsnNo = rs.getInt("lsn_no");
 				String lsnTitle = rs.getString("lsn_title");
 				int lsnStatus = rs.getInt("lsn_status");
 				
+				
+				
 				Lesson le = new Lesson();
+				le.setLsnNo(lsnNo);
 				le.setLsnTitle(lsnTitle);
 				le.setLsnStatus(lsnStatus);
-				
-				LessonLine ll = new LessonLine();
-				ll.setLsn(le);
-				lines.add(ll);
-				return lines;
+				lines.add(le);
+//				LessonLine ll = new LessonLine();
+//				ll.setLsn(le);
+//				lines.add(ll);
 			}
-			throw new FindException(userProId + "가 없습니다");
+			return lines;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new FindException(e.getMessage());

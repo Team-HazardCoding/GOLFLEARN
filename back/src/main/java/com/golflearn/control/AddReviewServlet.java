@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.golflearn.dto.LessonReview;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.repository.LessonReviewRepository;
 
 /**
@@ -23,7 +23,8 @@ public class AddReviewServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		response.setContentType("text/plain;charset = utf-8");
+		response.setContentType("application/json;charset = utf-8");
+		ObjectMapper mapper = new ObjectMapper();
 		
 		//jquery에서 파라메터 받기 
 		String review = request.getParameter("review");

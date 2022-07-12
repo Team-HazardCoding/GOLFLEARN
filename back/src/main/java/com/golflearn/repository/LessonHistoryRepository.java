@@ -24,6 +24,7 @@ public class LessonHistoryRepository{
 		ResultSet rs = null;
 		String selectLessonLineNo = 
 				"SELECT ll.lsn_no \"레슨번호\", \r\n"
+				+ "       le.lsn_title \"레슨명\",\r\n"
 				+ "       ui.user_name \"수강생이름\", \r\n"
 				+ "       ui.user_phone \"연락처\", \r\n"
 				+ "       ui.user_email \"이메일\",\r\n"
@@ -36,7 +37,7 @@ public class LessonHistoryRepository{
 				+ "                    LEFT JOIN lesson_history lh ON (lh.lsn_line_no = ll.lsn_line_no)\r\n"
 				+ "                    JOIN lesson le ON (le.lsn_no = ll.lsn_no) \r\n"
 				+ "WHERE ll.lsn_no = ?\r\n"
-				+ "GROUP BY ll.lsn_no, ui.user_name, \r\n"
+				+ "GROUP BY ll.lsn_no, ui.user_name, le.lsn_title, \r\n"
 				+ "        ui.user_phone, ui.user_email, \r\n"
 				+ "        ll.lsn_exp_dt, le.lsn_cnt_sum, \r\n"
 				+ "        ll.stdt_lsn_status";
@@ -48,6 +49,7 @@ public class LessonHistoryRepository{
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int lsnNo = rs.getInt("레슨번호");
+				String lsnTitle = rs.getString("레슨명");
 				String userName = rs.getString("수강생이름");
 				String userPhone = rs.getString("연락처");
 				String userEmail = rs.getString("이메일");
@@ -59,11 +61,11 @@ public class LessonHistoryRepository{
 				
 				Lesson l = new Lesson();
 				l.setLsnCntSum(lsnCntSum);
+				l.setLsnTitle(lsnTitle);
 				
 				LessonHistory lh = new LessonHistory();
 				lh.setLsnStartDt(lsnStartDt);
 				lh.setCurrentLsnCnt(currentLsnCnt);
-				System.out.println(lh);
 			
 				User ui = new User();
 				ui.setUserName(userName);
@@ -81,9 +83,8 @@ public class LessonHistoryRepository{
 				
 				lines.add(ll);
 				System.out.println(lines);
-				return lines;
 			}
-			throw new FindException(lessonNo +"가 없습니다");
+			return lines;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new FindException(e.getMessage());
