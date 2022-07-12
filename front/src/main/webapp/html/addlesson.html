@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-	<link rel="stylesheet" href="../css/viewlesson.css">
+	<link rel="stylesheet" href="../css/addlesson.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- <script src="../jq/menubar.js"></script> -->
-	<script src="../jq/viewlesson.js"></script>
+	<script src="../jq/addlesson.js"></script>
 </head>
 <body>
     <!--헤더(메뉴바) : 메인에서한 메뉴바.js가져오기-->
@@ -22,11 +22,47 @@
     <!--본문섹션(레슨간략정보)-->
 	<section>
         <article>
-            
+					<div class="addlesson">
+						<form method="post" action="http://localhost:1124/back/addlesson">
+							<div class="table">
+								<div class="tr1">
+									<div class="td1">
+										<label><h1>레슨 등록 및 수정</h1></label>
+									</div>
+								</div>
+								<div class="tr2">
+									<div class="td1">
+										<img src="" alt=""/>
+										이미지파일<br>
+										<label>레슨 썸네일 첨부</label>
+										<input type="file" name="lessonThumbnail" accept="image/*">
+									</div>
+									<div class="td2">
+										<ul>
+											<li>레슨분류:<input type="checkbox" class="club_no"></li> 
+											<li>레슨명:<input type="text" class="lsn_title"></li> 
+											<li>레슨비:<input type="text" class="lsn_price"></li> 
+											<li>레슨지역:<input type="text" class="loc_no"></li>	
+											<li>레슨레벨:<input type="text" class="lsn_price"></li>	 
+											<li>레슨횟수:<input type="text" class="lsn_"></li>	 	
+											<li>회당 레슨시간:<input type="text" class="club_no"></li>
+											<li>레슨소개:<input type="text" class="club_no"></li>
+											<li>유효기간:<input type="text" class="club_no"></li>
+										</ul>
+									</div>
+								</div>
+								<div class="tr3">
+									<div class="tr1">
+										<li><button>등록</button> 										
+									</div>
+								</div>								
+							</div>
+						</form>
+					</div>
         </article>
-    </section>    
-    <hr>
-    <!--풋터-->
+  </section>    
+  <hr>
+  <!--풋터-->
 	<footer>
 		<aside>
 				<ul class="ul">
