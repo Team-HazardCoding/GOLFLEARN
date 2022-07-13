@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="../css/mypropage.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../jq/mypropage.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     <title>GolfLearn / 프로 마이페이지</title>
 </head>
+<div w3-include-html="header.html" class="w3"></div>
 <body>
-    
+    <h2>My Lesson</h2>
     <section>
-        <div>My Lesson</div>
             <div class = "lsn">
                 <div class = "lsnlist">
-                    <div class = "lsndetail"></div>
+                    <div class = "lsndetail">
+                    </div>
                 </div>
                 <!-- <div class = "lsnlist">
                     <img src = "/images" alt="3번째레슨">
@@ -28,6 +30,10 @@
                 </div>> -->
             </div>
     </section>
-    
 </body>
+<div w3-include-html="footer.html" class="w3"></div>
+
+<script>
+    w3.includeHTML();
+</script>
 </html>

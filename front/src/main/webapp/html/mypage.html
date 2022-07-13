@@ -7,55 +7,38 @@
     <link rel="stylesheet" href="../css/mypage.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../jq/mypage.js"></script>
-    <title>Document</title>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <title>GolfLearn / 마이페이지</title>
 </head>
+<div w3-include-html="header.html" class="w3"></div>
 <body>
-    <h1>dfdfdfdf</h1>
-    
+    <h2>My Lesson</h2>
     <section>
-        <div>My Lesson</div>
             <div class = "lsn">
                 <div class = "lsnlist">
-                    <div class = "lsndetail"></div>
+                    <div class = "lsndetail">
+                    </div>
                 </div>
-                    <!-- 이미지명 productlist.js처럼 바꾸기  -->
-                    <!-- <img src = "../lsn_images/11.PNG" alt="1번째레슨" width = "200" height = "200">
-                    <div>레슨번호: <span class = "this_lsn_no"></span></div>
-                    <div>가져온레슨명: <span class = "title"></span></div>
-                    <div>종료일자: <span class = "exp_date"></span></div>
-                    <div>현재진행횟수: <span class = "crnt_lsn_cnt"></span></div>
-                    <div>현재진행횟수: <span class = "lsn_cnt_sum"></span></div> 
-                    <div>현재수강상태: <span class = "lsn_status"></span></div>
-                    <input type="button" class = "add_review" value="레슨후기작성">
-                    <input type="button" class = "modify_review" value="레슨후기수정">
-                    <input type="button" class = "cancel_lsn" value="수강취소버튼"> -->
-                <!-- <div class = "lsnlist2">
-                    <img src = "../lsn_images/golf_lesson.PNG" alt="2번째레슨" width = "200" height = "200">
-                    <div>나의레슨번호: <span class = "my_lsn_no"></span></div>
-                    <div>가져온레슨명: <span class = "title"></span></div>
-                    <div>종료일자: <span class = "exp_date"></span></div>
-                    <div>현재진행횟수: <span class = "crnt_lsn_cnt"></span></div>
-                    <div>현재진행횟수: <span class = "lsn_cnt_sum"></span></div> 
-                    <div>현재수강상태: <span class = "lsn_status"></span></div>
-                    <input type="button" class = "add_review" value="레슨후기작성">
-                    <input type="button" class = "modify_review" value="레슨후기수정">
-                    <input type="button" class = "cancel_lsn" value="수강취소버튼">
-                </div>
-                <div class = "lsnlist3">
-                    <img src = "../lsn_images/golf_lesson_woman.PNG" alt="3번째레슨" width = "200" height = "200">
-                    <div>나의레슨번호: <span class = "my_lsn_no"></span></div>
-                    <div>가져온레슨명: <span class = "title"></span></div>
-                    <div>종료일자: <span class = "exp_date"></span></div>
-                    <div>현재진행횟수: <span class = "crnt_lsn_cnt"></span></div>
-                    <div>현재진행횟수: <span class = "lsn_cnt_sum"></span></div> 
-                    <div>현재수강상태: <span class = "lsn_status"></span></div>
-                    <input type="button" class = "add_review" value="레슨후기작성">
-                    <input type="button" class = "modify_review" value="레슨후기수정">
-                    <input type="button" class = "cancel_lsn" value="수강취소버튼">
-                </div>> -->
             </div>
-        </div>
     </section>
+                
+            <!-- '<ul>';
+                    '<li><img src = "../lsn_images/' + lsn_line_no +'.jpg" alt="' + lsn_line_no + '번째레슨" width = "200" height = "200"></li>';
+                    '<li><div>레슨번호: <span class = "this_lsn_no">' + lsn_line_no + '</span></div></li>'
+                    '<li><div>가져온레슨명: <span class = "title">' + lsn_title + '</span></div></li>'
+                    '<li><div>종료일자: <span class = "exp_date">' + lsn_exp_dt + '</span></div></li>'
+                    '<li><div>현재진행횟수: <span class = "crnt_lsn_cnt">' + crnt_lsn_cnt + '</span></div></li>'
+                    '<li><div>현재진행횟수: <span class = "lsn_cnt_sum">' + lsn_cnt_sum + '</span></div></li>'
+                    '<li><div>현재수강상태: <span class = "lsn_status">' + stdt_lsn_status + '</span></div></li>'
+                '</ul>'
+                    '<input type="button" class = "add_review" value="레슨후기작성">'
+                    '<input type="button" class = "modify_review" value="레슨후기수정">'
+                    '<input type="button" class = "cancel_lsn" value="수강취소버튼">' -->
     
 </body>
+<div w3-include-html="footer.html" class="w3"></div>
+
+<script>
+    w3.includeHTML();
+</script>
 </html>
