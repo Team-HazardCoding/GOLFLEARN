@@ -1,0 +1,42 @@
+@import url(base.css);
+div.no{
+    float : left;
+    position: relative;
+}
+img {
+    width : 100%;
+    float:left;
+}
+span.no{
+    /* display: block; */
+    width : 100%;
+}
+div.context{
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+}
+div.lsndetail{
+    width : 30%;
+    /* border: 1px solid; */
+    display: inline;
+    /* display: flex; */
+    /* display: inline-block; */
+}
+div.lsnlist{
+    width : 100%;
+    /* border: 1px solid;
+    display: inline;
+    display: flex; */
+}
+div.lsn{
+    width : 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+div.title{
+    text-align: center;
+}

@@ -1,3 +1,15 @@
+@import url(base.css);
 .lsnlist{
     border:1px solid;
+}
+div.lsnlist {
+    width : 30%;
+    display: inline-block;
+}
+/* div.lsndetail {
+    display: inline-block;
+} */
+ul>li{
+    display: flex;
+    justify-content: space-between;
 }

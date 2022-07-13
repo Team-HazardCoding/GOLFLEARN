@@ -1,3 +1,4 @@
+@import url(base.css);
 form.submit .starform fieldset{
     display: inline-block;
     direction: rtl;
@@ -23,5 +24,38 @@ form.submit .starform label:hover{
 form.submit .starform label:hover ~ label {
     text-shadow: 0 0 0 #FFE5B4;
 }
+div.body{
+    width : 70%;
+    margin:auto;
+    text-align: center;
+    background-color: antiquewhite;
+}
 
-
+form.submit{
+    text-align: left;
+    width : 80%;
+}
+input.lsn_line_no{
+    display: none;
+}
+img{
+    float : left;
+    width : 60%;
+    height : 80%;
+}
+span.lsn_title{
+    float : left;
+    position: relative;
+    margin : 50px;
+    font-size: x-large;
+}
+div.bottom{
+    float : left;
+}
+div.top{
+    width : 95%;
+}
+fieldset{
+    display: inline-block;
+    /* float: left; */
+}
