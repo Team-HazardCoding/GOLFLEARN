@@ -1,13 +1,29 @@
 $(function() {
+    let url = 'http://localhost:1124/back/main';
+
+
     $.ajax({
-        url: 'http://localhost:1124/back/main',
+        url: url,
         success: function(jsonObj) {
             //card
-            // console.log(jsonObj);
-            // console.log(jsonObj.lsns);
+            $sidebarObj = $('div#sidebar');
+            var arr = [];
+            let sido = '<ul>';
+            $(jsonObj.sido).each(function(key, item) {
+                // console.log(Object.values(item));
+                $keyObj = Object.keys(item);
+                $itemObj = Object.values(item);
+                for ( let i = 0; i < $itemObj.length; i++ ) {
+                    arr.push($itemObj[i]);
+                    console.log($keyObj);
+                    sido += '<li class="sido" name="sido" value="' + $keyObj[i] + '"';
+                    sido+= '>' + $itemObj[i] + '</li>';
+                }
+            })
+            sido += '</ul>';
+            $sidebarObj.append(sido);
 
             $lsnObj = $('div.col');
-            
             $(jsonObj.lsns).each(function(index, item) {
                 console.log(item.user.userName + "  " + item.locNo);
 
@@ -32,9 +48,11 @@ $(function() {
                 // $liObj.html(item.prod_name); // li의 텍스트 값을 prod_name의 값으로 변경함
                 $copyObj.html(product);
                 $('div#card-container').append($copyObj);
-                // $table.append($copyObj); // table이 감싸고 있는 태그이기 때문에 table에 clone한 copyObj를 append 시켜줌
             });   
             $lsnObj.hide(); // 복제본이 아닌 td태그를 숨김
+
+
+			return false;
         }, 
         error: function(jqXHR) {
             alert("error: " + jqXHR.status);

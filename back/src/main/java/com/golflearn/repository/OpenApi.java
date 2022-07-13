@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class OpenApi {
 	// exception try catch 해줘야함
-	public String siguApi(String siguVal) throws Exception{
+	public List<Map<String, String>> sidoApi() throws Exception{
 		String serviceKey = "44228818-3486-397D-A167-6B8B05C5ACEC";
 		String domain = "www.golflearn.com/main.html";
 
@@ -50,25 +50,24 @@ public class OpenApi {
 			resultMap.put(properties.get("ctprvn_cd"),	properties.get("ctp_kor_nm"));
 			resultList.add(resultMap);
 		}
-		resultJSONStr = mapper.writeValueAsString(resultList);
-		return resultJSONStr;
+//		resultJSONStr = mapper.writeValueAsString(resultList);
+		return resultList;
 	}
 
-	public String sidoApi(String sidoVal) throws Exception{
+	public List<Map<String, String>> siguApi(String siguVal) throws Exception{
 		String serviceKey = "44228818-3486-397D-A167-6B8B05C5ACEC";
 		String domain = "www.golflearn.com/main.html";
-		String sido = "full_nm"; //매개변수- 시도
-		String sigu = "sig_kor_nm"; //매개변수- 시구
-		String siguOrSidoVal = sidoVal;
-		String fullNm = "";
-
+		String sigCd = "sig_cd"; //매개변수- 시도
+//		String sigu = "sig_kor_nm"; //매개변수- 시구
+//		String fullNm = "";
+		System.out.println(siguVal);
 		//각각의 정보를 넣어줍니다.
 		StringBuilder urlBuilder = new StringBuilder("http://api.vworld.kr/req/data?service=data&request=GetFeature&data=LT_C_ADSIGG_INFO"); /* URL */
 
 		urlBuilder.append("&" + URLEncoder.encode("key", "UTF-8") + "=" + serviceKey);
 		urlBuilder.append("&" + URLEncoder.encode("domain", "UTF-8") + "=" + domain);
-		urlBuilder.append("&" + URLEncoder.encode("attrFilter","UTF-8") + "=" + sido + ":like:");
-		urlBuilder.append(URLEncoder.encode(siguOrSidoVal, "UTF-8"));
+		urlBuilder.append("&" + URLEncoder.encode("attrFilter","UTF-8") + "=" + sigCd + ":like:");
+		urlBuilder.append(URLEncoder.encode(siguVal, "UTF-8"));
 		urlBuilder.append("&" + URLEncoder.encode("geometry","UTF-8") + "=" + "false");
 		urlBuilder.append("&" + URLEncoder.encode("size","UTF-8") + "=" + 50);
 
@@ -97,18 +96,8 @@ public class OpenApi {
 			resultMap.put(properties.get("sig_cd"),	properties.get("sig_kor_nm"));
 			resultList.add(resultMap);
 		}
-		resultJSONStr = mapper.writeValueAsString(resultList);
-		return resultJSONStr;
-	}
-	public static void main(String[] args) throws Exception {
-		OpenApi api = new OpenApi();
-		
-		String test2Val = api.siguApi("서울");
-		System.out.println(test2Val);
-		
-		String testVal = api.sidoApi("서울");
-		System.out.println(testVal);
-		
+//		resultJSONStr = mapper.writeValueAsString(resultList);
+		return resultList;
 	}
 }
 

@@ -179,7 +179,7 @@ public class LessonOracleRepository implements LessonRepository {
 				
 				Lesson lsn = new Lesson(lsnNo, lsnTitle, lsnUploadDt, lsnStarPoint, user, locNo); // 생성자로 고칠수 있는 부분
 				// 레슨객체를 레슨리스트객체에 추가시킴
-				lsn.toString(); 
+//				lsn.toString(); 
 				lsnList.add(lsn);
 				System.out.println("lsn객체 만들어짐");
 			}

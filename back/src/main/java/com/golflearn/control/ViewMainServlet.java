@@ -2,6 +2,7 @@ package com.golflearn.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import com.golflearn.dto.Lesson;
 import com.golflearn.exception.FindException;
 import com.golflearn.repository.LessonOracleRepository;
 import com.golflearn.repository.LessonRepository;
+import com.golflearn.repository.OpenApi;
 
 @WebServlet("/main")
 public class ViewMainServlet extends HttpServlet {
@@ -27,6 +29,7 @@ public class ViewMainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");	
 		PrintWriter out = response.getWriter();
+		
 		String result = "";
 		LessonRepository repo = new LessonOracleRepository();
 		try {
@@ -36,27 +39,37 @@ public class ViewMainServlet extends HttpServlet {
 			
 			Map<String, Object> map = new HashMap<>();
 			List<Lesson> lsnList = repo.selectAll();
-			System.out.println("--------------------test ----------------");
 //			map.put("status", 1);
-			map.put("lsns", lsnList);//
-			
-			request.setAttribute("lsns", lsnList);
+			// 광역시들을 메인에 보여주는 코드
+			OpenApi api = new OpenApi();
+			List sidoList = new ArrayList();
+
+			try {
+				map.put("lsns", lsnList);//
+				
+				map.put("sido", api.sidoApi());
+				
+				request.setAttribute("lsns", lsnList);
+				request.setAttribute("sido", api.sidoApi());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			// String타입으로 변환
 			String jsonValue = mapper.writeValueAsString(map);
-			System.out.println("jsonValue :"+ jsonValue);
+//			System.out.println("jsonValue :"+ jsonValue);
 			
  			result = mapper.writeValueAsString(map);
-			System.out.println("result :" + result);
+//			System.out.println("result :" + result);
 			
 			out.print(result);
 		} catch (FindException e) {
 			e.printStackTrace();
 			Map<String, Object> map = new HashMap<>();
-//			map.put("status", 0);
+
 			map.put("msg", e.getMessage());
 			ObjectMapper mapper = new ObjectMapper();
 			result = mapper.writeValueAsString(map);
-			System.out.println("result: " + result);
+//			System.out.println("result: " + result);
 			out.print(result);
 		}
 		
