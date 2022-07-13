@@ -21,6 +21,7 @@ public class Lesson {
 	private ArrayList<LessonLine> lsnLines;
 	private Location location;
 	private LessonLine lsnLine;
+	private String strLsnUploadDt;
 	
 	//ViewLessonReview용 toString
 	public String toString() {
@@ -152,6 +153,14 @@ public class Lesson {
 
 	public void setLsnLine(LessonLine lsnLine) {
 		this.lsnLine = lsnLine;
+	}
+
+	public String getStrLsnUploadDt() {
+		return strLsnUploadDt;
+	}
+
+	public void setStrLsnUploadDt(String strLsnUploadDt) {
+		this.strLsnUploadDt = strLsnUploadDt;
 	}
 
 }

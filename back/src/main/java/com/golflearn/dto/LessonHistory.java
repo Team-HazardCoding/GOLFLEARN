@@ -8,6 +8,9 @@ public class LessonHistory {
 	private Date lsnChkDt;
 	private Date lsnStartDt;
 	private int currentLsnCnt;
+	private String strLsnChkDt;
+	private String strLsnStartDt;
+	
 	
 	public int getLsnLineNo() {
 		return lsnLineNo;
@@ -38,6 +41,18 @@ public class LessonHistory {
 	}
 	public void setCurrentLsnCnt(int currentLsnCnt) {
 		this.currentLsnCnt = currentLsnCnt;
+	}
+	public String getStrLsnStartDt() {
+		return strLsnStartDt;
+	}
+	public void setStrLsnStartDt(String strLsnStartDt) {
+		this.strLsnStartDt = strLsnStartDt;
+	}
+	public String getStrLsnChkDt() {
+		return strLsnChkDt;
+	}
+	public void setStrLsnChkDt(String strLsnChkDt) {
+		this.strLsnChkDt = strLsnChkDt;
 	}
 	
 }

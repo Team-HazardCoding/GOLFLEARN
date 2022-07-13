@@ -17,12 +17,15 @@ public class LessonLine {
 	private LessonReview lsnReview;
 	private LessonHistory lsnHistory;
 	private int crntLsnCnt;
+	private String strLsnExpDt;
+	private String strLsnAplyDt;
+	
 	
 	Lesson le = new Lesson();
 	LessonReview lr = new LessonReview();
 	
 	public String toString() {
-		return "일단 간단히 3개만 " + lsnNo + " " + lsnExpDt + " " + stdtLsnStatus + " " + this.lsnReview;
+		return "일단 간단히 3개만 " + lsnNo + " " + strLsnExpDt + " " + stdtLsnStatus + " " + this.lsnReview;
 	}
 	//ViewLessonReview용 toString
 	public String toString(Lesson lsn, String lsnReview) {
@@ -139,6 +142,18 @@ public class LessonLine {
 	}
 	public void setCrntLsnCnt(int crntLsnCnt) {
 		this.crntLsnCnt = crntLsnCnt;
+	}
+	public String getStrLsnExpDt() {
+		return strLsnExpDt;
+	}
+	public void setStrLsnExpDt(String strLsnExpDt) {
+		this.strLsnExpDt = strLsnExpDt;
+	}
+	public String getStrLsnAplyDt() {
+		return strLsnAplyDt;
+	}
+	public void setStrLsnAplyDt(String strLsnAplyDt) {
+		this.strLsnAplyDt = strLsnAplyDt;
 	}
 	
 

@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +70,8 @@ public class LessonLineRepository {
 				int myStarScore = rs.getInt("내가준별점");
 				int crntLsnCnt = rs.getInt("레슨진행횟수");  
 				int lsnCntSum = rs.getInt("총레슨횟수");
+				SimpleDateFormat format = new SimpleDateFormat("yyyy년-MM월-dd일");
+				String strLsnExpDt = format.format(lsnExpDt);
 				
 				//여기에 crntLsnCnt없음 
 				Lesson le = new Lesson();
@@ -82,7 +85,8 @@ public class LessonLineRepository {
 				LessonLine ll = new LessonLine();
 				ll.setLsnNo(lsnNo);
 				ll.setLsnLineNo(lsnLineNo);
-				ll.setLsnExpDt(lsnExpDt);
+//				ll.setLsnExpDt(lsnExpDt);
+				ll.setStrLsnExpDt(strLsnExpDt);
 				ll.setStdtLsnStatus(stdtLsnStatus);
 				ll.setCrntLsnCnt(crntLsnCnt);
 				ll.setLsn(le);
@@ -136,8 +140,7 @@ public class LessonLineRepository {
 				String lsnTitle = rs.getString("lsn_title");
 				int lsnStatus = rs.getInt("lsn_status");
 				
-				
-				
+			
 				Lesson le = new Lesson();
 				le.setLsnNo(lsnNo);
 				le.setLsnTitle(lsnTitle);

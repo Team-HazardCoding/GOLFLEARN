@@ -8,6 +8,8 @@ public class LessonReview {
 	private String review;
 	private Date reviewDt;
 	private Date reviewEditDt;
+	private String strReviewDt;
+	private String strReviewEditDt;
 	//세터 게터 메서드 
 	//레슨내역번호
 	
@@ -58,6 +60,18 @@ public class LessonReview {
 	}
 	public void setReviewEditDt(Date reviewEditDt) {
 		this.reviewEditDt = reviewEditDt;
+	}
+	public String getStrReviewEditDt() {
+		return strReviewEditDt;
+	}
+	public void setStrReviewEditDt(String strReviewEditDt) {
+		this.strReviewEditDt = strReviewEditDt;
+	}
+	public String getStrReviewDt() {
+		return strReviewDt;
+	}
+	public void setStrReviewDt(String strReviewDt) {
+		this.strReviewDt = strReviewDt;
 	}
 	
 

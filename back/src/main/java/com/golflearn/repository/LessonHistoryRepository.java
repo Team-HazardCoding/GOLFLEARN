@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +48,7 @@ public class LessonHistoryRepository{
 			pstmt = con.prepareStatement(selectLessonLineNo);
 			pstmt.setInt(1, lessonNo);
 			rs = pstmt.executeQuery();
+			SimpleDateFormat format = new SimpleDateFormat("yyyy년-MM월-dd일");
 			while(rs.next()) {
 				int lsnNo = rs.getInt("레슨번호");
 				String lsnTitle = rs.getString("레슨명");
@@ -58,13 +60,23 @@ public class LessonHistoryRepository{
 				int currentLsnCnt = rs.getInt("현재수업횟수");
 				int lsnCntSum = rs.getInt("총수업횟수");
 				int stdtLsnStatus = rs.getInt("수강생레슨진행상태");
+				String strLsnExpDt = format.format(lsnExpDt);
+				String strLsnStartDt;
+				System.out.println(lsnStartDt);
+				if (lsnStartDt == null) {
+					strLsnStartDt = "수강예정";
+				}else {
+					strLsnStartDt = format.format(lsnStartDt); 
+				};
 				
+				System.out.println(strLsnStartDt);
 				Lesson l = new Lesson();
 				l.setLsnCntSum(lsnCntSum);
 				l.setLsnTitle(lsnTitle);
 				
 				LessonHistory lh = new LessonHistory();
-				lh.setLsnStartDt(lsnStartDt);
+//				lh.setLsnStartDt(lsnStartDt);
+				lh.setStrLsnStartDt(strLsnStartDt);
 				lh.setCurrentLsnCnt(currentLsnCnt);
 			
 				User ui = new User();
@@ -74,7 +86,8 @@ public class LessonHistoryRepository{
 				
 				LessonLine ll = new LessonLine();
 				ll.setLsnNo(lsnNo);
-				ll.setLsnExpDt(lsnExpDt);
+//				ll.setLsnExpDt(lsnExpDt);
+				ll.setStrLsnExpDt(strLsnExpDt);
 				ll.setStdtLsnStatus(stdtLsnStatus);
 				
 				ll.setLsn(l);
