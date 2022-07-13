@@ -5,7 +5,7 @@ $(function(){
     //일일이 달아줘야하는 경우 설정하기 
     let $viewlsnObj = $('div.lsnlist');
     $viewlsnObj.click(function(){
-        // location.href("/front/html/종우가정한링크")
+        // location.href("/front/html/viewlesson.html");
         $(location).attr('href', '/front/html/mypropage.html'); //테스트용
     });
     
@@ -57,22 +57,29 @@ $(function(){
                 let lsn_line_no = element.lsnLineNo;
                 let lsn_no = element.lsnNo;
                 let lsn_title = element.lsn.lsnTitle;
-                let lsn_exp_dt = element.lsnExpDt;
+                let lsn_exp_dt = element.strLsnExpDt;
                 let stdt_lsn_status = element.stdtLsnStatus;
                 let my_star_score = element.lsnReview.myStarScore;
                 let crnt_lsn_cnt = element.crntLsnCnt;
-                let lsn_cnt_sum = element.lsnCntSum;
-                console.log(lsn_line_no);
+                let lsn_cnt_sum = element.lsn.lsnCntSum;
+                
+                if (stdt_lsn_status == 0){
+                    stdt_lsn_status = '수강예정';
+                }else if (stdt_lsn_status == 1){
+                    stdt_lsn_status = '수강중';
+                }else{
+                    stdt_lsn_status = '수강완료';
+                };
 
-                let lessonLine = '<ul>';
-                lessonLine += '<li><img src = "../lsn_images/' + lsn_line_no +'.jpg" alt="' + lsn_line_no + '번째레슨" width = "200" height = "200"></li>';
-                lessonLine += '<li><div>레슨번호: <span class = "this_lsn_no">' + lsn_line_no + '</span></div></li>'
-                lessonLine += '<li><div>가져온레슨명: <span class = "title">' + lsn_title + '</span></div></li>'
-                lessonLine += '<li><div>종료일자: <span class = "exp_date">' + lsn_exp_dt + '</span></div></li>'
-                lessonLine += '<li><div>현재진행횟수: <span class = "crnt_lsn_cnt">' + crnt_lsn_cnt + '</span></div></li>'
-                lessonLine += '<li><div>현재진행횟수: <span class = "lsn_cnt_sum">' + lsn_cnt_sum + '</span></div></li>'
-                lessonLine += '<li><div>현재수강상태: <span class = "lsn_status">' + stdt_lsn_status + '</span></div></li>'
-                lessonLine += '</ul>'
+                
+                let lessonLine = '<div>레슨번호: <span class = "this_lsn_no">' + lsn_line_no + '</span></div>'
+                lessonLine += '<img src = "../lsn_images/' + lsn_line_no +'.jpg" alt="' + lsn_line_no + '번째레슨" width = "200" height = "200">';
+                lessonLine += '<div>레슨명: <span class = "title">' + lsn_title + '</span></div>'
+                lessonLine += '<div>종료일자: <span class = "exp_date">' + lsn_exp_dt + '</span></div>'
+                lessonLine += '<div>현재레슨횟수: <span class = "crnt_lsn_cnt">' + crnt_lsn_cnt + '회</span></div>'
+                lessonLine += '<div>총레슨횟수: <span class = "lsn_cnt_sum">' + lsn_cnt_sum + '회</span></div>'
+                lessonLine += '<div>진행횟수 / 잔여횟수: <span class = "lsn_cnt_sum">' +crnt_lsn_cnt + "/" + lsn_cnt_sum + '회</span></div>'
+                lessonLine += '<input type="button" value="' + stdt_lsn_status + '"><span class = "lsn_status">' + stdt_lsn_status + '</span></div>'
                 lessonLine += '<input type="button" class = "add_review" value="레슨후기작성">'
                 lessonLine += '<input type="button" class = "modify_review" value="레슨후기수정">'
                 lessonLine += '<input type="button" class = "cancel_lsn" value="수강취소버튼">'
