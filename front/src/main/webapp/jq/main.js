@@ -26,7 +26,7 @@ $(function() {
                 console.log(item.user.userName + "  " + item.locNo);
 
                 let product = '<div class="lsn">';
-                product +='<img src="/images/"' + item.user.userId + '/LessonThumbnail.jpeg">';// 각레슨의 이미지경로 다시 설정해야함 
+                product +='<img src="/images/"' + item.user.userId + '/LessonThumbnail.jpeg">';// 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
                 product +='<div class="lsn_content">';
                 product +='<h5 class="lsn_title">' + item.lsnTitle + '</h5>';
                 product +='<p class="prod_price">프로이름 : '+item.user.userName + '</p>';
@@ -34,23 +34,12 @@ $(function() {
                 product +='<p class="star_point">별점  : '+ item.lsnStarPoint + '</p></div>';
                 product +='</div>';
                 
-                console.log(product);
-
-                // let $table = $('div.col'); // 복제본 append 할 상대
+                // console.log(product);
                 let $copyObj = $lsnObj.clone(); //복제본 생성
-                // console.log($copyObj.text());
-
-                // $titleObj.html('<div>title</div>');
-                // item.lsn_title
-                // $imgObj.attr("src","../img/" + item.user.userName + "thumbnail.jpeg"); // 이미지 href 속성 변경하기
-                // $imgObj.attr("alt", item.user.userName); // 이미지의 alt 속성을 변경함
-                // $liObj.html(item.prod_name); // li의 텍스트 값을 prod_name의 값으로 변경함
                 $copyObj.html(product);
                 $('div#card-container').append($copyObj);
             });   
             $lsnObj.hide(); // 복제본이 아닌 td태그를 숨김
-
-			// console.log($('div#card-container div.col>div.lsn>div.lsn_content>h5.lsn_title').text());
 
 			return false;
         }, 
