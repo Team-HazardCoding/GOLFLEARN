@@ -6,9 +6,9 @@ $(function(){
 
 
     //1) 로드될때 수정이면 내용 출력되게...?
-    $titleObj = $('div.lsn_title');
+    $titleObj = $('span.lsn_title');
     $lineNoObj = $('input.lsn_line_no');
-    $reviewObj = $('input.review_context');
+    $reviewObj = $('textarea.review_context');
     $starScoreObj = $('div.starform');
 
     //마이페이지에서 넘어올때 상태값 주고 querystring 으로 받기
@@ -31,7 +31,7 @@ $(function(){
                 // $lineNoObj.html(lsn_line_no);
                 console.log("작성으로 왔다");
             },
-            error : function(){
+            error : function(jqXHR){
                 alert('오류 : ' + jqXHR.status);
             }
         });
@@ -48,13 +48,11 @@ $(function(){
                 let my_star_score = jsonObj.lsnReview.myStarScore;
                 $titleObj.html(lsn_title);
                 $lineNoObj.val(lsn_line_no);
-                console.log(review);
-                console.log(my_star_score);
                 $reviewObj.val(review);
                 $starScoreObj.val(my_star_score);
                 console.log("조회로 왔다");
             },
-            error : function(){
+            error : function(jqXHR){
                 alert('오류 : ' + jqXHR.status);
             }
         });

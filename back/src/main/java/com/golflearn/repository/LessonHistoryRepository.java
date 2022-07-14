@@ -94,7 +94,6 @@ public class LessonHistoryRepository{
 				ll.setUser(ui);
 				
 				lines.add(ll);
-				System.out.println(lines);
 			}
 			return lines;
 		} catch (SQLException e) {

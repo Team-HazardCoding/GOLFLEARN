@@ -97,7 +97,7 @@ public class LessonReviewRepository {
 				LessonLine line = new LessonLine();
 				line.setLsn(l);
 				line.setLsnReview(lr);
-				System.out.println(line.toString(l,lr.toString(lsnLineNo,myStarScore,review))); //테스트용 
+//				System.out.println(line.toString(l,lr.toString(lsnLineNo,myStarScore,review))); //테스트용 
 				return line;
 			}
 			throw new FindException(lessonLineNo +"번 레슨내역이 없습니다");
