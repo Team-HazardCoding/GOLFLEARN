@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,7 @@ import com.golflearn.dto.LessonLine;
 import com.golflearn.exception.FindException;
 import com.golflearn.repository.LessonLineRepository;
 
+
 /**
  * Servlet implementation class ViewMyPageServlet
  */
@@ -29,10 +31,10 @@ public class ViewMyPageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-//		String userId = (String)session.getAttribute("loginInfo");
+		String userId = (String)session.getAttribute("loginInfo");
 //		String userId = "gyeorekuku";
 //		String userId = "younghee1234";
-		String userId = "93saewoo";
+		// String userId = "93saewoo";
 		response.setContentType("application/json;charset = utf-8");
 		PrintWriter out = response.getWriter();		
 
@@ -74,6 +76,7 @@ public class ViewMyPageServlet extends HttpServlet {
 //		System.out.println(jsonTest);
 //		
 //		
+
 	}
 
 }

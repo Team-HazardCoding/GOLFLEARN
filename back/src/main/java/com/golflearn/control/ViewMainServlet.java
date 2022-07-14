@@ -3,6 +3,7 @@ package com.golflearn.control;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
+
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -31,10 +33,10 @@ public class ViewMainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");	
 		PrintWriter out = response.getWriter();
+
 		HttpSession session = request.getSession();
 		String userType = (String) session.getAttribute("userType");
-	
-		
+
 		String result = "";
 		LessonRepository repo = new LessonOracleRepository();
 		try {
@@ -51,6 +53,7 @@ public class ViewMainServlet extends HttpServlet {
 
 			try {
 				map.put("lsns", lsnList);//
+
 				map.put("sido", api.sidoApi());
 				map.put("userType", userType);
 				
@@ -65,6 +68,8 @@ public class ViewMainServlet extends HttpServlet {
 			
  			result = mapper.writeValueAsString(map);
 //			System.out.println("result :" + result);
+
+
 			
 			out.print(result);
 		} catch (FindException e) {

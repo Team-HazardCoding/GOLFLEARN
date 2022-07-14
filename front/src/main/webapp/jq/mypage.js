@@ -108,9 +108,9 @@ $(function(){
     //4) 리뷰작성 눌렀을 때 누른 lsn_line_no, status 0 보내주기 
     // let $addReviewObj = $('input.add_review');
     
-    let $lsnListObj = $('div.lsn');
+    let $lsnListObj = $('div.table');
     $lsnListObj.on('click', 'input[value=레슨후기작성]', function(){
-        let $lsnLineNoObj = $(this).parent().find('span.this_lsn_no');
+        let $lsnLineNoObj = $(this).parent().find('div.no');
         let lsn_line_no = $lsnLineNoObj.html();
         location.href = "/front/html/review.html?reviewCnt=0&lsn_line_no=" + lsn_line_no;
     });
@@ -122,13 +122,10 @@ $(function(){
     //5) 수정 눌렀을 때 누른 lsn_line_no, status 1 보내주기 
         // location.href = "/front/html/viewproduct.html?prod_no=" + prod_no;
     // let $modifyReviewObj = $('input.modify_review');
-    let $lsnListModiObj = $('div.lsn');
+    let $lsnListModiObj = $('div.table');
     $lsnListModiObj.on('click', 'input[value=레슨후기수정]', function(){
-        let $lsnLineNoObj = $(this).parent().find('span.this_lsn_no');
+        let $lsnLineNoObj = $(this).parent().find('div.no');
         let lsn_line_no = $lsnLineNoObj.html();
         location.href = "/front/html/review.html?reviewCnt=1&lsn_line_no=" + lsn_line_no;
     });
-
-
-
 })

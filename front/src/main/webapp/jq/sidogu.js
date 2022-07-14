@@ -6,7 +6,6 @@ $(function() {
 	$sidoBtn.on('click', 'li', function(event) {
 		$tagContent.empty();
 		let $sidoVal = $(this);
-
 		$.ajax({
 			url: sidoguUrl,
 			data: {sido : $sidoVal.val()},
@@ -21,7 +20,6 @@ $(function() {
 						sigu+= '>' + $itemObj[i] + '</li>';	
 					}
 				})
-				
 				$tagContent.append(sigu);
 				// console.log($sidoNm);
 				// 각 시군구가 tag-name에 뿌려져야 함.
@@ -36,7 +34,6 @@ $(function() {
 			
 		})
 	});
-
 	//-----------------try-------------------
 	$('#tag-container').on('click','li',function(e) {
 		// e.preventDefault();
@@ -96,5 +93,4 @@ $(function() {
 		});
 		
 	});
-
 })

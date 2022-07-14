@@ -80,7 +80,6 @@ public class LessonOracleRepository implements LessonRepository {
 					Pro pro = new Pro();
 					pro.setProCareer(rs.getString("pro_career"));
 					lesson.setPro(pro);
-					
 				}
 				
 				//레슨라인1개

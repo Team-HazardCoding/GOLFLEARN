@@ -1,0 +1,14 @@
+@import url(base.css);
+* {
+    margin: 0 0;
+    box-sizing: border-box;
+}
+button.confirm {
+    background-color: lawngreen;
+    border: none;
+    border-radius: 10px;
+}
+button.cancel {
+    border: none;
+    border-radius: 10px;
+}

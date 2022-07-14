@@ -1,11 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/java,git
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,git
-
 ### Git ###
 # Created by git for backups. To disable backups in Git:
 # $ git config --global mergetool.keepBackup false
 *.orig
-
 # Created by git when using merge tools for conflicts
 *.BACKUP.*
 *.BASE.*
@@ -15,20 +13,15 @@
 *_BASE_*.txt
 *_LOCAL_*.txt
 *_REMOTE_*.txt
-
 ### Java ###
 # Compiled class file
 *.class
-
 # Log file
 *.log
-
 # BlueJ files
 *.ctxt
-
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-
 # Package Files #
 *.jar
 *.war
@@ -37,34 +30,27 @@
 *.zip
 *.tar.gz
 *.rar
-
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
-
 # End of https://www.toptal.com/developers/gitignore/api/java,git
-
 *.metadata
 .metadata
 .metadata/
-
 # Eclipse
 .classpath
 .project
 .settings/
 # Mac
 .DS_Store
-
 # the dist file could make some problems
 # dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
 .nb-gradle/
-
 # Sql
 back/src/main/java/com/golflearn/sql/MyConnection.java
-
 # Maven
 log/
 target/
@@ -74,7 +60,6 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 dependency-reduced-pom.xml
-
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,java,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,java,eclipse
 ### Eclipse ###
@@ -198,6 +183,6 @@ Servers/
 .classpath
 back/.classpath
 back/.settings
-back/.classpath~78ca5b9ccadaf9648a27b74f19cd9f72f5e19eb3
 
 # End of https://www.toptal.com/developers/gitignore/api/java,windows,eclipse
+back/.classpath~78ca5b9ccadaf9648a27b74f19cd9f72f5e19eb3

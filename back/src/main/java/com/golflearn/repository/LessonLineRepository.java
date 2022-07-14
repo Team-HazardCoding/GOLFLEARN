@@ -185,5 +185,4 @@ public class LessonLineRepository {
 			MyConnection.close(rs, pstmt, con);
 		}
 	}
-
 }
