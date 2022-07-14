@@ -124,7 +124,7 @@ li:hover {
     justify-content: space-between;
 }
 
-#main>#wrapper>#container>#content-right>#card-container>.col {}
+/* #main>#wrapper>#container>#content-right>#card-container>.col {} */
 
 #main>#wrapper>#container>#content-right .col {
     margin-right: 15px;

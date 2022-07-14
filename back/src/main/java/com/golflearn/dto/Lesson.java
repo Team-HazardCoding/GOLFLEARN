@@ -161,18 +161,6 @@ public class Lesson {
 	public void setPro(Pro pro) {
 		this.pro = pro;
 	}
-	public int getLsnStarPoint() {
-		return lsnStarPoint;
-	}
-	public void setLsnStarPoint(int lsnStarPoint) {
-		this.lsnStarPoint = lsnStarPoint;
-	}
-	public int getUploadDt() {
-		return UploadDt;
-	}
-	public void setUploadDt(int uploadDt) {
-		UploadDt = uploadDt;
-	}
 	public LessonLine getLsnLine() {
 		return lsnLine;
 	}
@@ -184,5 +172,17 @@ public class Lesson {
 	}
 	public void setStrLsnUploadDt(String strLsnUploadDt) {
 		this.strLsnUploadDt = strLsnUploadDt;
+	}
+	public int getLsnStarPoint() {
+		return lsnStarPoint;
+	}
+	public void setLsnStarPoint(int lsnStarPoint) {
+		this.lsnStarPoint = lsnStarPoint;
+	}
+	public int getUploadDt() {
+		return UploadDt;
+	}
+	public void setUploadDt(int uploadDt) {
+		UploadDt = uploadDt;
 	}
 }

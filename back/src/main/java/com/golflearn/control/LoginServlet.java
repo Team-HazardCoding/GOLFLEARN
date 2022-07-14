@@ -60,13 +60,18 @@ public class LoginServlet extends HttpServlet {
 //			System.out.println(userId);
 //			System.out.println(userPwd);
 			if(rs.next()) {// 로그인 성공
+				String userType = rs.getString("user_type");
+//				System.out.println(userType); 		
+				
 				map.put("status",1);
 				map.put("msg", "로그인 되었습니다.");
 				loginResult = mapper.writeValueAsString(map);
 				
+				
 //				loginResult = "{\"status\":1 \"msg\":\"로그인 성공\"}";
 //				loginResult = "{\"status\":1}";
 				session.setAttribute("loginInfo", userId); // 세션객체 속성으로 로그인 정보 추가
+				session.setAttribute("userType", userType); // 세션 객체에 유저타입 정보 추가
 			}
 
 		}catch (SQLException e) {
