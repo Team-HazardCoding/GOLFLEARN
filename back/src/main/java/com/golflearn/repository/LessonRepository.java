@@ -1,10 +1,7 @@
 package com.golflearn.repository;
 
-<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.SQLException;
-=======
->>>>>>> baa05965d8a2f90673e120b77013ee464681d9a8
 import java.util.List;
 
 import com.golflearn.dto.Lesson;

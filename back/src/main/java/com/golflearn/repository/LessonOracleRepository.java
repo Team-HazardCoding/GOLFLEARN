@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.golflearn.repository;
 
 import java.sql.Connection;

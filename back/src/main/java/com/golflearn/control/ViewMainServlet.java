@@ -2,10 +2,8 @@ package com.golflearn.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
->>>>>>> baa05965d8a2f90673e120b77013ee464681d9a8
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,21 +13,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
-=======
 
->>>>>>> baa05965d8a2f90673e120b77013ee464681d9a8
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.dto.Lesson;
 import com.golflearn.exception.FindException;
 import com.golflearn.repository.LessonOracleRepository;
 import com.golflearn.repository.LessonRepository;
-<<<<<<< HEAD
 import com.golflearn.repository.OpenApi;
 
 @WebServlet("/main")
