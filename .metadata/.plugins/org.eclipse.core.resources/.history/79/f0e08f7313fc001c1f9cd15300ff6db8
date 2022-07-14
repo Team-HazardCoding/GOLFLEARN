@@ -1,7 +1,0 @@
-package com.golflearn.dto;
-
-public class Location {
-	int locNo;
-	String locSido;
-	String locSigungu;
-}

@@ -1,8 +1,0 @@
-package com.golflearn.dto;
-
-public class LessonReview {
-	String review;
-	Date reviewDt;
-	Date reviewEditDt;
-	int myStarScore;
-}

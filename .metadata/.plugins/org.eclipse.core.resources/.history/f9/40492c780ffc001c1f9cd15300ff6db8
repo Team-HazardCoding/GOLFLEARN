@@ -1,7 +1,0 @@
-package com.golflearn.dto;
-
-public class LessonHistory {
-	int lsnLineNo;
-	String lsnFdbk;
-	Date lsnChkDt;
-}
