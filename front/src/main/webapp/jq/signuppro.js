@@ -68,6 +68,7 @@ $(function () {
 		});
 		return false;
 	});
+});
   //*확인요망 
 // =======
 //   //아이디 입력 객체 찾기
@@ -133,7 +134,6 @@ $(function () {
 //     return false;
 //   });
 // >>>>>>> c9f12924cd21bab3a438f97e2208978fd4d27fff
-// });
 // processData false로 항상 설정 해 주어야 함
 // 일반적으로 서버에 전달되는 데이터는 query string 형태
 // data 파라미터로 전달된 데이터를 jQuery 내부적으로 query string 형태로 만드는 데, 파일 전송의 경우 이를 하지 않아야하므로 processData를 false로 설정

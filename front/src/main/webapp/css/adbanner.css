@@ -33,16 +33,16 @@ li {
 	position: absolute;
 	left: 0;
 	top: 0;
-  	width: 1215px; /* 슬라이드할 사진과 마진 총 넓이 */
+  	width: 1220px; /* 슬라이드할 사진과 마진 총 넓이 */
 	transition: 0.5s ease-out; 
 	/*ease-out: 처음에는 느렸다가 점점 빨라짐*/
 } /* 첫 번째 슬라이드 가운데에 정렬하기위해 첫번째 슬라이드만 margin-left조정 */
 #slide-adbanner >.ad li:first-child {
-	margin-left: 52px;
+	margin-left: 10px;
 } /* 슬라이드들 옆으로 정렬 */
 #slide-adbanner >.ad li:not(:last-child) {
 	float: left;
-	margin-right: 100px;
+	margin-right: 10x;
 }
 #slide-adbanner >p.controller span {
 	position: absolute;
@@ -50,7 +50,8 @@ li {
 	color: white;
 	text-align: bottom;
 	border-radius: 50%;
-    padding: 139px 40px;
+    padding-left: 20px;
+	padding-right: 20px;
     top: 50%;
     font-size: 15px;
     cursor: pointer;
