@@ -10,7 +10,7 @@ tmp/
 *.swp
 *~.nib
 local.properties
-.settings/
+*.settings/
 .loadpath
 .recommenders
 
@@ -154,6 +154,6 @@ $RECYCLE.BIN/
 
 .project
 Servers/
-.classpath
+*.classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/java,windows,eclipse
