@@ -1,14 +1,26 @@
 @import url(base.css);
+@font-face {
+    font-family: 'Godo';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff');
+}
+
+.godo * {
+font-family: 'Godo', sans-serif;
+}
 footer {
     /* height: 100%;  */
     width: 100%;
-    color: white;
-    background: #1883;
-    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background: #B7E7C7;
     position: absolute;
     bottom: 0;
     padding: 10px;
     z-index: 999;
+    box-sizing: border-box;
+    font-family: 'Godo';
+	font-size: 12px;
     /* left: 0; */
     /* right: 0; */
 }

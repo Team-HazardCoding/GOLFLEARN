@@ -1,0 +1,104 @@
+@charset "UTF-8";
+@import url(base.css);
+
+h1 {
+	text-align:center;
+	margin: 40px;
+}
+
+table#wrapper { 
+	text-align: left;
+	display: flex;
+	justify-content: space-around;
+	border-spacing: 15px;
+	min-width: 50%;
+	font-weight:300;
+}
+
+table>tbody td#id>button#iddupchk {
+	box-sizing: border-box;
+	display: inline-block;
+    width: 70px;
+    height: 33px;
+	padding: 3px 7px;
+	margin-left: 10px;
+    background-color: white;
+    border: 2px solid rgb(183, 231, 199);
+    border-radius: 23px;
+	vertical-align: middle;
+    font-size: smaller;
+    cursor:pointer;
+	/*background-color: #B1BCE6;
+	border: #B1BCE6 solid 2px;
+	border-radius: 10px;
+	display: inline-block;
+	margin: 10px;
+	height: 23px;*/
+}
+
+th {
+	font-weight: 500;
+	letter-spacing: 3px;
+}
+
+table>tbody td#id> button#iddupchk:hover {
+	background-color:rgb(183, 231, 199);
+}
+
+div#signup {
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	margin-top: 10px;
+}
+
+button#signup {
+	/* margin : 100%; */
+	/* margin-top: 2%;*/
+    background-color: white;
+	width: 5%;
+	height: 50px;
+	margin-right: 110px;
+    border: 2px solid rgb(183, 231, 199);
+    border-radius: 23px;
+	letter-spacing: 5px;
+    font-weight: 300;
+	font-size: medium;
+    cursor:pointer;
+	min-width: 10%;
+}
+
+button#signup:hover {
+	background-color:rgb(183, 231, 199);
+}
+
+div.container>form>input {
+	text-align: center;
+	width: 100%;
+}
+
+input.input-box {
+	border-radius: 23px;
+	border: 2px solid rgb(183, 231, 199);
+	text-align: justify;
+	padding: 7px;
+	width:250px;
+	box-sizing: border-box;
+}
+
+
+textarea#pro_career {
+	padding : 10px;
+	height: 150px;
+	border: 2px solid rgb(183, 231, 199);
+	outline-color: rgb(183, 231, 199);
+	border-radius: 23px;
+	resize:none;
+	width: 250px;
+}
+
+input::placeholder {
+	color: rgb(128, 128, 128);
+	box-sizing: border-box;
+	font-weight: lighter;
+}

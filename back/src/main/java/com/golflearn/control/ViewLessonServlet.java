@@ -29,6 +29,7 @@ public class ViewLessonServlet extends HttpServlet {
 
 		//요청전달데이터 얻어오기
 		int lsn_no = Integer.parseInt(request.getParameter("lsn_no"));   
+	}
 
 		//DB에서 레슨검색
 		LessonRepository repository = new LessonOracleRepository();
