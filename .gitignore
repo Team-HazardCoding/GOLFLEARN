@@ -52,7 +52,7 @@ replay_pid*
 .classpath
 .project
 .settings/
-
+*.classpath
 # Mac
 .DS_Store
 
