@@ -24,3 +24,4 @@ public interface LessonRepository {
 	
 	public List<Lesson> selectAll() throws FindException;
 }
+

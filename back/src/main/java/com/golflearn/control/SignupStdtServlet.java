@@ -26,6 +26,7 @@ public class SignupStdtServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {    
 		request.setCharacterEncoding("UTF-8"); // 이 코드가 없으면 한글값이 모두 깨져서 저장됨
 		response.setContentType("application/json;charset=UTF-8");
+//		response.setContentType("text/html;charset=UTF-8");
 		
 		String userId = request.getParameter("user_id"); // html의 name 지정시 참고
 		String userName = request.getParameter("user_name");
@@ -73,7 +74,6 @@ public class SignupStdtServlet extends HttpServlet {
 				
 				System.out.println(userId);
 				Upload upload = new Upload();
-				upload.uploadFiles(request, userId);
 				
 				if(rs == 1) { // rs = true이면
 					map.put("status", 1);
