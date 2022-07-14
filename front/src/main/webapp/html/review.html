@@ -16,9 +16,14 @@
         <div class = "body">
             <form class = "submit" action="http://localhost:1124/back/addreview">
                 <h2>레슨후기</h2>
-                    <div class = "top">
-                        <input type="text" class = "lsn_line_no" name = "lsn_line_no" id = "lsn_line_no" readonly>
-                        <img src = "../lsn_images/2.jpg" alt="2번째레슨">
+                <div class = "top">
+                    <input type="text" class = "lsn_line_no" name = "lsn_line_no" id = "lsn_line_no" readonly>
+                    <div class = "content-left">
+                        <div class = "img-box">
+                            <img src = "../lsn_images/2.jpg" alt="2번째레슨">
+                        </div>
+                    </div>
+                    <div class="content-right">
                         <span class = "lsn_title">제목</span>
                         <div class = "my_star_score">
                             <div class = "starform" name="starform" id="my_star_score">
@@ -33,15 +38,17 @@
                             </div>
                         </div>
                     </div>
-                <div class = "bottom">
-                    <div class = "review">상세후기
-                        <input type="text" id = "review" name="review" class ="review_context">
-                    </div>
-                        <input type="button" class="back" value="이전">
-                        <input type="submit" value="제출">
                 </div>
             </form>
         </div>
+            <div class = "bottom">
+                <div class = "review">상세후기</div>
+                <div class="review-container">
+                    <textarea id = "review" name="review" class ="review_context"></textarea>
+                    <input type="button" class="back" value="이전">
+                    <input type="submit" value="제출">
+                </div>
+            </div>
     </section>
 </body>
 <div w3-include-html="footer.html" class="w3"></div>

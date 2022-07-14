@@ -4,7 +4,7 @@ $(function(){
         url : "/back/viewmypage",
         method : 'get',
         success : function(jsonObj){
-            let $lsnObj = $('div.lsnlist');
+            let $lsnObj = $('div.tr');
             $(jsonObj).each(function(i,element){
                 $copyObj = $lsnObj.clone();
                 // $lsnObj.hide();
@@ -13,21 +13,28 @@ $(function(){
                 let lsn_title = element.lsnTitle;
                 let lsn_status = element.lsnStatus;
                 
-                let lsns = '<div class = "context">';
-                lsns += '<div class = "no">레슨번호: <span class = "no">' + lsn_no + '</span></div>';
-                lsns += '<img src = "../lsn_images/' + lsn_no +'.jpg" alt="' + lsn_no + '번째레슨" width = "200" height = "200">';
-                lsns += '<div class = "title">' + lsn_title + '</div>';
-                // lsns += '<div class = "expdate">종료일자</div>';
-                // lsns += '<div class = "crnlsncnt">레슨진행횟수</div>';
-                // lsns += '<div class = "lsncntsum">총레슨횟수</div>';
-                lsns += '<input type="button" value="수강생관리">';  //미구현
-                lsns += '<input type="button" value="레슨종료">';  //미구현
-                lsns += '<input type="button" value="레슨재개">'; //미구현
-                lsns += '</div>';
+                // let lsns = '<div class = "context">';
+                // lsns += '<div class = "no">레슨번호: <span class = "no">' + lsn_no + '</span></div>';
+                // lsns += '<img src = "../lsn_images/' + lsn_no +'.jpg" alt="' + lsn_no + '번째레슨">';
+                // lsns += '<div class = "title">' + lsn_title + '</div>';
+                // // lsns += '<div class = "expdate">종료일자</div>';
+                // // lsns += '<div class = "crnlsncnt">레슨진행횟수</div>';
+                // // lsns += '<div class = "lsncntsum">총레슨횟수</div>';
+                // lsns += '<input type="button" value="수강생관리">';  //미구현
+                // lsns += '<input type="button" value="레슨종료">';  //미구현
+                // lsns += '<input type="button" value="레슨재개">'; //미구현
+                // lsns += '</div>';
 
-                $copyObj.find('div.lsndetail').html(lsns);
+                let lsns = '<div class = "no">' + lsn_no + '</div>'
+                lsns += '<img src = "../lsn_images/' + lsn_no + '.jpg" alt="' + lsn_no + '번째레슨">'
+                lsns += '<div class = "title">' + lsn_title + '</div>'
+                lsns += '<input type="button" class = "stdt_manage" value="수강생관리">'
+                lsns += '<input type="button" class = "lsn_close" value="레슨종료">'
+                lsns += '<input type="button" class = "lsn_resume" value="레슨재개">'
 
-                $('div.lsn').append($copyObj);
+                $copyObj.find('div.td').html(lsns);
+
+                $('div.table').append($copyObj);
 
                 //왜 하나만 사라지지??? 
                 $closeObj = $copyObj.find('input[value=레슨종료]');

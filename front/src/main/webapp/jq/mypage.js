@@ -50,9 +50,11 @@ $(function(){
             // $('div.lsnlist2 span.lsn_cnt_sum').html(lsn_cnt_sum);
             // $('div.lsnlist2 span.lsn_status').html(stdt_lsn_status);
             let jsonarr = jsonObj.ll;
-            let $lsnObj = $('div.lsnlist');
+            let $lsnObj = $('div.tr');
+            
             $(jsonarr).each(function(i,element){
                 $copyObj = $lsnObj.clone();
+                // $lsnObj.parent.hide();
 
                 let lsn_line_no = element.lsnLineNo;
                 let lsn_no = element.lsnNo;
@@ -71,38 +73,31 @@ $(function(){
                     stdt_lsn_status = '수강완료';
                 };
 
+                // let lessonLine = '<div>레슨번호: <span class = "this_lsn_no">' + lsn_line_no + '</span></div>'
+                // lessonLine += '<img src = "../lsn_images/' + lsn_line_no +'.jpg" alt="' + lsn_line_no + '번째레슨" width = "200" height = "200">';
+                // lessonLine += '<div>레슨명: <span class = "title">' + lsn_title + '</span></div>'
+                // lessonLine += '<div>종료일자: <span class = "exp_date">' + lsn_exp_dt + '</span></div>'
+                // lessonLine += '<div>현재레슨횟수: <span class = "crnt_lsn_cnt">' + crnt_lsn_cnt + '회</span></div>'
+                // lessonLine += '<div>총레슨횟수: <span class = "lsn_cnt_sum">' + lsn_cnt_sum + '회</span></div>'
+                // lessonLine += '<div>진행횟수 / 총횟수: <span class = "lsn_cnt_sum">' +crnt_lsn_cnt + "/" + lsn_cnt_sum + '회</span></div>'
+                // lessonLine += '<input type="button" value="' + stdt_lsn_status + '"><span class = "lsn_status">' + stdt_lsn_status + '</span></div>'
+                // lessonLine += '<input type="button" class = "add_review" value="레슨후기작성">'
+                // lessonLine += '<input type="button" class = "modify_review" value="레슨후기수정">'
+                // lessonLine += '<input type="button" class = "cancel_lsn" value="수강취소버튼">'
                 
-                let lessonLine = '<div>레슨번호: <span class = "this_lsn_no">' + lsn_line_no + '</span></div>'
-                lessonLine += '<img src = "../lsn_images/' + lsn_line_no +'.jpg" alt="' + lsn_line_no + '번째레슨" width = "200" height = "200">';
-                lessonLine += '<div>레슨명: <span class = "title">' + lsn_title + '</span></div>'
-                lessonLine += '<div>종료일자: <span class = "exp_date">' + lsn_exp_dt + '</span></div>'
-                lessonLine += '<div>현재레슨횟수: <span class = "crnt_lsn_cnt">' + crnt_lsn_cnt + '회</span></div>'
-                lessonLine += '<div>총레슨횟수: <span class = "lsn_cnt_sum">' + lsn_cnt_sum + '회</span></div>'
-                lessonLine += '<div>진행횟수 / 잔여횟수: <span class = "lsn_cnt_sum">' +crnt_lsn_cnt + "/" + lsn_cnt_sum + '회</span></div>'
-                lessonLine += '<input type="button" value="' + stdt_lsn_status + '"><span class = "lsn_status">' + stdt_lsn_status + '</span></div>'
+                let lessonLine = '<div class = "no">' + lsn_line_no + '</div>';
+                lessonLine += '<img src = "../lsn_images/' + lsn_line_no + '.jpg" alt="' + lsn_line_no + '번째레슨"'
+                lessonLine += '<div class = "title">' + lsn_title + '</div>'
+                lessonLine += '<div class = "exp_date">레슨유효기간: ' + lsn_exp_dt + '</div>'
+                lessonLine += '<div class = "current_cnt">' + crnt_lsn_cnt + "/" + lsn_cnt_sum + '회</div>'
                 lessonLine += '<input type="button" class = "add_review" value="레슨후기작성">'
                 lessonLine += '<input type="button" class = "modify_review" value="레슨후기수정">'
-                lessonLine += '<input type="button" class = "cancel_lsn" value="수강취소버튼">'
-                
-                $copyObj.find('div.lsndetail').html(lessonLine);
-                
-                $('div.lsn').append($copyObj);
-                
+                lessonLine += '<input type="button" class = "cancel_lsn" value="수강취소">'
 
-                // console.log(lsn_line_no);
-                // console.log(lsn_title);
-                // console.log(lsn_cnt_sum);
-                // $copyObj = $lsnObj.clone();
-                // let $imgObj = $copyObj.find("img");
-                // $imgObj.attr("src", "../lsn_images/" + lsn_line_no + ".jpg");
-                // $imgObj.attr("alt", lsn_line_no);
-                // $copyObj.find("li.this_lsn_no").html(lsn_line_no);
-                // $copyObj.find("li.title").html(lsn_title);
-                // $copyObj.find("li.exp_date").html(lsn_exp_dt);
-                // $copyObj.find("li.crnt_lsn_cnt").html(crnt_lsn_cnt);
-                // $copyObj.find("li.lsn_cnt_sum").html(lsn_cnt_sum);
-                // $copyObj.find("li.lsn_status").html(stdt_lsn_status);
-                // $('div.lsn').append($copyObj);
+                $copyObj.find('div.td').html(lessonLine);
+                
+                $('div.table').append($copyObj);
+                
             });
         },
         error : function(jqXHR){
@@ -113,9 +108,9 @@ $(function(){
     //4) 리뷰작성 눌렀을 때 누른 lsn_line_no, status 0 보내주기 
     // let $addReviewObj = $('input.add_review');
     
-    let $lsnListObj = $('div.lsn');
+    let $lsnListObj = $('div.table');
     $lsnListObj.on('click', 'input[value=레슨후기작성]', function(){
-        let $lsnLineNoObj = $(this).parent().find('span.this_lsn_no');
+        let $lsnLineNoObj = $(this).parent().find('div.no');
         let lsn_line_no = $lsnLineNoObj.html();
         location.href = "/front/html/review.html?reviewCnt=0&lsn_line_no=" + lsn_line_no;
     });
@@ -127,9 +122,9 @@ $(function(){
     //5) 수정 눌렀을 때 누른 lsn_line_no, status 1 보내주기 
         // location.href = "/front/html/viewproduct.html?prod_no=" + prod_no;
     // let $modifyReviewObj = $('input.modify_review');
-    let $lsnListModiObj = $('div.lsn');
+    let $lsnListModiObj = $('div.table');
     $lsnListModiObj.on('click', 'input[value=레슨후기수정]', function(){
-        let $lsnLineNoObj = $(this).parent().find('span.this_lsn_no');
+        let $lsnLineNoObj = $(this).parent().find('div.no');
         let lsn_line_no = $lsnLineNoObj.html();
         location.href = "/front/html/review.html?reviewCnt=1&lsn_line_no=" + lsn_line_no;
     });

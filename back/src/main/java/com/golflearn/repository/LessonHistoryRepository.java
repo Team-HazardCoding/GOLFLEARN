@@ -62,14 +62,13 @@ public class LessonHistoryRepository{
 				int stdtLsnStatus = rs.getInt("수강생레슨진행상태");
 				String strLsnExpDt = format.format(lsnExpDt);
 				String strLsnStartDt;
-				System.out.println(lsnStartDt);
+				
 				if (lsnStartDt == null) {
 					strLsnStartDt = "수강예정";
 				}else {
 					strLsnStartDt = format.format(lsnStartDt); 
 				};
 				
-				System.out.println(strLsnStartDt);
 				Lesson l = new Lesson();
 				l.setLsnCntSum(lsnCntSum);
 				l.setLsnTitle(lsnTitle);
