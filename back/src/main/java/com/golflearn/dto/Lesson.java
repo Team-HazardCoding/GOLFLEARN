@@ -35,7 +35,7 @@ public class Lesson {
 		this.lsnNo = lsnNo;
 		this.lsnTitle = lsnTitle;
 		this.lsnUploadDt = lsnUploadDt;
-		this.lsnStarPoint = lsnStarPoint;
+		this.setLsnStarPoint(lsnStarPoint);
 		this.user = user;
 		this.locNo = locNo;
 				
@@ -154,5 +154,35 @@ public class Lesson {
 	}
 	public void setLines(List<LessonLine> lines) {
 		this.lsnLines = lines;
+	}
+	public Pro getPro() {
+		return pro;
+	}
+	public void setPro(Pro pro) {
+		this.pro = pro;
+	}
+	public int getLsnStarPoint() {
+		return lsnStarPoint;
+	}
+	public void setLsnStarPoint(int lsnStarPoint) {
+		this.lsnStarPoint = lsnStarPoint;
+	}
+	public int getUploadDt() {
+		return UploadDt;
+	}
+	public void setUploadDt(int uploadDt) {
+		UploadDt = uploadDt;
+	}
+	public LessonLine getLsnLine() {
+		return lsnLine;
+	}
+	public void setLsnLine(LessonLine lsnLine) {
+		this.lsnLine = lsnLine;
+	}
+	public String getStrLsnUploadDt() {
+		return strLsnUploadDt;
+	}
+	public void setStrLsnUploadDt(String strLsnUploadDt) {
+		this.strLsnUploadDt = strLsnUploadDt;
 	}
 }
