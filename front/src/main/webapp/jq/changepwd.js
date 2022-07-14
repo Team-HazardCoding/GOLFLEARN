@@ -36,14 +36,14 @@ $(function() {
 						});
 				} else {
 					$('#content.modal-body').html("인증코드가 일치하지 않습니다. 인증코드를 정확하게 입력해주세요.");
-					$("button.btn-secondary").click(function () {
+					$('button#btn-secondary').click(function () {
 						location.href = "http://localhost:1124/front/html/changepwd.html";
 					});
 				}
 			},	
 			error: function (jqXHR,textStatus,errorThrown) {
 				$('#content.modal-body').html("입력한 값이 올바르지 않습니다. 정확하게 입력해주세요.");
-				$("button.btn-secondary").click(function () {
+				$('button#btn-secondary').click(function () {
 					location.href = "http://localhost:1124/front/html/changepwd.html";
 					});
 			},

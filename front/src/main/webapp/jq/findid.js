@@ -31,12 +31,12 @@ $(function () {
 		success: function (jsonObj) {
 			if (jsonObj.status == 1) {
 				$('#content.modal-body').text("고객님의 Golflearn 계정 ID는 " + jsonObj.id + " 입니다.");
-				$("button.btn-secondary").click(function () {
+				$('button#btn-secondary').click(function () {
 					location.href = "http://localhost:1124/front/html/login.html";
 					});
 			}else{
 				$('#content.modal-body').text("아이디나 이메일이 알맞지 않습니다. 아이디와 이메일을 정확하게 입력해주세요");
-				$("button.btn-secondary").click(function () {
+				$('button#btn-secondary').click(function () {
 					location.href = "http://localhost:1124/front/html/findid.html";
 				});
 			}

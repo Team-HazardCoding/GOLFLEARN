@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../css/viewlesson.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- <script src="../jq/menubar.js"></script> -->
+	<script src="../jq/viewlesson.js"></script>
+</head>
+
+<body>
+	<!--헤더(메뉴바) : 메인에서한 메뉴바.js가져오기-->
+	<header>
+		<a href="http://localhost:1124/front/html/main.html"><h1>골프런</h1></a>
+		<nav>
+				<a href="login.html">로그인</a>
+				<a href="signuptype.html">회원가입</a>
+				<a href="addlesson.html">레슨등록</a> <!--이 태그는 프로만 보이도록 설정하기-->
+		</nav>
+	</header>
+	<hr>
+	<!--                     viewlesson.js시작                 -->
+	<!--본문섹션(레슨간략정보)-->
+	<section>
+		<article>
+			<div class="viewlesson">
+				<img src="" alt=""/>	<!--레슨썸네일-->
+				<div class="simple">
+					<ul>
+						<li>레슨지역:<span class="loc_no"></span> </li>  <!--레슨 지역-->
+						<li>레슨명:<span class="lsn_title"></span></li>  <!--레슨명-->
+						<li>레슨별점:<span class="lsn_star_score"></span></li>  <!--레슨별점-->
+						<li>레슨후기갯수:<span class="lsn_review_cnt"></span></li>	<!--레슨후기갯수-->
+						<li>프로명:<span class="user_name"></span></li>	 <!--프로명-->
+						<li>프로별점:<span class="pro_star_score"></span></li>	 <!--프로별점-->	
+						<li><button>수강신청</button> <!--수강신청버튼-->
+					</ul>
+				</div>
+			</div>
+		</article>		
+	</section>
+	<hr>
+	<!--본문섹션(레슨상세정보)-->
+	<section>
+		<!--네비바 영역-->
+		<article>
+			<div class="navi">
+				<nav> <!--레슨상세탭 네비바(레슨소개, 프로소개, 레슨후기)-->
+					<!--이벤트1 : 클릭시 각 해당내용 영역으로 자동 스크롤-->
+					<a href="#lsnIntro" id="scroll_move">레슨소개</a>
+					<a href="#proIntro" id="scroll_move">프로소개</a>
+					<a href="#review" id="scroll_move">레슨후기</a>
+				</nav>
+			</div>
+		</article>
+		<hr>
+		<!--레슨소개영역-->
+		<article>
+			<div class="detail">
+				<div class="lsn_intro">
+					<tr>
+						레슨소개영역
+					</tr>
+				</div>
+				<!--프로소개영역-->
+				<div class="pro_intro">
+					프로소개영역
+				</div>
+				<!--레슨후기영역-->
+				<div class="review">
+					레슨후기영역
+				</div>
+			</div>
+		</article>
+	</section>
+	<hr>
+	<!--풋터-->
+	<footer>
+		<aside>
+				<ul class="ul">
+						<li>사업자등록번호 : XXXX</li>
+						<li>(주)골프런 레슨담당자 : 박종우</li>
+						<li>TEL : 1522-1234</li>
+						<li><address>test@kosta.com</address></li>
+				</ul>
+				<span class="span">ⓒ 2021 GolfLearn Golf Company. All Rights Reserved.</span>
+		</aside>
+	</footer>
+</body>
+
+</html>

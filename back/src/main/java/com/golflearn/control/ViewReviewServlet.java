@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.dto.Lesson;
 import com.golflearn.exception.FindException;
 import com.golflearn.repository.LessonReviewRepository;
+
 
 
 /**
@@ -23,6 +23,7 @@ import com.golflearn.repository.LessonReviewRepository;
 @WebServlet("/viewreview")
 public class ViewReviewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 
 	
 	//review 페이지 로딩하여 받아온 정보 보여주기 
@@ -51,8 +52,6 @@ public class ViewReviewServlet extends HttpServlet {
 			e.printStackTrace();
 		} //정상작동 코드 
 		
-
-
 
 	}
 

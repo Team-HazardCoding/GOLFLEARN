@@ -1,0 +1,20 @@
+/*테이블 첫번째 열*/
+div.addlesson>form>div.table div.td1 {
+    width: 30%;
+    padding: 5px;
+    display: inline-block;
+}
+
+/*테이블 두번째 열*/
+div.addlesson>form>div.table div.td2 {
+    width: 30%;
+    padding: 5px;
+    display: inline-block;
+}
+
+/*테이블 세번째 열*/
+div.addlesson>form>div.table div.td3 {
+    width: 30%;
+    padding: 5px;
+    display: inline-block;
+}

@@ -103,26 +103,5 @@ public class LessonHistoryRepository{
 			MyConnection.close(rs, pstmt, con);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
+

@@ -3,7 +3,7 @@
 
 h1 {
 	text-align: center;
-	margin: 60px;
+	margin: 40px;
 }
 
 table#wrapper{
@@ -12,6 +12,7 @@ table#wrapper{
 	justify-content: space-around;
 	border-spacing: 15px;
 	min-width: 50%;
+	font-weight:300;
 }
 
 /* tbody{
@@ -19,12 +20,18 @@ table#wrapper{
 } */
 
 table>tbody td#id>button#iddupchk{
-	background-color: #FFBCBC;
-	border: #FFBCBC solid 2px;
-	border-radius: 10px;
-	display:inline-block;
-	margin: 10px;
-	height: 25px;
+	box-sizing: border-box;
+	display: inline-block;
+    width: 70px;
+    height: 33px;
+	padding: 3px 7px;
+	margin-left: 10px;
+    background-color: white;
+    border: 2px solid rgb(183, 231, 199);
+    border-radius: 23px;
+	vertical-align: middle;
+    font-size: smaller;
+    cursor:pointer;
 }
 
 /* table > tbody td#user_profile{
@@ -32,27 +39,40 @@ table>tbody td#id>button#iddupchk{
 	border: #FAC213 solid 2px;
 } */
 
+th {
+	font-weight: 500;
+	letter-spacing: 3px;
+}
+
+table>tbody td#id> button#iddupchk:hover {
+	background-color:rgb(183, 231, 199);
+}
+
 /* 가입하기 버튼  */
 div#signup{  
 	text-align: center;
 	width: 100%;
-	height: 50%;
+	height: 100%;
+	margin-top: 10px;
 }
 
 button#signup{
 	/* margin : 100%; */
-	margin-top: 2%;
-	background-color: #DAE2B6;
-	border: #DAE2B6; 
-	display:inline-block; 
-	/* line-height:40px; */
-	width :10%;
-	height: 40px;
-	letter-spacing: 5px;
-	font-size: medium;
+	background-color: white;
+	width: 5%;
+	height: 50px;
 	margin-right: 110px;
-	border-radius: 10px;
+    border: 2px solid rgb(183, 231, 199);
+    border-radius: 23px;
+	letter-spacing: 5px;
+    font-weight: 300;
+	font-size: medium;
+    cursor:pointer;
 	min-width: 10%;
+}
+
+button#signup:hover {
+	background-color:rgb(183, 231, 199);
 }
 
 div.container>form>input{
@@ -61,15 +81,12 @@ div.container>form>input{
 
 }
 input.input-box{
-	border-radius: 10px;
-	border:gray solid 1px;
-	text-align: left;
-	padding:10px;
-	width: 250px;
-	
-}
-th {
-	letter-spacing: 3px;
+	border-radius: 23px;
+	border: 2px solid rgb(183, 231, 199);
+	text-align: justify;
+	padding: 7px;
+	width:250px;
+	box-sizing: border-box;
 }
 
 table>tbody input#user_profile{
