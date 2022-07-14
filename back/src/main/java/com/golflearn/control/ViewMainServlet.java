@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -29,6 +31,9 @@ public class ViewMainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");	
 		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		String userType = (String) session.getAttribute("userType");
+	
 		
 		String result = "";
 		LessonRepository repo = new LessonOracleRepository();
@@ -46,8 +51,8 @@ public class ViewMainServlet extends HttpServlet {
 
 			try {
 				map.put("lsns", lsnList);//
-				
 				map.put("sido", api.sidoApi());
+				map.put("userType", userType);
 				
 				request.setAttribute("lsns", lsnList);
 				request.setAttribute("sido", api.sidoApi());

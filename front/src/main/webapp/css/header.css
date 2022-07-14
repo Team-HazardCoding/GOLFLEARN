@@ -54,6 +54,10 @@ header > #navbar > #content > #content-right {
     width: 15%;
 }
 
+header > #navbar > #content > #content-right > #logined {
+    min-width: 200px;
+}
+
 header > #navbar > #content > #content-right > #logined > a {
     text-decoration: none;
     color: #A1D36A;

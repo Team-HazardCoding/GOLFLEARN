@@ -22,10 +22,12 @@ $(function() {
             $sidebarObj.append(sido);
 
             $lsnObj = $('div.col');
+            // $lsnObj = $('<div class="col">');
+            // $('div#card-container').append($lsnObj);
             $(jsonObj.lsns).each(function(index, item) {
                 console.log(item.user.userName + "  " + item.locNo);
 
-                let product = '<div class="lsn">';
+                let product = '<div class="lsn" id='+ item.lsnNo + '>';
                 product +='<img src="/images/"' + item.user.userId + '/LessonThumbnail.jpeg">';// 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
                 product +='<div class="lsn_content">';
                 product +='<h5 class="lsn_title">' + item.lsnTitle + '</h5>';
@@ -47,4 +49,13 @@ $(function() {
             alert("error: " + jqXHR.status);
         }
     });
+
+    $('div#card-container').on('click', 'div.col>div.lsn', function(e) {
+        // 클릭한 lsn_no
+        $lsnId = $(this).attr('id');
+        console.log($lsnId);
+        location.href = '/front/html/viewlesson.html?lsn_no=' + $lsnId;
+    });
+
+    
 })

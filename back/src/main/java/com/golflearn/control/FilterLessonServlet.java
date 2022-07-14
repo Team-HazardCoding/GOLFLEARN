@@ -23,10 +23,8 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.dto.Lesson;
 import com.golflearn.dto.User;
-import com.golflearn.exception.FindException;
 import com.golflearn.repository.LessonOracleRepository;
 import com.golflearn.repository.LessonRepository;
-import com.golflearn.repository.OpenApi;
 import com.golflearn.sql.MyConnection;
 
 /**
@@ -39,10 +37,9 @@ public class FilterLessonServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");	
 		PrintWriter out = response.getWriter();
-		String sigu = request.getParameter("sigu");// 여러개의 sido값들이 들오기때문에 배열로 받아야할 것
+		String []siguArr = request.getParameterValues("sigu");// 여러개의 sido값들이 들오기때문에 배열로 받아야할 것
 
 		String result = "";
-		LessonRepository repo = new LessonOracleRepository();
 
 		// json 컨텐츠를 java 객체로 역직렬화하거나 json으로 직렬화할때 사용하는 라이브러리임
 		ObjectMapper mapper = new ObjectMapper(); 
@@ -59,10 +56,21 @@ public class FilterLessonServlet extends HttpServlet {
 
 			String selectFilterLsnSQL = "SELECT lsn_no, loc_no, lsn_title, lsn_upload_dt, lsn_star_sum, lsn_star_ppl_cnt, ui.user_name 프로명\n"
 					+ "FROM lesson l JOIN user_info ui ON(l.user_id = ui.user_id)\n"
-					+ "WHERE l.loc_no IN (?) \n"
+					+ "WHERE l.loc_no IN (";
+			for(int i=0; i<siguArr.length; i++) {
+				if(i>0) {
+					selectFilterLsnSQL += ",";
+				}
+				selectFilterLsnSQL += "?";
+			}		
+					
+			selectFilterLsnSQL += ") \n"
 					+ "ORDER BY 1 DESC";
 			pstmt = con.prepareStatement(selectFilterLsnSQL);
-			pstmt.setString(1, sigu);
+			for(int i=0; i<siguArr.length; i++) {
+				pstmt.setString(i+1, siguArr[i]);
+				
+			}
 			rs = pstmt.executeQuery();
 			//				rs.setString(1, );
 			while(rs.next()) {

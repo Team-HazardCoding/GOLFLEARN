@@ -6,7 +6,7 @@ $(function() {
 	$sidoBtn.on('click', 'li', function(event) {
 		$tagContent.empty();
 		let $sidoVal = $(this);
-		// console.log($sidoVal.val());
+
 		$.ajax({
 			url: sidoguUrl,
 			data: {sido : $sidoVal.val()},
@@ -17,13 +17,10 @@ $(function() {
 					$keyObj = Object.keys(item);
 					$itemObj = Object.values(item);
 					for ( let i = 0; i < $itemObj.length; i++ ) {
-						// arr.push($itemObj[i]);
-						// console.log($keyObj);
 						sigu += '<li class="sigu" name="sigu" value="' + $keyObj[i] + '"';
 						sigu+= '>' + $itemObj[i] + '</li>';	
 					}
 				})
-				// sigu += '</ul>';
 				
 				$tagContent.append(sigu);
 				// console.log($sidoNm);
@@ -42,62 +39,55 @@ $(function() {
 
 	//-----------------try-------------------
 	$('#tag-container').on('click','li',function(e) {
-		// if($(this).hasClass('choice')){ //선택된 경우 선택해제,
-		// 	$(this).removeClass('choice');
-		// } else {
-		// 	$(this).addClass('choice');
-		// }
-		e.preventDefault();
-		$('div#card-container').empty();
+		// e.preventDefault();
 		$(this).toggleClass('choice');
 
-		// let siguArr = [];
 		let data = ''; //sigu=1111&sigu=2222
 		$('#tag-container>li').each(function(index, element){
 			if($(element).hasClass('choice')){
 				if(data != ''){
 					data += '&';
 				}
-				// siguArr.push($(element).attr('value'));
 				data += 'sigu=' + $(element).attr('value');
 			}
-			return false;
+			// return false;
 		});
 		let url = '';
 
 		console.log(data);
-		// if(data == ''){
-		// 	url ='http://localhost:1124/back/main';
-		// } else {
-		// }
-		url ='http://localhost:1124/back/filterlesson';
+		if(data == ''){
+			url ='http://localhost:1124/back/main';
+		} else {
+			url ='http://localhost:1124/back/filterlesson';
+		}
 		$.ajax({
 			url:url,
-			// method:'get',
 			data:data,
 			success: function(jsonObj) {
-				
-				$lsnObj = $('div.col');
-				console.log(url);
-				console.log(jsonObj.lsns);
-				let product ='';
+				// console.log(url);
+				// console.log(jsonObj.lsns);
+				$('div#card-container').empty();
+				$lsnObj = $('<div class="col">');
+				$('div#card-container').append($lsnObj);
+				// let product ='';
 				$(jsonObj.lsns).each(function(index, item) {
-					console.log(item);
-					product = '<div class="col"><div class="lsn">';
-					// product +='<img src="/images/"' + item.user.userId + '/LessonThumbnail.jpeg">';// 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
+					// console.log(item);
+					let product = '<div class="lsn" id='+ item.lsnNo + '>';
+					product +='<img src="/images/"' + item.user.userId + '/LessonThumbnail.jpeg">';// 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
 					product +='<div class="lsn_content">';
 					product +='<h5 class="lsn_title">' + item.lsnTitle + '</h5>';
 					product +='<p class="prod_price">프로이름 : '+item.user.userName + '</p>';
 					product +='<p class="tag_name">태그이름 : ' + item.locNo + '</p>';// 지역번호
-					product +='<p class="star_point">별점  : '+ item.lsnStarPoint + '</p></div></div>';
+					product +='<p class="star_point">별점  : '+ item.lsnStarPoint + '</p></div>';
 					product +='</div>';
 					
-					console.log(product);
+					// console.log(product);
+					// $copyObj.html(product);
 					let $copyObj = $lsnObj.clone(); //복제본 생성
 					$copyObj.html(product);
 					$('div#card-container').append($copyObj);
 				});
-				// $lsnObj.hide(); // 복제본이 아닌 td태그를 숨김
+				$lsnObj.hide(); // 복제본이 아닌 td태그를 숨김
 				return false;
 			},
 			error: function(jqXHR){

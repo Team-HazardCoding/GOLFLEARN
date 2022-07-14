@@ -126,6 +126,7 @@ li:hover {
     max-width: 30%;
     height: 250px;
     min-width: 30%;
+    cursor: pointer;
 }
 
 #main>#wrapper>#container>#content-right .col:nth-child(1) {
