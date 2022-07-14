@@ -128,7 +128,4 @@ $(function(){
         let lsn_line_no = $lsnLineNoObj.html();
         location.href = "/front/html/review.html?reviewCnt=1&lsn_line_no=" + lsn_line_no;
     });
-
-
-
 })

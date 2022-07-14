@@ -1,3 +1,4 @@
+
 @import url(base.css);
 * {
     margin: 0 0;
@@ -92,6 +93,7 @@ input.lsn_line_no{
 span.lsn_title{
     font-size: x-large;
     display: block;
+    margin-left: 30px;
 }
 
 section{
@@ -115,3 +117,4 @@ textarea.review_context{
 #review{
     height:120px;
 }
+

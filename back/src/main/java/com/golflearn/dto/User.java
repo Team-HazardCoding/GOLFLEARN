@@ -3,6 +3,8 @@ package com.golflearn.dto;
 import java.util.Date;
 
 public class User {
+
+	
 	private String userID;
 	private String userName;
 	private String userEmail;
@@ -17,10 +19,17 @@ public class User {
 		return userType + "입니다";
 	}
 	
+
+	public User() {
+	}
+	
+	public User(String userName) {
+	}
 	public String getUserID(){
 		return this.userID;
 	}
-	public void setUserID(String userID){
+	public void setUserID(String userID) {
+
 		this.userID = userID;
 	}
 	public String getUserName() {
@@ -71,5 +80,5 @@ public class User {
 	public void setPro(Pro pro) {
 		this.pro = pro;
 	}
-	
+
 }

@@ -1,6 +1,5 @@
 package com.golflearn.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class LessonLine {
@@ -159,5 +158,6 @@ public class LessonLine {
 
 
 	
+
 	
 }

@@ -1,57 +1,47 @@
-<<<<<<< HEAD
 li {
     display: block;
     list-style: none;
     padding: 3px;
 }
-
+​
 li:hover {
     cursor: pointer;
 }
-=======
->>>>>>> 490f172b6e28d4f5e605b0ae6425d1b9d08ffc17
-
+​
 #main {
     width: 100%;
     height: 100%;
     /* background-color:whitesmoke; */
-<<<<<<< HEAD
     margin-top: 95px;
 }
-
+​
 #main>#wrapper {
-=======
-    margin-top:90px;
-}
-
-#wrapper {
->>>>>>> 490f172b6e28d4f5e605b0ae6425d1b9d08ffc17
     width: 80%;
     height: 100%;
     margin: 0 auto;
     background-color: #fff;
 }
-
-
 #main>#wrapper>#container {
-
+    width: 100%;
+    /* height: 100%; */
+    margin-top: 15px;
+    display: flex;
+    /* justify-content: space-around; */
 }
-
-
+​
 #main>#wrapper>aside {
-
     width: 100%;
     height: 400px;
     box-sizing: border-box;
     background-color: #F0D9FF;
 }
-
+​
 #main>#wrapper>#container>#content-left {
     width: 20%;
     min-width: 120px;
     height: 500px;
 }
-
+​
 #main>#wrapper>#container>#content-left>#sidebar {
     height: auto;
     margin-right: 10px;
@@ -60,7 +50,7 @@ li:hover {
     width: 100%;
     border-radius: 15px;
 }
-
+​
 #main>#wrapper>#container>#content-left>#sidebar>ul {
     display: flex;
     padding-left: 0;
@@ -72,7 +62,7 @@ li:hover {
     flex-direction: column;
     overflow-y: scroll;
 }
-
+​
 #main>#wrapper>#container>#content-left>#sidebar>ul>li {
     display: block;
     list-style: none;
@@ -83,12 +73,12 @@ li:hover {
     border-radius: 10px;
     margin-bottom: 10px;
 }
-
+​
 #main>#wrapper>#container>#content-right {
     width: 80%;
     overflow: hidden;
 }
-
+​
 #main>#wrapper>#container>#content-right>#tag-container {
     background-color: #FFF;
     margin: 0 auto;
@@ -100,7 +90,7 @@ li:hover {
     align-items: center;
     overflow-x: scroll;
 }
-
+​
 #main>#wrapper>#container>#content-right>#tag-container>li{
     background-color: #FFEFBC;
     border-radius: 10px;
@@ -114,7 +104,12 @@ li:hover {
     margin-right: 5px;
     margin-left: 0;
 }
-
+​
+​
+#main>#wrapper>#container>#content-right>#tag-container>li.choice {
+    background-color: rebeccapurple;
+}
+​
 #main>#wrapper>#container>#content-right>#card-container {
     display: flex;
     margin-top: 20px;
@@ -122,8 +117,7 @@ li:hover {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
-#main>#wrapper>#container>#content-right>#card-container>.col {}
+​
 
 #main>#wrapper>#container>#content-right .col {
     margin-right: 15px;
@@ -131,13 +125,13 @@ li:hover {
     max-width: 30%;
     height: 250px;
     min-width: 30%;
-}
+    cursor: pointer;
+​}
 
 #main>#wrapper>#container>#content-right .col:nth-child(1) {
     margin-left: 10px;
 }
 
-#main>#wrapper>#container .col>.lsn {
-
+​ #main>#wrapper>#container .col>.lsn {
     border: none;
 }

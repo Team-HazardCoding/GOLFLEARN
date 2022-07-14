@@ -1,5 +1,10 @@
 @import url(base.css);
 @import url(base.css);
+section {
+    margin: 0 auto;
+    margin-top: 95px;
+    width : 80%;
+}
 * {
     margin: 0 0;
     box-sizing: border-box;

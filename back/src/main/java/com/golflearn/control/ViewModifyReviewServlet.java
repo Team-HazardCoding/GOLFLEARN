@@ -25,9 +25,9 @@ public class ViewModifyReviewServlet extends HttpServlet {
 		response.setContentType("application/json;charset = utf-8");
 		PrintWriter out = response.getWriter();
 		//후기수정을 누른 레슨내역번호 전달 
-//		int lsnLineNo = Integer.parseInt(request.getParameter("lsn_line_no"));
+		int lsnLineNo = Integer.parseInt(request.getParameter("lsn_line_no"));
 		ObjectMapper mapper = new ObjectMapper();
-		int lsnLineNo = 2;
+//		int lsnLineNo = 2;
 		LessonLine ll = null;
 		String result = null;
 		

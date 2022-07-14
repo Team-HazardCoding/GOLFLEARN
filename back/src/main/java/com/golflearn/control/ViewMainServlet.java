@@ -1,5 +1,4 @@
 package com.golflearn.control;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -26,14 +25,13 @@ import com.golflearn.repository.OpenApi;
 @WebServlet("/main")
 public class ViewMainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");	
 		PrintWriter out = response.getWriter();
-
+		
 		HttpSession session = request.getSession();
 		String userType = (String) session.getAttribute("userType");
-
 		String result = "";
 		LessonRepository repo = new LessonOracleRepository();
 		try {
@@ -50,7 +48,6 @@ public class ViewMainServlet extends HttpServlet {
 
 			try {
 				map.put("lsns", lsnList);//
-
 				map.put("sido", api.sidoApi());
 				map.put("userType", userType);
 				
@@ -65,14 +62,11 @@ public class ViewMainServlet extends HttpServlet {
 			
  			result = mapper.writeValueAsString(map);
 //			System.out.println("result :" + result);
-
-
 			
 			out.print(result);
 		} catch (FindException e) {
 			e.printStackTrace();
 			Map<String, Object> map = new HashMap<>();
-
 			map.put("msg", e.getMessage());
 			ObjectMapper mapper = new ObjectMapper();
 			result = mapper.writeValueAsString(map);
@@ -81,5 +75,4 @@ public class ViewMainServlet extends HttpServlet {
 		}
 		
 	}
-
 }
