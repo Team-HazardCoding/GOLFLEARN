@@ -93,17 +93,4 @@ $(function(){
         location.href = "/front/html/studentmanage.html?lsn_no=" + lsn_no;
     });    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 })
