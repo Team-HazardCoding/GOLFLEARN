@@ -1,7 +1,5 @@
 $(function() {
     let url = 'http://localhost:1124/back/main';
-
-
     $.ajax({
         url: url,
         success: function(jsonObj) {
@@ -27,11 +25,12 @@ $(function() {
             $(jsonObj.lsns).each(function(index, item) {
                 console.log(item.user.userName + "  " + item.locNo);
 
-                let product = '<div class="lsn"><img>';
+                let product = '<div class="lsn">';
+                product +='<img src="/images/"' + item.user.userId + '/LessonThumbnail.jpeg">';// 각레슨의 이미지경로 다시 설정해야함 
                 product +='<div class="lsn_content">';
                 product +='<h5 class="lsn_title">' + item.lsnTitle + '</h5>';
                 product +='<p class="prod_price">프로이름 : '+item.user.userName + '</p>';
-                product +='<p class="tag_name">태그이름 : ' + '</p>';
+                product +='<p class="tag_name">태그이름 : ' + item.locNo + '</p>';// 지역번호
                 product +='<p class="star_point">별점  : '+ item.lsnStarPoint + '</p></div>';
                 product +='</div>';
                 
@@ -51,6 +50,7 @@ $(function() {
             });   
             $lsnObj.hide(); // 복제본이 아닌 td태그를 숨김
 
+			// console.log($('div#card-container div.col>div.lsn>div.lsn_content>h5.lsn_title').text());
 
 			return false;
         }, 

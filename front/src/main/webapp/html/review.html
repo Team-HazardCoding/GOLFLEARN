@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/review.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../jq/review.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <title>레슨후기</title>
+</head>
+<div w3-include-html="header.html" class="w3"></div>
+<body>
+    <section>
+        <div class = "body">
+            <form class = "submit" action="http://localhost:1124/back/addreview">
+                <h2>레슨후기</h2>
+                <div class = "top">
+                    <input type="text" class = "lsn_line_no" name = "lsn_line_no" id = "lsn_line_no" readonly>
+                    <div class = "content-left">
+                        <div class = "img-box">
+                            <img src = "../images/2.jpg" alt="2번째레슨">
+                        </div>
+                    </div>
+                    <div class="content-right">
+                        <span class = "lsn_title">제목</span>
+                        <div class = "my_star_score">
+                            <div class = "starform" name="starform" id="my_star_score">
+                                <fieldset>
+                                    <legend>별점선택</legend>
+                                    <input type="radio" name="my_star_score" value="5" id="rate1"><label for="rate1">⭐</label>
+                                    <input type="radio" name="my_star_score" value="4" id="rate2"><label for="rate2">⭐</label>
+                                    <input type="radio" name="my_star_score" value="3" id="rate3"><label for="rate3">⭐</label>
+                                    <input type="radio" name="my_star_score" value="2" id="rate4"><label for="rate4">⭐</label>
+                                    <input type="radio" name="my_star_score" value="1" id="rate5"><label for="rate5">⭐</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+            <div class = "bottom">
+                <div class = "review">상세후기</div>
+                <div class="review-container">
+                    <textarea id = "review" name="review" class ="review_context"></textarea>
+                    <input type="button" class="back" value="이전">
+                    <input type="submit" value="제출">
+                </div>
+            </div>
+    </section>
+</body>
+<div w3-include-html="footer.html" class="w3"></div>
+
+<script>
+    w3.includeHTML();
+</script>
+</html>

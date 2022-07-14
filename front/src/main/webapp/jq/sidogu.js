@@ -18,7 +18,7 @@ $(function() {
 					$itemObj = Object.values(item);
 					for ( let i = 0; i < $itemObj.length; i++ ) {
 						// arr.push($itemObj[i]);
-						console.log($keyObj);
+						// console.log($keyObj);
 						sigu += '<li class="sigu" name="sigu" value="' + $keyObj[i] + '"';
 						sigu+= '>' + $itemObj[i] + '</li>';	
 					}
@@ -39,4 +39,20 @@ $(function() {
 			
 		})
 	});
+
+	$('#tag-container').on('click','li',function() {
+		
+		$.ajax({
+			url: "localhost:1124/back/filter",
+			success: function() {
+				
+			},
+			error: function(jqXHR) {
+				alert("error: " + jqXHR.status);
+			}
+		})
+		
+		
+	})
+
 })

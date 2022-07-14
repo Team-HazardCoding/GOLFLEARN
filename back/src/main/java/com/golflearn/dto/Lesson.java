@@ -26,6 +26,7 @@ public class Lesson {
 	private int lsnStarPoint;
 	private User user;
 	private Pro pro;
+	private LessonLine lsnLine;
 	private LessonReview lsnReview;
 	
 	public Lesson(){}
@@ -190,6 +191,10 @@ public class Lesson {
 
 	public void setLines(List<LessonLine> lines) {
 		this.lsnLines = lines;
+	}
+	
+	public void setLsnLine(LessonLine lsnLine) {
+		this.lsnLine = lsnLine;
 	}
 
 	public Pro getPro() {
