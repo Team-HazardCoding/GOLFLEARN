@@ -25,11 +25,11 @@ import com.golflearn.repository.OpenApi;
 @WebServlet("/main")
 public class ViewMainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");	
 		PrintWriter out = response.getWriter();
-		
+
 		HttpSession session = request.getSession();
 		String userType = (String) session.getAttribute("userType");
 		String result = "";
@@ -38,10 +38,10 @@ public class ViewMainServlet extends HttpServlet {
 			// json 컨텐츠를 java 객체로 역직렬화하거나 json으로 직렬화할때 사용하는 라이브러리임
 			ObjectMapper mapper = new ObjectMapper(); 
 			mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
-			
+
 			Map<String, Object> map = new HashMap<>();
 			List<Lesson> lsnList = repo.selectAll();
-//			map.put("status", 1);
+			//			map.put("status", 1);
 			// 광역시들을 메인에 보여주는 코드
 			OpenApi api = new OpenApi();
 			List sidoList = new ArrayList();
@@ -50,7 +50,7 @@ public class ViewMainServlet extends HttpServlet {
 				map.put("lsns", lsnList);//
 				map.put("sido", api.sidoApi());
 				map.put("userType", userType);
-				
+
 				request.setAttribute("lsns", lsnList);
 				request.setAttribute("sido", api.sidoApi());
 			} catch (Exception e) {
@@ -58,11 +58,11 @@ public class ViewMainServlet extends HttpServlet {
 			}
 			// String타입으로 변환
 			String jsonValue = mapper.writeValueAsString(map);
-//			System.out.println("jsonValue :"+ jsonValue);
-			
- 			result = mapper.writeValueAsString(map);
-//			System.out.println("result :" + result);
-			
+			//			System.out.println("jsonValue :"+ jsonValue);
+
+			result = mapper.writeValueAsString(map);
+			//			System.out.println("result :" + result);
+
 			out.print(result);
 		} catch (FindException e) {
 			e.printStackTrace();
@@ -70,9 +70,9 @@ public class ViewMainServlet extends HttpServlet {
 			map.put("msg", e.getMessage());
 			ObjectMapper mapper = new ObjectMapper();
 			result = mapper.writeValueAsString(map);
-//			System.out.println("result: " + result);
+			//			System.out.println("result: " + result);
 			out.print(result);
 		}
-		
+
 	}
 }
