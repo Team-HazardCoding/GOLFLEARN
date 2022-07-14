@@ -1,0 +1,63 @@
+@charset "UTF-8";
+@import url(base.css);
+
+div#wrapper {
+    margin-top: 200px;
+    height: 400px;
+    min-width: 300px;
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: space-around space-evenly;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+}
+
+button {
+    background-color: white;
+    width: auto;
+    height: 300px;
+    border-radius: 40%;
+    margin-top: 300px;
+    font-weight : bold;
+}
+
+div#student {
+    display: inline;
+    width: 10%;
+    height: 90%;
+    min-width: 40%;
+    
+}
+
+button#signupstdt {
+    padding: 20px;
+    border: #F9F9C5 solid 3px;
+    background-color: #F9F9C5;
+    width : 50%;
+    height : 100%;
+    font-size : x-large;
+    color : #FFA500;
+    border-radius: 10%;
+
+}
+
+div#pro {
+    display: inline;
+    width: 10%;
+    height: 90%;
+    min-width: 40%;
+}
+
+button#signuppro {
+    padding: 10px;
+    border: #AEDBCE solid 3px;
+    background-color: #AEDBCE;
+    width: 50%;
+    height: 100%;
+    font-size: x-large;
+    color : #1363DF;
+    border-radius: 10%;
+}

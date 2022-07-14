@@ -1,0 +1,163 @@
+@import url(footer.css);
+@import url(header.css);
+@import url(base.css);
+
+/*모달 부분*/
+body > #main >#modal-content {
+    border: 2px solid rgb(183, 231, 199);
+    border-radius: 20px;
+}
+
+body> #main> div#modal-content>div#modal-header {
+    border-bottom: 2px solid rgb(183, 231, 199);
+    box-sizing: border-box;
+    text-align: center;
+} 
+
+
+body > div#main > div#modal-content > div#modal-header > #btn-close {
+    background-color: rgb(183, 231, 199);
+    order: none;
+    width: 30px;
+    height: 30px;
+    margin-top: 7px;
+    border: 2px solid rgb(183, 231, 199);
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor:pointer;
+    line-height: 27px;
+    vertical-align: middle;
+}
+
+button[type=button] {
+    color:white;
+    font-weight: 300;
+    font-size: 15px;
+    -webkit-text-stroke: 0.5px black;
+}
+
+body > div#main > div#modal-content > div#modal-header > button:active {
+    background-color:rgb(183, 231, 199)!important;
+}
+
+body > div#main > div#modal-content > div#modal-header > button:active, 
+body > div#main > div#modal-content >  div#modal-header > button:focus {
+    outline: none !important;
+}
+
+/*#btn-secondary:hover {
+    background-color:rgb(183, 231, 199)!important;
+}
+
+#btn-secondary:active, #btn-secondary:focus { 
+    outline: none !important;
+}*/
+
+#modal-footer {
+    border-top: 2px solid rgb(183, 231, 199);
+    box-sizing: border-box;
+    text-align: center;
+    padding-right: 60px;
+}
+#modal-footer > #btn-secondary {
+    background-color: white;
+    order: none;
+    width: 70px;
+    height: 40px;
+    font-size: smaller;
+    font-weight: 700;
+    border: 2px solid rgb(183, 231, 199);
+    box-sizing: border-box;
+    border-radius: 23px;
+    cursor:pointer;
+}
+#modal-header > #modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+    font-size: 30px;
+    margin-left: 198px;
+}
+input[type=text] {
+	width: 400px;
+	height: 50px;
+	border: 0;
+	padding-left: 10px;
+	margin-top: 10px;
+	outline: none;
+	border-radius: 23px;
+	border: 2px solid rgb(183, 231, 199);
+	box-sizing: border-box;
+	font-size:18px;
+}
+input[type=password] {
+	width: 400px;
+	height: 50px;
+	border: 0;
+	padding-left: 10px;
+	margin-top: 10px;
+	outline: none;
+	border-radius: 23px;
+	border: 2px solid rgb(183, 231, 199);
+	box-sizing: border-box;
+	font-size:18px;
+}
+input::placeholder {
+	color: rgb(128, 128, 128);
+	font-size: 12px;
+	box-sizing: border-box;
+	font-weight: lighter;
+}
+
+#input-id {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+#write-id {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#input-pwd {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+#write-pwd {
+    margin-top: 10px;
+    margin-bottom: 45px;
+    text-align: center;
+}
+
+a {
+    color: rgb(183, 231, 199) !important;
+    font-size:12px;
+    font-weight:100px;
+}
+
+body > div#main > div#modal-content > div#modal-body > form > div#modal-footer > #login-btn >#login {
+    background-color: white;
+	order: none;
+	width: 80px;
+	height: 45px;
+	box-sizing: border-box;
+	border-radius: 23px;
+	border: 2px solid rgb(183, 231, 199);
+	cursor:pointer;
+	font-size: smaller;
+	font-weight: 700;
+    text-align: center;
+}
+
+body > div#main > div#modal-content > div#modal-body > form > div#modal-footer >  #login-btn > button:hover {
+	background-color:rgb(183, 231, 199)!important;
+}
+
+body > div#main > div#modal-content > div#modal-body > form > div#modal-footer > #login-btn > button:active, 
+body > div#main > div#modal-content > div#modal-body > form > div#modal-footer >  #login-btn > button:focus {
+	outline: none !important;
+}

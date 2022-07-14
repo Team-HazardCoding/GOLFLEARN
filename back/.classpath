@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
@@ -12,3 +13,4 @@
 	<classpathentry kind="lib" path="C:/244/SW/apache-tomcat-9.0.63/lib/ojdbc8.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
+

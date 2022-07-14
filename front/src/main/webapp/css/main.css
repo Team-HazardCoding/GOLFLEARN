@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 li {
     display: block;
     list-style: none;
@@ -7,30 +8,38 @@ li {
 li:hover {
     cursor: pointer;
 }
+=======
+>>>>>>> 490f172b6e28d4f5e605b0ae6425d1b9d08ffc17
 
 #main {
     width: 100%;
     height: 100%;
     /* background-color:whitesmoke; */
+<<<<<<< HEAD
     margin-top: 95px;
 }
 
 #main>#wrapper {
+=======
+    margin-top:90px;
+}
+
+#wrapper {
+>>>>>>> 490f172b6e28d4f5e605b0ae6425d1b9d08ffc17
     width: 80%;
     height: 100%;
     margin: 0 auto;
     background-color: #fff;
 }
 
+
 #main>#wrapper>#container {
-    width: 100%;
-    /* height: 100%; */
-    margin-top: 15px;
-    display: flex;
-    /* justify-content: space-around; */
+
 }
 
+
 #main>#wrapper>aside {
+
     width: 100%;
     height: 400px;
     box-sizing: border-box;
@@ -129,5 +138,6 @@ li:hover {
 }
 
 #main>#wrapper>#container .col>.lsn {
+
     border: none;
 }

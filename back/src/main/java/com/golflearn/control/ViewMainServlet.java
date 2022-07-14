@@ -2,7 +2,9 @@ package com.golflearn.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,13 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.dto.Lesson;
 import com.golflearn.exception.FindException;
 import com.golflearn.repository.LessonOracleRepository;
 import com.golflearn.repository.LessonRepository;
+
 import com.golflearn.repository.OpenApi;
 
 @WebServlet("/main")
@@ -60,16 +65,17 @@ public class ViewMainServlet extends HttpServlet {
 			
  			result = mapper.writeValueAsString(map);
 //			System.out.println("result :" + result);
+
 			
 			out.print(result);
 		} catch (FindException e) {
 			e.printStackTrace();
 			Map<String, Object> map = new HashMap<>();
-
 			map.put("msg", e.getMessage());
 			ObjectMapper mapper = new ObjectMapper();
 			result = mapper.writeValueAsString(map);
 //			System.out.println("result: " + result);
+
 			out.print(result);
 		}
 		

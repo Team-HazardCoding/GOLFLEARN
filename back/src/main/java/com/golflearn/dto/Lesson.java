@@ -1,10 +1,11 @@
 package com.golflearn.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.ArrayList;
 
 public class Lesson {
 	private int lsnNo;
+	//private String lsnName;
 	private User user;
 	private String lsnTitle;
 	private String lsnIntro;
@@ -23,6 +24,7 @@ public class Lesson {
 	private LessonLine lsnLine;
 	private String strLsnUploadDt;
 	
+
 	//ViewLessonReview용 toString
 	public String toString() {
 		return "레슨제목 : " + lsnTitle;
@@ -31,8 +33,12 @@ public class Lesson {
 	//ViewMyPage용 toString
 	public String toString(String lsnTitle, int lsnCntSum) {
 		return "레슨제목 : " + this.lsnTitle +
-			   "레슨총횟수 : " + this.lsnCntSum ;
+			"레슨총횟수 : " + this.lsnCntSum ;
 	}
+
+	User u = new User();
+	
+
 	//게터 세터 메서드 
 	//1. 레슨번호
 	public int getLsnNo() {
@@ -147,6 +153,7 @@ public class Lesson {
 		this.location = lsnLocation;
 	}
 
+
 	public LessonLine getLsnLine() {
 		return lsnLine;
 	}
@@ -164,3 +171,4 @@ public class Lesson {
 	}
 
 }
+
