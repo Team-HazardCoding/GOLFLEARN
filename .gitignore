@@ -184,3 +184,4 @@ Servers/
 back/.classpath
 back/.settings
 # End of https://www.toptal.com/developers/gitignore/api/java,windows,eclipse
+.project
