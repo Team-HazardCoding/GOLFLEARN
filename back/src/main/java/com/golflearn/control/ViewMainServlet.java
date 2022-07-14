@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.dto.Lesson;
 import com.golflearn.exception.FindException;
@@ -33,10 +33,10 @@ public class ViewMainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");	
 		PrintWriter out = response.getWriter();
+
 		HttpSession session = request.getSession();
 		String userType = (String) session.getAttribute("userType");
-	
-		
+
 		String result = "";
 		LessonRepository repo = new LessonOracleRepository();
 		try {
@@ -53,6 +53,7 @@ public class ViewMainServlet extends HttpServlet {
 
 			try {
 				map.put("lsns", lsnList);//
+
 				map.put("sido", api.sidoApi());
 				map.put("userType", userType);
 				
@@ -67,6 +68,8 @@ public class ViewMainServlet extends HttpServlet {
 			
  			result = mapper.writeValueAsString(map);
 //			System.out.println("result :" + result);
+
+
 			
 			out.print(result);
 		} catch (FindException e) {

@@ -7,6 +7,7 @@ import java.util.List;
 import com.golflearn.dto.Lesson;
 import com.golflearn.exception.AddException;
 import com.golflearn.exception.FindException;
+
 import com.golflearn.sql.MyConnection;
 
 public interface LessonRepository {
@@ -16,6 +17,7 @@ public interface LessonRepository {
 	 * @return 레슨객체
 	 * @throws FindException 레슨번호에 해당하는 상품이 없으면 "레슨이 없습니다" 상세메시지를 갖는 예외가 발생한다
 	 */
+
 	public Lesson selectByLsnNo(int lsnNo) throws FindException;
 	
 	/**

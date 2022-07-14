@@ -93,7 +93,7 @@ public class LessonLineRepository {
 				ll.setLsnReview(lr);
 				
 				
-				System.out.println(lr.toString(myStarScore));
+//				System.out.println(lr.toString(myStarScore));
 //				System.out.println(ll.toString(le.toString(lsnTitle,lsnCntSum), lr.toString(myStarScore)));
 //				System.out.println(lines.get(0));
 				lines.add(ll); 
@@ -184,6 +184,8 @@ public class LessonLineRepository {
 		}finally {
 			MyConnection.close(rs, pstmt, con);
 		}
+
 	}
+
 
 }

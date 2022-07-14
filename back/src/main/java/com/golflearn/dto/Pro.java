@@ -3,6 +3,7 @@ package com.golflearn.dto;
 public class Pro {
 	private String proCareer;
 	private String userId;
+
 	
 	public String getProCareer() {
 		return proCareer;
@@ -16,4 +17,5 @@ public class Pro {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
 }

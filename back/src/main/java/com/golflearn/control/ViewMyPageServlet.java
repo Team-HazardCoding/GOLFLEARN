@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +19,7 @@ import com.golflearn.dto.Lesson;
 import com.golflearn.dto.LessonLine;
 import com.golflearn.exception.FindException;
 import com.golflearn.repository.LessonLineRepository;
+
 
 /**
  * Servlet implementation class ViewMyPageServlet
@@ -74,6 +76,7 @@ public class ViewMyPageServlet extends HttpServlet {
 //		System.out.println(jsonTest);
 //		
 //		
+
 	}
 
 }

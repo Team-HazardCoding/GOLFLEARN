@@ -1,8 +1,8 @@
 package com.golflearn.dto;
-
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
+
 
 public class Lesson {
 	private int lsnNo;
@@ -27,7 +27,7 @@ public class Lesson {
 	private User user;
 	private Pro pro;
 	private LessonLine lsnLine;
-	private LessonReview lsnReview;
+	private String strLsnUploadDt;
 	
 	public Lesson(){}
 	// 메인페이지의 레슨목록 보여줄때 필요한 생성자
@@ -35,7 +35,7 @@ public class Lesson {
 		this.lsnNo = lsnNo;
 		this.lsnTitle = lsnTitle;
 		this.lsnUploadDt = lsnUploadDt;
-		this.lsnStarPoint = lsnStarPoint;
+		this.setLsnStarPoint(lsnStarPoint);
 		this.user = user;
 		this.locNo = locNo;
 				
@@ -47,179 +47,142 @@ public class Lesson {
 	
 	//게터 세터 메서드 
 	//1. 레슨번호
-
 	public int getLsnNo() {
-		return lsnNo;
+		return this.lsnNo;
 	}
-
 	public void setLsnNo(int lsnNo) {
 		this.lsnNo = lsnNo;
 	}
-
 	public String getLsnTitle() {
-		return lsnTitle;
+		return this.lsnTitle;
 	}
-
 	public void setLsnTitle(String lsnTitle) {
 		this.lsnTitle = lsnTitle;
 	}
-
 	public String getLsnIntro() {
-		return lsnIntro;
+		return this.lsnIntro;
 	}
-
 	public void setLsnIntro(String lsnIntro) {
 		this.lsnIntro = lsnIntro;
 	}
-
 	public int getLsnLv() {
-		return lsnLv;
+		return this.lsnLv;
 	}
-
 	public void setLsnLv(int lsnLv) {
 		this.lsnLv = lsnLv;
 	}
-
 	public int getLsnDays() {
-		return lsnDays;
+		return this.lsnDays;
 	}
-
 	public void setLsnDays(int lsnDays) {
 		this.lsnDays = lsnDays;
 	}
-
 	public int getLsnPrice() {
-		return lsnPrice;
+		return this.lsnPrice;
 	}
-
 	public void setLsnPrice(int lsnPrice) {
 		this.lsnPrice = lsnPrice;
 	}
-
 	public int getLsnPerTime() {
-		return lsnPerTime;
+		return this.lsnPerTime;
 	}
-
 	public void setLsnPerTime(int lsnPerTime) {
-		this.lsnPerTime = lsnPerTime;
+	this.lsnPerTime = lsnPerTime;
 	}
-
 	public int getLsnCntSum() {
-		return lsnCntSum;
+		return this.lsnCntSum;
 	}
-
 	public void setLsnCntSum(int lsnCntSum) {
 		this.lsnCntSum = lsnCntSum;
 	}
-
 	public int getLsnStarSum() {
-		return lsnStarSum;
+		return this.lsnStarSum;
 	}
-
 	public void setLsnStarSum(int lsnStarSum) {
 		this.lsnStarSum = lsnStarSum;
 	}
-
 	public int getLsnStarPplCnt() {
 		return lsnStarPplCnt;
 	}
-
 	public void setLsnStarPplCnt(int lsnStarPplCnt) {
 		this.lsnStarPplCnt = lsnStarPplCnt;
 	}
-
 	public float getLsnStarScore() {
 		return lsnStarScore;
 	}
-
 	public void setLsnStarScore(float lsnStarScore) {
 		this.lsnStarScore = lsnStarScore;
 	}
-
 	public float getProStarScore() {
 		return proStarScore;
 	}
-
 	public void setProStarScore(float proStarScore) {
 		this.proStarScore = proStarScore;
 	}
-
 	public int getLsnStatus() {
 		return lsnStatus;
 	}
-
 	public void setLsnStatus(int lsnStatus) {
 		this.lsnStatus = lsnStatus;
 	}
-
 	public String getLocNo() {
 		return locNo;
 	}
-
 	public void setLocNo(String locNo) {
 		this.locNo = locNo;
 	}
-
 	public User getUser() {
 		return user;
 	}
-
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 	public Date getLsnUploadDt() {
 		return lsnUploadDt;
 	}
-
 	public void setLsnUploadDt(java.sql.Date lsnUploadDt) {
 		this.lsnUploadDt = lsnUploadDt;
 	}
-
-
 	public List<LessonClsfc> getLsnClsfcs() {
 		return lsnClsfcs;
 	}
-
 	public void setLsnClsfcs(List<LessonClsfc> lsnClsfcs) {
 		this.lsnClsfcs = lsnClsfcs;
 	}
-
 	public List<LessonLine> getLines() {
 		return lsnLines;
 	}
-
 	public void setLines(List<LessonLine> lines) {
 		this.lsnLines = lines;
 	}
-	
-	public void setLsnLine(LessonLine lsnLine) {
-		this.lsnLine = lsnLine;
-	}
-
 	public Pro getPro() {
 		return pro;
 	}
-
 	public void setPro(Pro pro) {
 		this.pro = pro;
 	}
-
-	public LessonReview getLsnReview() {
-		return lsnReview;
+	public int getLsnStarPoint() {
+		return lsnStarPoint;
 	}
-
-	public void setLsnReview(LessonReview lsnReview) {
-		this.lsnReview = lsnReview;
+	public void setLsnStarPoint(int lsnStarPoint) {
+		this.lsnStarPoint = lsnStarPoint;
 	}
-
-	@Override
-	public String toString() {
-		return "Lesson [lsnNo=" + lsnNo + ", lsnTitle=" + lsnTitle + ", lsnIntro=" + lsnIntro + ", lsnLv=" + lsnLv
-				+ ", lsnDays=" + lsnDays + ", lsnPrice=" + lsnPrice + ", lsnPerTime=" + lsnPerTime + ", lsnCntSum="
-				+ lsnCntSum + ", lsnStarSum=" + lsnStarSum + ", lsnStarPplCnt=" + lsnStarPplCnt + ", lsnStarScore="
-				+ lsnStarScore + ", proStarScore=" + proStarScore + ", lsnStatus=" + lsnStatus + ", locNo=" + locNo
-				+ ", user=" + user + ", lsnUploadDt=" + lsnUploadDt + ", lsnClsfcs=" + lsnClsfcs + ", lines=" + lsnLines
-				+ ", pro=" + pro + ", lsnReview=" + lsnReview + "]";
+	public int getUploadDt() {
+		return UploadDt;
+	}
+	public void setUploadDt(int uploadDt) {
+		UploadDt = uploadDt;
+	}
+	public LessonLine getLsnLine() {
+		return lsnLine;
+	}
+	public void setLsnLine(LessonLine lsnLine) {
+		this.lsnLine = lsnLine;
+	}
+	public String getStrLsnUploadDt() {
+		return strLsnUploadDt;
+	}
+	public void setStrLsnUploadDt(String strLsnUploadDt) {
+		this.strLsnUploadDt = strLsnUploadDt;
 	}
 }
