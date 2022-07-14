@@ -2,6 +2,7 @@ $(function(){
     $.ajax({
         url : "/back/viewstudentmanage",
         method : 'get',
+        data : 7,
         success : function(jsonObj){
             let $tableObj = $('div.tr');
             $(jsonObj).each(function(i,element){

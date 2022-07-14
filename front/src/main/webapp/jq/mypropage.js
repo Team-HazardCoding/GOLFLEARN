@@ -66,21 +66,21 @@ $(function(){
     });
 
     //클릭한 객체의 부모, 클릭한 객체의 자식 찾기 
-    $('div.lsn').on('click', 'div.lsnlist>div.lsndetail input[value=레슨종료]', function(){
+    $('div.table').on('click', 'div.tr>div.td input[value=레슨종료]', function(){
         // $(this).parent() -> 나중에 기능 구현할 때 사용 
             alert("곧 구현 예정입니다 :) 기다려주세요!");
     });
-    $('div.lsn').on('click', 'div.lsnlist>div.lsndetail input[value=레슨재개]', function(){
+    $('div.table').on('click', 'div.tr>div.td input[value=레슨재개]', function(){
         // $(this).parent() -> 나중에 기능 구현할 때 사용 
             alert("곧 구현 예정입니다 :) 기다려주세요!");
     });
     //2)레슨사진눌렀을때 레슨상세페이지 연결 
     $mypropageObj = $('section');
-    $lsnNoObj = $('span.no');
+    $lsnNoObj = $('div.no');
     console.log($lsnNoObj);
     $mypropageObj.on('click', 'img', function(){
         //레슨번호 찾아오기  //1번완료 후 
-        let $lsnNoObj = $(this).parent().find('span.no');  //URL종우한테 확인 필요 
+        let $lsnNoObj = $(this).parent().find('div.no');  //URL종우한테 확인 필요 
         let lsn_no = $lsnNoObj.html(); 
         location.href = "/front/html/viewlesson.html?lsn_no=" + lsn_no;
     });
@@ -88,7 +88,7 @@ $(function(){
 
     //3)수강생관리 클릭시 수강생관리 페이지 연결  
     $mypropageObj.on('click', 'input[value=수강생관리]', function(){
-        let $lsnNoObj = $(this).parent().find('span.no');  //URL종우한테 확인 필요 
+        let $lsnNoObj = $(this).parent().find('div.no');  //URL종우한테 확인 필요 
         let lsn_no = $lsnNoObj.html();
         location.href = "/front/html/studentmanage.html?lsn_no=" + lsn_no;
     });    

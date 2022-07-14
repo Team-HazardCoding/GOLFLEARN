@@ -26,8 +26,8 @@ public class ViewStudentManageServlet extends HttpServlet {
 		response.setContentType("application/json;charset = utf-8");
 		PrintWriter out = response.getWriter();
 		ObjectMapper mapper = new ObjectMapper();
-//		int selectedLsnNo = Integer.parseInt(request.getParameter("lsn_no"));
-		int selectedLsnNo = 1;
+		int selectedLsnNo = Integer.parseInt(request.getParameter("lsn_no"));
+//		System.out.println(selectedLsnNo + "는 이거다! ");
 		List<LessonLine> ll = null;
 		String result = null;
 		
@@ -35,6 +35,7 @@ public class ViewStudentManageServlet extends HttpServlet {
 		LessonHistoryRepository lhrepo = new LessonHistoryRepository();
 		try {
 			ll = lhrepo.selectByLsnNo(selectedLsnNo);
+//			System.out.println(selectedLsnNo + "는 이거다! 바로! ");
 			result = mapper.writeValueAsString(ll);
 			System.out.println("결과" + result);
 			out.print(result);
