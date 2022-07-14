@@ -31,7 +31,7 @@ $(function() {
 			success: function(jsonObj) {
 				if(jsonObj.status == 1){
 					$('#content.modal-body').html("고객님의 계정 비밀번호가 변경되었습니다.");
-					$("button.btn-secondary").click(function () {
+					$('button#btn-secondary').click(function () {
 						location.href = "http://localhost:1124/front/html/login.html";
 						});
 				} else {
