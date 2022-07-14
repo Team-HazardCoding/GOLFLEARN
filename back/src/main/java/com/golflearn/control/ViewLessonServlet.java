@@ -29,13 +29,14 @@ public class ViewLessonServlet extends HttpServlet {
 
 		//요청전달데이터 얻어오기
 		int lsn_no = Integer.parseInt(request.getParameter("lsn_no"));   
-	}
+
 
 		//DB에서 레슨검색
 		LessonRepository repository = new LessonOracleRepository();
 
 		//로그인상태이든 아니든 레슨은 검색되도록 함
 		Lesson l = new Lesson();
+
 		try {
 			l = repository.selectByLsnNo(lsn_no);
 			Map<String, Object> map = new HashMap<>();

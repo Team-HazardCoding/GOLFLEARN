@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.golflearn.repository;
 
 import java.sql.Connection;
@@ -164,7 +163,13 @@ public class LessonOracleRepository implements LessonRepository {
 				Date lsnUploadDt =  rs.getDate("lsn_upload_dt");
 				int lsnStarSum = rs.getInt("lsn_star_sum");
 				int lsnStarPplCnt = rs.getInt("lsn_star_ppl_cnt");
-				int lsnStarPoint = Math.round(lsnStarSum/lsnStarPplCnt);
+				int lsnStarPoint = 0;
+				if (lsnStarPplCnt !=0) {
+					lsnStarPoint = Math.round(lsnStarSum/lsnStarPplCnt);
+				} else {
+					lsnStarPoint = 0;
+				}
+//				int lsnStarPoint = Math.round(lsnStarSum/lsnStarPplCnt);
 				String userName = rs.getString("프로명");
 				String locNo = rs.getString("loc_no");
 //				String locSido = rs.getString("시도");
