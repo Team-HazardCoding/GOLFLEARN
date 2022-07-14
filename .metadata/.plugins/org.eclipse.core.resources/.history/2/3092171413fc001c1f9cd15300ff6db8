@@ -1,0 +1,6 @@
+package com.golflearn.dto;
+
+public class Pro {
+	String proCareer;
+	String userId;
+}

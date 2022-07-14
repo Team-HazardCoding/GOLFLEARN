@@ -1,0 +1,10 @@
+package com.golflearn.dto;
+
+import java.util.Date;
+
+public class StdtManage {
+	int lsnLineNo;
+	int lsnCntSum;
+	int currentLsnCnt;
+	Date startDt;
+}

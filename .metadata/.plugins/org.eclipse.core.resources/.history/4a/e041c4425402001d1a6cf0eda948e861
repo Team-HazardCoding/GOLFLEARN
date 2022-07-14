@@ -1,0 +1,49 @@
+package com.golflearn.control;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.golflearn.repository.OpenApi;
+
+
+@WebServlet("/seeksidosigu")
+public class SeekSidoSigu extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(request.getParameter("sido"));
+		System.out.println("-----------------------------------");
+		String sidoVal = request.getParameter("sido");
+		System.out.println(sidoVal);
+		Map<String, Object> map = new HashMap<>();
+
+		OpenApi api = new OpenApi();
+		List sidoList = new ArrayList();
+		
+		try {
+			map.put("sido", api.sidoApi());
+			map.put("sigungu", api.siguApi(sidoVal));
+			
+			request.setAttribute("sido", api.sidoApi());
+			request.setAttribute("sigungu", api.siguApi(sidoVal));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		System.out.println(api.siguApi(sidoVal));
+		
+		
+		
+		
+	}
+
+}

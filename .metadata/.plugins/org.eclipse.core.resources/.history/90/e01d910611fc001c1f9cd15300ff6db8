@@ -1,0 +1,10 @@
+package com.golflearn.dto;
+
+import java.util.Date;
+
+public class LessonReview {
+	String review;
+	int myStarScore;
+	Date reviewDt;
+	Date reviewEditDt;
+}

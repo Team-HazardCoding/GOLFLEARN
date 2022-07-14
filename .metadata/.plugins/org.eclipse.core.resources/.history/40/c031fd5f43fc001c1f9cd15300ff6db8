@@ -1,0 +1,11 @@
+package com.golflearn.sql;
+
+import java.sql.SQLException;
+
+public class Test {
+	public static void main(String[] args) {
+		
+			System.out.println("hi");
+		
+	}
+}

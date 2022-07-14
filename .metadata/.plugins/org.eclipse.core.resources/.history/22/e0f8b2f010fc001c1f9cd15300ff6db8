@@ -1,0 +1,23 @@
+package com.golflearn.dto;
+
+import java.util.ArrayList;
+
+public class Lesson {
+	int lsnNo;
+	User user;
+	String lsnTitle;
+	String lsnIntro;
+	int lsnLv;
+	int lsnDays;
+	int lsnPrice;
+	int lsnPerTime;
+	int lsnCntSum;
+	int lsnStarSum;
+	int lsnStarPplCnt;
+	int lsnStatus;
+	int UploadDt;
+	ArrayList<LessonClsfc> lsnClfc;
+	ArrayList<LessonLine> lsnLines;
+	Location location;
+	
+}

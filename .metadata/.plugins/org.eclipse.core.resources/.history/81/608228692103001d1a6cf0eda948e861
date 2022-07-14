@@ -1,0 +1,130 @@
+package com.golflearn.control;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.golflearn.dto.Lesson;
+import com.golflearn.dto.User;
+import com.golflearn.exception.FindException;
+import com.golflearn.repository.LessonOracleRepository;
+import com.golflearn.repository.LessonRepository;
+import com.golflearn.repository.OpenApi;
+import com.golflearn.sql.MyConnection;
+
+/**
+ * Servlet implementation class FilterLessonServlet
+ */
+@WebServlet("/filterlesson")
+public class FilterLessonServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json;charset=UTF-8");	
+		PrintWriter out = response.getWriter();
+		
+		String result = "";
+		LessonRepository repo = new LessonOracleRepository();
+		try {
+			// json 컨텐츠를 java 객체로 역직렬화하거나 json으로 직렬화할때 사용하는 라이브러리임
+			ObjectMapper mapper = new ObjectMapper(); 
+			mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
+			
+			Map<String, Object> map = new HashMap<>();
+//			List<Lesson> lsnList = repo.selectAll();
+			
+			
+			Connection con = null;
+			List<Lesson> lsnList = new ArrayList<>();
+			try {
+				con = MyConnection.getConnection();
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				
+				// 각 레슨의 별점은 자바단에서 계산하는것이 더 낫다고 하셔서 계산에 필요한 두 칼럼을 가져온후 계산함. 
+				String selectAllLsnSQL = "SELECT * FROM lesson lsn \r\n"
+						+ "     JOIN location loc ON(lsn.lsn_no = loc.lsn_no)\r\n"
+						+ "     WHERE loc.loc_sido = ? AND loc.loc_sigungu IN(?, ?, ?, ?, ?)";
+				pstmt = con.prepareStatement(selectAllLsnSQL);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					// 메인의 레슨목록에 필요한 항목들
+					int lsnNo = rs.getInt("lsn_no");
+					String lsnTitle = rs.getString("lsn_title");
+					Date lsnUploadDt =  rs.getDate("lsn_upload_dt");
+					int lsnStarSum = rs.getInt("lsn_star_sum");
+					int lsnStarPplCnt = rs.getInt("lsn_star_ppl_cnt");
+					int lsnStarPoint = Math.round(lsnStarSum/lsnStarPplCnt);
+					String userName = rs.getString("프로명");
+					String locNo = rs.getString("loc_no");
+					
+					//레슨 한줄한줄을 읽어서 레슨객체에 저장함.
+					User user = new User(userName);				
+					
+					Lesson lsn = new Lesson(lsnNo, lsnTitle, lsnUploadDt, lsnStarPoint, user, locNo); // 생성자로 고칠수 있는 부분
+					// 레슨객체를 레슨리스트객체에 추가시킴
+//					lsn.toString(); 
+					lsnList.add(lsn);
+					System.out.println("lsn객체 만들어짐");
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+		    	MyConnection.close(null, con);
+			}
+			
+			
+//			map.put("status", 1);
+			// 광역시들을 메인에 보여주는 코드
+			OpenApi api = new OpenApi();
+			List sidoList = new ArrayList();
+
+			try {
+				map.put("lsns", lsnList);//
+				
+				map.put("sido", api.sidoApi());
+				
+				request.setAttribute("lsns", lsnList);
+				request.setAttribute("sido", api.sidoApi());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			// String타입으로 변환
+			String jsonValue = mapper.writeValueAsString(map);
+//			System.out.println("jsonValue :"+ jsonValue);
+			
+ 			result = mapper.writeValueAsString(map);
+//			System.out.println("result :" + result);
+			
+			out.print(result);
+		} catch (FindException e) {
+			e.printStackTrace();
+			Map<String, Object> map = new HashMap<>();
+
+			map.put("msg", e.getMessage());
+			ObjectMapper mapper = new ObjectMapper();
+			result = mapper.writeValueAsString(map);
+//			System.out.println("result: " + result);
+			out.print(result);
+		}
+	}
+
+}

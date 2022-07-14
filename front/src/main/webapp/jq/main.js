@@ -4,6 +4,9 @@ $(function() {
         url: url,
         success: function(jsonObj) {
             //card
+            if(jsonObj.usertype=='0') {
+                
+            }
             $sidebarObj = $('div#sidebar');
             var arr = [];
             let sido = '<ul>';

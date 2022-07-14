@@ -1,0 +1,17 @@
+package com.golflearn.dto;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+public class LessonLine {
+	int lsnLineNo;
+	Date lsnExpDt;
+	Date lsnAplyDt;
+	int stdtLsnStatus;
+	Review review;
+	User user;
+	ArrayList<Lesson> lesson;
+	ArrayList<LsnHistory> lsnHistory;
+	StdtManage stdtManage;
+	
+}
