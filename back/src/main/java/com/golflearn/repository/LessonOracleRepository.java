@@ -126,7 +126,13 @@ public class LessonOracleRepository implements LessonRepository{
 				Date lsnUploadDt = rs.getDate("lsn_upload_dt");
 				int lsnStarSum = rs.getInt("lsn_star_sum");
 				int lsnStarPplCnt = rs.getInt("lsn_star_ppl_cnt");
-				int lsnStarPoint = Math.round(lsnStarSum/lsnStarPplCnt);
+				int lsnStarPoint = 0;
+				if (lsnStarPplCnt != 0) {
+					lsnStarPoint = Math.round(lsnStarSum/lsnStarPplCnt);
+				} else {
+					lsnStarPoint = 0;
+				}
+
 				// 게산하는거 맵형식으로 해보기
 				
 				//레슨 한줄한줄을 읽어서 레슨객체에 저장함.
