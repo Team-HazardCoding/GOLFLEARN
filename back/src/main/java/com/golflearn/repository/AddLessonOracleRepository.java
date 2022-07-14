@@ -13,11 +13,11 @@ import com.golflearn.sql.MyConnection;
 public class AddLessonOracleRepository implements AddLessonRepository {
 	//1. 레슨등록 : 레슨의 기타 정보들과 레슨분류정보를 모두 INSERT
 	@Override
-	public void insert(Lesson lesson) throws AddException {
+	public void insert(Lesson lesson, String userId) throws AddException {
 		Connection con = null;
 		try {
 			con = MyConnection.getConnection();
-			insertLsnInfo(con, lesson); 
+			insertLsnInfo(con, lesson, userId); 
 			insertLsnClassification(con, lesson.getLsnClsfcs()); 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -26,24 +26,26 @@ public class AddLessonOracleRepository implements AddLessonRepository {
 		}
 	}
 	//1-1. 레슨등록 : 레슨의 레슨분류정보 외 기타정보 DB에 INSERT
-	private void insertLsnInfo(Connection con, Lesson lesson) throws SQLException {
+	private void insertLsnInfo(Connection con, Lesson lesson, String userId) throws SQLException {
 		PreparedStatement pstmt = null;
 
 		String insertLessonSQL = "INSERT INTO lesson (lsn_no, loc_no, lsn_title, lsn_price, "
-				+ "lsn_lv, lsn_cnt_sum, lsn_per_time, lsn_intro, lsn_days, lsn_upload_dt, lsn_status) "
-				+ "VALUES (lsn_no_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
+				+ "lsn_lv, lsn_cnt_sum, lsn_per_time, lsn_intro, lsn_days, lsn_upload_dt, user_id, lsn_status) "
+				+ "VALUES (lsn_no_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
 			pstmt = con.prepareStatement(insertLessonSQL);
+//			pstmt.setInt(1, lesson.getLocNo());
 			pstmt.setString(1, lesson.getLocNo());
 			pstmt.setString(2, lesson.getLsnTitle());
 			pstmt.setInt(3, lesson.getLsnPrice());
-			pstmt.setInt(4, lesson.getLsnLv());
+			pstmt.setString(4, lesson.getLsnLv());
 			pstmt.setInt(5, lesson.getLsnCntSum());
 			pstmt.setInt(6, lesson.getLsnPerTime());
 			pstmt.setString(7, lesson.getLsnIntro());
 			pstmt.setInt(8, lesson.getLsnDays());
 			pstmt.setDate(9, lesson.getLsnUploadDt());
+			pstmt.setString(10, userId);
 			
-			pstmt.executeUpdate();
+			pstmt.executeUpdate();					
 			System.out.println("레슨 등록완료");
 	}
 

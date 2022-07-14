@@ -3,8 +3,6 @@ package com.golflearn.dto;
 import java.util.Date;
 
 public class User {
-
-	
 	private String userID;
 	private String userName;
 	private String userEmail;

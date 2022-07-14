@@ -10,6 +10,7 @@ public class LessonReview {
 	private Date reviewEditDt;
 	private String strReviewDt;
 	private String strReviewEditDt;
+	private LessonLine line;
 	//세터 게터 메서드 
 	//레슨내역번호
 	
@@ -73,7 +74,12 @@ public class LessonReview {
 	public void setStrReviewDt(String strReviewDt) {
 		this.strReviewDt = strReviewDt;
 	}
-	
+	public LessonLine getLine() {
+		return line;
+	}
+	public void setLine(LessonLine line) {
+		this.line = line;
+	}
 
 
 }

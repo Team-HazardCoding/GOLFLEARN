@@ -5,25 +5,19 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="../css/addlesson.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<!-- <script src="../jq/menubar.js"></script> -->
 	<script src="../jq/addlesson.js"></script>
 	<script src="../jq/addsidogu.js"></script>
+	<script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
 
 <body>
-	<!--헤더(메뉴바) : 메인에서한 메뉴바.js가져오기-->
-	<header>
-		<a href="http://localhost:1124/front/html/main.html">
-			<h1>골프런</h1>
-		</a>
-		<nav>
-			<a href="login.html">로그인</a>
-			<a href="signuptype.html">회원가입</a>
-			<a href="addlesson.html">레슨등록</a>
-			<!--이 태그는 프로만 보이도록 설정하기-->
-		</nav>
-	</header>
-	<hr>
+	<!-- 상단 이동하기 버튼 -->
+	<a href="#" class="btn_gotop">
+		<img src="../images/TOP.jpeg" style="width:45px; height:45px;">
+	</a>
+
+	<!--헤더(메뉴바)-->
+	<div w3-include-html="header.html" class="w3"></div>
 	<!--레슨등록화면-->
 	<section>
 		<article>
@@ -36,82 +30,77 @@
 							</label>
 						</div>
 					</div>
-					<form method="post" action="http://localhost:1124/back/addlesson">
+					<br>
+					<form method="post" action="http://localhost:1124/back/addlesson" class="lessonregister" enctype="multipart/form-data">
 						<div class="tr2">
 							<div class="td1">
-								<img src="" alt="" />
-								이미지파일<br>
-								<label>레슨 썸네일 첨부</label>
-								<input type="file" id="lessonThumbnail" accept="image/*">
+								<img id="preview">
+								<br>
+								<label>레슨 썸네일 첨부 : </label>
+								<input type="file" name="lsn_thumbnail" accept="image/*">
 							</div>
+							<br>
+							<br>
+							<br>
 							<div class="td2">
 								<ul>
 									<li>레슨분류:
 										<div class="select">
-											<input type="checkbox" id="wood" name="clsfc" value="1"><label for="wood">우드</label>
-											<input type="checkbox" id="iron" name="clsfc" value="2"><label for="iron">아이언</label>
-											<input type="checkbox" id="wedge" name="clsfc" value="3"><label for="wedge">웨지</label>
-											<input type="checkbox" id="putter" name="clsfc" value="4"><label for="putter">퍼터</label>
-											<input type="checkbox" id="synthesis" name="clsfc" value="5"><label for="Synthesis">종합</label>
+											<input type="checkbox" name="club_no" value="1"><label for="wood">우드</label>
+											<input type="checkbox" name="club_no" value="2"><label for="iron">아이언</label>
+											<input type="checkbox" name="club_no" value="3"><label for="wedge">웨지</label>
+											<input type="checkbox" name="club_no" value="4"><label for="putter">퍼터</label>
+											<input type="checkbox" name="club_no" value="5"><label for="synthesis">종합</label>
 										</div>
 									</li>
-									<li>레슨명:<input type="text" id="lsn_title"></li>
-									<li>레슨비:<input type="text" id="lsn_price"></li>
-									<li>레슨지역:
-										<!-- <form> -->
-											<select name="sido">
-												<option value="none">=== 선택 ===</option>
-												
-											</select>
-											<select name="sigungu">
-												<option value="none">=== 선택 ===</option>
-												
-											</select>
-											<!-- <select name="sigungu">
-												<option value="none" selected>=== 선택 ===</option>
-												<option value="111">시군구api</option>
-												<option value="222">시군구api</option>
-												<option value="333">시군구api</option>
-												<option value="444">시군구api</option>
-											</select> -->
-										<!-- </form> -->
+									<li>레슨명:&nbsp;<input type="text" name="lsn_title" class="input" required></li>
+									<li>레슨비:&nbsp;<input type="text" name="lsn_price" class="input" required>원</li>
+									<li>레슨지역:&nbsp;
+										<select name="sd">
+											<option value="none">=== 선택 ===</option>
+
+										</select>
+										<select name="sgg">
+											<option value="none">=== 선택 ===</option>
+
+										</select>
 									</li>
-									<li>레슨레벨:<input type="text" id="lsn_lv"></li>
-									<li>레슨횟수:<input type="text" id="lsn_cnt_sum"></li>
-									<li>회당 레슨시간:<input type="text" id="lsn_per_time"></li>
-									<li>레슨소개:<input type="text" id="lsn_intro"></li>
-									<li>유효기간:<input type="text" id="lsn_days"></li>
+									<li>레슨레벨:&nbsp;
+										<select name="lsn_lv">
+											<option value="none">=== 선택 ===</option>
+											<option name="lv1" value=1>초급</option>
+											<option name="lv2" value=2>중급</option>
+											<option name="lv3" value=3>고급</option>
+										</select>
+										<!-- <input type="text" name="lsn_lv"> -->
+									</li>
+									<li>레슨횟수(회):&nbsp;<input type="text" name="lsn_cnt_sum" class="input" required>회</li>
+									<li>회당 레슨시간(분):&nbsp;<input type="text" name="lsn_per_time" class="input" required>분</li>
+									<li>레슨소개<br>
+										<!-- <input type="text" name="lsn_intro"> -->
+										<textarea name="lsn_intro" class="input" required></textarea>
+									</li>
+									<li>유효기간(일):&nbsp;<input type="text" name="lsn_days" class="input" required>일</li>
 								</ul>
 							</div>
 						</div>
 						<div class="tr3">
 							<div class="tr1">
-								<button>등록</button>
+								<br>
+								<br>
+								<button type="submit" name="register">등록</button>
 							</div>
 						</div>
-					</div>
+				</div>
 				</form>
 			</div>
 		</article>
 	</section>
-	<hr>
 	<!--풋터-->
-	<footer>
-		<aside>
-			<ul class="ul">
-				<li>사업자등록번호 : XXXX</li>
-				<li>(주)골프런 레슨담당자 : 박종우</li>
-				<li>TEL : 1522-1234</li>
-				<li>
-					<address>test@kosta.com</address>
-				</li>
-			</ul>
-			<span class="span">ⓒ 2021 GolfLearn Golf Company. All Rights Reserved.</span>
-		</aside>
-	</footer>
+	<div w3-include-html="footer.html" class="w3"></div>
+	<script>
+		w3.includeHTML();
+	</script>
 </body>
-<footer>
-
-</footer>
 
 </html>
