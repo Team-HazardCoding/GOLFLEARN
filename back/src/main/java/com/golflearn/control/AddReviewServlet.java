@@ -37,6 +37,9 @@ public class AddReviewServlet extends HttpServlet {
 		lrrepo.insertReview(lsnLineNo, myStarScore, review);
 		
 		
+		
+		
+		
 	}
 
 }
