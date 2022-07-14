@@ -22,7 +22,6 @@ $(function() {
             })
             sido += '</ul>';
             $sidebarObj.append(sido);
-
             $lsnObj = $('div.col');
             // $lsnObj = $('<div class="col">');
             // $('div#card-container').append($lsnObj);

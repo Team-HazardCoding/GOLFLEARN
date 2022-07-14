@@ -1,7 +1,6 @@
 package com.golflearn.control;
 
 import java.io.IOException;
-
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -27,8 +26,8 @@ public class ViewStudentManageServlet extends HttpServlet {
 		response.setContentType("application/json;charset = utf-8");
 		PrintWriter out = response.getWriter();
 		ObjectMapper mapper = new ObjectMapper();
-		int selectedLsnNo = Integer.parseInt(request.getParameter("lsn_no"));
-//		int selectedLsnNo = 1;
+//		int selectedLsnNo = Integer.parseInt(request.getParameter("lsn_no"));
+		int selectedLsnNo = 1;
 		List<LessonLine> ll = null;
 		String result = null;
 		

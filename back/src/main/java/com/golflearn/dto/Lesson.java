@@ -155,6 +155,7 @@ public class Lesson {
 	public void setLines(List<LessonLine> lines) {
 		this.lsnLines = lines;
 	}
+
 	public int getUploadDt() {
 		return UploadDt;
 	}
@@ -167,6 +168,7 @@ public class Lesson {
 	public void setLsnStarPoint(int lsnStarPoint) {
 		this.lsnStarPoint = lsnStarPoint;
 	}
+
 	public Pro getPro() {
 		return pro;
 	}

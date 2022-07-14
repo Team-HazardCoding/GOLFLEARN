@@ -1,22 +1,21 @@
 package com.golflearn.control;
 
 import java.io.IOException;
-
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.golflearn.dto.Lesson;
 import com.golflearn.exception.FindException;
 import com.golflearn.repository.LessonOracleRepository;
 import com.golflearn.repository.LessonRepository;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.golflearn.dto.Lesson;
 
 @WebServlet("/viewlesson")
 public class ViewLessonServlet extends HttpServlet {
@@ -29,7 +28,6 @@ public class ViewLessonServlet extends HttpServlet {
 
 		//요청전달데이터 얻어오기
 		int lsn_no = Integer.parseInt(request.getParameter("lsn_no"));   
-
 
 		//DB에서 레슨검색
 		LessonRepository repository = new LessonOracleRepository();
@@ -59,3 +57,4 @@ public class ViewLessonServlet extends HttpServlet {
 		}
 	}
 }
+
