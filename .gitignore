@@ -52,7 +52,6 @@ replay_pid*
 .classpath
 .project
 .settings/
-*.classpath
 # Mac
 .DS_Store
 
@@ -199,4 +198,5 @@ Servers/
 .classpath
 back/.classpath
 back/.settings
+back/.classpath~78ca5b9ccadaf9648a27b74f19cd9f72f5e19eb3
 # End of https://www.toptal.com/developers/gitignore/api/java,windows,eclipse
