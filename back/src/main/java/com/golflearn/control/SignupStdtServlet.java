@@ -22,10 +22,10 @@ import com.golflearn.sql.MyConnection;
 @MultipartConfig
 public class SignupStdtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json;charset=UTF-8");
+//		response.setContentType("text/html;charset=UTF-8");
 		
 		String userId = request.getParameter("user_id"); // html의 name 지정시 참고
 		String userName = request.getParameter("user_name");
@@ -73,7 +73,6 @@ public class SignupStdtServlet extends HttpServlet {
 				
 				System.out.println(userId);
 				Upload upload = new Upload();
-				upload.uploadFiles(request, userId);
 				
 				if(rs == 1) { // rs = true이면
 					map.put("status", 1);

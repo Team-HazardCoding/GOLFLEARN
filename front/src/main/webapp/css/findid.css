@@ -1,3 +1,134 @@
-/*@import url(footer.css);*/
-/*@import url(header.css);*/
+@import url(footer.css);
+@import url(header.css);
+@import url(base.css);
+#main {
+	padding-top: 90px;
+	width: 100%;
+	height: 100%;
+	margin-top: 95px;
+}
 
+	#main > #wrapper {
+	text-align: center;
+	width: 80%;
+	height: 50%;
+	margin: 0 auto;
+}
+
+#main > #wrapper > #title{
+	width: 40%;
+	padding-bottom: 5px;
+	border-bottom: 2px solid rgb(183, 231, 199);
+	box-sizing: border-box;
+	font-weight: 100;
+	margin: 0 auto;
+	min-width: 160px;
+}
+
+#main > #wrapper > #input-element {
+	padding-top: 5px;
+	padding-bottom: 40px;
+}
+
+#main > #wrapper > #input-email {
+	margin-top:10px;
+}
+
+#wrapper > #btn > #submit-btn > button{
+	background-color: white;
+	order: none;
+	width: 80px;
+	height: 45px;
+	font-size: smaller;
+	font-weight: 700;
+	border: 2px solid rgb(183, 231, 199);
+	box-sizing: border-box;
+	border-radius: 23px;
+	cursor:pointer;
+}
+
+#wrapper > #btn > #submit-btn > button:hover {
+	background-color:rgb(183, 231, 199);
+}
+
+#wrapper > #btn > #submit-btn > button:active, 
+#wrapper > #btn > #submit-btn > button:focus {
+	outline: none !important;
+}
+
+
+label {
+	display: inline-block;
+	margin-bottom: 0.5rem;
+	padding-top: 20px;
+	font-size: 20px;
+	font-weight:100;
+	box-sizing: border-box;
+}
+
+input[type=text] {
+	width: 400px;
+	height: 50px;
+	border: 0;
+	padding-left: 10px;
+	margin-top: 10px;
+	outline: none;
+	border-radius: 23px;
+	border: 2px solid rgb(183, 231, 199);
+	box-sizing: border-box;
+	font-size:18px;
+}
+input[type=email] {
+	width: 400px;
+	height: 50px;
+	border: 0;
+	padding-left: 10px;
+	margin-top: 10px;
+	outline: none;
+	border-radius: 23px;
+	border: 2px solid rgb(183, 231, 199);
+	box-sizing: border-box;
+	font-size:18px;
+}
+input::placeholder {
+	color: rgb(128, 128, 128);
+	font-size: 12px;
+	box-sizing: border-box;
+	font-weight: lighter;
+}
+
+/* 모달 부분 */
+
+#modal-content {
+	border: 2px solid rgb(183, 231, 199);
+	border-radius: 20px;
+}
+#modal-header {
+	border-bottom: 2px solid rgb(183, 231, 199);
+	box-sizing: border-box;
+	text-align: center;
+} 
+
+#btn-secondary:hover {
+	background-color:rgb(183, 231, 199)!important;
+}
+
+#btn-secondary:active, #btn-secondary:focus { 
+	outline: none !important;
+}
+
+#modal-footer {
+	border-top: 2px solid rgb(183, 231, 199);
+}
+#modal-footer > #btn-secondary {
+	background-color: white;
+	order: none;
+	width: 70px;
+	height: 40px;
+	font-size: smaller;
+	font-weight: 700;
+	border: 2px solid rgb(183, 231, 199);
+	box-sizing: border-box;
+	border-radius: 23px;
+	cursor:pointer;
+}
