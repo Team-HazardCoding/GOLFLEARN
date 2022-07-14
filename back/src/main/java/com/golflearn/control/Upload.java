@@ -16,6 +16,7 @@ public class Upload {
 			e1.printStackTrace();
 		}
 		String uploadPathName= "C:\\Golflearn_lib\\user_images\\" + userId ; // 파일 업로드 할 절대경로 지정 
+
 		// uploadPathName에 해당되는 File 객체 생성
 		File uploadDirectory = new File(uploadPathName);
 
@@ -33,7 +34,7 @@ public class Upload {
 			// request.getParameter()를 이용해 값을 가져온 것 > 파일은 part로 받아와야한다.
 			// front에서 파일 업로드 위해 formData 객체가 필요함 why? just 문법
 			Collection<Part> parts = request.getParts(); // 요청시 전달된 formData를 얻는 API // type이 Collection<part>
-			//System.out.println(parts);
+//			System.out.println(parts);
 
 			for(Part part: parts) {
 				String paramName = part.getName(); //part의 getName() 요청 시 전달된 key값이 됨

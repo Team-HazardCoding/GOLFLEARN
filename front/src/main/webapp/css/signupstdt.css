@@ -1,0 +1,77 @@
+@charset "UTF-8";
+@import url(base.css);
+
+h1 {
+	text-align: center;
+	margin: 60px;
+}
+
+table#wrapper{
+	text-align: left;
+	display: flex;
+	justify-content: space-around;
+	border-spacing: 15px;
+	min-width: 50%;
+}
+
+/* tbody{
+	margin: 5%;	
+} */
+
+table>tbody td#id>button#iddupchk{
+	background-color: #FFBCBC;
+	border: #FFBCBC solid 2px;
+	border-radius: 10px;
+	display:inline-block;
+	margin: 10px;
+	height: 25px;
+}
+
+/* table > tbody td#user_profile{
+	background-color: #FAC213;
+	border: #FAC213 solid 2px;
+} */
+
+/* 가입하기 버튼  */
+div#signup{  
+	text-align: center;
+	width: 100%;
+	height: 50%;
+}
+
+button#signup{
+	/* margin : 100%; */
+	margin-top: 2%;
+	background-color: #DAE2B6;
+	border: #DAE2B6; 
+	display:inline-block; 
+	/* line-height:40px; */
+	width :10%;
+	height: 40px;
+	letter-spacing: 5px;
+	font-size: medium;
+	margin-right: 110px;
+	border-radius: 10px;
+	min-width: 10%;
+}
+
+div.container>form>input{
+	text-align: center;
+	width:100%;
+
+}
+input.input-box{
+	border-radius: 10px;
+	border:gray solid 1px;
+	text-align: left;
+	padding:10px;
+	width: 250px;
+	
+}
+th {
+	letter-spacing: 3px;
+}
+
+table>tbody input#user_profile{
+	border: 1px;
+}

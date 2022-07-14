@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD:back/src/main/java/com/golflearn/repository/LessonOracleRepository.java
 package com.golflearn.repository;
 
@@ -148,6 +150,7 @@ public class LessonOracleRepository implements LessonRepository{
 //	}
 }
 =======
+>>>>>>> 86fa96f5b00da5beff76a17550d676565cce1a8d
 package com.golflearn.repository;
 
 import java.sql.Connection;
@@ -299,4 +302,3 @@ public class LessonOracleRepository implements LessonRepository{
 		return lsnList;//list를 반환 
 	}
 }
->>>>>>> defd59bbffe3242478f5afbeb4c09d270c256f0e:back/java/com/golflearn/repository/LessonOracleRepository.java

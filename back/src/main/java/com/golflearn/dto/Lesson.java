@@ -17,22 +17,28 @@ public class Lesson {
 	private int lsnStarSum;
 	private int lsnStarPplCnt;
 	private int lsnStatus;
-	private int UploadDt;
 	private Date lsnUploadDt;
 	private ArrayList<LessonClsfc> lsnClfc;
 	private ArrayList<LessonLine> lsnLines;
 	private Location location;
+	private LessonLine lsnLine;
+	private String strLsnUploadDt;
 	
+
+	//ViewLessonReview용 toString
+	public String toString() {
+		return "레슨제목 : " + lsnTitle;
+	}
+	
+	//ViewMyPage용 toString
+	public String toString(String lsnTitle, int lsnCntSum) {
+		return "레슨제목 : " + this.lsnTitle +
+			"레슨총횟수 : " + this.lsnCntSum ;
+	}
+
 	User u = new User();
 	
-//	public Lesson(int lsnNo, String lsnName, int lsnReviewCnt, String lsnUserId, int lsnLv, int lsnPrice,
-//			int lsnPerTime, int lsnDays, int lsnStarScore, int proStarScore, String proName, String locSido,
-//			String locSigungu, String proIntro, String reviewUserId, String review, Date reviewDt) {
-//		this.lsnNo = lsnNo;
-//		//userName -> User의 get, set 완성되면 으로 User에서 가져오기
-//		//
-//	}
-	
+
 	//게터 세터 메서드 
 	//1. 레슨번호
 	public int getLsnNo() {
@@ -146,4 +152,23 @@ public class Lesson {
 	public void setLsnLocation(Location lsnLocation) {
 		this.location = lsnLocation;
 	}
+
+
+	public LessonLine getLsnLine() {
+		return lsnLine;
+	}
+
+	public void setLsnLine(LessonLine lsnLine) {
+		this.lsnLine = lsnLine;
+	}
+
+	public String getStrLsnUploadDt() {
+		return strLsnUploadDt;
+	}
+
+	public void setStrLsnUploadDt(String strLsnUploadDt) {
+		this.strLsnUploadDt = strLsnUploadDt;
+	}
+
 }
+

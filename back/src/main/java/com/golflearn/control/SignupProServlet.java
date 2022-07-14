@@ -24,7 +24,7 @@ public class SignupProServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8"); // 이 코드가 없으면 한글값이 모두 깨져서 저장됨
 		response.setContentType("application/json;charset=UTF-8");
 		
 		String userId = request.getParameter("user_id");

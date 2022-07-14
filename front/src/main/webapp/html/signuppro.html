@@ -2,62 +2,107 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../jq/signuppro.js"></script>
-    <title>레슨프로 회원가입</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://www.w3schools.com/lib/w3.js"></script>
+	<script src="../jq/signuppro.js"></script>
+	<link rel="stylesheet" href="../css/signuppro.css">
+	<title>레슨프로 회원가입</title>
 </head>
+<div w3-include-html="header.html" class="w3"></div>
+<h1> 레슨프로 회원가입 </h1>
 
 <body>
-    <h1> 레슨프로 회원가입 </h1>
-    
-    <form class="signuppro" action="http://localhost:1124/back/signuppro" method="post" enctype="multipart/form-data">
-        
-        <div id="id">
-            아이디
-            <input id="user_id" name="user_id" type="text" required>
-            <button id="iddupchk" name="iddupchk" type="submit" required>아이디중복확인</button>
-        </div>
-        <div id="pwd">
-            비밀번호 <input id="user_pwd" name="user_pwd" type="password" required></br>
-            비밀번호 확인 <input id="user_pwd_chk" name="user_pwd_chk" type="password" required>
-        </div>
-        <div id="name">
-            이름 <input id="user_name" name="user_name" type="text" required>
-        </div>
-        <div id="phone">
-            전화번호 <input id="user_phone" name="user_phone" type=tel" placeholder="010-1234-5678"
-                pattern="[0-1]{3}-[0-9]{4}-[0-9]{4}" required>
-        </div>
-        <div id="email">
-            메일주소 <input id="user_email" name="user_email" type="email" required>
-        </div>
-        <div id="ssn">
-            생년월일 <input id="user_ssn" name="user_ssn" type="tel" placeholder="910101-1" pattern="[0-9]{6}-[1-4]{1}"
-                required>
-        </div>
-            <div id="profile">
-                프로필 사진 업로드
-                <input id="user_profile" name="user_profile" type="file" accept="image/*" required>
-                <!-- <img id="img_view" src="#" alt="이미지 미리보기"> -->
-            </div>       
-        <div id="certification">
-            자격/경력 증명 서류 업로드
-            <input id="pro_certf" name="pro_certf" type="file" required>
-        </div>
-        <div id="career">
-            경력기술
-            <input id="pro_career" name="pro_career" type="text">
-        </div>
-        <br>
-<<<<<<< HEAD
-    </form>
-    <button name="signup" type="submit"> 가입하기 </button>
-=======
-        <button name="signup" type="submit"> 가입하기 </button>
-    </form>
->>>>>>> defd59bbffe3242478f5afbeb4c09d270c256f0e
+	<form class="signuppro" action="http://localhost:1124/back/signuppro" method="post" enctype="multipart/form-data">
+
+		<table id="wrapper">
+			<tr class="id">
+				<th> 아이디
+				<td id="id">
+					<input id="user_id" class="input-box" name="user_id" type="text" placeholder="영문 소문자 + 숫자 (20자 이내)" required>
+					<button id="iddupchk" name="iddupchk" type="submit" required>아이디중복확인</button>
+				</td>
+				</th>
+			</tr>
+			<tr class="pwd">
+				<th> 비밀번호
+				<td id="pwd">
+					<input id="user_pwd" class="input-box" name="user_pwd" type="password" placeholder="영문 소문자+숫자+특수문자 (20자 이내)" required>
+				</td>
+				</th>
+			</tr>
+			<tr>
+				<th> 비밀번호 확인
+				<td class="pwd_chk">
+					<input id="user_pwd_chk" class="input-box" name="user_pwd_chk" type="password" placeholder="영문 소문자+숫자+특수문자 (20자 이내)" required>
+					</th>
+				</td>
+			</tr>
+			<tr>
+				<th> 이름
+				<td id="name">
+					<input id="user_name" class="input-box" name="user_name" type="text" placeholder="이름을 입력해주세요" required>
+				</td>
+				</th>
+			</tr>
+			<tr>
+				<th> 전화번호
+				<td id="phone">
+					<input id="user_phone" class="input-box" name="user_phone" type=tel" placeholder="예 : 010-1234-5678"
+						pattern="[0-1]{3}-[0-9]{4}-[0-9]{4}" required>
+				</td>
+				</th>
+			</tr>
+			<tr>
+				<th> 메일주소
+				<td id="email">
+					<input id="user_email" class="input-box" name="user_email" type="email" placeholder="예: golflearn@golf-learn.com" required>
+				</td>
+				</th>
+			</tr>
+			<tr>
+				<th> 생년월일
+				<td id="ssn">
+					<input id="user_ssn" class="input-box" name="user_ssn" type="tel" placeholder="예: 910101-1" pattern="[0-9]{6}-[1-4]{1}"
+						required>
+				</td>
+				</th>
+			</tr>
+			<tr>
+				<th> 프로필 사진 업로드
+				<td id="profile">
+					<input id="user_profile" name="user_profile" type="file" accept="image/*" required>
+					<!-- <img id="img_view" src="#" alt="이미지 미리보기"> -->
+				</td>
+				</th>
+			</tr>
+			<tr>
+				<th> 자격/경력 증명 서류 업로드
+				<td id="certification">
+					<input id="pro_certf" name="pro_certf" type="file" required>
+				</td>
+				</th>
+			</tr>
+			<tr>
+				<th> 경력기술
+				<td id="career">
+					<textarea id="pro_career" name="pro_career" placeholder="경력사항을 입력 해 주세요
+
+예: 2020.01 ~ 2022.03 필드 종합 강의"></textarea>
+				</td>
+				</th>
+			</tr>
+	</form>
+	</table>
+	<div id="signup" class="signup">
+		<button id="signup" name="signup" type="submit"> 가입하기 </button>
+	</div>
 </body>
+<div w3-include-html="footer.html" class="w3"></div>
+
+<script>
+	w3.includeHTML();
+</script>
 
 </html>
