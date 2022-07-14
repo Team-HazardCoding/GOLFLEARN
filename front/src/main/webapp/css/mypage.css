@@ -24,6 +24,7 @@ div.table{
     justify-content: flex-start;
     flex-wrap: wrap;
 }
+
 div.table div.tr{
     display: table-row;
     width : 30%;
