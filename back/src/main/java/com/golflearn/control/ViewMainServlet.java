@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import javax.websocket.Session;
-
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -34,7 +32,10 @@ public class ViewMainServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		HttpSession session = request.getSession();
+		
 		String userType = (String) session.getAttribute("userType");
+		String logined = (String) session.getAttribute("logininfo");
+		System.out.println(logined);
 		String result = "";
 		LessonRepository repo = new LessonOracleRepository();
 		try {
@@ -53,7 +54,8 @@ public class ViewMainServlet extends HttpServlet {
 				map.put("lsns", lsnList);//
 				map.put("sido", api.sidoApi());
 				map.put("userType", userType);
-
+				map.put("logined", logined);
+//				request.getAttribute("userType");
 				request.setAttribute("lsns", lsnList);
 				request.setAttribute("sido", api.sidoApi());
 			} catch (Exception e) {
@@ -76,6 +78,5 @@ public class ViewMainServlet extends HttpServlet {
 			//			System.out.println("result: " + result);
 			out.print(result);
 		}
-
-	}
+	}		
 }

@@ -20,18 +20,18 @@ import com.golflearn.repository.LessonRepository;
 @WebServlet("/viewlesson")
 public class ViewLessonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String result = "";
-
+		
 		//요청전달데이터 얻어오기
 		int lsn_no = Integer.parseInt(request.getParameter("lsn_no"));   
-
+		
 		//DB에서 레슨검색
 		LessonRepository repository = new LessonOracleRepository();
-
+		
 		//로그인상태이든 아니든 레슨은 검색되도록 함
 		Lesson l = new Lesson();
 
@@ -40,21 +40,20 @@ public class ViewLessonServlet extends HttpServlet {
 			Map<String, Object> map = new HashMap<>();
 			map.put("status", 1);
 			map.put("lesson", l);
-
+			
 			ObjectMapper mapper = new ObjectMapper();
 			result = mapper.writeValueAsString(map);
-
+			
 			out.print(result);
 		} catch (FindException e) {
 			e.printStackTrace();
 			Map<String, Object> map = new HashMap<>();
 			map.put("status", 0);
 			map.put("msg", e.getMessage());
-
+			
 			ObjectMapper mapper = new ObjectMapper();
 			result = mapper.writeValueAsString(map);
 			out.print(result);
 		}
 	}
 }
-

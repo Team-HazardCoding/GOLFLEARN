@@ -26,8 +26,9 @@ public class ViewStudentManageServlet extends HttpServlet {
 		response.setContentType("application/json;charset = utf-8");
 		PrintWriter out = response.getWriter();
 		ObjectMapper mapper = new ObjectMapper();
-//		int selectedLsnNo = Integer.parseInt(request.getParameter("lsn_no"));
-		int selectedLsnNo = 1;
+		int selectedLsnNo = Integer.parseInt(request.getParameter("lsn_no"));
+//		int selectedLsnNo = 1;
+		System.out.println(selectedLsnNo);
 		List<LessonLine> ll = null;
 		String result = null;
 		

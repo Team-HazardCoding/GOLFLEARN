@@ -11,16 +11,20 @@ li:hover {
 
 #main {
     width: 100%;
-    height: 100%;
+    margin-top: 95px;
+    /* height: 100%; */
     /* background-color:whitesmoke; */
     margin-top: 95px;
 }
 
-#wrapper {
+#main>#wrapper {
     width: 80%;
     height: 100%;
+    /* height: 900px; */
     margin: 0 auto;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
 #main>#wrapper>#container {
@@ -76,6 +80,11 @@ li:hover {
     margin-bottom: 10px;
 }
 
+#main>#wrapper>#container>#content-left>#sidebar>ul>li.choice {
+    background-color: #00B8A9;
+
+}
+
 #main>#wrapper>#container>#content-right {
     width: 80%;
     overflow: hidden;
@@ -109,7 +118,7 @@ li:hover {
 
 
 #main>#wrapper>#container>#content-right>#tag-container>li.choice {
-    background-color: rebeccapurple;
+    background-color: #FFDE7D;
 }
 
 #main>#wrapper>#container>#content-right>#card-container {
