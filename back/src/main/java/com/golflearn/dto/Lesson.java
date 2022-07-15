@@ -156,6 +156,20 @@ public class Lesson {
 	public void setLines(List<LessonLine> lines) {
 		this.lsnLines = lines;
 	}
+
+	public int getUploadDt() {
+		return UploadDt;
+	}
+	public void setUploadDt(int uploadDt) {
+		UploadDt = uploadDt;
+	}
+	public int getLsnStarPoint() {
+		return lsnStarPoint;
+	}
+	public void setLsnStarPoint(int lsnStarPoint) {
+		this.lsnStarPoint = lsnStarPoint;
+	}
+
 	public Pro getPro() {
 		return pro;
 	}
@@ -173,18 +187,6 @@ public class Lesson {
 	}
 	public void setStrLsnUploadDt(String strLsnUploadDt) {
 		this.strLsnUploadDt = strLsnUploadDt;
-	}
-	public int getLsnStarPoint() {
-		return lsnStarPoint;
-	}
-	public void setLsnStarPoint(int lsnStarPoint) {
-		this.lsnStarPoint = lsnStarPoint;
-	}
-	public int getUploadDt() {
-		return UploadDt;
-	}
-	public void setUploadDt(int uploadDt) {
-		UploadDt = uploadDt;
 	}
 	public LessonReview getLsnReview() {
 		return lsnReview;

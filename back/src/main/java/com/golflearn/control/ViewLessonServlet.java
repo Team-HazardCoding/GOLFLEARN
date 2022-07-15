@@ -34,6 +34,7 @@ public class ViewLessonServlet extends HttpServlet {
 		
 		//로그인상태이든 아니든 레슨은 검색되도록 함
 		Lesson l = new Lesson();
+
 		try {
 			l = repository.selectByLsnNo(lsn_no);
 			Map<String, Object> map = new HashMap<>();
