@@ -17,7 +17,7 @@
 li {
 	list-style-type: none;
 }
-
+/*1215*400*/
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slide-adbanner {
 	/*전체 컨테이너*/
@@ -33,16 +33,16 @@ li {
 	position: absolute;
 	left: 0;
 	top: 0;
-  	width: 1220px; /* 슬라이드할 사진과 마진 총 넓이 */
+  	width: 60000px; /* 슬라이드할 사진과 마진 총 넓이 */
 	transition: 0.5s ease-out; 
 	/*ease-out: 처음에는 느렸다가 점점 빨라짐*/
 } /* 첫 번째 슬라이드 가운데에 정렬하기위해 첫번째 슬라이드만 margin-left조정 */
 #slide-adbanner >.ad li:first-child {
-	margin-left: 10px;
+	margin-left: -32px;
 } /* 슬라이드들 옆으로 정렬 */
 #slide-adbanner >.ad li:not(:last-child) {
 	float: left;
-	margin-right: 10x;
+	margin-right: 50x;
 }
 #slide-adbanner >p.controller span {
 	position: absolute;
