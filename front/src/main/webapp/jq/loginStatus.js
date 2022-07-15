@@ -48,7 +48,8 @@ function logout() {
 	$.ajax({
 		url: "http://localhost:1124/back/logout",
 		success: function () {
-		location.href = "";
+			alert("로그아웃 되었습니다.");
+			location.href = "";
 		},
 		error: function (jqXHR) {
 		alert("error: " + jqXHR.status);
