@@ -19,8 +19,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golflearn.dto.Lesson;
 import com.golflearn.dto.LessonClsfc;
 import com.golflearn.exception.AddException;
+import com.golflearn.exception.FindException;
 import com.golflearn.repository.AddLessonOracleRepository;
 import com.golflearn.repository.AddLessonRepository;
+import com.golflearn.repository.LessonOracleRepository;
+import com.golflearn.repository.LessonRepository;
 
 @WebServlet("/addlesson")
 @MultipartConfig
@@ -59,37 +62,40 @@ public class AddLessonServlet extends HttpServlet {
 		}
 		
 		String userId = (String)session.getAttribute("loginInfo");
+//		String userType = (String)session.getAttribute("userType");
 		
 		//입력받은 데이터 저장 
 		try {
 			// 로그인된 사용자인지 검사
-//			String loginedId = (String)session.getAttribute("loginInfo");
-//			if(userId == null) {
-//				Map<String, Object> map = new HashMap<>();
-//				map.put("status", 0);
-//				map.put("msg", "로그인하세요");
-//				result = mapper.writeValueAsString(map);
-//			}else {
+			if(userId == null) {
+				Map<String, Object> map = new HashMap<>();
+				map.put("status", 0);
+				map.put("msg", "로그인하세요");
+				result = mapper.writeValueAsString(map);
+			}else {
 				//로그인 되면
-//				if(repository.selectTypeById(loginedId) == 1) {	// user_type이 1인지 검사
+				LessonRepository LsnRepository = new LessonOracleRepository();	
+				if(LsnRepository.selectTypeById(userId) == 1) {	// user_type이 1인지 검사
 					AddLessonRepository repository = new AddLessonOracleRepository();
 					repository.insert(lesson, userId);	//레슨정보 등록
 					Map<String, Object> map = new HashMap<>();
 					map.put("status", 1);
-//					map.put("user_type", 1);
+					map.put("userType", 1);
 					map.put("msg", "등록성공");
 					result = mapper.writeValueAsString(map);
-//				}
 					//이미지 파일 업로드
 					Upload upload = new Upload();
 					upload.uploadFiles(request, userId);
-//			}
+				}
+			}				
 		} catch (AddException e) {
 			e.printStackTrace();
 			Map<String, Object> map = new HashMap<>();
 			map.put("status", -1);
 			map.put("msg", "등록실패");
 			result = mapper.writeValueAsString(map);
+		} catch (FindException e) {
+			e.printStackTrace();
 		}
 		out.print(result);
 	}

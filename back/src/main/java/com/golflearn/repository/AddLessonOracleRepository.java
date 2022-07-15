@@ -33,7 +33,6 @@ public class AddLessonOracleRepository implements AddLessonRepository {
 				+ "lsn_lv, lsn_cnt_sum, lsn_per_time, lsn_intro, lsn_days, lsn_upload_dt, user_id, lsn_status) "
 				+ "VALUES (lsn_no_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
 			pstmt = con.prepareStatement(insertLessonSQL);
-//			pstmt.setInt(1, lesson.getLocNo());
 			pstmt.setString(1, lesson.getLocNo());
 			pstmt.setString(2, lesson.getLsnTitle());
 			pstmt.setInt(3, lesson.getLsnPrice());
