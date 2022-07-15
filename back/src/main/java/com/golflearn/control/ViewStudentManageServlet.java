@@ -28,6 +28,7 @@ public class ViewStudentManageServlet extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		int selectedLsnNo = Integer.parseInt(request.getParameter("lsn_no"));
 //		int selectedLsnNo = 1;
+		System.out.println(selectedLsnNo);
 		List<LessonLine> ll = null;
 		String result = null;
 		

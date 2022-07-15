@@ -1,7 +1,10 @@
 $(function(){
+    let data = location.search.substring(1);
+    console.log(data);
     $.ajax({
         url : "/back/viewstudentmanage",
         method : 'get',
+        data : data,
         success : function(jsonObj){
             let $tableObj = $('div.tr');
             $(jsonObj).each(function(i,element){
@@ -22,6 +25,7 @@ $(function(){
                 // stdtLine += '<div class = "td">';
                 // stdtLine += '<span class = "title">' + lsn_title + '</span>';
                 let stdtLine = '<div class = "content">';
+                stdtLine += '<span class = "no">' + lsn_no + '</span>';
                 stdtLine += '<span class = "title">' + lsn_title + '</span>';
                 stdtLine += '<span class = "name">' + user_name + '</span>';
                 stdtLine += '<span class = "phone">' + user_phone + '</span>';

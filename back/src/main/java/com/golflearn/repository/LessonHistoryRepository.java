@@ -51,6 +51,7 @@ public class LessonHistoryRepository{
 			SimpleDateFormat format = new SimpleDateFormat("yyyy년-MM월-dd일");
 			while(rs.next()) {
 				int lsnNo = rs.getInt("레슨번호");
+				System.out.println("레슨번호는" + lsnNo);
 				String lsnTitle = rs.getString("레슨명");
 				String userName = rs.getString("수강생이름");
 				String userPhone = rs.getString("연락처");
