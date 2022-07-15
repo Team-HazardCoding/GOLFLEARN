@@ -72,4 +72,5 @@ public class ViewMainServlet extends HttpServlet {
 			//			System.out.println("result: " + result);
 			out.print(result);
 		}
+	}		
 }
