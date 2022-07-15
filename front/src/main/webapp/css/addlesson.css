@@ -58,11 +58,14 @@ div.td2 input[name=lsn_per_time], div.td2 input[name=lsn_days] {
     font-size:13px;
     border-radius: 23px;
 }
-.select input[type=checkbox]+label{
+/* .select input[type=checkbox] {
+    display: none;
+}     */
+.select input[type=checkbox]+label {
     background-color: #fff;
     color: #333;
 }
-.select input[type=checkbox]:checked+label{
+.select input[type=checkbox]:checked+label {
     background-color: #333;
     color: #fff;
 }
