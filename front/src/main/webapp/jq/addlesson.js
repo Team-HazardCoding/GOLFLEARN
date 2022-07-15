@@ -1,40 +1,9 @@
 $(function () {
-	//------------썸네일 첨부 START------------
-	// $("div.td1>input[type=button].ajax").click(function () {
-	// 	let formObj = this.parentNode;
-	// 	let formData = new FormData(formObj);
-	// 	$.ajax({
-	// 		url: "/back4/upload",
-	// 		method: "post",
-	// 		processData: false,
-	// 		contentType: false,
-	// 		data: formData, //요청전달데이터 
-	// 		//(주의! : 서버에 업로드할때 전달객체는 무조건 FormData의 객체여야한다)
-	// 		success: function (responseObj) {
-
-	// 		}, error: function (jqXHR) {
-	// 			alert("에러:" + jqXHR.status);
-	// 		}
-	// 	});
-	// 	return false;
-	// });
-
-	//파일 미리보기 제공
-	// function readFile(event) {
-	// 	let file = event.target.files[0];
-
-	// 	let href = window.URL.createObjectURL(file)
-	// 	$("#lessonThumbnail").attr('src', href)
-
-	// 	//5분뒤에 메모리 해제(메모리 누수방지)
-	// 	setTimeout(function () {
-	// 		window.URL.revokeObjectURL(href)
-	// 	}, 1000 * 60 * 5)
-	// }
-    $.ajax({
+	//화면로딩되자마자 시도 목록 출력
+	$.ajax({
         url: 'http://localhost:1124/back/main', 
         success: function (jsonObj) {
-            $sidoObj = $('select[name=sido]');
+            $sidoObj = $('select[name=sd]');
             var arr = [];
             let sido = '';
             $(jsonObj.sido).each(function(key, item) {
@@ -56,38 +25,65 @@ $(function () {
             alert("error: " + jqXHR.status);
         }
 
-    })
+    });
+
+	//상단 이동 스크롤무브
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 300){
+			$('.btn_gotop').show();
+		} else{
+			$('.btn_gotop').hide();
+		}
+	});
+	$('.btn_gotop').click(function(){
+		$('html, body').animate({scrollTop:0},400);
+		return false;
+	});
 
 
-	//------------지역 START------------
-	//------------레슨분류 START------------
-
+	//폼안에 input태그 입력값 유효검증
+	// $("form.lessonregister").validate({ // joinForm에 validate를 적용
+	// 	rules:{
+	// 		id:{required:true, rangelength:[5,10]}, 
+	// 		// required는 필수, rangelength는 글자 개수(5~10개 사이)
+	// 		pwd:{required:true, rangelength:[5,15]},
+	// 		pwdConfirm:{required:true, equalTo:"#pwd"}, 
+	// 		// equalTo : id가 pwd인 값과 같아야함
+	// 		name:"required", // 검증값이 하나일 경우 이와 같이도 가능
+	// 		personalNo1:{required:true, minlength:6, digits:true},
+	// 		// minlength : 최소 입력 개수, digits: 정수만 입력 가능
+	// 		personalNo2:{required:true, minlength:7, digits:true},
+	// 		email:{required:true, email:true},
+	// 		// email 형식 검증
+	// 		blog:{required:true, url:true}
+	// 		// url 형식 검증
+	// 	}
+	// });
 
 	//------------레슨정보 등록버튼 START------------
-	let $formObj = $('form.lessonregister');
-	let formData = new FormData($formObj[0]);
 	let $btRegister = $('button[name=register]');
 
 	$btRegister.click(function () {
-		// //레슨분류
-		// let ClsfcWood = $('#wood').val()
-		// let ClsfcIron = $('#iron').val()
-		// let ClsfcWedge = $('#wedge').val()
-		// let ClsfcPutter = $('#putter').val()
-		// let ClsfcSynthesis = $('#synthesis').val()
+		// 폼안에 input태그 입력값 유효검증
+		// if($.trim($(".input").val())==''){
+		// 	alert("입력해주세요.");
+		// 	return false;
+		// } 
 
-		// //레슨분류 외 정보
-		// let lsnTitle = $('#lsn_title').val()
-		// let lsnPrice = $('#lsn_price').val()
-		// let lsnLv = $('#lsn_lv').val()
-		// let lsnCntSum = $('#lsn_cnt_sum').val()
-		// let lsnPerTime = $('#lsn_per_time').val()
-		// let lsnIntro = $('#lsn_intro').val()
-		// let lsnDays = $('#lsn_days').val()
 
-		// let formData = new FormData();
+		let $formObj = $('form.lessonregister');
+		let formData = new FormData($formObj[0]);
 
-		
+		//WB에서 입력한 값이 잘 추출되는지 확인
+		let $locNoVal = $('option[name=sigungu]').val();
+		let $clubNo = $('input[name=club_no]').val();
+		let $lessonTitle = $('input[name=lsn_title]').val();
+		let $lessonPrice = $('input[name=lsn_price]').val();
+		let $lessonLV = $('option[name=lsn_lv]').val();
+		let $lsnCntSum = $('input[name=lsn_cnt_sum]').val();
+		let $lsnPerTime = $('input[name=lsn_per_time]').val();
+		let $lsnIntro = $('input[name=lsn_intro]').val();
+		let $lsnDays = $('input[name=lsn_days]').val();
 
 		$.ajax({
 			url: "http://localhost:1124/back/addlesson",
@@ -103,9 +99,58 @@ $(function () {
 			},
 			error: function (jqXHR) {
 				alert('오류 : ' + jqXHR.status);
+
+				//WB에서 입력한 값이 잘 추출되는지 확인
+				console.log($locNoVal);
+				console.log($clubNo);
+				console.log($lessonTitle);
+				console.log($lessonPrice);
+				console.log($lessonLV);
+				console.log($lsnCntSum);
+				console.log($lsnPerTime);
+				console.log($lsnIntro);
+				console.log($lsnDays);
 			}
 		});
+
+		return false;	
+	});
+
+	//--------------이미지파일업로드 미리보기 START--------------
+	$("div.tr2 input[name=lsn_thumbnail]").on("change", function(event) {
+		// #lessonThumbnail
+		var file = event.target.files[0];
+		var reader = new FileReader(); 
+
+		reader.onload = function(e) {
+			$("#preview").attr("src", e.target.result);
+		}
+
+		reader.readAsDataURL(file);
+	});
+	// 확장자가 이미지 파일인지 확인
+	function isImageFile(file) {
+		var ext = file.name.split(".").pop().toLowerCase(); // 파일명에서 확장자를 가져온다. 
+
+		return ($.inArray(ext, ["jpg", "jpeg", "gif", "png"]) === -1) ? false : true;
+	}
+	// 파일의 최대 사이즈 확인
+	function isOverSize(file) {
+		var maxSize = 3 * 1024 * 1024; // 3MB로 제한 
+
+		return (file.size > maxSize) ? true : false;
+	}
+
+	//-----------상단이동버튼 클릭 START-------------
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 300){
+			$('.btn_gotop').show();
+		} else{
+			$('.btn_gotop').hide();
+		}
+	});
+	$('.btn_gotop').click(function(){
+		$('html, body').animate({scrollTop:0},400);
 		return false;
-		
 	});
 });
