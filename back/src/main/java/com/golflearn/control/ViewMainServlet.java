@@ -32,7 +32,10 @@ public class ViewMainServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		HttpSession session = request.getSession();
+		
 		String userType = (String) session.getAttribute("userType");
+		String logined = (String) session.getAttribute("logininfo");
+		System.out.println(logined);
 		String result = "";
 		LessonRepository repo = new LessonOracleRepository();
 		try {
@@ -51,7 +54,8 @@ public class ViewMainServlet extends HttpServlet {
 				map.put("lsns", lsnList);//
 				map.put("sido", api.sidoApi());
 				map.put("userType", userType);
-
+				map.put("logined", logined);
+//				request.getAttribute("userType");
 				request.setAttribute("lsns", lsnList);
 				request.setAttribute("sido", api.sidoApi());
 			} catch (Exception e) {
