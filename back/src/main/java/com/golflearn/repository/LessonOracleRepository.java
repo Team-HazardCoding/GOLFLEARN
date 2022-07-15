@@ -80,7 +80,8 @@ public class LessonOracleRepository implements LessonRepository {
 					Pro pro = new Pro();
 					pro.setProCareer(rs.getString("pro_career"));
 					lesson.setPro(pro);
-					
+//					return lesson;
+					System.out.println("---------------------"+lesson);
 				}
 				
 				//레슨라인1개
@@ -100,8 +101,8 @@ public class LessonOracleRepository implements LessonRepository {
 				
 				//라인을 레슨라이들에 추가
 				lines.add(line);
+
 			}
-			
 			if(lesson == null) {
 				throw new FindException(lsnNo + "번 레슨이 존재하지 않습니다");
 			}

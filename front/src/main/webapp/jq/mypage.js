@@ -3,10 +3,10 @@ $(function(){
     //1) 레슨이 눌렸을 때 레슨상세페이지로 연결 
     //레슨 내역에서 아무거나 눌러도 연결되게 -> 만약 img같은것에도 
     //일일이 달아줘야하는 경우 설정하기 
-    let $viewlsnObj = $('div.lsnlist');
+    let $viewlsnObj = $('div.tr');
     $viewlsnObj.click(function(){
         // location.href("/front/html/viewlesson.html");
-        $(location).attr('href', '/front/html/mypropage.html'); //테스트용
+        $(location).attr('href', '/front/html/viewlesson.html'); //테스트용
     });
     
     //수강상태 설정해주기 
