@@ -65,8 +65,7 @@ public class LoginServlet extends HttpServlet {
 				
 				map.put("status",1);
 				map.put("msg", "로그인 되었습니다.");
-				loginResult = mapper.writeValueAsString(map);
-				
+				loginResult = mapper.writeValueAsString(map);			
 				
 //				loginResult = "{\"status\":1 \"msg\":\"로그인 성공\"}";
 //				loginResult = "{\"status\":1}";
