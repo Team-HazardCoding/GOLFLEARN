@@ -31,10 +31,7 @@ public class ViewMyPageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-//		String userId = (String)session.getAttribute("loginInfo");
-//		String userId = "gyeorekuku";
-//		String userId = "younghee1234";
-		String userId = "93saewoo";
+		String userId = (String)session.getAttribute("loginInfo");
 
 		response.setContentType("application/json;charset = utf-8");
 		PrintWriter out = response.getWriter();		

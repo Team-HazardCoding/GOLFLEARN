@@ -61,16 +61,16 @@ public class LoginServlet extends HttpServlet {
 //			System.out.println(userPwd);
 			if(rs.next()) {// 로그인 성공
 				String userType = rs.getString("user_type");
-//				System.out.println(userType); 		
-				
+				session.setAttribute("loginInfo", userId); // 세션객체 속성으로 로그인 정보 추가
+				session.setAttribute("userType", userType);
 				map.put("status",1);
 				map.put("msg", "로그인 되었습니다.");
-				loginResult = mapper.writeValueAsString(map);			
+				map.put("userType", userType);
+				loginResult = mapper.writeValueAsString(map);
 				
 //				loginResult = "{\"status\":1 \"msg\":\"로그인 성공\"}";
 //				loginResult = "{\"status\":1}";
-				session.setAttribute("loginInfo", userId); // 세션객체 속성으로 로그인 정보 추가
-				session.setAttribute("userType", userType); // 세션 객체에 유저타입 정보 추가
+
 			}
 
 		}catch (SQLException e) {
@@ -78,6 +78,40 @@ public class LoginServlet extends HttpServlet {
 		}finally {
 			MyConnection.close(rs, pstmt, con);
 		}
+		System.out.println(loginResult);
 		out.print(loginResult);
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> map =  new HashMap<>();
+		
+		String loginResult = mapper.writeValueAsString(map);
+		HttpSession session = request.getSession();
+		String status = (String) session.getAttribute("loginInfo");
+		
+		if (status == null) {
+			map.put("status", 0);
+		}
+		else {
+			int userType= Integer.parseInt((String) session.getAttribute("userType"));
+			if(userType == 0) {
+				map.put("status", 1);
+				map.put("type", 0);
+				System.out.println("학생입니다.");
+			} else if(userType == 1){
+				map.put("status", 1);
+				map.put("type", 1);
+				System.out.print("프로입니다.");
+			}
+			
+		}
+		loginResult = mapper.writeValueAsString(map);
+		out.print(loginResult);
+		
 	}
 }

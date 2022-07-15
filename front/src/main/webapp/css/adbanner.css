@@ -21,10 +21,10 @@ li {
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slide-adbanner {
 	/*전체 컨테이너*/
-	width: 1215px;
+	width: 1104px;
 	height: 400px;
 	position: relative;
-	margin: 50px auto;
+	margin: 0 auto;
 	overflow: hidden; 
 	/*리스트 형식으로 이미지를 일렬로 정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은 hidden으로 숨겨줘야됨*/
 }
