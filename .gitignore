@@ -60,6 +60,7 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 dependency-reduced-pom.xml
+
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,java,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,java,eclipse
 ### Eclipse ###
@@ -74,6 +75,7 @@ local.properties
 *.settings/
 .loadpath
 .recommenders
+
 # External tool builders
 .externalToolBuilders/
 # Locally stored "Eclipse launch configurations"
@@ -186,3 +188,4 @@ back/.settings
 
 # End of https://www.toptal.com/developers/gitignore/api/java,windows,eclipse
 back/.classpath~78ca5b9ccadaf9648a27b74f19cd9f72f5e19eb3
+

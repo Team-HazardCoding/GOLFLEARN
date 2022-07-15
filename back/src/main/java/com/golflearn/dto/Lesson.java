@@ -8,7 +8,7 @@ public class Lesson {
 	private int lsnNo;
 	private String lsnTitle;
 	private String lsnIntro;
-	private int lsnLv;	
+	private String lsnLv;	//고치기 
 	private int lsnDays;
 	private int lsnPrice;
 	private int lsnPerTime;
@@ -28,6 +28,7 @@ public class Lesson {
 	private Pro pro;
 	private LessonLine lsnLine;
 	private String strLsnUploadDt;
+	private LessonReview lsnReview;
 	
 	public Lesson(){}
 	// 메인페이지의 레슨목록 보여줄때 필요한 생성자
@@ -65,10 +66,10 @@ public class Lesson {
 	public void setLsnIntro(String lsnIntro) {
 		this.lsnIntro = lsnIntro;
 	}
-	public int getLsnLv() {
+	public String getLsnLv() {
 		return this.lsnLv;
 	}
-	public void setLsnLv(int lsnLv) {
+	public void setLsnLv(String lsnLv) {
 		this.lsnLv = lsnLv;
 	}
 	public int getLsnDays() {
@@ -155,11 +156,12 @@ public class Lesson {
 	public void setLines(List<LessonLine> lines) {
 		this.lsnLines = lines;
 	}
-	public Pro getPro() {
-		return pro;
+
+	public int getUploadDt() {
+		return UploadDt;
 	}
-	public void setPro(Pro pro) {
-		this.pro = pro;
+	public void setUploadDt(int uploadDt) {
+		UploadDt = uploadDt;
 	}
 	public int getLsnStarPoint() {
 		return lsnStarPoint;
@@ -167,11 +169,12 @@ public class Lesson {
 	public void setLsnStarPoint(int lsnStarPoint) {
 		this.lsnStarPoint = lsnStarPoint;
 	}
-	public int getUploadDt() {
-		return UploadDt;
+
+	public Pro getPro() {
+		return pro;
 	}
-	public void setUploadDt(int uploadDt) {
-		UploadDt = uploadDt;
+	public void setPro(Pro pro) {
+		this.pro = pro;
 	}
 	public LessonLine getLsnLine() {
 		return lsnLine;
@@ -184,5 +187,11 @@ public class Lesson {
 	}
 	public void setStrLsnUploadDt(String strLsnUploadDt) {
 		this.strLsnUploadDt = strLsnUploadDt;
+	}
+	public LessonReview getLsnReview() {
+		return lsnReview;
+	}
+	public void setLsnReview(LessonReview lsnReview) {
+		this.lsnReview = lsnReview;
 	}
 }

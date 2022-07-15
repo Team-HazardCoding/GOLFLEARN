@@ -35,6 +35,7 @@ public class ViewMyPageServlet extends HttpServlet {
 //		String userId = "gyeorekuku";
 //		String userId = "younghee1234";
 		String userId = "93saewoo";
+
 		response.setContentType("application/json;charset = utf-8");
 		PrintWriter out = response.getWriter();		
 

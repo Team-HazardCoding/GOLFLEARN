@@ -70,6 +70,7 @@ public class LoginServlet extends HttpServlet {
 				
 //				loginResult = "{\"status\":1 \"msg\":\"로그인 성공\"}";
 //				loginResult = "{\"status\":1}";
+
 			}
 
 		}catch (SQLException e) {

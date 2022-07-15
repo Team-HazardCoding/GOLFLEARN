@@ -1,7 +1,6 @@
 package com.golflearn.dto;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 public class LessonLine {
 	private int lsnLineNo;
@@ -18,8 +17,7 @@ public class LessonLine {
 	private LessonHistory lsnHistory;
 	private int crntLsnCnt;
 	private String strLsnExpDt;
-	private String strLsnAplyDt;
-	
+	private String strLsnAplyDt; 
 	
 	Lesson le = new Lesson();
 	LessonReview lr = new LessonReview();
@@ -46,7 +44,6 @@ public class LessonLine {
 //					+ "레슨총횟수 : " + le.getLsnCntSum()
 					;
 	}
-	
 	
 	//레슨내역번호
 	public int getLsnLineNo() {
@@ -130,8 +127,6 @@ public class LessonLine {
 	public LessonHistory getLsnHistory() {
 		return this.lsnHistory;
 	}
-
-
 
 	public void setLsnHistory(LessonHistory lsnHistory) {
 		this.lsnHistory = lsnHistory;

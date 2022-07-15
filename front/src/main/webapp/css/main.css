@@ -26,6 +26,7 @@ li:hover {
     display: flex;
     flex-direction: column;
 }
+
 #main>#wrapper>#container {
     width: 100%;
     /* height: 100%; */
@@ -127,8 +128,6 @@ li:hover {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
-#main>#wrapper>#container>#content-right>#card-container>.col {}
 
 #main>#wrapper>#container>#content-right .col {
     margin-right: 15px;
