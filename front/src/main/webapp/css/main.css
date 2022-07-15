@@ -79,6 +79,11 @@ li:hover {
     margin-bottom: 10px;
 }
 
+#main>#wrapper>#container>#content-left>#sidebar>ul>li.choice {
+    background-color: #00B8A9;
+
+}
+
 #main>#wrapper>#container>#content-right {
     width: 80%;
     overflow: hidden;
@@ -112,7 +117,7 @@ li:hover {
 
 
 #main>#wrapper>#container>#content-right>#tag-container>li.choice {
-    background-color: rebeccapurple;
+    background-color: #FFDE7D;
 }
 
 #main>#wrapper>#container>#content-right>#card-container {
