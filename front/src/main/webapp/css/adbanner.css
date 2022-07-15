@@ -21,7 +21,7 @@ li {
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slide-adbanner {
 	/*전체 컨테이너*/
-	width: 1215px;
+	width: 1104px;
 	height: 400px;
 	position: relative;
 	margin: 50px auto;
