@@ -90,6 +90,20 @@ li:hover {
     overflow: hidden;
 }
 
+#lsnImg {
+    overflow: hidden;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#lsnImg img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
 #main>#wrapper>#container>#content-right>#tag-container {
     background-color: #FFF;
     margin: 0 auto;
@@ -137,6 +151,26 @@ li:hover {
     min-width: 30%;
     cursor: pointer;
 
+}
+
+#main>#wrapper>#container>#content-right .col .lsn{
+    width: 100%;
+    height: 100%;
+}
+
+#main>#wrapper>#container>#content-right .col .lsn>#lsnImg{
+    display: flex;
+    width: 100%;
+    height: 60%;
+    /* object-fit: cover; */
+    /* justify-content: center; */
+    align-items: center;
+}
+
+#main>#wrapper>#container>#content-right .col .lsn>#lsnImg>img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
 }
 
 #main>#wrapper>#container>#content-right .col:nth-child(1) {
