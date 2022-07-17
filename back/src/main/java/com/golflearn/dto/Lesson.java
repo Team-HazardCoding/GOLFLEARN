@@ -1,36 +1,49 @@
 package com.golflearn.dto;
-
-import java.util.Date;
 import java.util.ArrayList;
+import java.sql.Date;
+import java.util.List;
+
 
 public class Lesson {
 	private int lsnNo;
-	//private String lsnName;
-	private User user;
 	private String lsnTitle;
 	private String lsnIntro;
-	private int lsnLv;
+	private String lsnLv;	//고치기 
 	private int lsnDays;
 	private int lsnPrice;
 	private int lsnPerTime;
 	private int lsnCntSum;
 	private int lsnStarSum;
 	private int lsnStarPplCnt;
+	private float lsnStarScore;	//레슨별점 : pjw
+	private float proStarScore;	//프로별점 : pjw
 	private int lsnStatus;
 	private int UploadDt;
 	private Date lsnUploadDt;
-	private ArrayList<LessonClsfc> lsnClfc;
-	private ArrayList<LessonLine> lsnLines;
-	private Location location;
+	private List<LessonClsfc> lsnClsfcs;
+	private List<LessonLine> lsnLines;
+	private String locNo;
+	private int lsnStarPoint;
+	private User user;
+	private Pro pro;
+	private LessonLine lsnLine;
+	private String strLsnUploadDt;
+	private LessonReview lsnReview;
 	
-	User u = new User();
-	
-	public Lesson(int lsnNo, String lsnName, int lsnReviewCnt, String lsnUserId, int lsnLv, int lsnPrice,
-			int lsnPerTime, int lsnDays, int lsnStarScore, int proStarScore, String proName, String locSido,
-			String locSigungu, String proIntro, String reviewUserId, String review, Date reviewDt) {
+	public Lesson(){}
+	// 메인페이지의 레슨목록 보여줄때 필요한 생성자
+	public Lesson(int lsnNo, String lsnTitle, Date lsnUploadDt, int lsnStarPoint, User user, String locNo) {
 		this.lsnNo = lsnNo;
-		//userName -> User의 get, set 완성되면 으로 User에서 가져오기
-		//
+		this.lsnTitle = lsnTitle;
+		this.lsnUploadDt = lsnUploadDt;
+		this.setLsnStarPoint(lsnStarPoint);
+		this.user = user;
+		this.locNo = locNo;
+				
+	}
+	
+	public void toString(int lsnNo, String lsnTitle, Date lsnUploadDt, int lsnStarPoint, User user, String locNo) {
+		System.out.println(lsnTitle + ", " + lsnUploadDt + ", " + lsnStarPoint + ", " + user.toString() + ", " + locNo);
 	}
 	
 	//게터 세터 메서드 
@@ -41,109 +54,144 @@ public class Lesson {
 	public void setLsnNo(int lsnNo) {
 		this.lsnNo = lsnNo;
 	}
-	//2. 유저
-	public User getUser() {
-		return this.user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	//3. 레슨명
 	public String getLsnTitle() {
 		return this.lsnTitle;
 	}
 	public void setLsnTitle(String lsnTitle) {
 		this.lsnTitle = lsnTitle;
 	}
-	//4. 레슨소개 
 	public String getLsnIntro() {
 		return this.lsnIntro;
 	}
 	public void setLsnIntro(String lsnIntro) {
 		this.lsnIntro = lsnIntro;
 	}
-	//5. 레슨레벨
-	public int getLsnLv() {
+	public String getLsnLv() {
 		return this.lsnLv;
 	}
-	public void setLsnLv(int lsnLv) {
+	public void setLsnLv(String lsnLv) {
 		this.lsnLv = lsnLv;
 	}
-	//6. 레슨유효기간
 	public int getLsnDays() {
 		return this.lsnDays;
 	}
 	public void setLsnDays(int lsnDays) {
 		this.lsnDays = lsnDays;
 	}
-	//7. 레슨가격
 	public int getLsnPrice() {
 		return this.lsnPrice;
 	}
 	public void setLsnPrice(int lsnPrice) {
 		this.lsnPrice = lsnPrice;
 	}
-	//8. 레슨회당시간
 	public int getLsnPerTime() {
 		return this.lsnPerTime;
 	}
 	public void setLsnPerTime(int lsnPerTime) {
-		this.lsnPerTime = lsnPerTime;
+	this.lsnPerTime = lsnPerTime;
 	}
-	//9. 레슨총횟수
 	public int getLsnCntSum() {
 		return this.lsnCntSum;
 	}
 	public void setLsnCntSum(int lsnCntSum) {
 		this.lsnCntSum = lsnCntSum;
 	}
-	//10. 레슨총별점
 	public int getLsnStarSum() {
 		return this.lsnStarSum;
 	}
 	public void setLsnStarSum(int lsnStarSum) {
 		this.lsnStarSum = lsnStarSum;
 	}
-	//11. 레슨별점총인원
 	public int getLsnStarPplCnt() {
-		return this.lsnStarPplCnt;
+		return lsnStarPplCnt;
 	}
 	public void setLsnStarPplCnt(int lsnStarPplCnt) {
 		this.lsnStarPplCnt = lsnStarPplCnt;
 	}
-	//12. 레슨상태
+	public float getLsnStarScore() {
+		return lsnStarScore;
+	}
+	public void setLsnStarScore(float lsnStarScore) {
+		this.lsnStarScore = lsnStarScore;
+	}
+	public float getProStarScore() {
+		return proStarScore;
+	}
+	public void setProStarScore(float proStarScore) {
+		this.proStarScore = proStarScore;
+	}
 	public int getLsnStatus() {
-		return this.lsnStatus;
+		return lsnStatus;
 	}
 	public void setLsnStatus(int lsnStatus) {
 		this.lsnStatus = lsnStatus;
 	}
-	//13. 레슨업로드일자
-	public Date getLsnUploadDt() {
-		return this.lsnUploadDt;
+	public String getLocNo() {
+		return locNo;
 	}
-	public void setLsnUploadDt(Date lsnUploadDt) {
+	public void setLocNo(String locNo) {
+		this.locNo = locNo;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public Date getLsnUploadDt() {
+		return lsnUploadDt;
+	}
+	public void setLsnUploadDt(java.sql.Date lsnUploadDt) {
 		this.lsnUploadDt = lsnUploadDt;
 	}
-	//14. 레슨분류 필요?
-	public ArrayList<LessonClsfc> getLsnClfc() {
-		return this.lsnClfc;
+	public List<LessonClsfc> getLsnClsfcs() {
+		return lsnClsfcs;
 	}
-	public void setLsnClfc(ArrayList<LessonClsfc> lsnClfc) {
-		this.lsnClfc = lsnClfc;
+	public void setLsnClsfcs(List<LessonClsfc> lsnClsfcs) {
+		this.lsnClsfcs = lsnClsfcs;
 	}
-	//15. 레슨내역 필요?
-	public ArrayList<LessonLine> getLsnLines() {
-		return this.lsnLines;
+	public List<LessonLine> getLines() {
+		return lsnLines;
 	}
-	public void setLsnLines(ArrayList<LessonLine> lsnLines) {
-		this.lsnLines = lsnLines;
+	public void setLines(List<LessonLine> lines) {
+		this.lsnLines = lines;
 	}
-	//16. 지역
-	public Location getLocation() {
-		return this.location;
+
+	public int getUploadDt() {
+		return UploadDt;
 	}
-	public void setLsnLocation(Location lsnLocation) {
-		this.location = lsnLocation;
+	public void setUploadDt(int uploadDt) {
+		UploadDt = uploadDt;
+	}
+	public int getLsnStarPoint() {
+		return lsnStarPoint;
+	}
+	public void setLsnStarPoint(int lsnStarPoint) {
+		this.lsnStarPoint = lsnStarPoint;
+	}
+
+	public Pro getPro() {
+		return pro;
+	}
+	public void setPro(Pro pro) {
+		this.pro = pro;
+	}
+	public LessonLine getLsnLine() {
+		return lsnLine;
+	}
+	public void setLsnLine(LessonLine lsnLine) {
+		this.lsnLine = lsnLine;
+	}
+	public String getStrLsnUploadDt() {
+		return strLsnUploadDt;
+	}
+	public void setStrLsnUploadDt(String strLsnUploadDt) {
+		this.strLsnUploadDt = strLsnUploadDt;
+	}
+	public LessonReview getLsnReview() {
+		return lsnReview;
+	}
+	public void setLsnReview(LessonReview lsnReview) {
+		this.lsnReview = lsnReview;
 	}
 }

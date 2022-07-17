@@ -1,0 +1,25 @@
+@font-face {
+	font-family: 'Godo';
+	font-style: normal;
+	font-weight: normal;
+	src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff') format('woff');
+	}
+
+* {
+    margin:0 0;
+    font-family: 'Godo';
+}
+
+article, aside, figure, footer, header, hgroup, section {
+
+    display: block;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    /* position: relative; */
+    /* padding-bottom: 100px; */
+}
+

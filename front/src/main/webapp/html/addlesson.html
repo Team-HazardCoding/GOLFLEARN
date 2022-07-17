@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../css/addlesson.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="../jq/addlesson.js"></script>
+	<script src="../jq/addsidogu.js"></script>
+	<script src="https://www.w3schools.com/lib/w3.js"></script>
+</head>
+
+<body>
+	<!-- 상단 이동하기 버튼 -->
+	<a href="#" class="btn_gotop">
+		<img src="../images/TOP.jpeg" style="width:45px; height:45px;">
+	</a>
+
+	<!--헤더(메뉴바)-->
+	<div w3-include-html="header.html" class="w3"></div>
+	<!--레슨등록화면-->
+	<section>
+		<article>
+			<div class="addlesson">
+				<div class="table">
+					<div class="tr1">
+						<div class="td1">
+							<label>
+								<h1>레슨 등록 및 수정</h1>
+							</label>
+						</div>
+					</div>
+					<br>
+					<form method="post" action="http://localhost:1124/back/addlesson" class="lessonregister" enctype="multipart/form-data">
+						<div class="tr2">
+							<div class="td1">
+								<img id="preview">
+								<br>
+								<label>레슨 썸네일 첨부 : </label>
+								<input type="file" name="lsn_thumbnail" accept="image/*">
+							</div>
+							<br>
+							<br>
+							<br>
+							<div class="td2">
+								<ul>
+									<li>레슨분류:
+										<div class="select">
+											<input type="checkbox" name="club_no" value="1"><label for="wood">우드</label>
+											<input type="checkbox" name="club_no" value="2"><label for="iron">아이언</label>
+											<input type="checkbox" name="club_no" value="3"><label for="wedge">웨지</label>
+											<input type="checkbox" name="club_no" value="4"><label for="putter">퍼터</label>
+											<input type="checkbox" name="club_no" value="5"><label for="synthesis">종합</label>
+										</div>
+									</li>
+									<li>레슨명:&nbsp;<input type="text" name="lsn_title" class="input" required></li>
+									<li>레슨비:&nbsp;<input type="text" name="lsn_price" class="input" required>원</li>
+									<li>레슨지역:&nbsp;
+										<select name="sd">
+											<option value="none">=== 선택 ===</option>
+
+										</select>
+										<select name="sgg">
+											<option value="none">=== 선택 ===</option>
+
+										</select>
+									</li>
+									<li>레슨레벨:&nbsp;
+										<select name="lsn_lv">
+											<option value="none">=== 선택 ===</option>
+											<option name="lv1" value=1>초급</option>
+											<option name="lv2" value=2>중급</option>
+											<option name="lv3" value=3>고급</option>
+										</select>
+										<!-- <input type="text" name="lsn_lv"> -->
+									</li>
+									<li>레슨횟수(회):&nbsp;<input type="text" name="lsn_cnt_sum" class="input" required>회</li>
+									<li>회당 레슨시간(분):&nbsp;<input type="text" name="lsn_per_time" class="input" required>분</li>
+									<li>레슨소개<br>
+										<!-- <input type="text" name="lsn_intro"> -->
+										<textarea name="lsn_intro" class="input" required></textarea>
+									</li>
+									<li>유효기간(일):&nbsp;<input type="text" name="lsn_days" class="input" required>일</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tr3">
+							<div class="tr1">
+								<br>
+								<br>
+								<button type="submit" name="register">등록</button>
+							</div>
+						</div>
+				</div>
+				</form>
+			</div>
+		</article>
+	</section>
+	<!--풋터-->
+	<div w3-include-html="footer.html" class="w3"></div>
+	<script>
+		w3.includeHTML();
+	</script>
+</body>
+
+</html>

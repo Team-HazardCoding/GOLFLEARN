@@ -13,4 +13,76 @@ public class User {
 	private int userType;
 	private Pro pro;
 	
+	public String toString() {
+		return userType + "입니다";
+	}
+	
+	public User() {
+		
+	}
+
+	public User(String userName, String userID) {
+		this.userName = userName;
+		this.userID = userID;
+	}
+	
+	public User(String userName) {
+		this.userName=userName;
+	}
+	public String getUserID(){
+		return this.userID;
+	}
+	public void setUserID(String userID) {
+
+		this.userID = userID;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+	public String getUserPhone() {
+		return userPhone;
+	}
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+	public String getUserSsn() {
+		return userSsn;
+	}
+	public void setUserSsn(String userSsn) {
+		this.userSsn = userSsn;
+	}
+	public Date getUserJoinDt() {
+		return userJoinDt;
+	}
+	public void setUserJoinDt(Date userJoinDt) {
+		this.userJoinDt = userJoinDt;
+	}
+	public Date getUserQuitDt() {
+		return userQuitDt;
+	}
+	public void setUserQuitDt(Date userQuitDt) {
+		this.userQuitDt = userQuitDt;
+	}
+	public int getUserType() {
+		return userType;
+	}
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
+	public Pro getPro() {
+		return pro;
+	}
+	public void setPro(Pro pro) {
+		this.pro = pro;
+	}
+
 }

@@ -1,0 +1,80 @@
+@import url(base.css);
+section {
+    /* margin: 0 auto; */
+    margin-top: 95px;
+    width : 80%;
+}
+* {
+    margin: 0 0;
+    box-sizing: border-box;
+}
+div.stdtinfo>div.table{
+    display: table;
+    width : 100%;
+    /* min-width: */
+}
+div.stdtinfo>div.table>div.tr{
+    display: table-row;
+}
+div.stdtinfo>div.table>div.tr>div.td{
+    display: table-cell;
+    width : 100%;
+}
+div.td{
+    display: flex;
+    /* justify-content: space-around; */
+    justify-content: space-evenly;
+    /* justify-content: space-between; */
+    text-align : center;
+    
+}
+
+div.index{
+    display: flex;
+    justify-content: space-around;
+}
+div.content{
+    display: flex;
+    justify-content: space-around;
+    text-align : center;
+    vertical-align : middle;
+}
+.title{
+    width : 22%;
+    height : 30px;
+}
+.name{
+    width : 5%;
+    height : 30px;
+}
+.phone{
+    width : 10%;
+    height : 30px;
+}
+.email{
+    width : 20%;
+    height : 30px;
+}
+.startdt{
+    width : 13%;
+    height : 30px;
+}
+.expdt{
+    width : 13%;
+    height : 30px;
+}
+.crntlsncnt{
+    width : 5%;
+    height : 30px;
+}
+.lsncntsum{
+    width : 5%;
+    height : 30px;
+}
+.lsnchk{
+    width : 7%;
+    height : 30px;
+}
+div.index{
+    /* border : 1px solid; */
+}
