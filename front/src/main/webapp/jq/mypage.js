@@ -131,6 +131,14 @@ $(function(){
                 $copyObj.find('div.td').html(lessonLine);
                 
                 $('div.table').append($copyObj);
+
+                let $writeReviewObj = $('input[value=레슨후기작성]');
+                let $modifyReviewObj = $('input[value=레슨후기수정]');
+                if (my_star_score = 0) { //작성한 후기가 없으면 수정 버튼숨기기
+                    $modifyReviewObj.hide();
+                }else {
+                    $writeReviewObj.hide();
+                }
                 
             });
         },
