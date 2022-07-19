@@ -92,20 +92,24 @@ public class LoginServlet extends HttpServlet {
 		
 		String loginResult = mapper.writeValueAsString(map);
 		HttpSession session = request.getSession();
-		int userType= Integer.parseInt((String) session.getAttribute("userType"));
 		String status = (String) session.getAttribute("loginInfo");
+		
 		
 		if (status == null) {
 			map.put("status", 0);
 		}
-		else if(userType == 0) {
-			map.put("status", 1);
-			map.put("type", 0);
-			System.out.println("학생입니다.");
-		} else if(userType == 1){
-			map.put("status", 1);
-			map.put("type", 1);
-			System.out.print("프로입니다.");
+		else {
+			int userType= Integer.parseInt((String) session.getAttribute("userType"));
+			if(userType == 0) {
+				map.put("status", 1);
+				map.put("type", 0);
+				System.out.println("학생입니다.");
+			} else if(userType == 1){
+				map.put("status", 1);
+				map.put("type", 1);
+				System.out.print("프로입니다.");
+			}
+			
 		}
 		loginResult = mapper.writeValueAsString(map);
 		out.print(loginResult);

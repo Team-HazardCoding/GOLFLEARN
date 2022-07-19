@@ -28,9 +28,12 @@ $(function () {
 		// $('div#card-container').append($lsnObj);
 		$(jsonObj.lsns).each(function (index, item) {
 			console.log(item.user.userName + "  " + item.locNo);
+			console.log(item.user.userID);
 			let product = '<div class="lsn" id=' + item.lsnNo + ">";
 			product +=
-			'<img src="C:/Golflearn_lib/user_images/"' + item.user.userId + '/LessonThumbnail.jpeg">'; // 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
+        '<div id="lsnImg"><img src="../user_images/' +
+        item.user.userID +
+        '/LessonThumbnail.jpg"/></div>'; // 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
 			product += '<div class="lsn_content">';
 			product += '<h5 class="lsn_title">' + item.lsnTitle + "</h5>";
 			product +=

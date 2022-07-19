@@ -73,7 +73,7 @@ public class Smtp {
             message.setSubject("Golflearn 비밀번호 인증코드 안내 메일입니다 ");
 
             //메일 내용 입력
-            message.setText("인증코드 : " + bs);
+            message.setText("고객님의 비밀번호 인증코드는 : " + bs +" 입니다. 비밀번호를 변경해주세요");
 
             //메일 전송
             Transport.send(message);
