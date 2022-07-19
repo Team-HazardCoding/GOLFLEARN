@@ -1,4 +1,37 @@
 $(function(){
+    $.ajax({
+		url: "http://localhost:1124/back/login",
+		success: function (jsonObj) {
+		let $tabObj = $("div#content>div#content-right");
+		let $tabObjHtml = "";
+		console.log("tetetetete" + jsonObj.type);
+		if (jsonObj.status == 1) {
+			console.log("hihiho");
+			// $('header div#logined').show();
+
+			$tabObjHtml +=
+			'<div id="logined"><div id="logout" onclick="logout()">로그아웃</div>';
+			$tabObjHtml +=
+			'<div id="mypage" onclick="mypage()">마이페이지</div></div>';
+			if (jsonObj.type == 1) {
+				$tabObjHtml += '<a id="mypage" href="/front/html/addlesson.html">레슨등록</a>';
+			}
+
+		} else {
+			// $('header div#normal').show();
+			$tabObjHtml +=
+			' <div id="normal"><a href="/front/html/login.html">로그인</a>';
+			$tabObjHtml +=
+			'<a href="/front/html/signuptype.html">회원가입</a></div>';
+		}
+		$tabObj.html($tabObjHtml);
+		
+		// return false;
+		},
+		error: function (jqXHR) {
+		alert(jqXHR.status);
+		},
+	});
     //1)페이지 로딩되었을 때 프로면 레슨 보여주기...
     $.ajax({
         url : "/back/viewmypage",
