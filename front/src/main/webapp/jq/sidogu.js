@@ -4,6 +4,8 @@ $(function() {
 	let sidoguUrl = 'http://localhost:1124/back/seeksidosigu';
 	let $tagContent = $('#tag-container');
 	$sidoBtn.on('click', 'li', function(event) {
+		$(this).toggleClass('choice');
+
 		$tagContent.empty();
 		let $sidoVal = $(this);
 		$.ajax({
@@ -74,7 +76,7 @@ $(function() {
 					product +='<div class="lsn_content">';
 					product +='<h5 class="lsn_title">' + item.lsnTitle + '</h5>';
 					product +='<p class="prod_price">프로이름 : '+item.user.userName + '</p>';
-					product +='<p class="tag_name">태그이름 : ' + item.locNo + '</p>';// 지역번호
+					// product +='<p class="tag_name">태그이름 : ' + item.locNo + '</p>';// 지역번호
 					product +='<p class="star_point">별점  : '+ item.lsnStarPoint + '</p></div>';
 					product +='</div>';
 					
