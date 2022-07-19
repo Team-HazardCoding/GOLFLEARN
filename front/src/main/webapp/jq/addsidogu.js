@@ -2,8 +2,8 @@ $(function() {
 
 	let $sidoBtn = $('div#sidebar');
 	let sidoguUrl = 'http://localhost:1124/back/seeksidosigu';
-	let $sidoCombo = $('select[name=sido]'); // 첫번째 시도를 선택하여 가져와야 함 option에 selected 된것을 가져와야함
-	let $sigunguCombo = $('select[name=sigungu]');
+	let $sidoCombo = $('select[name=sd]'); // 첫번째 시도를 선택하여 가져와야 함 option에 selected 된것을 가져와야함
+	let $sigunguCombo = $('select[name=sgg]');
 	$sidoCombo.change(function() {
 		// $sidoCombo.empty(); //사용자가 콤보박스를여러번 클릭했을때 append 되는것을 방지함
         $sigunguCombo.empty();

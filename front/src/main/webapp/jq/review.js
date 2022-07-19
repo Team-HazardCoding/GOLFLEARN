@@ -28,6 +28,10 @@ $(function(){
                 let lsn_title = jsonObj.lsnTitle;
                 $titleObj.html(lsn_title);
                 $lineNoObj.val(lsn_line_no);
+
+                //나중에 구현하기 
+                // let imgLine = '<img src = "../lsn_images/' + lsn_no + '.jpg" alt="' + lsn_no + '번째레슨">'
+                
                 // $lineNoObj.html(lsn_line_no);
                 console.log("작성으로 왔다");
             },

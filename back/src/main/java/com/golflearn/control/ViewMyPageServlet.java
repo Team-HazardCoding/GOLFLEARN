@@ -21,9 +21,7 @@ import com.golflearn.exception.FindException;
 import com.golflearn.repository.LessonLineRepository;
 
 
-/**
- * Servlet implementation class ViewMyPageServlet
- */
+
 @WebServlet("/viewmypage")
 public class ViewMyPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,6 +33,7 @@ public class ViewMyPageServlet extends HttpServlet {
 //		String userId = "gyeorekuku";
 //		String userId = "younghee1234";
 //		String userId = "93saewoo";
+
 
 		response.setContentType("application/json;charset = utf-8");
 		PrintWriter out = response.getWriter();		
