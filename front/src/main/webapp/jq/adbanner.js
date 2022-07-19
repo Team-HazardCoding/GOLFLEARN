@@ -9,7 +9,6 @@ slideMargin = 10; //슬라이드 끼리의 마진값
 makeClone(); // 처음이미지와 마지막 이미지 복사 함수
 initfunction(); //슬라이드 넓이와 위치값 초기화 함수
 
-
 function makeClone() {
 	let cloneSlide_first = slideImg[0].cloneNode(true);
 	let cloneSlide_last = slides.lastElementChild.cloneNode(true);

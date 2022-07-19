@@ -80,7 +80,12 @@ public class FilterLessonServlet extends HttpServlet {
 				Date lsnUploadDt =  rs.getDate("lsn_upload_dt");
 				int lsnStarSum = rs.getInt("lsn_star_sum");
 				int lsnStarPplCnt = rs.getInt("lsn_star_ppl_cnt");
-				int lsnStarPoint = Math.round(lsnStarSum/lsnStarPplCnt);
+				int lsnStarPoint = 0;
+				if (lsnStarPplCnt != 0) {
+					lsnStarPoint = Math.round(lsnStarSum/lsnStarPplCnt);
+				} else {
+					lsnStarPoint = 0;
+				}
 				String userName = rs.getString("프로명");
 				String locNo = rs.getString("loc_no");
 
