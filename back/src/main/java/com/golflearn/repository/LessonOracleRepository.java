@@ -57,7 +57,7 @@ public class LessonOracleRepository implements LessonRepository {
 					lesson = new Lesson();
 					
 					//레슨에 레슨라인들 설정
-					lesson.setLines(lines); 
+					lesson.setLines(lines); 					
 					
 					lesson.setLsnNo(lsnNo);
 					lesson.setLsnTitle(rs.getString("lsn_title"));
@@ -153,7 +153,7 @@ public class LessonOracleRepository implements LessonRepository {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			// 각 레슨의 별점은 자바단에서 계산하는것이 더 낫다고 하셔서 계산에 필요한 두 칼럼을 가져온후 계산함. 
-			String selectAllLsnSQL = "SELECT lsn_no, loc_no, lsn_title, lsn_upload_dt, lsn_star_sum, lsn_star_ppl_cnt, ui.user_name 프로명\n"
+			String selectAllLsnSQL = "SELECT lsn_no, loc_no, lsn_title, lsn_upload_dt, lsn_star_sum, lsn_star_ppl_cnt, ui.user_name 프로명, ui.user_id 아이디\n"
 					+ "FROM lesson l JOIN user_info ui ON(l.user_id = ui.user_id)\n"
 					+ "ORDER BY 1 DESC";
 			pstmt = con.prepareStatement(selectAllLsnSQL);
@@ -172,13 +172,14 @@ public class LessonOracleRepository implements LessonRepository {
 					lsnStarPoint = 0;
 				}
 				String userName = rs.getString("프로명");
+				String userID = rs.getString("아이디");
 				String locNo = rs.getString("loc_no");
 //				String locSido = rs.getString("시도");
 //				String locSigungu = rs.getString("시군구");
 				// 게산하는거 맵형식으로 해보기
 				
 				//레슨 한줄한줄을 읽어서 레슨객체에 저장함.
-				User user = new User(userName);				
+				User user = new User(userName, userID);				
 				
 //				Location location = new Location();
 //				location.setSido(locSido);

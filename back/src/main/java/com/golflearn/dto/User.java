@@ -17,8 +17,13 @@ public class User {
 		return userType + "입니다";
 	}
 	
-
 	public User() {
+		
+	}
+
+	public User(String userName, String userID) {
+		this.userName = userName;
+		this.userID = userID;
 	}
 	
 	public User(String userName) {
