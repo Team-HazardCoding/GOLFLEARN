@@ -63,7 +63,7 @@ $(function(){
                 $('div.lsn').append($copyObj);
 			});	
 		},
-		error: function () {
+		error: function (jqXHR) {
 			alert('오류:' + jqXHR.status);
 		}
 	});

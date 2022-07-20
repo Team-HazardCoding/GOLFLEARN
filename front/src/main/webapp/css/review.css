@@ -1,0 +1,120 @@
+
+@import url(base.css);
+* {
+    margin: 0 0;
+    box-sizing: border-box;
+}
+
+section {
+    margin: 0 auto;
+    margin-top: 95px;
+    width : 80%;
+}
+
+div.body{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+
+div.top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    min-width: 500px;
+}
+
+.content-left {
+    width: 40%;
+    min-width: 400px;
+}
+
+.content-left>.img-box {
+    width:400px;
+}
+
+.content-left>.img-box>img {
+    width:100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.content-right {
+    width:60%;
+    min-width: 320px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+form.submit .starform fieldset{
+    /* display: inline-block; */
+    direction: rtl;
+    border: 0;
+}
+form.submit .starform fieldset legend{
+    text-align: left;
+}
+form.submit .starform input[type=radio]{
+    display: none;
+}
+form.submit .starform input[type=radio]:checked ~ label {
+    text-shadow: 0 0 0 #FFA500;
+}
+.starform label{
+    font-size : 3em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+form.submit .starform label:hover{
+    text-shadow: 0 0 0 #FFE5B4;
+}
+form.submit .starform label:hover ~ label {
+    text-shadow: 0 0 0 #FFE5B4;
+}
+div.body{
+    margin: 0 auto;
+    /* background-color: antiquewhite; */
+    display: flex;
+    justify-content: center; 
+}
+
+form.submit{
+    text-align: left;
+    width : 100%;
+}
+input.lsn_line_no{
+    display: none;
+}
+
+span.lsn_title{
+    font-size: x-large;
+    display: block;
+    margin-left: 30px;
+}
+
+section{
+    height: 100%;
+}
+
+div.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+textarea.review_context{
+    height: 300px;
+    width: 55%;
+    height: 45%;
+    overflow: scroll;
+    
+}
+
+#review{
+    height:120px;
+}
+

@@ -11,18 +11,15 @@
 }
 
 article, aside, figure, footer, header, hgroup, section {
+
     display: block;
 }
 
-/* .w3 {
-    
-} */
-
 body {
     width: 100%;
-    height: 800px;
-    min-height:100%;
-    position:relative;
-    padding-bottom:100px;
-
+    height: auto;
+    min-height: 100%;
+    /* position: relative; */
+    /* padding-bottom: 100px; */
 }
+
