@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../css/viewlesson.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="../jq/viewlesson.js"></script>
+	<script src="https://www.w3schools.com/lib/w3.js"></script>
+</head>
+
+<body>
+	<!-- 상단 이동하기 버튼 -->
+	<a href="#" class="btn_gotop">
+		<img src="../images/TOP.jpeg" style="width:45px; height:45px;">
+	</a>
+	
+	<!--헤더 네비바-->
+	<div w3-include-html="header.html" class="w3"></div>
+	<!--본문섹션(레슨간략정보)-->
+	<section class="section1">
+		<article>
+			<div class="viewlesson">
+				<img src="" alt=""/><!--레슨썸네일-->
+				<div class="simple">
+					<ul>
+						<br>
+						<li>레슨지역:<span class="loc_no"></span> </li>  
+						<li>레슨명:<span class="lsn_title"></span></li>  
+						<li>레슨별점:<span class="lsn_star_score"></span></li>  
+						<li>레슨후기갯수:<span class="lsn_review_cnt"></span></li>	
+						<li>프로명:<span class="user_name"></span></li>	 
+						<li>프로별점:<span class="pro_star_score"></span></li>
+						<br>	 	
+						<button>수강신청</button>						
+					</ul>
+				</div>
+			</div>
+		</article>
+		<br>
+		<hr>
+		<br> 		
+	</section>	
+	<!--본문섹션(레슨상세정보)-->
+	<section class="section2">
+		<!--네비바 영역-->
+		<article>			
+			<div class="navi">
+				<nav> <!--레슨상세탭 네비바(레슨소개, 프로소개, 레슨후기)-->
+					<a href="#lsnIntro" id="lsnIntroLink">레슨소개</a>&nbsp;&nbsp;
+					<a href="#proIntro" id="proIntroLink">프로소개</a>&nbsp;&nbsp;
+					<a href="#review" id="reviewLink">레슨후기</a>&nbsp;&nbsp;
+				</nav>
+			</div>
+		</article>
+		<br>
+		<hr>
+		<!-- <br> -->
+		<!--레슨소개영역-->
+		<article>
+			<div class="detail">
+				<fieldset>
+					<legend>레슨소개</legend>
+					<div class="lsn_intro"></div>
+				</fieldset>
+				<!--프로소개영역-->
+				<fieldset>
+					<legend>프로소개</legend>
+					<div class="pro_intro"></div>
+				</fieldset>
+				<!--레슨후기영역-->
+				<fieldset>
+					<legend>후기란</legend>
+					<div class="lsn">
+						<div class="reviewlist">					
+							<div class="reviewdetail"></div>
+						</div>
+					</div> 
+				</fieldset> 
+			</div>
+		</article>
+	</section>
+	<hr>
+	<!--풋터 네비바-->
+	<div w3-include-html="footer.html" class="w3"></div>
+    <script>
+        w3.includeHTML();
+    </script>
+</body>
+
+</html>

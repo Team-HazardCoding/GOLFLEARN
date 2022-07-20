@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Wed Jul 20 17:49:42 KST 2022
+org.eclipse.jst.jee.server\:front=C\:\\Users\\sitsu\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\kosta244\\SW\\apache-tomcat-9.0.63\\apache-tomcat-9.0.63\\wtpwebapps\\front
+org.eclipse.jst.jee.server\:back=C\:\\Users\\sitsu\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\kosta244\\SW\\apache-tomcat-9.0.63\\apache-tomcat-9.0.63\\wtpwebapps\\back
