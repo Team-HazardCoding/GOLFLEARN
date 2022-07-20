@@ -2,16 +2,15 @@
 This is a golf platform for golf-beginner(a.k.a. 골린이)
 
 ## 프로젝트 개요
-### 프로젝트명 : 지구하러 갈래?
+### 프로젝트명 : GOLF LEARN
 
-이 서비스는 분리수거가 잘되지 않고 있는 현재 분리수거를 더 잘할 수 있도록 도와주는 머신러닝 기능과 커뮤니티의 댓글기능을 통해 지구를 정화시키는 데 도움이 되고자 하는 마음으로 
-만든 서비스입니다.
+이 서비스는 골린이들을 위한 골프서비스입니다.
+
 <br>
-[시연 영상](https://www.youtube.com/channel/UCEeXdrIiAburLI6yATNsE2Q/featured) 👈 link <br>
-[사타리탔죠의 노션페이지](https://www.notion.so/Earth-apa-9b336a12f35f4e63b10f8ef73c293314) 👈 link <br>
+[HAZARD의 노션페이지](https://www.notion.so/1-by-Hazard_Coding-94bca756a1f440e08e96e2ca63f4bb10) 👈 link <br>
 ### 개발기간
-22.01.12(수) ~ 22.01.18(화)
-7일간(기획 1일, 개발 6일)
+22.06.22(수) ~ 22.07.15(금)
+24일간(기획 3일, 설계 7일, 구현 14일)
 
 ### 전체일정 프로세스
 1일차 : 프로젝트 기획(API설계, 와이어프레임작성), 기능 선정, 역할 분담, 기능별 html 제작<br>
