@@ -5,6 +5,10 @@ $(function () {
 	// ----- 아이디 중복확인 버튼 클릭 START -----
 	let $btIddupchk = $("button[name=iddupchk]");
 	$btIddupchk.click(function () {
+		if($inputId.val()==''){
+			alert('아이디를 입력하세요');
+			return;
+		}
 		$.ajax({
 			url: "http://localhost:1124/back/iddupchk",
 			type: "get",
@@ -38,10 +42,8 @@ $(function () {
 	let $btSignup = $("button[name=signup]");
 	$btSignup.click(function () {
 		
-		if($inputId.val()==''){
-			alert('아이디를 입력하세요');
-			return;
-		}else if($inputPwd == ''){
+		
+		if($inputPwd == ''){
 			alert('비밀번호를 입력하세요');
 			return;
 		}else if($inputPwdChk == ''){
@@ -59,6 +61,7 @@ $(function () {
 		}else if ($inputSsn == "") {
 			alert('생년월일을 입력하세요');
 			return;
+		}	
 
 		// ----- 비밀번호 중복확인 START -----
 		let $inputPwd = $("input[name=user_pwd]");
