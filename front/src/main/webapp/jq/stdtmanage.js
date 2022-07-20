@@ -1,6 +1,6 @@
 $(function(){
     let data = location.search.substring(1);
-    console.log(data);
+    /*console.log(data);*/
     $.ajax({
         url : "/back/viewstudentmanage",
         method : 'get',
