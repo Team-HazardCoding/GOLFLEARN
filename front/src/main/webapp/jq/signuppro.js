@@ -33,6 +33,28 @@ $(function () {
 	// 가입하기 버튼 클릭 이벤트 발생
 	$btSignup.click(function () {
 
+		if($inputId.val()==''){
+			alert('아이디를 입력하세요');
+			return;
+		}else if($inputPwd == ''){
+			alert('비밀번호를 입력하세요');
+			return;
+		}else if($inputPwdChk == ''){
+			alert('비밀번호 확인을 입력하세요')
+			return;
+		}else if ($inputName == "") {
+			alert('이름을 입력하세요');
+			return;
+		}else if ($inputPhone == "") {
+			alert('전화번호를 입력하세요');
+			return;
+		}else if ($inputEmail == "") {
+			alert('이메일을 입력하세요');
+			return;
+		}else if ($inputSsn == "") {
+			alert('생년월일을 입력하세요');
+			return;
+
 		// ----- 비밀번호 중복확인 START -----
 		let $inputPwd = $("input[name=user_pwd]");
 		let $inputPwdChk = $("input[name=user_pwd_chk]");

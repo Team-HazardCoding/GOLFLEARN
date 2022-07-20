@@ -28,14 +28,14 @@
 			<tr class="pwd">
 				<th> 비밀번호
 				<td id="pwd">
-					<input id="user_pwd" class="input-box" name="user_pwd" type="password" placeholder="영문 소문자+숫자+특수문자 (20자 이내)" required>
+					<input id="user_pwd" class="input-box" name="user_pwd" type="password" pattern="^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{1,20}$" placeholder="영문 소문자+숫자+특수문자 (20자 이내)" required>
 				</td>
 				</th>
 			</tr>
 			<tr>
 				<th> 비밀번호 확인
 				<td class="pwd_chk">
-					<input id="user_pwd_chk" class="input-box" name="user_pwd_chk" type="password" placeholder="영문 소문자+숫자+특수문자 (20자 이내)" required>
+					<input id="user_pwd_chk" class="input-box" name="user_pwd_chk" type="password" pattern="^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{1,20}$" placeholder="영문 소문자+숫자+특수문자 (20자 이내)" required>
 					</th>
 				</td>
 			</tr>
