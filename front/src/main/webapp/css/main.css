@@ -128,21 +128,20 @@ li:hover {
 }
 
 #main>#wrapper>#container>#content-right>#tag-container::-webkit-scrollbar {
-    width: 3px;  /* 스크롤바의 너비 */
+    height: 4px;
 }
 
 #main>#wrapper>#container>#content-right>#tag-container::-webkit-scrollbar-thumb {
-    height: 10px; /* 스크롤바의 길이 */
-    background:rgb(183, 231, 199); /* 스크롤바의 색상 */
+    background:rgb(183, 231, 199);
     border-radius: 10px;
 }
 
 #main>#wrapper>#container>#content-right>#tag-container::-webkit-scrollbar-track {
-    background: rgba(183, 231, 199, 0.363);  /*스크롤바 뒷 배경 색상*/
+    background: rgba(183, 231, 199, 0.363); 
     opacity: 0.5;
     border-radius: 10px;
+    display:none;
 }
-
 
 #main>#wrapper>#container>#content-right>#tag-container>li{
     border-radius: 23px;
@@ -157,7 +156,6 @@ li:hover {
     margin-right: 5px;
     margin-left: 0;
 }
-
 
 #main>#wrapper>#container>#content-right>#tag-container>li.choice {
     background-color: rgb(183, 231, 199);
