@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 
-
 public class Lesson {
 	private int lsnNo;
 	private String lsnTitle;
