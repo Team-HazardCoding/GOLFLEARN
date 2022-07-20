@@ -94,6 +94,7 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String status = (String) session.getAttribute("loginInfo");
 		
+		
 		if (status == null) {
 			map.put("status", 0);
 		}

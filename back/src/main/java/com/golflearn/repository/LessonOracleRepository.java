@@ -25,21 +25,21 @@ public class LessonOracleRepository implements LessonRepository {
 		ResultSet rs = null;
 
 		String selectLsnNoSQL = "SELECT l.lsn_no, l.lsn_title, l.lsn_intro, l.lsn_star_ppl_cnt, "
-							  + "l.lsn_lv, l.lsn_price, l.user_id 프로아이디, l.loc_no, l.lsn_cnt_sum, "
-							  + "l.lsn_per_time, l.lsn_days, TRUNC((l.lsn_star_sum / l.lsn_star_ppl_cnt), 2) 레슨별점, "
-							  + "TRUNC((SELECT SUM(lsn_star_sum/lsn_star_ppl_cnt)/COUNT(lsn_no) "
-							  		 + "FROM lesson "
-							  		 + "WHERE user_id= l.user_id), 2) 프로별점, "
-							  + "ui.user_name 프로명,"
-							  + "pi.pro_career, "
-							  + "ll.user_id 후기작성자아이디, ll.lsn_line_no, "
-							  + "lr.review, "
-							  + "lr.review_dt "
-				+ "FROM lesson l JOIN user_info ui ON (l.user_id = ui.user_id) "
-							  + "JOIN pro_info pi ON (ui.user_id = pi.user_id) "
-							  + "JOIN lesson_line ll ON (l.lsn_no = ll.lsn_no) "
-							  + "JOIN lesson_review lr ON (ll.lsn_line_no = lr.lsn_line_no) "
-				+ "WHERE l.lsn_no = ?";
+								+ "l.lsn_lv, l.lsn_price, l.user_id 프로아이디, l.loc_no, l.lsn_cnt_sum, "
+								+ "l.lsn_per_time, l.lsn_days, TRUNC((l.lsn_star_sum / l.lsn_star_ppl_cnt), 2) 레슨별점, "
+								+ "TRUNC((SELECT SUM(lsn_star_sum/lsn_star_ppl_cnt)/COUNT(lsn_no) "
+								+ "FROM lesson "
+								+ "WHERE user_id= l.user_id), 2) 프로별점, "
+								+ "ui.user_name 프로명,"
+								+ "pi.pro_career, "
+								+ "ll.user_id 후기작성자아이디, ll.lsn_line_no, "
+								+ "lr.review, "
+								+ "lr.review_dt "
+								+ "FROM lesson l JOIN user_info ui ON (l.user_id = ui.user_id) "
+								+ "JOIN pro_info pi ON (ui.user_id = pi.user_id) "
+								+ "JOIN lesson_line ll ON (l.lsn_no = ll.lsn_no) "
+								+ "JOIN lesson_review lr ON (ll.lsn_line_no = lr.lsn_line_no) "
+								+ "WHERE l.lsn_no = ?";
 
 		try {
 			con = MyConnection.getConnection();
