@@ -25,7 +25,8 @@ public class AddLessonOracleRepository implements AddLessonRepository {
 			MyConnection.close(null, con);
 		}
 	}
-	//1-1. 레슨등록 : 레슨의 레슨분류정보 외 기타정보 DB에 INSERT
+	
+	//1-1. 레슨등록 : 레슨의 레슨분류정보 외 기타정보 DB에 INSERT :
 	private void insertLsnInfo(Connection con, Lesson lesson, String userId) throws SQLException {
 		PreparedStatement pstmt = null;
 
