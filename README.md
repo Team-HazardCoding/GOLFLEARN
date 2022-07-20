@@ -108,8 +108,9 @@ This is a golf platform for golf-beginner(a.k.a. 골린이)
 <br>
 **한미래 @devfuturo Dev**<br>
 ✔️ 회원가입 페이지 담당<br>
-✔️ <br>
-✔️ <br>
+✔️ 서버 오류 담당<br>
+✔️ 가입 유효성 검사<br>
+✔️ 파일 업로드, 폴더 생성 구현 <br>
 ✔️ 담당 페이지 css 구현<br>
 <br>
 **황초연 @myCYWORLD Dev**<br>
