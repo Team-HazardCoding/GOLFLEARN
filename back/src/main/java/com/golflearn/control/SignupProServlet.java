@@ -33,6 +33,8 @@ public class SignupProServlet extends HttpServlet {
 		String userEmail = request.getParameter("user_email");
 		String userPhone = request.getParameter("user_phone");
 		String userSsn = request.getParameter("user_ssn");
+		String userType = request.getParameter("1");
+		
 		java.sql.Date signupDt = new java.sql.Date(System.currentTimeMillis()); // 현재 날짜를 받아오는 것
 		String proCareer = request.getParameter("pro_career");
 		
