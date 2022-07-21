@@ -2,6 +2,7 @@ package com.golflearn.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -84,8 +85,9 @@ public class AddLessonServlet extends HttpServlet {
 					map.put("msg", "등록성공");
 					result = mapper.writeValueAsString(map);
 					//이미지 파일 업로드
+					int lsnNo = LsnRepository.selectRecentLsnNo();
 					Upload upload = new Upload();
-					upload.uploadFiles(request, userId);
+					upload.uploadFiles(request, userId, lsnNo);
 				}
 			}				
 		} catch (AddException e) {

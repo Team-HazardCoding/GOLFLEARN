@@ -206,4 +206,33 @@ public class LessonOracleRepository implements LessonRepository {
 		return lsnList;
 		
 	}
+	
+	public int selectRecentLsnNo() throws FindException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectLsnNoSQL = 
+				"SELECT lsn_no "
+				+ "FROM lesson "
+				+ "WHERE rownum = 1 "
+				+ "ORDER BY lsn_no DESC";
+		try {
+			con = MyConnection.getConnection();
+			pstmt = con.prepareStatement(selectLsnNoSQL);
+			rs = pstmt.executeQuery();
+			int result = 0;
+			if(rs.next()) {
+				int lsnNo = rs.getInt("lsn_no"); 
+				System.out.println(lsnNo);
+				result = lsnNo;
+				return lsnNo;
+			}
+			throw new FindException(result + "가 존재하지 않습니다");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new FindException(e.getMessage());
+		}finally {
+			MyConnection.close(rs, pstmt, con);
+		}
+	}
 }
