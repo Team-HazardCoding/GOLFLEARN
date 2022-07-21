@@ -31,9 +31,9 @@ $(function () {
 			console.log(item.user.userID);
 			let product = '<div class="lsn" id=' + item.lsnNo + ">";
 			product +=
-        '<img src= "/C://Golflearn_lib/user_images/' +
-        item.user.userID +
-        '/LessonThumbnail.jpg" alt="lsnimg"/>'; // 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
+        '<img src= "../lsn_images/' +
+        item.lsnNo +
+        '_LessonThumbnail.jpg" alt="lsnimg"/>'; // 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
         // '<div id="lsnImg"><img src="../user_images/' +
         // item.user.userID +
         // '/LessonThumbnail.jpg"/></div>'; // 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
