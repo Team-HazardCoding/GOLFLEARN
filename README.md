@@ -101,9 +101,10 @@ This is a golf platform for golf-beginner(a.k.a. 골린이)
 ✔️ 담당 페이지 css 구현<br>
 <br>
 **조건우 @KevinJo-Keonwoo PM**<br>
-✔️ 마이페이지 담당<br>
-✔️ <br>
-✔️ <br>
+✔️ 마이페이지 담당(수강생/프로)<br>
+✔️ 후기 페이지 담당(작성/수정)<br>
+✔️ 수강생관리 페이지 담당<br>
+✔️ job scheduler 이용한 DB 상태 업데이트<br>
 ✔️ 담당 페이지 css 구현<br>
 <br>
 **한미래 @devfuturo Dev**<br>
