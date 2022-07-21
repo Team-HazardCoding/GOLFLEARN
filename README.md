@@ -96,7 +96,7 @@ This is a golf platform for golf-beginner(a.k.a. 골린이)
 **전승현 @cokesh PL**<br>
 ✔️ 메인 페이지 담당<br>
 ✔️ 지역API를 활용한 필터링 구현<br>
-✔️ HTML 프레임 구현 및 css 총괄<br>
+✔️ HTML 프레임 구현 및 <br>
 ✔️ Git, Github 관리<br>
 ✔️ 담당 페이지 css 구현<br>
 <br>
@@ -114,9 +114,9 @@ This is a golf platform for golf-beginner(a.k.a. 골린이)
 ✔️ 담당 페이지 css 구현<br>
 <br>
 **황초연 @myCYWORLD Dev**<br>
-✔️ 아이디/비밀번호 찾기 페이지 담당<br>
-✔️ <br>
-✔️ <br>
+✔️ 아이디/비밀번호 찾기/비밀번호 변경 페이지 담당<br>
+✔️ smtp를 활용한 인증코드메일 발송 구현 <br>
+✔️ 웹페이지 전반적인 css 담당 <br>
 ✔️ 담당 페이지 css 구현 <br>
 
 ## API소개
