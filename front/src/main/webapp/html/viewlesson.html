@@ -20,35 +20,36 @@
 	<section class="section1">
 		<article>
 			<div class="viewlesson">
-				<img src="" alt=""/><!--레슨썸네일-->
+				<img src="" alt="" />
+				<!--레슨썸네일-->
 				<div class="simple">
 					<ul>
-						<br>
-						<li>레슨지역:<span class="loc_no"></span> </li>  
-						<li>레슨명:<span class="lsn_title"></span></li>  
-						<li>레슨별점:<span class="lsn_star_score"></span></li>  
-						<li>레슨후기갯수:<span class="lsn_review_cnt"></span></li>	
-						<li>프로명:<span class="user_name"></span></li>	 
-						<li>프로별점:<span class="pro_star_score"></span></li>
-						<br>	 	
-						<button>수강신청</button>						
+						<div>
+							<li>레슨지역:<span class="loc_no"></span> </li>
+							<li>레슨명:<span class="lsn_title"></span></li>
+							<li>레슨별점:<span class="lsn_star_score"></span></li>
+							<li>레슨후기갯수:<span class="lsn_review_cnt"></span></li>
+							<li>프로명:<span class="user_name"></span></li>
+							<li>프로별점:<span class="pro_star_score"></span></li>
+						</div>
+						<div id="btn">
+							<button>수강신청</button>
+						</div>
 					</ul>
 				</div>
 			</div>
 		</article>
-		<br>
-		<hr>
-		<br> 		
-	</section>	
+	</section>
 	<!--본문섹션(레슨상세정보)-->
 	<section class="section2">
 		<!--네비바 영역-->
-		<article>			
+		<article>
 			<div class="navi">
-				<nav> <!--레슨상세탭 네비바(레슨소개, 프로소개, 레슨후기)-->
-					<a href="#lsnIntro" id="lsnIntroLink">레슨소개</a>&nbsp;&nbsp;
-					<a href="#proIntro" id="proIntroLink">프로소개</a>&nbsp;&nbsp;
-					<a href="#review" id="reviewLink">레슨후기</a>&nbsp;&nbsp;
+				<nav>
+					<!--레슨상세탭 네비바(레슨소개, 프로소개, 레슨후기)-->
+					<a  class="lsndetail" href="#lsnIntro" id="lsnIntroLink">레슨소개</a>
+					<a  class="lsndetail" href="#proIntro" id="proIntroLink">프로소개</a>
+					<a  class="lsndetail" href="#review" id="reviewLink">레슨후기</a>
 				</nav>
 			</div>
 		</article>
@@ -59,32 +60,31 @@
 		<article>
 			<div class="detail">
 				<fieldset>
-					<legend>레슨소개</legend>
+					<legend class="lsnintroduce">레슨소개</legend>
 					<div class="lsn_intro"></div>
 				</fieldset>
 				<!--프로소개영역-->
 				<fieldset>
-					<legend>프로소개</legend>
+					<legend class="lsnintroduce">프로소개</legend>
 					<div class="pro_intro"></div>
 				</fieldset>
 				<!--레슨후기영역-->
 				<fieldset>
-					<legend>후기란</legend>
+					<legend class="lsnintroduce">후기</legend>
 					<div class="lsn">
-						<div class="reviewlist">					
+						<div class="reviewlist">
 							<div class="reviewdetail"></div>
 						</div>
-					</div> 
-				</fieldset> 
+					</div>
+				</fieldset>
 			</div>
 		</article>
 	</section>
-	<hr>
 	<!--풋터 네비바-->
 	<div w3-include-html="footer.html" class="w3"></div>
-    <script>
-        w3.includeHTML();
-    </script>
+	<script>
+		w3.includeHTML();
+	</script>
 </body>
 
 </html>

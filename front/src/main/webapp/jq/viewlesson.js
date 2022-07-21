@@ -55,7 +55,6 @@ $(function(){
                 lessonReview += '<li><div>작성자아이디: <span class = "reviewId">' + reviewId + '</span></div></li>'
                 lessonReview += '<li><div>작성날짜: <span class = "reviewDt">' + convertReviewDt + '</span></div></li>'
                 lessonReview += '<li><div>리뷰: <span class = "review">' + review + '</span></div></li>'
-				lessonReview += '<hr>'
                 lessonReview += '</ul>'
                 
                 $copyObj.find('div.reviewdetail').html(lessonReview);
