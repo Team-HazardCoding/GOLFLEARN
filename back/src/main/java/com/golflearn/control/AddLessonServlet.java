@@ -87,7 +87,8 @@ public class AddLessonServlet extends HttpServlet {
 					//이미지 파일 업로드
 					int lsnNo = LsnRepository.selectRecentLsnNo();
 					Upload upload = new Upload();
-					upload.uploadLsnFiles(request, userId, lsnNo);
+
+					upload.uploadLsnFiles(request, lsnNo);
 				}
 			}				
 		} catch (AddException e) {

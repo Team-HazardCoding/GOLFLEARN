@@ -2,7 +2,6 @@ package com.golflearn.control;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.sql.ResultSet;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServlet;
@@ -18,6 +17,7 @@ public class Upload{
 		} catch (UnsupportedEncodingException e1) {
 			e1.printStackTrace();
 		}
+
 
 		String uploadPathName= "C:\\Semi\\front\\src\\main\\webapp\\user_images\\" + userId ; // 파일 업로드 할 절대경로 지정 
 		//		String uploadPathName= "D:\\Golflearn_lib\\user_images\\" + userId ; // 파일 업로드 할 절대경로 지정 
@@ -66,7 +66,6 @@ public class Upload{
 						System.out.println(fileName);
 						part.write(uploadDirectory.getAbsolutePath()+"\\"+fileName+fileExtension);
 					} 
-
 				}
 			}
 		}catch (Exception e) {
@@ -81,7 +80,9 @@ public class Upload{
 		} catch (UnsupportedEncodingException e1) {
 			e1.printStackTrace();
 		}
+
 		String uploadPathName= "C:\\Semi\\front\\src\\main\\webapp\\lsn_images"; // 파일 업로드 할 절대경로 지정 
+
 		//	String uploadPathName= "D:\\Golflearn_lib\\user_images\\" + userId ; // 파일 업로드 할 절대경로 지정 
 
 
@@ -125,4 +126,3 @@ public class Upload{
 		}
 	}
 }
-
