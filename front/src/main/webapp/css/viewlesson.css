@@ -12,24 +12,63 @@ a {
     margin-top: 95px;
 } */
 
+hr{
+    border :0.5px solid rgb(183, 231, 199);
+}
+
+ul{
+    list-style: none; 
+}
+
+div.reviewdetail > ul {
+    border-bottom: 1px solid rgb(183, 231, 199);
+}
+
+div.lsn div.reviewlist:last-child >div.reviewdetail > ul {
+    border-bottom:none;
+}
+
+li{
+    font-size: 20px;
+    padding: 10px 10px 10px 0;
+}
+
+div.lsn div.reviewlist >div.reviewdetail > ul >li {
+    font-size:14px;
+}
+
+#btn{
+    text-align: center;
+    padding: 30px;
+}
+
 /*헤더와 풋터에게서 섹션내용이 다 보여지도록 하기*/
 section.section1 {
-    padding-top: 120px;    
-    padding-left: 240px;
-    padding-right: 240px;
+    text-align: left;
+    display: flex;
+    align-content: flex-end;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
 }
 
-section.section2 {
-    
-    padding-bottom: 120px;
-    padding-left: 240px;
-    padding-right: 240px;
-}
-
-img {
+section.section1 > article > div.viewlesson >img {
     width: 500px;
     height: 300px;
     object-fit: cover;
+}
+
+
+section.section2 {
+    margin-top: 70px;
+    width:80%;
+    margin: 0 auto;
+    padding-bottom: 70px;
+}
+
+section.section2 > article >div.navi > nav > a.lsndetail {
+    margin:20px;
+    font-size: 20px;
 }
 
 /*상단가기버튼*/
@@ -48,8 +87,39 @@ img {
     border-radius:100%;
 } 
 
+.btn_gotop img  {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+    vertical-align: middle;
+}
 /*레슨상세정보 서로의 간격*/
 div.detail>fieldset {
     /* padding-top: 10px; */
     margin-top: 3%;
+    border: none;
 }    
+
+button {
+    background-color: white;
+    border: 2px solid rgb(183, 231, 199);
+    border-radius: 23px;
+    letter-spacing: 3px;
+    font-size: medium;
+    cursor: pointer;
+    padding: 13px;
+    font-size: 15px;
+}
+
+button:hover {
+	background-color:rgb(183, 231, 199);
+}
+
+.lsnintroduce{
+    font-size: 26px;
+}
+
+div.lsn_intro, div.pro_intro{
+    font-size:14px;
+    padding: 10px 0 0 40px;
+}

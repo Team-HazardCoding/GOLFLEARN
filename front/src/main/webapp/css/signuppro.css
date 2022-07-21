@@ -66,6 +66,7 @@ button#signup {
 	font-size: medium;
     cursor:pointer;
 	min-width: 10%;
+	padding-bottom: 50px;
 }
 
 button#signup:hover {
@@ -84,6 +85,11 @@ input.input-box {
 	padding: 7px;
 	width:250px;
 	box-sizing: border-box;
+}
+
+input.input-box:focus {
+	background: rgba(183, 231, 199, 0.363); 
+	outline: none !important;
 }
 
 

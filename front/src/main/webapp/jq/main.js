@@ -31,9 +31,9 @@ $(function () {
 			console.log(item.user.userID);
 			let product = '<div class="lsn" id=' + item.lsnNo + ">";
 			product +=
-        '<img src= "/C://lGolflearn_lib/user_images/' +
-        item.user.userID +
-        '/LessonThumbnail.jpg" alt="lsnimg"/>'; // 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
+        '<img src= "../lsn_images/' +
+        item.lsnNo +
+        '_LessonThumbnail.jpg" alt="lsnimg"/>'; // 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
         // '<div id="lsnImg"><img src="../user_images/' +
         // item.user.userID +
         // '/LessonThumbnail.jpg"/></div>'; // 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
@@ -65,18 +65,16 @@ $(function () {
 		success: function (jsonObj) {
 		let $tabObj = $("div#content>div#content-right");
 		let $tabObjHtml = "";
-		console.log("tetetetete" + jsonObj.type);
 		if (jsonObj.status == 1) {
-			console.log("hihiho");
 			// $('header div#logined').show();
 
 			$tabObjHtml +=
 			'<div id="logined"><div id="logout" onclick="logout()">로그아웃</div>';
+			if (jsonObj.type == 1) {
+				$tabObjHtml += '<div id="addlsn"><a id="mypage" href="/front/html/addlesson.html">레슨등록</a></div>';
+			}
 			$tabObjHtml +=
 			'<div id="mypage" onclick="mypage()">마이페이지</div></div>';
-			if (jsonObj.type == 1) {
-				$tabObjHtml += '<a id="mypage" href="/front/html/addlesson.html">레슨등록</a>';
-			}
 
 		} else {
 			// $('header div#normal').show();

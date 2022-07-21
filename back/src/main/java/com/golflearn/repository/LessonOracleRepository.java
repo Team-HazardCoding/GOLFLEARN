@@ -25,21 +25,21 @@ public class LessonOracleRepository implements LessonRepository {
 		ResultSet rs = null;
 
 		String selectLsnNoSQL = "SELECT l.lsn_no, l.lsn_title, l.lsn_intro, l.lsn_star_ppl_cnt, "
-								+ "l.lsn_lv, l.lsn_price, l.user_id 프로아이디, l.loc_no, l.lsn_cnt_sum, "
-								+ "l.lsn_per_time, l.lsn_days, TRUNC((l.lsn_star_sum / l.lsn_star_ppl_cnt), 2) 레슨별점, "
-								+ "TRUNC((SELECT SUM(lsn_star_sum/lsn_star_ppl_cnt)/COUNT(lsn_no) "
-								+ "FROM lesson "
-								+ "WHERE user_id= l.user_id), 2) 프로별점, "
-								+ "ui.user_name 프로명,"
-								+ "pi.pro_career, "
-								+ "ll.user_id 후기작성자아이디, ll.lsn_line_no, "
-								+ "lr.review, "
-								+ "lr.review_dt "
-								+ "FROM lesson l JOIN user_info ui ON (l.user_id = ui.user_id) "
-								+ "JOIN pro_info pi ON (ui.user_id = pi.user_id) "
-								+ "JOIN lesson_line ll ON (l.lsn_no = ll.lsn_no) "
-								+ "JOIN lesson_review lr ON (ll.lsn_line_no = lr.lsn_line_no) "
-								+ "WHERE l.lsn_no = ?";
+							  + "l.lsn_lv, l.lsn_price, l.user_id 프로아이디, l.loc_no, l.lsn_cnt_sum, "
+							  + "l.lsn_per_time, l.lsn_days, TRUNC((l.lsn_star_sum / l.lsn_star_ppl_cnt), 2) 레슨별점, "
+							  + "TRUNC((SELECT SUM(lsn_star_sum/lsn_star_ppl_cnt)/COUNT(lsn_no) "
+							  		 + "FROM lesson "
+							  		 + "WHERE user_id= l.user_id), 2) 프로별점, "
+							  + "ui.user_name 프로명,"
+							  + "pi.pro_career, "
+							  + "ll.user_id 후기작성자아이디, ll.lsn_line_no, "
+							  + "lr.review, "
+							  + "lr.review_dt "
+				+ "FROM lesson l JOIN user_info ui ON (l.user_id = ui.user_id) "
+							  + "JOIN pro_info pi ON (ui.user_id = pi.user_id) "
+							  + "LEFT JOIN lesson_line ll ON (l.lsn_no = ll.lsn_no) "
+							  + "LEFT JOIN lesson_review lr ON (ll.lsn_line_no = lr.lsn_line_no) "
+				+ "WHERE l.lsn_no = ?";
 
 		try {
 			con = MyConnection.getConnection();
@@ -205,5 +205,34 @@ public class LessonOracleRepository implements LessonRepository {
 		List<Lesson> lsnList = new ArrayList<>();
 		return lsnList;
 		
+	}
+	
+	public int selectRecentLsnNo() throws FindException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectLsnNoSQL = 
+				"SELECT lsn_no "
+				+ "FROM lesson "
+				+ "WHERE rownum = 1 "
+				+ "ORDER BY lsn_no DESC";
+		try {
+			con = MyConnection.getConnection();
+			pstmt = con.prepareStatement(selectLsnNoSQL);
+			rs = pstmt.executeQuery();
+			int result = 0;
+			if(rs.next()) {
+				int lsnNo = rs.getInt("lsn_no"); 
+				System.out.println(lsnNo);
+				result = lsnNo;
+				return lsnNo;
+			}
+			throw new FindException(result + "가 존재하지 않습니다");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new FindException(e.getMessage());
+		}finally {
+			MyConnection.close(rs, pstmt, con);
+		}
 	}
 }

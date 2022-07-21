@@ -72,7 +72,7 @@ $(function() {
 				$(jsonObj.lsns).each(function(index, item) {
 					// console.log(item);
 					let product = '<div class="lsn" id='+ item.lsnNo + '>';
-					product +='<img src="/images/"' + item.user.userId + '/LessonThumbnail.jpeg">';// 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
+					product +='<img src="../lsn_images/' + item.lsnNo+ '_LessonThumbnail.jpg">';// 각레슨의 이미지경로 다시 설정해야함 c밑의 경로임
 					product +='<div class="lsn_content">';
 					product +='<h5 class="lsn_title">' + item.lsnTitle + '</h5>';
 					product +='<p class="prod_price">프로이름 : '+item.user.userName + '</p>';

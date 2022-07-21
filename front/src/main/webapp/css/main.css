@@ -67,7 +67,13 @@ li:hover {
     align-items: center;
     flex-direction: column;
     overflow-y: scroll;
+    
 }
+
+#main>#wrapper>#container>#content-left>#sidebar>ul::-webkit-scrollbar {
+    -ms-overflow-style: none;
+    display: none;
+    }
 
 #main>#wrapper>#container>#content-left>#sidebar>ul>li {
     display: block;
@@ -81,8 +87,7 @@ li:hover {
 }
 
 #main>#wrapper>#container>#content-left>#sidebar>ul>li.choice {
-    background-color: #00B8A9;
-
+    background-color: rgb(183, 231, 199);
 }
 
 #main>#wrapper>#container>#content-right {
@@ -90,6 +95,10 @@ li:hover {
     overflow: scroll;
     height: 1200px;
     overflow-x: hidden;
+}
+#main>#wrapper>#container>#content-right::-webkit-scrollbar {
+    -ms-overflow-style: none;
+    display: none;
 }
 
 #lsnImg {
@@ -118,9 +127,25 @@ li:hover {
     overflow-x: scroll;
 }
 
-#main>#wrapper>#container>#content-right>#tag-container>li{
-    background-color: #FFEFBC;
+#main>#wrapper>#container>#content-right>#tag-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+#main>#wrapper>#container>#content-right>#tag-container::-webkit-scrollbar-thumb {
+    background:rgb(183, 231, 199);
     border-radius: 10px;
+}
+
+#main>#wrapper>#container>#content-right>#tag-container::-webkit-scrollbar-track {
+    background: rgba(183, 231, 199, 0.363); 
+    opacity: 0.5;
+    border-radius: 10px;
+    display:none;
+}
+
+#main>#wrapper>#container>#content-right>#tag-container>li{
+    border-radius: 23px;
+    border: 2px solid rgb(183, 231, 199);
     display: block;
     list-style: none;
     margin: 0 auto;
@@ -132,9 +157,8 @@ li:hover {
     margin-left: 0;
 }
 
-
 #main>#wrapper>#container>#content-right>#tag-container>li.choice {
-    background-color: #FFDE7D;
+    background-color: rgb(183, 231, 199);
 }
 
 #main>#wrapper>#container>#content-right>#card-container {
@@ -149,10 +173,9 @@ li:hover {
     margin-right: 15px;
     width: 300px;
     max-width: 30%;
-    height: 250px;
+    height: 295px;
     min-width: 30%;
     cursor: pointer;
-
 }
 
 #main>#wrapper>#container>#content-right .col .lsn{

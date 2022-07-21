@@ -44,7 +44,6 @@ function mypage() {
 }
 
 function logout() {
-	console.log("shittttt");
 	$.ajax({
 		url: "http://localhost:1124/back/logout",
 		success: function () {

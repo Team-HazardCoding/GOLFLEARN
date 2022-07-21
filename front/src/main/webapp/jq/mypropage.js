@@ -5,25 +5,19 @@ $(function(){
 		let $tabObj = $("div#content>div#content-right");
 		let $tabObjHtml = "";
 		console.log("tetetetete" + jsonObj.type);
-		if (jsonObj.status == 1) {
+		//if (jsonObj.status == 1) {
 			console.log("hihiho");
-			// $('header div#logined').show();
+			$tabObjHtml += '<div id="logined"><div id="logout" onclick="logout()">로그아웃</div>';
+			//$tabObjHtml += '<div id="addlsn"><a id="mypage" href="/front/html/addlesson.html">레슨등록</a></div>';
+			$tabObjHtml += '<div id="mypage" onclick="mypage()">마이페이지</div></div>';
 
-			$tabObjHtml +=
-			'<div id="logined"><div id="logout" onclick="logout()">로그아웃</div>';
-			$tabObjHtml +=
-			'<div id="mypage" onclick="mypage()">마이페이지</div></div>';
-			if (jsonObj.type == 1) {
-				$tabObjHtml += '<a id="mypage" href="/front/html/addlesson.html">레슨등록</a>';
-			}
-
-		} else {
+		//} else {
 			// $('header div#normal').show();
-			$tabObjHtml +=
-			' <div id="normal"><a href="/front/html/login.html">로그인</a>';
-			$tabObjHtml +=
-			'<a href="/front/html/signuptype.html">회원가입</a></div>';
-		}
+			//$tabObjHtml +=
+			//' <div id="normal"><a href="/front/html/login.html">로그인</a>';
+			//$tabObjHtml +=
+			//'<a href="/front/html/signuptype.html">회원가입</a></div>';
+		//}
 		$tabObj.html($tabObjHtml);
 		
 		// return false;
@@ -59,7 +53,7 @@ $(function(){
                 // lsns += '</div>';
 
                 let lsns = '<div class = "no">' + lsn_no + '</div>'
-                lsns += '<img src = "../lsn_images/' + lsn_no + '.jpg" alt="' + lsn_no + '번째레슨">'
+                lsns += '<img src = "../lsn_images/' + lsn_no + '_LessonThumbnail.jpg"'
                 lsns += '<div class = "title">' + lsn_title + '</div>'
                 lsns += '<input type="button" class = "stdt_manage" value="수강생관리">'
                 lsns += '<input type="button" class = "lsn_close" value="레슨종료">'
