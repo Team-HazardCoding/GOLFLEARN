@@ -8,9 +8,9 @@ This is a golf platform for golf-beginner(a.k.a. 골린이)
 
 <br>
 [HAZARD의 노션페이지]https://www.notion.so/1-by-Hazard_Coding-94bca756a1f440e08e96e2ca63f4bb10 👈 link <br>
-### 개발기간
-22.06.22(수) ~ 22.07.15(금)
-24일간(기획 3일, 설계 7일, 구현 14일)
+### 개발기간<br>
+22.06.22(수) ~ 22.07.15(금)<br>
+24일간(기획 3일, 설계 7일, 구현 14일)<br>
 
 ### 전체일정 프로세스
 1 ~ 3일차 : 프로젝트 기획(API설계, 와이어프레임작성), 기능 선정, 역할 분담, 기능별 html 제작<br>
