@@ -17,6 +17,8 @@ public class Upload {
 			e1.printStackTrace();
 		}
 		String uploadPathName= "C:\\Golflearn_lib\\user_images\\" + userId ; // 파일 업로드 할 절대경로 지정 
+//		String uploadPathName= "D:\\Golflearn_lib\\user_images\\" + userId ; // 파일 업로드 할 절대경로 지정 
+		
 
 		// uploadPathName에 해당되는 File 객체 생성
 		File uploadDirectory = new File(uploadPathName);

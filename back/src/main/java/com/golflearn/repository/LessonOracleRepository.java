@@ -57,7 +57,7 @@ public class LessonOracleRepository implements LessonRepository {
 					lesson = new Lesson();
 					
 					//레슨에 레슨라인들 설정
-					lesson.setLines(lines); 
+					lesson.setLines(lines); 					
 					
 					lesson.setLsnNo(lsnNo);
 					lesson.setLsnTitle(rs.getString("lsn_title"));
