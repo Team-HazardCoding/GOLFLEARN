@@ -20,8 +20,6 @@ import com.golflearn.dto.LessonLine;
 import com.golflearn.exception.FindException;
 import com.golflearn.repository.LessonLineRepository;
 
-
-
 @WebServlet("/viewmypage")
 public class ViewMyPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

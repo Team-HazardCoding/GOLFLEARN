@@ -72,13 +72,13 @@ public class SignupProServlet extends HttpServlet {
 			// 결과값 DB로 전송
 			rs = pstmt.executeUpdate();
 			
-			
 			String insertProInfoSQL = "INSERT INTO pro_info(user_id, pro_career) VALUES(?,?)";
 			pstmt = con.prepareStatement(insertProInfoSQL);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, proCareer);
 			rs = pstmt.executeUpdate();
-					
+			
+			
 			System.out.println(userId);
 			Upload upload = new Upload();
 			upload.uploadFiles(request, userId);

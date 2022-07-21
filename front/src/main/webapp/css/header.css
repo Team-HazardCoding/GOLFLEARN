@@ -106,6 +106,13 @@ header > #navbar > #content > #content-right > #logined {
 	flex-direction: row;
 	justify-content: space-evenly;
 }
+header > #navbar > #content > #content-right > #logined > #addlsn > a {
+	text-decoration: none;
+	color: #b7e7c7;
+	box-sizing: border-box;
+	font-family: "Godo";
+	font-weight: lighter;
+}
 
 header > #navbar > #content > #content-right > #logined > a {
 	text-decoration: none;

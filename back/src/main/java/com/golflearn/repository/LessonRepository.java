@@ -1,6 +1,7 @@
 package com.golflearn.repository;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -33,4 +34,6 @@ public interface LessonRepository {
 	 * @throws FindException 아이디가 존재하지 않으면 "아이디를 찾을 수 없습니다" 상세메시지를 갖는 예외가 발생한다
 	 */
 	public int selectTypeById(String userId) throws FindException;
+	
+	public int selectRecentLsnNo() throws FindException; 
 }
