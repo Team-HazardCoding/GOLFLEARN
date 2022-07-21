@@ -37,8 +37,8 @@ public class LessonOracleRepository implements LessonRepository {
 							  + "lr.review_dt "
 				+ "FROM lesson l JOIN user_info ui ON (l.user_id = ui.user_id) "
 							  + "JOIN pro_info pi ON (ui.user_id = pi.user_id) "
-							  + "JOIN lesson_line ll ON (l.lsn_no = ll.lsn_no) "
-							  + "JOIN lesson_review lr ON (ll.lsn_line_no = lr.lsn_line_no) "
+							  + "LEFT JOIN lesson_line ll ON (l.lsn_no = ll.lsn_no) "
+							  + "LEFT JOIN lesson_review lr ON (ll.lsn_line_no = lr.lsn_line_no) "
 				+ "WHERE l.lsn_no = ?";
 
 		try {
