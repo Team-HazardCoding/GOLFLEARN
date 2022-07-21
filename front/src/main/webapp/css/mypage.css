@@ -20,20 +20,20 @@ section {
 
 div.table{
     width: 100%;
-    /* height: 100%; */
+    height: 1000px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
+    overflow: scroll;
 }
 
 div.table div.tr{
     display: table-row;
     width : 30%;
-    height: 30%;
+    height: 400px;
     margin: 15px;
-    /* border: 1px solid; */
     padding: 6px;
 }
 div.table div.tr div.td{
