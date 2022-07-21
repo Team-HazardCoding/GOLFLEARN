@@ -86,7 +86,7 @@ This is a golf platform for golf-beginner(a.k.a. 골린이)
 <img width="397" alt="스크린샷" src="https://user-images.githubusercontent.com/104618655/179953057-a8df32d5-b2f9-4185-b53d-e13d738eaf2f.jpg">
 
 ### 개발자 (가나다순)<br>
-**박종우 @jongsaewoo Dev**<br>
+**박종우 [@jongsaewoo](https://github.com/JongSaewoo) Dev**<br>
 ✔️ 레슨상세 페이지 담당<br>
 ✔️ <br>
 ✔️ <br>
@@ -99,21 +99,21 @@ This is a golf platform for golf-beginner(a.k.a. 골린이)
 ✔️ Git, Github 관리<br>
 ✔️ 담당 페이지 css 구현<br>
 <br>
-**조건우 @KevinJo-Keonwoo PM**<br>
+**조건우 [@KevinJo-Keonwoo](https://github.com/KevinJo-Keonwoo) PM**<br>
 ✔️ 마이페이지 담당(수강생/프로)<br>
 ✔️ 후기 페이지 담당(작성/수정)<br>
 ✔️ 수강생관리 페이지 담당<br>
 ✔️ job scheduler 이용한 DB  업데이트<br>
 ✔️ 담당 페이지 css 구현<br>
 <br>
-**한미래 @devfuturo Dev**<br>
+**한미래 [@devfuturo Dev](https://github.com/devfuturo)**<br>
 ✔️ 회원가입, 로그인 페이지 담당<br>
 ✔️ 서버 오류 담당<br>
 ✔️ 가입 유효성 검사<br>
 ✔️ 파일 업로드, 폴더 생성 구현 <br>
 ✔️ 담당 페이지 css 구현<br>
 <br>
-**황초연 @myCYWORLD Dev**<br>
+**황초연 [@myCYWORLD](https://github.com/myCYWORLD) Dev**<br>
 ✔️ 아이디/비밀번호 찾기/비밀번호 변경 페이지 담당<br>
 ✔️ smtp를 활용한 인증코드메일 발송 구현 <br>
 ✔️ 전반적인 css 담당 <br>
