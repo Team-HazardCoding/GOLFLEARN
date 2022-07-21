@@ -27,10 +27,12 @@ $(function(){
 			//레슨간략정보 WB에 붙이기
 			// $('div.viewlesson>img').attr('src', 'C:\\Golflearn_lib\\user_images\\' + lsn_no + '.png')
 			// 	.attr('alt', lsn_title);	//레슨썸네일 경로 파일 불러오기(경로 수정 필요)
+
 			// $('div.viewlesson>img').attr('src', '../lsn_images/' + lsn_no + '.jpg')
 			// 	.attr('alt', lsn_title);
 			$('div.viewlesson>img').attr('src', '../lsn_images/' + lsn_no + '_LessonThumbnail.jpg')
 				.attr('alt', lsn_title);
+
 			$('div.viewlesson ul>li>span.loc_no').html(loc_no);	//지역은 api로 넘어갈때 수정
 			$('div.viewlesson ul>li>span.lsn_title').html(lsn_title);
 			$('div.viewlesson ul>li>span.lsn_star_score').html(lsn_star_score);
