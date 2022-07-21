@@ -96,7 +96,7 @@ This is a golf platform for golf-beginner(a.k.a. 골린이)
 **전승현 @cokesh PL**<br>
 ✔️ 메인 페이지 담당<br>
 ✔️ 지역API를 활용한 필터링 구현<br>
-✔️ HTML 프레임 구현 및 <br>
+✔️ HTML 프레임 구현 <br>
 ✔️ Git, Github 관리<br>
 ✔️ 담당 페이지 css 구현<br>
 <br>
