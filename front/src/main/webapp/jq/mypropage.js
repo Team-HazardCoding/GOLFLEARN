@@ -8,7 +8,7 @@ $(function(){
 		//if (jsonObj.status == 1) {
 			console.log("hihiho");
 			$tabObjHtml += '<div id="logined"><div id="logout" onclick="logout()">로그아웃</div>';
-			//$tabObjHtml += '<div id="addlsn"><a id="mypage" href="/front/html/addlesson.html">레슨등록</a></div>';
+			$tabObjHtml += '<div id="addlsn"><a id="mypage" href="/front/html/addlesson.html">레슨등록</a></div>';
 			$tabObjHtml += '<div id="mypage" onclick="mypage()">마이페이지</div></div>';
 
 		//} else {
