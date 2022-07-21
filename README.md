@@ -7,7 +7,7 @@ This is a golf platform for golf-beginner(a.k.a. 골린이)
 이 서비스는 골린이들을 위한 골프서비스입니다.
 
 <br>
-[HAZARD의 노션페이지](https://www.notion.so/1-by-Hazard_Coding-94bca756a1f440e08e96e2ca63f4bb10) 👈 link <br>
+[HAZARD의 노션페이지]https://www.notion.so/1-by-Hazard_Coding-94bca756a1f440e08e96e2ca63f4bb10 👈 link <br>
 ### 개발기간
 22.06.22(수) ~ 22.07.15(금)
 24일간(기획 3일, 설계 7일, 구현 14일)
