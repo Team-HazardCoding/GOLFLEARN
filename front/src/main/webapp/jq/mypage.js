@@ -31,9 +31,7 @@ $(function(){
 		success: function (jsonObj) {
 		let $tabObj = $("div#content>div#content-right");
 		let $tabObjHtml = "";
-		console.log("tetetetete" + jsonObj.type);
 		if (jsonObj.status == 1) {
-			console.log("hihiho");
 			// $('header div#logined').show();
 
 			$tabObjHtml +=
@@ -85,11 +83,9 @@ $(function(){
             // $('div.lsnlist2 span.lsn_status').html(stdt_lsn_status);
             let jsonarr = jsonObj.ll;
             let $lsnObj = $('div.tr');
-            
             $(jsonarr).each(function(i,element){
                 $copyObj = $lsnObj.clone();
                 // $lsnObj.parent.hide();
-
                 let lsn_line_no = element.lsnLineNo;
                 let lsn_no = element.lsnNo;
                 let lsn_title = element.lsn.lsnTitle;
@@ -120,7 +116,7 @@ $(function(){
                 // lessonLine += '<input type="button" class = "cancel_lsn" value="수강취소버튼">'
                 
                 let lessonLine = '<div class = "no">' + lsn_line_no + '</div>';
-                lessonLine += '<img src = "../lsn_images/' + lsn_line_no + '.jpg" alt="' + lsn_line_no + '번째레슨"'
+                lessonLine += '<img src = "../lsn_images/' + lsn_no + '_LessonThumbnail.jpg"'
                 lessonLine += '<div class = "title">' + lsn_title + '</div>'
                 lessonLine += '<div class = "exp_date">레슨유효기간: ' + lsn_exp_dt + '</div>'
                 lessonLine += '<div class = "current_cnt">' + crnt_lsn_cnt + "/" + lsn_cnt_sum + '회</div>'
