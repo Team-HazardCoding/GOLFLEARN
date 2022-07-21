@@ -106,7 +106,7 @@ This is a golf platform for golf-beginner(a.k.a. 골린이)
 ✔️ job scheduler 이용한 DB  업데이트<br>
 ✔️ 담당 페이지 css 구현<br>
 <br>
-**한미래 [@devfuturo Dev](https://github.com/devfuturo)**<br>
+**한미래 [@devfuturo](https://github.com/devfuturo) Dev**<br>
 ✔️ 회원가입, 로그인 페이지 담당<br>
 ✔️ 서버 오류 담당<br>
 ✔️ 가입 유효성 검사<br>
