@@ -75,6 +75,7 @@ public class SignupStdtServlet extends HttpServlet {
 				
 				System.out.println(userId);
 				Upload upload = new Upload();
+				upload.uploadFiles(request, userId);
 				
 				if(rs == 1) { // rs = true이면
 					map.put("status", 1);
