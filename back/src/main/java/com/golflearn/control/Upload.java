@@ -2,13 +2,14 @@ package com.golflearn.control;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.sql.ResultSet;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
 public class Upload {
-	public void uploadFiles(HttpServletRequest request, String userId) {
+	public void uploadFiles(HttpServletRequest request, String userId, int lsnNo) {
 		//디렉토리에 파일 생성
 		try {
 			request.setCharacterEncoding("UTF-8");
@@ -63,7 +64,7 @@ public class Upload {
 						part.write(uploadDirectory.getAbsolutePath()+"\\"+fileName+fileExtension);
 					
 					} else {
-						String fileName = "LessonThumbnail";
+						String fileName = lsnNo + "_LessonThumbnail";
 						System.out.println(fileName);
 						part.write(uploadDirectory.getAbsolutePath()+"\\"+fileName+fileExtension);
 					}
