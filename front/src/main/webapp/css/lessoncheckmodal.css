@@ -3,6 +3,12 @@
     margin: 0 0;
     box-sizing: border-box;
 }
+
+.modal-dialog {
+    height: 1000px;
+    margin-top: 200px;
+}
+
 button.confirm {
     background-color: lawngreen;
     border: none;
@@ -11,4 +17,7 @@ button.confirm {
 button.cancel {
     border: none;
     border-radius: 10px;
+}
+body {
+    height: 1000px !important;
 }
