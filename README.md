@@ -119,14 +119,3 @@ This is a golf platform for golf-beginner(a.k.a. 골린이)
 ✔️ 전반적인 css 담당 <br>
 ✔️ 메인페이지  <br>
 ✔️ 담당 페이지 css 구현 <br>
-
-## API소개
-
-
-
-## Workflow
-
-
-
-
-
