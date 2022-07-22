@@ -53,7 +53,7 @@ $(function(){
                 // lsns += '</div>';
 
                 let lsns = '<div class = "no">' + lsn_no + '</div>'
-                lsns += '<img src = "../lsn_images/' + lsn_no + '_LessonThumbnail.jpg"'
+                lsns += '<img src = "../lsn_images/' + lsn_no + '_LessonThumbnail.jpg">'
                 lsns += '<div class = "title">' + lsn_title + '</div>'
                 lsns += '<input type="button" class = "stdt_manage" value="수강생관리">'
                 lsns += '<input type="button" class = "lsn_close" value="레슨종료">'

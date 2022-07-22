@@ -32,6 +32,7 @@ li:hover {
     /* height: 100%; */
     margin-top: 15px;
     display: flex;
+    text-align: center;
     /* justify-content: space-around; */
 }
 
@@ -43,7 +44,7 @@ li:hover {
 
 #main>#wrapper>#container>#content-left {
     width: 20%;
-    min-width: 120px;
+    min-width: 138px;
     height: 500px;
 }
 
@@ -84,6 +85,7 @@ li:hover {
     margin-bottom: 10px;
     border: 2px solid rgb(183, 231, 199);
     border-radius: 23px;
+    min-width: 135px;
 }
 
 #main>#wrapper>#container>#content-left>#sidebar>ul>li.choice {
@@ -163,6 +165,7 @@ li:hover {
 
 #main>#wrapper>#container>#content-right>#card-container {
     display: flex;
+    min-width: 500px;
     margin-top: 20px;
     flex-direction: row;
     flex-wrap: wrap;
@@ -172,7 +175,7 @@ li:hover {
 #main>#wrapper>#container>#content-right .col {
     margin-right: 15px;
     width: 300px;
-    max-width: 30%;
+    max-width: 150px;
     height: 295px;
     min-width: 30%;
     cursor: pointer;
@@ -187,8 +190,8 @@ li:hover {
     display: flex;
     width: 100%;
     height: 60%;
-    /* object-fit: cover; */
-    /* justify-content: center; */
+    object-fit: cover;
+    justify-content: center;
     align-items: center;
 }
 
