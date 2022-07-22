@@ -33,12 +33,12 @@ $(function(){
 			$('div.viewlesson>img').attr('src', '../lsn_images/' + lsn_no + '_LessonThumbnail.jpg')
 				.attr('alt', lsn_title);
 
-			$('div.viewlesson ul>li>span.loc_no').html(loc_no);	//지역은 api로 넘어갈때 수정
-			$('div.viewlesson ul>li>span.lsn_title').html(lsn_title);
-			$('div.viewlesson ul>li>span.lsn_star_score').html(lsn_star_score);
-			$('div.viewlesson ul>li>span.lsn_review_cnt').html(lsn_review_cnt);
-			$('div.viewlesson ul>li>span.user_name').html(user_name);
-			$('div.viewlesson ul>li>span.pro_star_score').html(pro_star_score);
+			$('div.viewlesson ul>div>li>span.loc_no').html(loc_no);	//지역은 api로 넘어갈때 수정
+			$('div.viewlesson ul>div>li>span.lsn_title').html(lsn_title);
+			$('div.viewlesson ul>div>li>span.lsn_star_score').html(lsn_star_score);
+			$('div.viewlesson ul>div>li>span.lsn_review_cnt').html(lsn_review_cnt);
+			$('div.viewlesson ul>div>li>span.user_name').html(user_name);
+			$('div.viewlesson ul>div>li>span.pro_star_score').html(pro_star_score);
 			//레슨상세정보 WB에 붙이기
 			$('div.lsn_intro').html(lsn_intro);
 			$('div.pro_intro').html(pro_intro);
