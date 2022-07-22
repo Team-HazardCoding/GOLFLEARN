@@ -125,5 +125,5 @@ This is a golf platform for golf-beginner(a.k.a. 골린이)
 ✔️ 아이디/비밀번호 찾기/비밀번호 변경 페이지 담당<br>
 ✔️ smtp를 활용한 인증코드메일 발송 구현 <br>
 ✔️ 전반적인 css 담당 <br>
-✔️ 메인페이지  <br>
+✔️ 메인페이지의 광고배너  <br>
 ✔️ 담당 페이지 css 구현 <br>
